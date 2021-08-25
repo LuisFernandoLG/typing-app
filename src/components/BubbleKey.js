@@ -7,7 +7,7 @@ export const BubbleKey = ({ keyWanted }) => {
       {keyWanted && (
         <BubbleKeyStyled>
           <h2>Wanted</h2>
-          <span>{keyWanted}</span>
+          {/* <span>{keyWanted}</span> */}
         </BubbleKeyStyled>
       )}
     </Wrapper>

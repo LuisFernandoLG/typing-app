@@ -12,7 +12,6 @@ function App() {
     keys,
     keyPressed,
     addKeyPressed,
-    keyWanted,
     indexQuote,
     quote,
     wrongKeyPressed,
@@ -22,7 +21,6 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <div>
-        <BubbleKey keyPressed={keyPressed} keyWanted={quote[indexQuote]} />
         <Quote quote={quote} indexQuote={indexQuote} />
         <KeyBoard
           keyWanted={quote[indexQuote]}
