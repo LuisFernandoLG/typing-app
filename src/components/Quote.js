@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
 
 export const Quote = ({ quote, indexQuote }) => {
@@ -26,6 +26,18 @@ export const Quote = ({ quote, indexQuote }) => {
   );
 };
 
+const courtinAnimation = (color) => keyframes`
+0&{
+  /* background: transparent; */
+  opacity: 0.2;
+}
+100%{
+  /* background: inherit; */
+  opacity: 0.5;
+
+}
+`;
+
 const NormalKey = styled.span`
   margin: 1rem 0.5rem;
   font-size: 2rem;
@@ -34,13 +46,14 @@ const NormalKey = styled.span`
 
   /* color: ${({ theme: { disableColor } }) => disableColor}; */
   color: gray;
+  animation: ${courtinAnimation()} 1s ease forwards;
 `;
 
 const WantedKey = styled(NormalKey)`
   font-weight: 600;
   color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
   outline: 3px solid ${({ theme: { tertiaryColor } }) => tertiaryColor};
-  background: ${({ theme: { secondaryColor } }) => secondaryColor}; ;
+  animation: none;
 `;
 
 const WrongKey = styled(NormalKey)`
