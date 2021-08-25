@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from "styled-components";
+import "normalize.css";
+import { BubbleKey } from "./components/BubbleKey";
+import { KeyBoard } from "./components/KeyBoard";
+import { useKeyBoard } from "./hooks/useKeyBoard";
+import { theme } from "./style/theme";
+import { GlobalStyles } from "./style/GlobalStyles";
+import { Quote } from "./components/Quote";
 
 function App() {
+  const {
+    keys,
+    keyPressed,
+    addKeyPressed,
+    keyWanted,
+    indexQuote,
+    quote,
+    wrongKeyPressed,
+  } = useKeyBoard();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <div>
+        <BubbleKey keyPressed={keyPressed} keyWanted={quote[indexQuote]} />
+        <Quote quote={quote} indexQuote={indexQuote} />
+        <KeyBoard
+          keyWanted={quote[indexQuote]}
+          keys={keys}
+          keyPressed={keyPressed}
+          addKeyPressed={addKeyPressed}
+          wrongKeyPressed={wrongKeyPressed}
+        />
+      </div>
+    </ThemeProvider>
   );
 }
 
