@@ -3,11 +3,9 @@ import { Wrapper } from "./shareStyleComponents/Wrapper";
 
 export const KeyBoard = ({ keys, keyPressed, keyWanted, wrongKeyPressed }) => {
   const getTypeKey = (id, name) => {
-    if (!keyPressed) return <KeyStyled key={id}>{name}</KeyStyled>;
-
-    if (keyWanted === name)
+    if (keyWanted.key === name)
       return <KeyPressedStyled key={id}>{name}</KeyPressedStyled>;
-
+    if (!keyPressed) return <KeyStyled key={id}>{name}</KeyStyled>;
     if (wrongKeyPressed === name)
       return <WrongPressedKey key={id}>{name}</WrongPressedKey>;
 

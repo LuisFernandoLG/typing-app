@@ -5,5 +5,6 @@ export const theme = {
 
   errorColor: "#F05454",
   successColor: "#7FC8A9",
-  disableColor: "#DBE2EF",
+  correctedColor: "#FFAA4C",
+  disableColor: "#eeeeee",
 };

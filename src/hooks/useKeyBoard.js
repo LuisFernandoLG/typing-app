@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { generate } from "shortid";
 import { Howl, Howler } from "howler";
-import { getRandomLetterFromABC } from "../helpers/getRandomLetterFromABC";
-
 const initialKeys = [
   {
     id: generate(),
@@ -292,29 +290,81 @@ const audios = [
   "six.mp3",
 ];
 
+const text = "como descargar minecraft en pc";
+const initialQuote = text.split("").map((letter) => ({
+  id: generate(),
+  key: letter,
+  visited: 0,
+  succeed: null,
+}));
+
+const initialIndexQuote = 0;
+
 export const useKeyBoard = () => {
   const [keys, setKeys] = useState(initialKeys);
-
   const [keyPressed, setKeyPressed] = useState(null);
   const [wrongKeyPressed, setWrongKeyPressed] = useState(null);
-  const [keyWanted, setKeyWanted] = useState(null);
+  const [quote, setQuote] = useState(initialQuote);
+  const [indexQuote, setIndexQuote] = useState(initialIndexQuote);
 
-  const [quote, setQuote] = useState("luis fernando lopez gutierrez");
-  const [indexQuote, setIndexQuote] = useState(0);
-
-  const getRandomKey = () => {
-    const randomKey = {
-      id: generate(),
-      key: getRandomLetterFromABC(),
+  const setSucceedKey = () => {
+    const keyItem = quote[indexQuote];
+    const succeedStatus = {
+      ...keyItem,
+      visited: keyItem.visited + 1,
+      succeed: true,
     };
-    return randomKey;
+    const quoteCopy = quote.map((item) =>
+      item.id === keyItem.id ? succeedStatus : item
+    );
+
+    setQuote(quoteCopy);
+  };
+
+  const setNotSuceedKey = () => {
+    const keyItem = quote[indexQuote];
+    const succeedStatus = {
+      ...keyItem,
+      visited: keyItem.visited + 1,
+      succeed: false,
+    };
+    const quoteCopy = quote.map((item) =>
+      item.id === keyItem.id ? succeedStatus : item
+    );
+
+    setQuote(quoteCopy);
+  };
+
+  const setRetypeKey = () => {
+    const keyItem = quote[indexQuote];
+    const succeedStatus = {
+      ...keyItem,
+      visited: keyItem.visited + 1,
+      succeed: null,
+    };
+    const quoteCopy = quote.map((item) =>
+      item.id === keyItem.id ? succeedStatus : item
+    );
+
+    setQuote(quoteCopy);
+  };
+
+  const addKeyPressed = (e) => {
+    setKeyPressed({
+      id: generate(),
+      key: e.key,
+    });
+  };
+
+  const goNextIndexQuote = () => {
+    if (quote.length - 1 === indexQuote) {
+      setQuote(initialQuote);
+      setIndexQuote(initialIndexQuote);
+    } else setIndexQuote(indexQuote + 1);
   };
 
   useEffect(() => {
-    window.addEventListener("keydown", (e) => {
-      addKeyPressed(e);
-    });
-    setKeyWanted(getRandomKey());
+    window.addEventListener("keydown", (e) => addKeyPressed(e));
     return () => window.removeEventListener("keydown", () => {});
   }, []);
 
@@ -323,27 +373,22 @@ export const useKeyBoard = () => {
 
     if (keyPressed.key === "Backspace" && indexQuote > 0) {
       setWrongKeyPressed(null);
+      setRetypeKey();
       return setIndexQuote(indexQuote - 1);
     }
 
-    if (keyPressed.key === quote[indexQuote]) {
+    if (keyPressed.key === quote[indexQuote].key) {
       playAudioEffect();
       setWrongKeyPressed(null);
-
-      if (quote.length - 1 === indexQuote) setIndexQuote(0);
-      else setIndexQuote(indexQuote + 1);
+      setSucceedKey();
+      goNextIndexQuote();
     } else {
       playErrorSound();
+      setNotSuceedKey();
+      goNextIndexQuote();
       setWrongKeyPressed(keyPressed.key);
     }
   }, [keyPressed]);
-
-  const addKeyPressed = (e) => {
-    setKeyPressed({
-      id: generate(),
-      key: e.key,
-    });
-  };
 
   const playErrorSound = () => {
     let audio = "fail.wav";
@@ -371,7 +416,6 @@ export const useKeyBoard = () => {
   return {
     keyPressed,
     keys,
-    keyWanted,
     quote,
     indexQuote,
     wrongKeyPressed,
