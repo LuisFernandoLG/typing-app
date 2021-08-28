@@ -20,9 +20,11 @@ export const KeyBoard = ({ keys, keyPressed, keyWanted, wrongKeyPressed }) => {
 };
 
 const KeyBoardStyled = styled(Wrapper)`
-  padding: 1rem;
-  height: 40vh;
   background: ${({ theme: { secondaryColor } }) => secondaryColor};
+  position: fixed;
+  bottom: 5%;
+  left: 20%;
+  right: 20%;
 
   display: grid;
   grid-template-columns: 5rem repeat(12, 2rem) 6rem;

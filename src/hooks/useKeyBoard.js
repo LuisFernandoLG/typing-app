@@ -290,22 +290,48 @@ const audios = [
   "six.mp3",
 ];
 
-const text = "como descargar minecraft en pc";
-const initialQuote = text.split("").map((letter) => ({
-  id: generate(),
-  key: letter,
-  visited: 0,
-  succeed: null,
-}));
+const convertQuote = (q) =>
+  q.split("").map((letter) => ({
+    id: generate(),
+    key: letter,
+    visited: 0,
+    succeed: null,
+  }));
 
 const initialIndexQuote = 0;
 
-export const useKeyBoard = () => {
+const excludeKeysFromPressed = [
+  "Control",
+  "Shift",
+  "CapsLock",
+  "Alt",
+  "AltGraph",
+  "shift right",
+];
+
+export const useKeyBoard = (q) => {
   const [keys, setKeys] = useState(initialKeys);
   const [keyPressed, setKeyPressed] = useState(null);
   const [wrongKeyPressed, setWrongKeyPressed] = useState(null);
-  const [quote, setQuote] = useState(initialQuote);
+  const [quote, setQuote] = useState(convertQuote(q));
   const [indexQuote, setIndexQuote] = useState(initialIndexQuote);
+  const [isUpperCase, setIsUpperCase] = useState(false);
+
+  const isSpecialKey = (key) =>
+    excludeKeysFromPressed.every((item) => item !== key);
+
+  useEffect(() => {
+    if (!isUpperCase) return false;
+    const keysUpperCase = keys.map((item) =>
+      isSpecialKey(item.name)
+        ? {
+            ...item,
+            name: item.name.toUpperCase(),
+          }
+        : item
+    );
+    setKeys(keysUpperCase);
+  }, [isUpperCase]);
 
   const setSucceedKey = () => {
     const keyItem = quote[indexQuote];
@@ -358,18 +384,26 @@ export const useKeyBoard = () => {
 
   const goNextIndexQuote = () => {
     if (quote.length - 1 === indexQuote) {
-      setQuote(initialQuote);
+      console.log(q);
+      setQuote(convertQuote(q));
       setIndexQuote(initialIndexQuote);
     } else setIndexQuote(indexQuote + 1);
   };
 
   useEffect(() => {
-    window.addEventListener("keydown", (e) => addKeyPressed(e));
+    window.addEventListener("keydown", (e) => {
+      const isSpecialKey = excludeKeysFromPressed.every(
+        (item) => item !== e.key
+      );
+      if (isSpecialKey) addKeyPressed(e);
+    });
     return () => window.removeEventListener("keydown", () => {});
   }, []);
 
   useEffect(() => {
     if (!keyPressed) return;
+
+    if (keyPressed.key === "Backspace" && indexQuote === 0) return false;
 
     if (keyPressed.key === "Backspace" && indexQuote > 0) {
       setWrongKeyPressed(null);
