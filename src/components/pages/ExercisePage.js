@@ -10,7 +10,7 @@ export const ExercisePage = () => {
   const [exercise, setExercise] = useState(null);
 
   useEffect(() => {
-    fetchData(`http://staging.quotable.io/quotes/${idQuote}`);
+    fetchData(`https://api.quotable.io/quotes/${idQuote}`);
   }, []);
 
   useEffect(() => {
