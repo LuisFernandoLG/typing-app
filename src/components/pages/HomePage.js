@@ -8,7 +8,7 @@ export const HomePage = () => {
   const [exercises, setExercises] = useState(initialExercises);
 
   useEffect(() => {
-    fetch("http://api.quotable.io/quotes?maxLength=200&minLength=100&limit=10")
+    fetch("https://api.quotable.io/quotes?maxLength=200&minLength=100&limit=10")
       .then(function (response) {
         return response.json();
       })
