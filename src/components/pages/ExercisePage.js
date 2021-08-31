@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import styled from "styled-components";
 import { useFetch } from "../../hooks/useFetch";
 import { PrimaryButton } from "../Buttons/PrimaryButton";
 import { Exercise } from "../Exercise";
@@ -26,11 +27,19 @@ export const ExercisePage = () => {
 
   return (
     <div>
-      <PrimaryButton handleClick={goToHomePage}>Volver</PrimaryButton>
-      <h1>Ejercicio </h1>
-
-      {loading ? <Loader /> : null}
-      {exercise !== null && <Exercise q={exercise} />}
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <PrimaryButton handleClick={goToHomePage}>Volver</PrimaryButton>
+          <AuthorStyled>{data ? data.author : null}</AuthorStyled>
+          {exercise !== null && <Exercise q={exercise} />}
+        </>
+      )}
     </div>
   );
 };
+
+const AuthorStyled = styled.h2`
+  text-align: center;
+`;

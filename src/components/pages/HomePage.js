@@ -1,33 +1,42 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { useFetch } from "../../hooks/useFetch";
 import { routes } from "../../routes";
 import { ExerciseCard } from "../ExerciseCard";
+import { Loader } from "../Loader";
 
 const initialExercises = [];
 
 export const HomePage = () => {
   const [exercises, setExercises] = useState(initialExercises);
+  const { fetchData, fetchErrors, loading, data } = useFetch();
 
   useEffect(() => {
-    fetch("https://api.quotable.io/quotes?maxLength=150&minLength=50&limit=10")
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        setExercises(data.results);
-        console.log(data.results);
-      });
+    fetchData(
+      "https://api.quotable.io/quotes?maxLength=250&minLength=150&limit=20"
+    );
   }, []);
 
+  useEffect(() => {
+    if (data === null) return null;
+    setExercises(data.results);
+  }, [data]);
+
   return (
-    <QuotesContainer>
-      {exercises.map((item) => (
-        <NavLink to={`${routes.EXERCICE_PAGE}/${item._id}`} key={item._id}>
-          <ExerciseCard quote={item.content} author={item.author} />
-        </NavLink>
-      ))}
-    </QuotesContainer>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <QuotesContainer>
+          {exercises.map((item) => (
+            <NavLink to={`${routes.EXERCICE_PAGE}/${item._id}`} key={item._id}>
+              <ExerciseCard quote={item.content} author={item.author} />
+            </NavLink>
+          ))}
+        </QuotesContainer>
+      )}
+    </>
   );
 };
 
