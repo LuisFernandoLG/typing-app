@@ -21,15 +21,15 @@ export const KeyBoard = ({ keys, keyPressed, keyWanted, wrongKeyPressed }) => {
 
 const KeyBoardStyled = styled(Wrapper)`
   background: ${({ theme: { secondaryColor } }) => secondaryColor};
-  position: fixed;
-  bottom: 5%;
-  left: 20%;
-  right: 20%;
+  width: min-content;
+  margin: 0 auto;
 
   display: grid;
   grid-template-columns: 5rem repeat(12, 2rem) 6rem;
   grid-template-rows: repeat(5, 2rem);
+  border-radius: 1rem;
   gap: 1rem;
+  padding: 1rem;
 `;
 
 const KeyStyled = styled.div`

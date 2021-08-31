@@ -23,7 +23,6 @@ export const ExercisePage = () => {
       <h1>Ejercicio </h1>
 
       {loading ? <p>Cargando . . .</p> : null}
-
       {exercise !== null && <Exercise q={exercise} />}
     </div>
   );

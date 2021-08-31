@@ -317,22 +317,6 @@ export const useKeyBoard = (q) => {
   const [indexQuote, setIndexQuote] = useState(initialIndexQuote);
   const [isUpperCase, setIsUpperCase] = useState(false);
 
-  const isSpecialKey = (key) =>
-    excludeKeysFromPressed.every((item) => item !== key);
-
-  useEffect(() => {
-    if (!isUpperCase) return false;
-    const keysUpperCase = keys.map((item) =>
-      isSpecialKey(item.name)
-        ? {
-            ...item,
-            name: item.name.toUpperCase(),
-          }
-        : item
-    );
-    setKeys(keysUpperCase);
-  }, [isUpperCase]);
-
   const setSucceedKey = () => {
     const keyItem = quote[indexQuote];
     const succeedStatus = {
@@ -384,7 +368,6 @@ export const useKeyBoard = (q) => {
 
   const goNextIndexQuote = () => {
     if (quote.length - 1 === indexQuote) {
-      console.log(q);
       setQuote(convertQuote(q));
       setIndexQuote(initialIndexQuote);
     } else setIndexQuote(indexQuote + 1);

@@ -1,8 +1,39 @@
+import { useEffect, useState } from "react";
 import { generate } from "shortid";
 import styled, { keyframes } from "styled-components";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
 
 export const Quote = ({ quote, indexQuote }) => {
+  const [words, setWords] = useState(null);
+
+  useEffect(() => {
+    const dividedWords = getWords();
+    setWords(dividedWords);
+  }, []);
+
+  useEffect(() => {
+    if (words === null) return;
+    updateKey();
+  }, [indexQuote]);
+
+  const updateKey = () => {
+    let subIndex = 0;
+
+    const copyWords = words.map((item) => {
+      return {
+        id: item.id,
+        items: item.items.map((subItem) => {
+          const temp = quote[subIndex];
+          temp.id = subItem.id;
+          subIndex++;
+          return temp;
+        }),
+      };
+    });
+
+    setWords(copyWords);
+  };
+
   const getTypeKey = (item) => {
     if (item.id === quote[indexQuote].id)
       return <WantedKey key={item.id}>{item.key}</WantedKey>;
@@ -18,26 +49,31 @@ export const Quote = ({ quote, indexQuote }) => {
   };
 
   const getWords = () => {
-    let words = [];
-    let word = [];
+    let xwords = [];
+    let word = { id: null, items: [] };
     const sizeQuote = quote.length - 1;
 
     quote.forEach((item, i) => {
       if (item.key === " " || sizeQuote === i) {
-        word.push(item);
-        words.push(word);
-        word = [];
-      } else word.push(item);
+        item.id = generate();
+        word.items.push(item);
+        word.id = generate();
+        xwords.push(word);
+        word = { id: null, items: [] };
+      } else word.items.push(item);
     });
 
-    return words;
+    return xwords;
   };
 
   return (
     <QuoteStyled flex flex_jc_c>
-      {getWords().map((word) => (
-        <Word>{word.map((letter) => getTypeKey(letter))}</Word>
-      ))}
+      {words &&
+        words.map((word) => (
+          <Word key={word.id}>
+            {word.items.map((letter) => getTypeKey(letter))}
+          </Word>
+        ))}
     </QuoteStyled>
   );
 };
