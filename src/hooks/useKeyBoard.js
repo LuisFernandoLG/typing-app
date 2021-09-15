@@ -316,6 +316,9 @@ export const useKeyBoard = (q) => {
   const [quote, setQuote] = useState(convertQuote(q));
   const [indexQuote, setIndexQuote] = useState(initialIndexQuote);
   const [isUpperCase, setIsUpperCase] = useState(false);
+  const [numErrors, setNumErrors] = useState(0);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [results, setResults] = useState(null);
 
   const setSucceedKey = () => {
     const keyItem = quote[indexQuote];
@@ -366,6 +369,23 @@ export const useKeyBoard = (q) => {
     });
   };
 
+  const getResults = () => {
+    let template = {
+      errors: 0,
+      succeed: 0,
+      total: quote.length - 1,
+    };
+    const xresults = quote.reduce(
+      (prev, item, _) =>
+        item.succeed
+          ? { ...prev, succeed: prev.succeed + 1 }
+          : { ...prev, errors: prev.errors + 1 },
+      template
+    );
+
+    setResults(xresults);
+  };
+
   const goNextIndexQuote = () => {
     if (quote.length - 1 === indexQuote) {
       setQuote(convertQuote(q));
@@ -386,15 +406,25 @@ export const useKeyBoard = (q) => {
   useEffect(() => {
     if (!keyPressed) return;
 
-    if (keyPressed.key === "Backspace" && indexQuote === 0) return false;
+    const isBackSpacePressed = keyPressed.key === "Backspace";
+    const isFirstKey = indexQuote === 0;
+    const isLastKey = indexQuote === quote.length - 1;
+    const isKeyPressedCorrect = keyPressed.key === quote[indexQuote].key;
 
-    if (keyPressed.key === "Backspace" && indexQuote > 0) {
+    if (isBackSpacePressed && isFirstKey) return false;
+
+    if (isLastKey) {
+      getResults();
+      return setIsCompleted(true);
+    }
+
+    if (isBackSpacePressed && !isFirstKey) {
       setWrongKeyPressed(null);
       setRetypeKey();
       return setIndexQuote(indexQuote - 1);
     }
 
-    if (keyPressed.key === quote[indexQuote].key) {
+    if (isKeyPressedCorrect) {
       playAudioEffect();
       setWrongKeyPressed(null);
       setSucceedKey();
@@ -403,6 +433,7 @@ export const useKeyBoard = (q) => {
       playErrorSound();
       setNotSuceedKey();
       goNextIndexQuote();
+      setNumErrors(numErrors + 1);
       setWrongKeyPressed(keyPressed.key);
     }
   }, [keyPressed]);
@@ -436,5 +467,7 @@ export const useKeyBoard = (q) => {
     quote,
     indexQuote,
     wrongKeyPressed,
+    isCompleted,
+    results,
   };
 };

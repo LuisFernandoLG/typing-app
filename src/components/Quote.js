@@ -34,18 +34,33 @@ export const Quote = ({ quote, indexQuote }) => {
     setWords(copyWords);
   };
 
+  // const updateKey = () => {
+  //   const copyWords = words.map((item) => {
+  //     return {
+  //       ...item,
+  //       items: item.items.map((subItem) => {
+  //         console.log(subItem.id === quote[indexQuote].id);
+  //         return subItem.id === quote[indexQuote].id
+  //           ? quote[indexQuote]
+  //           : subItem;
+  //       }),
+  //     };
+  //   });
+
+  //   setWords(copyWords);
+  // };
+
   const getTypeKey = (item) => {
     if (item.id === quote[indexQuote].id)
-      return <WantedKey key={item.id}>{item.key}</WantedKey>;
-
-    if (item.succeed === null)
-      return <NormalKey key={item.id}>{item.key}</NormalKey>;
-
-    if (item.succeed) {
-      if (item.visited === 1)
-        return <SucceedKey key={item.id}>{item.key}</SucceedKey>;
-      else return <CorrectedKey key={item.id}>{item.key}</CorrectedKey>;
-    } else return <WrongKey key={item.id}>{item.key}</WrongKey>;
+      return <WantedKey key={item.id}>{item.content}</WantedKey>;
+    switch (item.status) {
+      case "SUCCEED":
+        return <SucceedKey key={item.id}>{item.content}</SucceedKey>;
+      case "FAILED":
+        return <WrongKey key={item.id}>{item.content}</WrongKey>;
+      case "UNTRIED":
+        return <NormalKey key={item.id}>{item.content}</NormalKey>;
+    }
   };
 
   const getWords = () => {
@@ -55,7 +70,6 @@ export const Quote = ({ quote, indexQuote }) => {
 
     quote.forEach((item, i) => {
       if (item.key === " " || sizeQuote === i) {
-        item.id = generate();
         word.items.push(item);
         word.id = generate();
         xwords.push(word);

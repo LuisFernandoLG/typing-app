@@ -1,20 +1,382 @@
+import { useEffect, useState } from "react";
+import { generate } from "shortid";
 import styled, { keyframes } from "styled-components";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
 
-export const KeyBoard = ({ keys, keyPressed, keyWanted, wrongKeyPressed }) => {
-  const getTypeKey = (id, name) => {
-    if (keyWanted.key === name)
-      return <KeyPressedStyled key={id}>{name}</KeyPressedStyled>;
-    if (!keyPressed) return <KeyStyled key={id}>{name}</KeyStyled>;
-    if (wrongKeyPressed === name)
-      return <WrongPressedKey key={id}>{name}</WrongPressedKey>;
+const initialKeys = [
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "|",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "1",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "2",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "3",
+  },
 
-    return <KeyStyled key={id}>{name}</KeyStyled>;
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "4",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "5",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "6",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "7",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "8",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "9",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "0",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "?",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "¿",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "Backspace",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "Tab",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "q",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "w",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "e",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "r",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "t",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "y",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "u",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "i",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "o",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "p",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "´",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "+",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "Enter",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "CapsLock",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "a",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "s",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "d",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "f",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "g",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "h",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "j",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "k",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "l",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "ñ",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "{",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "}",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "Shift",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "<",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "z",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "x",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "c",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "v",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "b",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "n",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "m",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: ",",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: ".",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "-",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "shift right",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "Control",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "Alt",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: " ",
+  },
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "AltGraph",
+  },
+
+  {
+    id: generate(),
+    status: "UNPRESSED",
+    name: "____",
+  },
+];
+
+export const KeyBoard = ({ keyPressed, keyWanted }) => {
+  const [keys, setKeys] = useState(initialKeys);
+
+  useEffect(() => {
+    if (keyWanted === null) return null;
+
+    setKeys(
+      keys.map((key) => {
+        if (key.name === keyWanted.content) return { ...key, status: "WANTED" };
+        if (keyPressed) {
+          if (keyPressed.content === key.name)
+            return keyPressed.status === "FAILED"
+              ? { ...key, status: "FAILED" }
+              : { ...key, status: "UNPRESSED" };
+        }
+
+        return { ...key, status: "UNPRESSED" };
+      })
+    );
+  }, [keyWanted]);
+
+  const getTypeKey = (id, name, status) => {
+    switch (status) {
+      case "UNPRESSED":
+        return <KeyStyled key={id}>{name}</KeyStyled>;
+      case "FAILED":
+        return <WrongPressedKey key={id}>{name}</WrongPressedKey>;
+      case "WANTED":
+        return <KeyPressedStyled key={id}>{name}</KeyPressedStyled>;
+    }
   };
 
   return (
     <KeyBoardStyled flex flex_dc flex_jc_c flex_ai_c>
-      {keys.map(({ id, name }) => getTypeKey(id, name))}
+      {keys.map(({ id, name, status }) => getTypeKey(id, name, status))}
     </KeyBoardStyled>
   );
 };
