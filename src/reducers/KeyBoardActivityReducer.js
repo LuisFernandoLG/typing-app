@@ -2,10 +2,11 @@ import { generate } from "shortid";
 import { TYPES } from "../actions/KeyBoardActivityActions";
 
 export const keyBoardActivityInitialState = {
-  quote: null,
+  quote: [],
   sizeQuote: null,
-  indexQuote: null,
+  indexQuote: 0,
   isCompleted: false,
+  results: {},
 };
 
 export function KeyBoardActivityReducer(state, action) {
@@ -15,10 +16,16 @@ export function KeyBoardActivityReducer(state, action) {
       const characterPressed = action.payload;
       let newStatus =
         characterPressed === characterWanted ? "SUCCEED" : "FAILED";
+      let newIndexQuote =
+        state.indexQuote === state.sizeQuote
+          ? state.indexQuote
+          : state.indexQuote + 1;
+      let isCompleted = state.indexQuote === state.sizeQuote;
 
       return {
         ...state,
-        indexQuote: state.indexQuote + 1,
+        isCompleted: isCompleted,
+        indexQuote: newIndexQuote,
         keyPressed: { content: characterPressed, status: newStatus },
         quote: state.quote.map((keyElement, index) =>
           index === state.indexQuote
@@ -33,7 +40,7 @@ export function KeyBoardActivityReducer(state, action) {
     }
 
     case TYPES.REMOVE_KEY_PRESSED: {
-      if (state.indexQuote > 0)
+      if (state.indexQuote > 1)
         return {
           ...state,
           quote: state.quote.map((item) =>
@@ -46,6 +53,9 @@ export function KeyBoardActivityReducer(state, action) {
           ),
           indexQuote: state.indexQuote - 1,
         };
+      else {
+        return state;
+      }
     }
 
     case TYPES.MARK_AS_COMPLETED:
@@ -77,6 +87,24 @@ export function KeyBoardActivityReducer(state, action) {
           attempts: 0,
         })),
       };
+
+    case TYPES.CALCULATE_RESULTS: {
+      let resTemplate = {
+        succeed: 0,
+        failed: 0,
+      };
+
+      return {
+        ...state,
+        results: state.quote.reduce(
+          (prev, item, _) =>
+            item.status === "SUCCEED"
+              ? { ...prev, succeed: prev.succeed + 1 }
+              : { ...prev, failed: prev.failed + 1 },
+          resTemplate
+        ),
+      };
+    }
 
     default:
       return state;

@@ -42,13 +42,6 @@ export const useKeyBoardActivity = (textQuote) => {
     return () => window.removeEventListener("keydown", () => {});
   }, []);
 
-  useEffect(() => {
-    if (state.indexQuote === null) return false;
-    if (state.indexQuote === state.sizeQuote) {
-      dispatch({ type: TYPES.MARK_AS_COMPLETED });
-    }
-  }, [state.indexQuote]);
-
   const handleKeyDown = (e) => {
     let character = e.key;
     if (isExcludeKey(character)) return null;
@@ -65,8 +58,9 @@ export const useKeyBoardActivity = (textQuote) => {
 
   useEffect(() => {
     if (state.quote === null || state.indexQuote === 0) return false;
+    console.log(state.indexQuote);
     playSound(state.quote[state.indexQuote - 1].status);
-  }, [state.quote]);
+  }, [state.indexQuote]);
 
   const playSound = (status) => {
     if (status === "SUCCEED") playSuccessSound();
@@ -87,12 +81,17 @@ export const useKeyBoardActivity = (textQuote) => {
     sound.play();
   };
 
+  useEffect(() => {
+    if (state.isCompleted) dispatch({ type: TYPES.CALCULATE_RESULTS });
+  }, [state.isCompleted]);
+
   return {
     quote: state.quote,
     indexQuote: state.indexQuote,
     keyWanted: state.quote ? state.quote[state.indexQuote] : null,
     isCompleted: state.isCompleted,
     keyPressed: state.keyPressed,
-    iscompleted: state.isCompleted,
+    sizeQuote: state.sizeQuote,
+    results: state.results,
   };
 };

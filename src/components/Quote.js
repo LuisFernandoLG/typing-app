@@ -109,7 +109,7 @@ const NormalKey = styled.span`
   transition: color 0.5s ease;
   white-space: pre-wrap;
 
-  color: ${({ theme: { primaryColor } }) => primaryColor};
+  color: ${({ theme: { secondaryColor } }) => secondaryColor};
   animation: ${courtinAnimation()} 1s ease forwards;
 `;
 
