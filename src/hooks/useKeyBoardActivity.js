@@ -56,29 +56,8 @@ export const useKeyBoardActivity = (textQuote) => {
     }
   };
 
-  useEffect(() => {
-    if (state.quote === null || state.indexQuote === 0) return false;
-    console.log(state.indexQuote);
-    playSound(state.quote[state.indexQuote - 1].status);
-  }, [state.indexQuote]);
-
-  const playSound = (status) => {
-    if (status === "SUCCEED") playSuccessSound();
-    if (status === "FAILED") playFailedSound();
-  };
-
   const isExcludeKey = (character) => {
     return !excludeKeysFromPressed.every((item) => item !== character);
-  };
-
-  const playSuccessSound = () => {
-    let sound = new Audio("six.mp3");
-    sound.play();
-  };
-
-  const playFailedSound = () => {
-    let sound = new Audio("fail.mp3");
-    sound.play();
   };
 
   useEffect(() => {

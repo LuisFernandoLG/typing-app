@@ -40,7 +40,7 @@ export function KeyBoardActivityReducer(state, action) {
     }
 
     case TYPES.REMOVE_KEY_PRESSED: {
-      if (state.indexQuote > 1)
+      if (state.indexQuote > 0)
         return {
           ...state,
           quote: state.quote.map((item) =>
