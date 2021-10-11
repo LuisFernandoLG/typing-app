@@ -31,6 +31,7 @@ const Title = styled.h3`
 const Content = styled.p`
   margin-top: 0.5rem;
   font-size: 1rem;
+  color: ${({ theme: { secondaryColor } }) => secondaryColor};
   line-height: 1.5rem;
 `;
 
@@ -38,6 +39,7 @@ const TagStyle = styled.span`
   background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
   padding: 0.5rem;
   border-radius: 0.5rem;
+  color: ${({ theme: { secondaryColor } }) => secondaryColor};
 
   font-weight: 700;
 `;
