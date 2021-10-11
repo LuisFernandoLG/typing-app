@@ -7,6 +7,9 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
 }
 
+/* Reset */
+
+
 a{
     text-decoration: none;
 }

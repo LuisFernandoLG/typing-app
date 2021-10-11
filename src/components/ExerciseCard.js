@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Wrapper } from "./shareStyleComponents/Wrapper";
 
 export const ExerciseCard = ({ author, quote }) => {
   return (
@@ -8,6 +9,8 @@ export const ExerciseCard = ({ author, quote }) => {
     </ExerciseCardStyled>
   );
 };
+
+const ExerciseCardContainer = styled(Wrapper)``;
 
 const ExerciseCardStyled = styled.figure`
   padding: 1rem;

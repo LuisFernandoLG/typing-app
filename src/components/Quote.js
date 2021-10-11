@@ -106,7 +106,7 @@ const NormalKey = styled.span`
   font-size: 1.5rem;
   margin: 0.2rem 0.1rem;
   padding: 0 0.1rem;
-  transition: color 0.5s ease;
+  transition: color 0.5s ease-in-out;
   white-space: pre-wrap;
 
   color: ${({ theme: { secondaryColor } }) => secondaryColor};

@@ -20,5 +20,4 @@ export default App;
 
 const AppStyled = styled.div`
   max-width: 1920px;
-  margin: 1.5rem;
 `;

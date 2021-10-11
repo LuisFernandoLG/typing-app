@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import styled from "styled-components";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
 
@@ -7,9 +8,20 @@ export const ToggleButton = ({
   disableIcon: DisableIcon,
   toggleFunction,
 }) => {
+  let inputRef = useRef(null);
+
+  const handleClick = () => {
+    toggleFunction();
+    inputRef.current.blur();
+  };
   return (
     <ToggleButtonStyled>
-      <input type="checkbox" defaultValue={state} onClick={toggleFunction} />
+      <input
+        ref={inputRef}
+        type="checkbox"
+        defaultValue={state}
+        onClick={handleClick}
+      />
       {state === true ? <EnableIcon /> : <DisableIcon />}
     </ToggleButtonStyled>
   );
