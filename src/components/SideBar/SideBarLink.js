@@ -6,7 +6,7 @@ export const SideBarLink = ({ icon, title, description, linkPage }) => {
   //   return null;
 
   return (
-    <NavLink to="/">
+    <NavLink to={linkPage}>
       <LinkContainer flex gap="1rem">
         <Image src={icon} />
 

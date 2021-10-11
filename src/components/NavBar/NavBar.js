@@ -1,21 +1,18 @@
 import styled from "styled-components";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
-import { CategorySelect } from "./CategorySelect";
 import { Logo } from "./Logo";
-import { SearchBar } from "./SearchBar";
 
 export const NavBar = () => {
   return (
     <NavBarStyled as="nav" flex flex_jc_sb gap="1rem">
       <Logo />
-      <SearchBar />
-      <CategorySelect />
     </NavBarStyled>
   );
 };
 
 const NavBarStyled = styled(Wrapper)`
   /* margin: 1rem 0; */
+  margin-bottom: 2rem;
   background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
 
   padding: 1.5rem;

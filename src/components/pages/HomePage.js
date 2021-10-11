@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { useFetch } from "../../hooks/useFetch";
-import { routes } from "../../routes";
-import { ComboBoxCategory } from "../ComboBoxCategory";
-import { ExerciseCard } from "../ExerciseCard";
 import { ExerciseItem } from "../ExerciseItem";
 import { Loader } from "../Loader";
+import { ToolBarSearch } from "../searchBar/ToolBarSearch";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
-import { SideBar } from "../SideBar/SideBar";
 
 const initialExercises = [
   {
@@ -65,8 +61,8 @@ export const HomePage = () => {
   }, [data]);
 
   return (
-    <HomeContainer flex>
-      <SideBar />
+    <HomeContainer>
+      <ToolBarSearch />
       {loading ? (
         <Loader />
       ) : (
@@ -87,8 +83,8 @@ export const HomePage = () => {
   );
 };
 
-const HomeContainer = styled(Wrapper)``;
-
-const QuotesContainer = styled.main`
+const HomeContainer = styled(Wrapper)`
   margin-right: 2rem;
 `;
+
+const QuotesContainer = styled.main``;

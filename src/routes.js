@@ -1,8 +1,8 @@
 export const routes = {
   HOME_PAGE: "/",
   EXERCICE_PAGE: "/exercise",
-  CATEGORIES_PAGE: "/categories",
-  SPELLING_PAGE: "/ortografia",
   NUM_PAD_PAGE: "/numeros",
+  RANKING_PAGE: "/ranking",
+  STADISTICS_PAGE: "/estadisticas",
   MY_EXERCISES_PAGE: "/misEjercicios",
 };

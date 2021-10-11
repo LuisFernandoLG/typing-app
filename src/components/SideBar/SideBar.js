@@ -4,6 +4,7 @@ import rankIcon from "../../images/rank.png";
 import creativeIcon from "../../images/creativity.png";
 import barGraphIcon from "../../images/bargraph.png";
 import { SideBarLink } from "./SideBarLink";
+import { routes } from "../../routes";
 
 export const SideBar = () => {
   return (
@@ -12,31 +13,31 @@ export const SideBar = () => {
         icon={rankIcon}
         title="Ranking"
         description="Mira los mejores puntajes."
-        linkPage="/"
+        linkPage={routes.RANKING_PAGE}
       />
 
       <SideBarLink
         icon={creativeIcon}
         title="Creativo"
         description="Construye tus propios ejercicios!"
-        linkPage="/"
+        linkPage="/12"
       />
 
       <SideBarLink
         icon={barGraphIcon}
         title="Estadísticas"
         description="Echa un vistazo a tu puntaje."
-        linkPage="/"
+        linkPage={routes.STADISTICS_PAGE}
       />
     </SideBarContainer>
   );
 };
 
 const SideBarContainer = styled(Wrapper)`
-  width: 30%;
-  height: 100vh;
+  width: max-content;
+  height: max-content;
 
-  margin: 2rem;
+  margin: 0 2rem;
   border-radius: 1rem;
 
   box-shadow: 5px 5px 20px ${({ theme: { tertiaryColor } }) => tertiaryColor}; ;

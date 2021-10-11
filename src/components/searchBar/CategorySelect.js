@@ -14,10 +14,9 @@ export const CategorySelect = () => {
 const Select = styled.select`
   width: auto;
   padding: 1rem;
+  background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
 
   font-weight: 700;
-
-  /* flex-grow: 0.1; */
 
   border: none;
   outline: none;
