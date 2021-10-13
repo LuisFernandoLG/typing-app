@@ -92,25 +92,22 @@ export const Quote = ({ quote, indexQuote }) => {
   );
 };
 
-const courtinAnimation = (color) => keyframes`
-0%{
-  opacity: 0.2;
-}
-100%{
-  opacity: 1;
-
-}
-`;
+const flickeringAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }`;
 
 const NormalKey = styled.span`
-  font-size: 1.5rem;
-  margin: 0.2rem 0.1rem;
-  padding: 0 0.1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0.5rem 0.1rem;
   transition: color 0.5s ease-in-out;
   white-space: pre-wrap;
 
-  color: ${({ theme: { secondaryColor } }) => secondaryColor};
-  animation: ${courtinAnimation()} 1s ease forwards;
+  color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
 `;
 
 const WantedKey = styled(NormalKey)`
@@ -122,25 +119,24 @@ const WantedKey = styled(NormalKey)`
   &::before {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: -20%;
     content: " ";
     display: block;
-    width: 100%;
-    height: 5px;
-    background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+    width: 0.3rem;
+    height: 100%;
+    border-radius: 1rem;
+    animation: ${flickeringAnimation} 0.5s ease-in-out infinite alternate;
+    background: ${({ theme: { primaryColor } }) => primaryColor};
   }
 `;
 
 const WrongKey = styled(NormalKey)`
-  background: ${({ theme: { errorColor } }) => errorColor};
-`;
-
-const CorrectedKey = styled(NormalKey)`
-  background: ${({ theme: { correctedColor } }) => correctedColor};
+  /* background: ${({ theme: { errorColor } }) => errorColor}; */
+  color: ${({ theme: { errorColor } }) => errorColor};
 `;
 
 const SucceedKey = styled(NormalKey)`
-  background: ${({ theme: { successColor } }) => successColor};
+  color: ${({ theme: { secondaryColor } }) => secondaryColor};
 `;
 
 const QuoteStyled = styled(Wrapper)`
