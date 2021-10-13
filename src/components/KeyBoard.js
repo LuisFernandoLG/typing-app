@@ -382,9 +382,11 @@ export const KeyBoard = ({ keyPressed, keyWanted }) => {
 };
 
 const KeyBoardStyled = styled(Wrapper)`
-  background: ${({ theme: { secondaryColor } }) => secondaryColor};
+  background: ${({ theme: { bgColor } }) => bgColor};
+  box-shadow: 0.5rem 0.5rem 20px
+    ${({ theme: { tertiaryColor } }) => tertiaryColor};
   width: min-content;
-  margin: 0 auto;
+  margin: 2rem auto;
 
   display: grid;
   grid-template-columns: 5rem repeat(12, 2rem) 6rem;
@@ -395,7 +397,8 @@ const KeyBoardStyled = styled(Wrapper)`
 `;
 
 const KeyStyled = styled.div`
-  background: ${({ theme: { disableColor } }) => disableColor};
+  background: ${({ theme: { bgColor } }) => bgColor};
+
   width: 100%;
   height: 100%;
 

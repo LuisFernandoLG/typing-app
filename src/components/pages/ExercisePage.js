@@ -26,7 +26,7 @@ export const ExercisePage = () => {
   const goToHomePage = () => history.goBack();
 
   return (
-    <div>
+    <ExercisePageContaner>
       {loading ? (
         <Loader />
       ) : (
@@ -36,10 +36,14 @@ export const ExercisePage = () => {
           {exercise !== null && <Exercise q={exercise} />}
         </>
       )}
-    </div>
+    </ExercisePageContaner>
   );
 };
 
 const AuthorStyled = styled.h2`
   text-align: center;
+`;
+
+const ExercisePageContaner = styled.div`
+  margin: 0 2rem 0 0;
 `;
