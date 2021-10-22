@@ -84,7 +84,8 @@ export const HomePage = () => {
 };
 
 const HomeContainer = styled(Wrapper)`
-  margin-right: 2rem;
+  margin: 1rem auto;
+  max-width: 70%;
 `;
 
 const QuotesContainer = styled.main``;

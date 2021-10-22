@@ -133,6 +133,16 @@ const WantedKey = styled(NormalKey)`
 const WrongKey = styled(NormalKey)`
   /* background: ${({ theme: { errorColor } }) => errorColor}; */
   color: ${({ theme: { errorColor } }) => errorColor};
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2%;
+    background: ${({ theme: { errorColor } }) => errorColor};
+  }
 `;
 
 const SucceedKey = styled(NormalKey)`

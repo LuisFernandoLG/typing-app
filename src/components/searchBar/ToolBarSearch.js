@@ -13,6 +13,6 @@ export const ToolBarSearch = () => {
 
 const Container = styled(Wrapper)`
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
   box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
 `;

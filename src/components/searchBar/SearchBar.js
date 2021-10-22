@@ -14,7 +14,8 @@ export const SearchBar = () => {
 const Container = styled(Wrapper)`
   width: 100%;
   background: ${({ theme: { bgColor } }) => bgColor};
-  border-radius: 1rem;
+  /* background: red; */
+  /* border-radius: 1rem; */
   padding: 1rem;
 `;
 const SearchIcon = styled.img`

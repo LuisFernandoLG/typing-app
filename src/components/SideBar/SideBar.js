@@ -5,8 +5,14 @@ import creativeIcon from "../../images/creativity.png";
 import barGraphIcon from "../../images/bargraph.png";
 import { SideBarLink } from "./SideBarLink";
 import { routes } from "../../routes";
+import { useContext } from "react";
+import AuthContext from "../../contexts/AuthContext";
 
 export const SideBar = () => {
+  const { isAuth } = useContext(AuthContext);
+
+  if (!isAuth) return null;
+
   return (
     <SideBarContainer flex flex_dc gap="2rem">
       <SideBarLink

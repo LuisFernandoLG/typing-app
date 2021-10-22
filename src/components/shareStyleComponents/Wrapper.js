@@ -18,4 +18,6 @@ export const Wrapper = styled.div`
   ${({ flex_ai_fe }) => flex_ai_fe && "align-items : flex-end"};
 
   align-content: ${({ flex_ac }) => flex_ac && "alignContent : center"};
+
+  ${({ padding }) => `padding: ${padding}`};
 `;

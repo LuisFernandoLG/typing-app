@@ -3,6 +3,7 @@ import { routes } from "../routes";
 import { NavBar } from "./NavBar/NavBar";
 import { ExercisePage } from "./pages/ExercisePage";
 import { HomePage } from "./pages/HomePage";
+import { LoginPage } from "./pages/LoginPage";
 import { MyExercisesPage } from "./pages/MyExercisesPage";
 import { NumPadPage } from "./pages/NumPadPage";
 import { RankingPage } from "./pages/RankingPage";
@@ -17,6 +18,8 @@ export const MyRouter = () => {
       <Wrapper flex>
         <SideBar />
         <Switch>
+          <Route path={routes.LOGIN_PAGE} component={LoginPage} />
+
           <Route
             path={`${routes.EXERCICE_PAGE}/:idQuote`}
             component={ExercisePage}

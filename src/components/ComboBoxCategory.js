@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export const ComboBoxCategory = ({
   currentCategory,
   categories,
@@ -11,3 +13,5 @@ export const ComboBoxCategory = ({
     </select>
   );
 };
+
+// const CategorySelect = styled

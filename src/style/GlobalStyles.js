@@ -22,4 +22,9 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
+button{
+    border:none;
+    outline:none;
+}
+
 `;

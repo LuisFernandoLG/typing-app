@@ -13,7 +13,7 @@ export const CategorySelect = () => {
 
 const Select = styled.select`
   width: auto;
-  padding: 1rem;
+  padding: 0.5rem;
   background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
 
   font-weight: 700;
@@ -24,4 +24,5 @@ const Select = styled.select`
   cursor: pointer;
 
   border-radius: 1rem;
+  font-size: 1em;
 `;

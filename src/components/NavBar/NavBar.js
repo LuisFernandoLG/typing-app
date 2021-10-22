@@ -1,21 +1,30 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import AuthContext from "../../contexts/AuthContext";
+import { LoginButton } from "../LoginButton";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { Logo } from "./Logo";
 
 export const NavBar = () => {
+  const { isAuth } = useContext(AuthContext);
+
+  // if (!isAuth) return null;
+
   return (
     <NavBarStyled as="nav" flex flex_jc_sb gap="1rem">
       <Logo />
+
+      <LoginButton />
     </NavBarStyled>
   );
 };
 
 const NavBarStyled = styled(Wrapper)`
   /* margin: 1rem 0; */
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
   background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
 
-  padding: 1.5rem;
+  padding: 0.5rem;
 
   .activatePage {
     color: ${({ theme: { secondaryColor } }) => secondaryColor};
