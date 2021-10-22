@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 
 export const LoginForm = () => {
@@ -29,30 +29,44 @@ const LoginFormContainer = styled.form`
   background: ${({ theme: { bgColor } }) => bgColor};
 
   padding: 1.5rem;
+
+  font-size: 20px;
 `;
 
 const GroupInput = styled.div`
-  margin: 1rem auto;
+  margin: 1em auto;
   display: flex;
   flex-direction: column;
 `;
 
 const Title = styled.h2`
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
 `;
 
 const Label = styled.label`
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
 `;
 
-const EmailInput = styled.input.attrs({ type: "email" })``;
-const PasswordInput = styled.input.attrs({ type: "password" })``;
+const defaultStyles = css`
+  outline: none;
+  border: 1px solid #272727;
+  padding: 0.2rem;
+
+  border-radius: 0.5rem;
+`;
+
+const EmailInput = styled.input.attrs({ type: "email" })`
+  ${defaultStyles}
+`;
+const PasswordInput = styled.input.attrs({ type: "password" })`
+  ${defaultStyles}
+`;
 const PrimaryButton = styled.button`
   margin-top: 1rem;
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.5em;
 
   background: ${({ theme: { primaryColor } }) => primaryColor};
   color: ${({ theme: { bgColor } }) => bgColor};

@@ -19,6 +19,8 @@ const FloatContainer = styled(Wrapper)`
 `;
 
 const CompanyName = styled.span`
+  font-size: 1.3rem;
+  font-weight: 600;
   color: ${({ theme: { bgColor } }) => bgColor};
 `;
 const Logo = styled.img`
