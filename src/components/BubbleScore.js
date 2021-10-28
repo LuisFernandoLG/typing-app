@@ -38,7 +38,7 @@ const drop = (percentage) => keyframes`
 `;
 
 const Percentage = styled.p`
-  color: ${({ theme: { textColor } }) => textColor};
+  color: ${({ theme: { secondaryColor } }) => secondaryColor};
   font-weight: 600;
   z-index: 100;
   font-size: 2.5em;
@@ -49,7 +49,7 @@ const BubbleScoreContainer = styled(Wrapper)`
   height: 10rem;
   border-radius: 100%;
 
-  background: ${({ theme: { secondaryColor } }) => secondaryColor};
+  background: ${({ theme: { bgColor } }) => bgColor};
   position: relative;
   overflow: hidden;
 
@@ -80,7 +80,7 @@ const Wave1 = styled(Wave)`
 const Wave2 = styled(Wave)`
   opacity: 0.8;
   path {
-    fill: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+    fill: ${({ theme: { primaryColor } }) => primaryColor};
   }
 
   animation: ${({ percentage }) => drop(percentage)} 1s ease forwards,

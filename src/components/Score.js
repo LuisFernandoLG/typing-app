@@ -18,5 +18,3 @@ export const Score = ({ results }) => {
 const ScoreContainer = styled(Wrapper)`
   margin: 1rem;
 `;
-
-// const PrimaryButton = styled.button``;

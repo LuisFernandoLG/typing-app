@@ -16,8 +16,8 @@ export const Exercise = ({ q }) => {
     sizeQuote,
     results,
   } = useKeyBoardActivity(q);
-  const [isEnableSound, setIsEnableSound] = useState(false);
-  const [keyBoardVisibility, setKeyBoardVisibility] = useState(false);
+  const [isEnableSound, setIsEnableSound] = useState(true);
+  const [keyBoardVisibility, setKeyBoardVisibility] = useState(true);
   useEffectKeySounds(keyPressed, isEnableSound);
 
   const toggleEnableSound = () => setIsEnableSound(!isEnableSound);
