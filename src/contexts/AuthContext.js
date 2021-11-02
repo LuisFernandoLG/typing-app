@@ -28,8 +28,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (isAuth) {
-      console.log("Guardando?");
-      localStorage.setItem("isAuth", isAuth);
+      localStorage.setItem("isAuth", JSON.stringify(isAuth));
       localStorage.setItem("user", JSON.stringify(user));
     } else {
       localStorage.removeItem("isAuth");
