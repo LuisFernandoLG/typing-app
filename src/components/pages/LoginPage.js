@@ -7,6 +7,7 @@ import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import { Redirect } from "react-router";
 import { routes } from "../../routes";
+import { fadeInAnimation } from "../../style/animations";
 
 export const LoginPage = () => {
   const { isAuth } = useContext(AuthContext);
@@ -18,7 +19,6 @@ export const LoginPage = () => {
       <Filter />
       <BackGround src={backgroundImg} />
       <LoginForm />
-
       <FooterLogo />
     </Container>
   );
@@ -53,4 +53,5 @@ const Container = styled(Wrapper)`
   /* background: ${({ theme: { primaryColor } }) => primaryColor}; */
 
   position: relative;
+  animation: ${fadeInAnimation} 800ms ease;
 `;

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useFetch } from "../../hooks/useFetch";
+import { fadeInAnimation } from "../../style/animations";
 import { ExerciseItem } from "../ExerciseItem";
 import { Loader } from "../Loader";
 import { ToolBarSearch } from "../searchBar/ToolBarSearch";
@@ -86,6 +87,7 @@ export const HomePage = () => {
 const HomeContainer = styled(Wrapper)`
   margin: 1rem auto;
   max-width: 70%;
+  animation: ${fadeInAnimation} 800ms ease;
 `;
 
 const QuotesContainer = styled.main``;

@@ -131,7 +131,6 @@ const WantedKey = styled(NormalKey)`
 `;
 
 const WrongKey = styled(NormalKey)`
-  /* background: ${({ theme: { errorColor } }) => errorColor}; */
   color: ${({ theme: { errorColor } }) => errorColor};
   position: relative;
 
@@ -140,7 +139,10 @@ const WrongKey = styled(NormalKey)`
     display: block;
     position: absolute;
     width: 100%;
-    height: 2%;
+    height: 5%;
+    bottom: 0;
+    left: 0;
+    /* right: 50%; */
     background: ${({ theme: { errorColor } }) => errorColor};
   }
 `;
