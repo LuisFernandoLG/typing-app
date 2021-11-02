@@ -1,19 +1,43 @@
+import { useContext, useState } from "react";
+import { useHistory } from "react-router";
 import styled, { css } from "styled-components";
+import AuthContext from "../../contexts/AuthContext";
+import { routes } from "../../routes";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 
+const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const passwordRegex = "";
+
 export const LoginForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { setLogIn } = useContext(AuthContext);
+  let history = useHistory();
+
+  const hanldeSubmit = (e) => {
+    e.preventDefault();
+
+    // if()
+    setLogIn(email, password);
+    history.push(routes.HOME_PAGE);
+  };
+
   return (
-    <LoginFormContainer>
+    <LoginFormContainer onSubmit={hanldeSubmit}>
       <Title>¡Bienvenido de nuevo!</Title>
 
       <GroupInput>
         <Label>Correo electrónico</Label>
-        <EmailInput />
+        <EmailInput value={email} onChange={(e) => setEmail(e.target.value)} />
       </GroupInput>
 
       <GroupInput>
         <Label>Contraseña</Label>
-        <PasswordInput />
+        <PasswordInput
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </GroupInput>
 
       <PrimaryButton>Iniciar sesión</PrimaryButton>

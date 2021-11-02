@@ -7,15 +7,16 @@ import { Logo } from "./Logo";
 
 export const NavBar = () => {
   const { isAuth } = useContext(AuthContext);
-
-  // if (!isAuth) return null;
-
   return (
-    <NavBarStyled as="nav" flex flex_jc_sb gap="1rem">
-      <Logo />
+    <>
+      {isAuth && (
+        <NavBarStyled as="nav" flex flex_jc_sb gap="1rem">
+          <Logo />
 
-      <LoginButton />
-    </NavBarStyled>
+          <LoginButton />
+        </NavBarStyled>
+      )}
+    </>
   );
 };
 

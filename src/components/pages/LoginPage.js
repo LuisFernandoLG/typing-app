@@ -3,8 +3,16 @@ import { LoginForm } from "../LoginComponents/LoginForm";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import backgroundImg from "../../images/loginBackground.jpg";
 import { FooterLogo } from "../FooterLogo";
+import { useContext } from "react";
+import AuthContext from "../../contexts/AuthContext";
+import { Redirect } from "react-router";
+import { routes } from "../../routes";
 
 export const LoginPage = () => {
+  const { isAuth } = useContext(AuthContext);
+
+  if (isAuth) return <Redirect to={routes.HOME_PAGE} />;
+
   return (
     <Container flex flex_jc_c flex_ai_c>
       <Filter />

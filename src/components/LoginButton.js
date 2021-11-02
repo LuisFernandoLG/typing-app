@@ -1,12 +1,23 @@
 import styled from "styled-components";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
 import UserIcon from "../images/user_icon.png";
+import AuthContext from "../contexts/AuthContext";
+import { useContext } from "react";
+import { useHistory } from "react-router";
+import { routes } from "../routes";
 
 export const LoginButton = () => {
+  const { setLogOut } = useContext(AuthContext);
+  let history = useHistory();
+
+  const handleClick = () => {
+    setLogOut();
+    history.push(routes.LOGIN_PAGE);
+  };
+
   return (
     <Container padding="0.5rem" flex flex_ai_c>
-      <LoginIcon src={UserIcon} />
-      <LoginBtn>Cerrar sesión</LoginBtn>
+      <LoginBtn onClick={handleClick}>Cerrar sesión</LoginBtn>
     </Container>
   );
 };
