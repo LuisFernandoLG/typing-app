@@ -22,7 +22,7 @@ export const LoginPage = () => {
       <LoginForm />
       <RedirectLink>
         ¿Aún no tienes una cuenta?
-        <Link to={routes.SIGNUP_PAGE}>Registrece aquí</Link>
+        <Link to={routes.SIGNUP_PAGE}>Regístrese aquí</Link>
       </RedirectLink>
       <FooterLogo />
     </Container>

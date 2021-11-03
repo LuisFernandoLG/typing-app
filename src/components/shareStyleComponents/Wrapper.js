@@ -20,4 +20,5 @@ export const Wrapper = styled.div`
   align-content: ${({ flex_ac }) => flex_ac && "alignContent : center"};
 
   ${({ padding }) => `padding: ${padding}`};
+  ${({ bg }) => `background: ${bg}`};
 `;
