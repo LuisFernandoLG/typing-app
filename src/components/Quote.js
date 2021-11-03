@@ -154,7 +154,6 @@ const SucceedKey = styled(NormalKey)`
 const QuoteStyled = styled(Wrapper)`
   padding: 1rem;
   display: flex;
-  flex-wrap: wrap;
 `;
 
 const Word = styled.div`

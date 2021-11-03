@@ -6,4 +6,5 @@ export const routes = {
   STADISTICS_PAGE: "/estadisticas",
   MY_EXERCISES_PAGE: "/misEjercicios",
   LOGIN_PAGE: "/login",
+  SIGNUP_PAGE: "/signup",
 };

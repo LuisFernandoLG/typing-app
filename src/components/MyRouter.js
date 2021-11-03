@@ -9,6 +9,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { NumPadPage } from "./pages/NumPadPage";
 import { PrivatePage } from "./pages/PrivatePage";
 import { RankingPage } from "./pages/RankingPage";
+import { SignUpPage } from "./pages/SignUpPage";
 import { StadisticsPage } from "./pages/StadisticsPage";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
 import { SideBar } from "./SideBar/SideBar";
@@ -20,6 +21,7 @@ export const MyRouter = () => {
       <Wrapper flex>
         <Switch>
           <Route path={routes.LOGIN_PAGE} component={LoginPage} />
+          <Route path={routes.SIGNUP_PAGE} component={SignUpPage} />
 
           <Route
             path={`${routes.EXERCICE_PAGE}/:idQuote`}

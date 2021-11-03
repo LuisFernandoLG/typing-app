@@ -46,7 +46,7 @@ export const LoginForm = () => {
 };
 
 const LoginFormContainer = styled.form`
-  margin: 5rem auto;
+  margin: 5rem auto 0 auto;
 
   border-radius: 1rem;
 
