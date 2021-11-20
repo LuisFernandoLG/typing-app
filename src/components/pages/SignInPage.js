@@ -31,5 +31,5 @@ const SignInPageWrapper = styled(Wrapper)`
   height: 100vh;
   width: 100%;
 
-  background: red;
+  background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
 `;

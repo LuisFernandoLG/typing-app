@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 import { generate } from "shortid";
 import styled from "styled-components";
+import { useFetch } from "../../hooks/useFetch";
+import { Loader } from "../Loader";
 import { RankingUser } from "../RankingUser";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
+import { endpoints } from "../signIn/api";
 
 const initialRankingUsers = [
   { id: generate(), name: "Francisco Iram Kautzman Díaz", score: "124234234" },
@@ -13,22 +17,39 @@ const initialRankingUsers = [
 ];
 
 export const RankingPage = () => {
-  const [rankingUsers, setRankingUsers] = useState(initialRankingUsers);
+  const [rankingUsers, setRankingUsers] = useState([]);
+
+  const { fetchData, fetchErrors, loading, data } = useFetch();
+
+  useEffect(() => {
+    fetchData(endpoints.ranking);
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      setRankingUsers(data.data);
+      console.log(data.data);
+    }
+  }, [data]);
 
   return (
     <RankingContainer>
       <Title>Ranking</Title>
 
-      <Wrapper>
-        {rankingUsers.map(({ id, name, score }, index) => (
-          <RankingUser
-            key={id}
-            position={index + 1}
-            name={name}
-            score={score}
-          />
-        ))}
-      </Wrapper>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Wrapper>
+          {rankingUsers.map(({ id, name, lastName, totalScore }, index) => (
+            <RankingUser
+              key={id}
+              position={index + 1}
+              name={`${name} ${lastName}`}
+              score={totalScore}
+            />
+          ))}
+        </Wrapper>
+      )}
     </RankingContainer>
   );
 };

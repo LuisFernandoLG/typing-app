@@ -1,6 +1,8 @@
 import { useContext } from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import AuthContext from "../../contexts/AuthContext";
+import { routes } from "../../routes";
 import { LoginButton } from "../LoginButton";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { Logo } from "./Logo";
@@ -12,6 +14,12 @@ export const NavBar = () => {
       {isAuth && (
         <NavBarStyled as="nav" flex flex_jc_sb gap="1rem">
           <Logo />
+          <NavLink to={routes.RANKING_PAGE} exact>
+            Ranking
+          </NavLink>
+          <NavLink to={routes.STADISTICS_PAGE} exact>
+            Mi puntaje
+          </NavLink>
 
           <LoginButton />
         </NavBarStyled>
@@ -21,8 +29,6 @@ export const NavBar = () => {
 };
 
 const NavBarStyled = styled(Wrapper)`
-  /* margin: 1rem 0; */
-  /* margin-bottom: 2rem; */
   background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
 
   padding: 0.5rem;
@@ -30,13 +36,6 @@ const NavBarStyled = styled(Wrapper)`
   .activatePage {
     color: ${({ theme: { secondaryColor } }) => secondaryColor};
     font-weight: 600;
-  }
-
-  a {
-    background: ${({ theme: { primaryColor } }) => primaryColor};
-    color: ${({ theme: { textColor } }) => textColor};
-    padding: 0.5rem;
-    border-radius: 0.5rem;
   }
 `;
 

@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import styled, { css } from "styled-components";
 import AuthContext from "../../contexts/AuthContext";
 import { routes } from "../../routes";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
+import { Loader } from "../Loader";
 
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const passwordRegex = "";
@@ -12,16 +12,17 @@ export const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setLogIn } = useContext(AuthContext);
+  const { setLogIn, authLoading, isAuth } = useContext(AuthContext);
   let history = useHistory();
 
   const hanldeSubmit = (e) => {
     e.preventDefault();
-
-    // if()
     setLogIn(email, password);
-    history.push(routes.HOME_PAGE);
   };
+
+  useEffect(() => {
+    if (isAuth) history.push(routes.HOME_PAGE);
+  }, [isAuth]);
 
   return (
     <LoginFormContainer onSubmit={hanldeSubmit}>
@@ -40,7 +41,8 @@ export const LoginForm = () => {
         />
       </GroupInput>
 
-      <PrimaryButton>Iniciar sesión</PrimaryButton>
+      {authLoading ? <Loader /> : null}
+      <PrimaryButton disabled={authLoading}> Iniciar sesión</PrimaryButton>
     </LoginFormContainer>
   );
 };

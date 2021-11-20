@@ -12,10 +12,9 @@ export const SearchBar = () => {
 };
 
 const Container = styled(Wrapper)`
-  width: 100%;
+  flex-grow: 1;
+  border-radius: 1rem;
   background: ${({ theme: { bgColor } }) => bgColor};
-  /* background: red; */
-  /* border-radius: 1rem; */
   padding: 1rem;
 `;
 const SearchIcon = styled.img`

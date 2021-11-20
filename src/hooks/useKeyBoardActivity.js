@@ -4,6 +4,7 @@ import {
   keyBoardActivityInitialState,
   KeyBoardActivityReducer,
 } from "../reducers/KeyBoardActivityReducer";
+import { useEffectKeySounds } from "./useEffectKeySounds";
 const excludeKeysFromPressed = [
   "Control",
   "Shift",
@@ -24,6 +25,7 @@ const excludeKeysFromPressed = [
   "F10",
   "F11",
   "F12",
+  "Dead",
 ];
 
 const specialKeys = {
@@ -60,17 +62,18 @@ export const useKeyBoardActivity = (textQuote) => {
     return !excludeKeysFromPressed.every((item) => item !== character);
   };
 
-  useEffect(() => {
-    if (state.isCompleted) dispatch({ type: TYPES.CALCULATE_RESULTS });
-  }, [state.isCompleted]);
+  const calculateResults = () => {
+    dispatch({ type: TYPES.CALCULATE_RESULTS });
+  };
 
   return {
     quote: state.quote,
     indexQuote: state.indexQuote,
     keyWanted: state.quote ? state.quote[state.indexQuote] : null,
-    isCompleted: state.isCompleted,
+    isExerciseCompleted: state.isCompleted,
     keyPressed: state.keyPressed,
     sizeQuote: state.sizeQuote,
     results: state.results,
+    calculateResults: calculateResults,
   };
 };

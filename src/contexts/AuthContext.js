@@ -1,4 +1,7 @@
 import { createContext, useState, useEffect } from "react";
+import { useFetch } from "../hooks/useFetch";
+import { toast } from "react-toastify";
+import { endpoints } from "../components/signIn/api";
 
 const AuthContext = createContext();
 
@@ -8,17 +11,42 @@ const randomUser = {
   password: "1234567890",
 };
 
-const initialAuth = localStorage.getItem("isAuth") || false;
+const initialAuth = JSON.parse(localStorage.getItem("isAuth")) || false;
 const initialUser = JSON.parse(localStorage.getItem("user")) || {};
 
 const AuthProvider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(initialAuth);
   const [user, setUser] = useState(initialUser);
+  const { fetchData, loading, data, fetchErrors } = useFetch();
 
   const setLogIn = (email, password) => {
-    setIsAuth(true);
-    setUser({ email, password });
+    let options = {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+      "Content-Type": "application/json",
+    };
+    fetchData(endpoints.logIn, options);
   };
+
+  useEffect(() => {
+    if (data) {
+      console.log(data);
+      if (data.status === "202") {
+        toast.error(data.statusText);
+      }
+      if (data.status === "201") {
+        setIsAuth(true);
+        setUser(data.data.user);
+      }
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (fetchErrors) {
+      toast.error("Algo salió mal :(");
+      console.log(fetchErrors);
+    }
+  }, [fetchErrors]);
 
   const setLogOut = () => {
     setIsAuth(false);
@@ -35,8 +63,8 @@ const AuthProvider = ({ children }) => {
     }
   }, [isAuth]);
 
-  const data = { isAuth, setLogIn, setLogOut, user };
-  return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
+  const values = { isAuth, setLogIn, setLogOut, user, authLoading: loading };
+  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
 export { AuthProvider };

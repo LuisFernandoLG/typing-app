@@ -1,6 +1,12 @@
 import styled from "styled-components";
+import { useFetch } from "../../hooks/useFetch";
 
-export const CategorySelect = () => {
+export const CategorySelect = ({ category }) => {
+  // const [categories, setCategories] = useState("");
+  // const { fetchData, data } = useFetch();
+
+  // useEffect(() => {}, []);
+
   return (
     <Select>
       <option>Categoría</option>

@@ -3,18 +3,25 @@ import { Quote } from "./Quote";
 import { useKeyBoardActivity } from "../hooks/useKeyBoardActivity";
 import { Score } from "./Score";
 import { ToolBar } from "./toolbar/ToolBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useEffectKeySounds } from "../hooks/useEffectKeySounds";
 
-export const Exercise = ({ q }) => {
+export const Exercise = ({
+  q,
+  isTimeOver,
+  setIsCompleted,
+  isCompleted,
+  setResults,
+}) => {
   const {
     indexQuote,
     quote,
     keyWanted,
     keyPressed,
-    isCompleted,
+    isExerciseCompleted,
     sizeQuote,
     results,
+    calculateResults,
   } = useKeyBoardActivity(q);
   const [isEnableSound, setIsEnableSound] = useState(true);
   const [keyBoardVisibility, setKeyBoardVisibility] = useState(true);
@@ -25,7 +32,18 @@ export const Exercise = ({ q }) => {
   const toggleKeyBoardVisibility = () =>
     setKeyBoardVisibility(!keyBoardVisibility);
 
-  if (isCompleted) return <Score results={results} />;
+  useEffect(() => {
+    if (isTimeOver || isCompleted) calculateResults();
+  }, [isTimeOver, isCompleted]);
+
+  useEffect(() => {
+    console.log(results);
+    if (results) setResults(results);
+  }, [results]);
+
+  useEffect(() => {
+    if (isExerciseCompleted) setIsCompleted(true);
+  }, [isExerciseCompleted]);
 
   return (
     <>

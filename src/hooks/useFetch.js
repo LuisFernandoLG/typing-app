@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-const defaultOptions = {};
+const defaultOptions = {
+  headers: {
+    "Content-Type": "application/json",
+    // 'Content-Type': 'application/x-www-form-urlencoded',
+  },
+};
 
 export const useFetch = () => {
   const [data, setData] = useState(null);
@@ -17,18 +22,30 @@ export const useFetch = () => {
         controller.abort();
       }, 6000);
 
-      let op = options ? options : { ...defaultOptions, signal: signal };
+      let op = options
+        ? { ...defaultOptions, ...options, signal }
+        : { ...defaultOptions, signal: signal };
 
-      const response = await fetch(url, op);
+      console.log(op);
 
-      if (!response.ok) {
-        let err = new Error("Error en la petición Fetch");
-        err.status = response.status || "00";
-        err.statusText = response.statusText || "Búsqueda sin resultados";
-        throw err;
-      }
+      const response = await fetch(url, op)
+        .then((res) => {
+          if (!res.ok) {
+            let err = new Error("Error en la petición Fetch");
+            err.status = res.status || "00";
+            err.statusText = res.statusText || "Búsqueda sin resultados";
+            throw err;
+          }
+          return res.json();
+        })
+        .catch((e) => {
+          let err = new Error("Error en la petición Fetch");
+          err.status = "00";
+          err.statusText = "Error en la conexión";
+          throw err;
+        });
 
-      const data = await response.json();
+      const data = response;
 
       if (!signal.aborted) {
         setFetchErrors(null);

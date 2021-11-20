@@ -6,7 +6,7 @@ export const keyBoardActivityInitialState = {
   sizeQuote: null,
   indexQuote: 0,
   isCompleted: false,
-  results: {},
+  results: null,
 };
 
 export function KeyBoardActivityReducer(state, action) {
