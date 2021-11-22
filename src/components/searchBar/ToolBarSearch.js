@@ -3,10 +3,20 @@ import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { CategorySelect } from "./CategorySelect";
 import { SearchBar } from "./SearchBar";
 
-export const ToolBarSearch = ({ category }) => {
+export const ToolBarSearch = ({
+  selectCategory,
+  setSearchQuery,
+  search,
+  searchByQuery,
+}) => {
   return (
     <Container flex flex_jc_c gap="0.5rem">
-      <SearchBar /> <CategorySelect category={category} />
+      <SearchBar
+        search={search}
+        setSearchQuery={setSearchQuery}
+        searchByQuery={searchByQuery}
+      />
+      <CategorySelect selectCategory={selectCategory} />
     </Container>
   );
 };

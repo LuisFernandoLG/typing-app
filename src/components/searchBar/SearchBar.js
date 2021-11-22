@@ -2,11 +2,25 @@ import styled from "styled-components";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import searchIcon from "../../images/search.png";
 
-export const SearchBar = () => {
+export const SearchBar = ({ setSearchQuery, search, searchByQuery }) => {
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    searchByQuery(search);
+  };
+
   return (
-    <Container flex flex_ai_c gap="1rem">
+    <Container as="form" flex flex_ai_c gap="1rem" onSubmit={handleSubmit}>
       <SearchIcon src={searchIcon} alt="search" />
-      <SearchInput type="search" placeholder="Buscar . . ." />
+      <SearchInput
+        value={search}
+        onChange={handleChange}
+        type="search"
+        placeholder="Buscar . . ."
+      />
     </Container>
   );
 };

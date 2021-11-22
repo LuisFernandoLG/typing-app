@@ -1,18 +1,38 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useFetch } from "../../hooks/useFetch";
+import { endpoints } from "../signIn/api";
 
-export const CategorySelect = ({ category }) => {
-  // const [categories, setCategories] = useState("");
-  // const { fetchData, data } = useFetch();
+const initialCategories = [
+  {
+    id: -1,
+    name: "categoría",
+  },
+];
 
-  // useEffect(() => {}, []);
+export const CategorySelect = ({ selectCategory }) => {
+  const [categories, setCategories] = useState(initialCategories);
+  const { fetchData, data } = useFetch();
+
+  useEffect(() => {
+    fetchData(endpoints.categories);
+  }, []);
+
+  useEffect(() => {
+    if (data) {
+      const newCategories = data.data.categories;
+      console.log(data);
+      setCategories([...categories, ...newCategories]);
+    }
+  }, [data]);
+
+  const handleChange = (e) => selectCategory(e.target.value);
 
   return (
-    <Select>
-      <option>Categoría</option>
-      <option>hi</option>
-      <option>hi</option>
-      <option>hi</option>
+    <Select onChange={handleChange}>
+      {categories.map(({ id, name }) => (
+        <option value={id}>{name}</option>
+      ))}
     </Select>
   );
 };

@@ -1,5 +1,5 @@
-const PROTOCOL = "http",
-  DOMAIN = "localhost:8000",
+const PROTOCOL = "https",
+  DOMAIN = "backendtypeandtpye.herokuapp.com",
   HOST = `${PROTOCOL}://${DOMAIN}`;
 
 const exercises = `${HOST}/exercises`;
@@ -7,6 +7,8 @@ const logIn = `${HOST}/logIn`;
 const exercise = `${HOST}/exercise`;
 const ranking = `${HOST}/ranking`;
 const score = `${HOST}/score`;
+const categories = `${HOST}/categories`;
+const search = `${HOST}/exercises/search`;
 
 export const endpoints = {
   exercises,
@@ -14,4 +16,6 @@ export const endpoints = {
   exercise,
   ranking,
   score,
+  categories,
+  search,
 };

@@ -12,12 +12,20 @@ export const NavBar = () => {
   return (
     <>
       {isAuth && (
-        <NavBarStyled as="nav" flex flex_jc_sb gap="1rem">
+        <NavBarStyled as="nav" flex flex_ai_c flex_jc_sb gap="1rem">
           <Logo />
-          <NavLink to={routes.RANKING_PAGE} exact>
+          <NavLink
+            activeClassName={"activatePage"}
+            to={routes.RANKING_PAGE}
+            exact
+          >
             Ranking
           </NavLink>
-          <NavLink to={routes.STADISTICS_PAGE} exact>
+          <NavLink
+            activeClassName={"activatePage"}
+            to={routes.STADISTICS_PAGE}
+            exact
+          >
             Mi puntaje
           </NavLink>
 
@@ -33,9 +41,18 @@ const NavBarStyled = styled(Wrapper)`
 
   padding: 0.5rem;
 
-  .activatePage {
+  a {
+    font-weight: 700;
     color: ${({ theme: { secondaryColor } }) => secondaryColor};
-    font-weight: 600;
+    padding: 0.5rem;
+  }
+
+  .activatePage {
+    /* color: red; */
+    color: ${({ theme: { secondaryColor } }) => secondaryColor};
+
+    border-bottom: 0.2rem solid ${({ theme: { primaryColor } }) => primaryColor};
+    padding: 0.5rem;
   }
 `;
 
