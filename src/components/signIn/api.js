@@ -9,6 +9,7 @@ const ranking = `${HOST}/ranking`;
 const score = `${HOST}/score`;
 const categories = `${HOST}/categories`;
 const search = `${HOST}/exercises/search`;
+const signIn = `${HOST}/exercises/signIn`;
 
 export const endpoints = {
   exercises,
@@ -18,4 +19,5 @@ export const endpoints = {
   score,
   categories,
   search,
+  signIn,
 };

@@ -1,7 +1,6 @@
 import { KeyBoard } from "./KeyBoard";
 import { Quote } from "./Quote";
 import { useKeyBoardActivity } from "../hooks/useKeyBoardActivity";
-import { Score } from "./Score";
 import { ToolBar } from "./toolbar/ToolBar";
 import { useEffect, useState } from "react";
 import { useEffectKeySounds } from "../hooks/useEffectKeySounds";

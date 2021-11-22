@@ -5,6 +5,7 @@ import { Loader } from "../Loader";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { toast } from "react-toastify";
 import AuthContext from "../../contexts/AuthContext";
+import { endpoints } from "../signIn/api";
 
 const initialForm = {
   name: "",
@@ -26,10 +27,7 @@ export const SignInForm = () => {
       method: "POST",
       body: JSON.stringify(form),
     };
-
-    const link = "http://localhost:8000/signIn";
-
-    fetchData(link, options);
+    fetchData(endpoints.signIn, options);
   };
 
   const handleChange = (e) => {
