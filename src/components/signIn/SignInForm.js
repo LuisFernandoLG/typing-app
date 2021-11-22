@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { useFetch } from "../../hooks/useFetch";
 import { Loader } from "../Loader";
