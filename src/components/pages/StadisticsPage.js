@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useContext, useState, useEffect } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import { useFetch } from "../../hooks/useFetch";
 import { Graph } from "../Graph";
 import { Loader } from "../Loader";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { endpoints } from "../signIn/api";
+import { toast } from "react-toastify";
 
 export const StadisticsPage = () => {
   const { user } = useContext(AuthContext);
@@ -20,6 +20,12 @@ export const StadisticsPage = () => {
   useEffect(() => {
     if (data) setExercisesScore(data.data);
   }, [data]);
+
+  useEffect(() => {
+    if (fetchErrors) {
+      toast.error("Algo salió mal :(");
+    }
+  }, [fetchErrors]);
 
   return (
     <div>

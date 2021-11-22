@@ -1,20 +1,11 @@
-import { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
-import { generate } from "shortid";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useFetch } from "../../hooks/useFetch";
 import { Loader } from "../Loader";
 import { RankingUser } from "../RankingUser";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { endpoints } from "../signIn/api";
-
-const initialRankingUsers = [
-  { id: generate(), name: "Francisco Iram Kautzman Díaz", score: "124234234" },
-  { id: generate(), name: "Nicole Ordoñez Bañaga", score: "239478" },
-  { id: generate(), name: "Víctor Hugo Estrada Ortega", score: "4234" },
-  { id: generate(), name: "Fernando Jiménez Aguilar", score: "434" },
-  { id: generate(), name: "Luis Fernando López Gutiérre", score: "2" },
-];
+import { toast } from "react-toastify";
 
 export const RankingPage = () => {
   const [rankingUsers, setRankingUsers] = useState([]);
@@ -28,9 +19,14 @@ export const RankingPage = () => {
   useEffect(() => {
     if (data) {
       setRankingUsers(data.data);
-      console.log(data.data);
     }
   }, [data]);
+
+  useEffect(() => {
+    if (fetchErrors) {
+      toast.error("Algo salió mal :(");
+    }
+  }, [fetchErrors]);
 
   return (
     <RankingContainer>

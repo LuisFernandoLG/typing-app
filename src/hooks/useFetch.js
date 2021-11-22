@@ -26,8 +26,6 @@ export const useFetch = () => {
         ? { ...defaultOptions, ...options, signal }
         : { ...defaultOptions, signal: signal };
 
-      console.log(op);
-
       const response = await fetch(url, op)
         .then((res) => {
           if (!res.ok) {

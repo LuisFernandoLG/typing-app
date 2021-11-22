@@ -3,7 +3,6 @@ import { BubbleScore } from "./BubbleScore";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
 
 export const Score = ({ results }) => {
-  console.log(results);
   let successfulPercentage = Math.trunc(
     (results.succeed * 100) / (results.succeed + results.failed)
   );

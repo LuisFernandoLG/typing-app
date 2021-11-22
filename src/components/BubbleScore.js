@@ -69,10 +69,6 @@ const Wave1 = styled(Wave)`
     fill: ${({ theme: { primaryColor } }) => primaryColor};
   }
 
-  ${({ percentage }) => {
-    console.log(percentage);
-  }}
-
   animation: ${({ percentage }) => drop(percentage)} 1s ease forwards,
     ${waveAnimation} 2s ease forwards;
 `;

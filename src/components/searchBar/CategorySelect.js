@@ -21,7 +21,6 @@ export const CategorySelect = ({ selectCategory }) => {
   useEffect(() => {
     if (data) {
       const newCategories = data.data.categories;
-      console.log(data);
       setCategories([...categories, ...newCategories]);
     }
   }, [data]);

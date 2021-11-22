@@ -28,18 +28,13 @@ export const HomePage = () => {
 
   const searchByQuery = () => {
     if (search === "" && category === null) return 0;
-    console.log({ search, category });
-
     if (category !== null && category !== -1 && search !== "") {
-      console.log("1");
       let url = `${endpoints.search}?query=${search}&category=${category}`;
       fetchData(url);
     } else if (category !== null && category !== -1) {
-      console.log("2");
       let url = `${endpoints.search}?category=${category}`;
       fetchData(url);
     } else if (search !== "") {
-      console.log("3");
       let url = `${endpoints.search}?query=${search}`;
       fetchData(url);
     }
@@ -73,7 +68,6 @@ export const HomePage = () => {
   useEffect(() => {
     if (fetchErrors) {
       toast.error("Algo salió mal :(");
-      console.log(fetchErrors);
     }
   }, [fetchErrors]);
 

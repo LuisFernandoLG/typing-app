@@ -11,7 +11,6 @@ import { RankingPage } from "./pages/RankingPage";
 import { SignInPage } from "./pages/SignInPage";
 import { StadisticsPage } from "./pages/StadisticsPage";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
-import { SideBar } from "./SideBar/SideBar";
 
 export const MyRouter = () => {
   return (

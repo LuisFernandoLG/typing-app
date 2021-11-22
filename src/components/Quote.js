@@ -34,22 +34,6 @@ export const Quote = ({ quote, indexQuote }) => {
     setWords(copyWords);
   };
 
-  // const updateKey = () => {
-  //   const copyWords = words.map((item) => {
-  //     return {
-  //       ...item,
-  //       items: item.items.map((subItem) => {
-  //         console.log(subItem.id === quote[indexQuote].id);
-  //         return subItem.id === quote[indexQuote].id
-  //           ? quote[indexQuote]
-  //           : subItem;
-  //       }),
-  //     };
-  //   });
-
-  //   setWords(copyWords);
-  // };
-
   const getTypeKey = (item) => {
     if (item.id === quote[indexQuote].id)
       return <WantedKey key={item.id}>{item.content}</WantedKey>;

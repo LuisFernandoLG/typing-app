@@ -30,7 +30,6 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       if (data.status === "202") {
         toast.error(data.statusText);
       }
@@ -44,7 +43,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (fetchErrors) {
       toast.error("Algo salió mal :(");
-      console.log(fetchErrors);
     }
   }, [fetchErrors]);
 

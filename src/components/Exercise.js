@@ -37,7 +37,6 @@ export const Exercise = ({
   }, [isTimeOver, isCompleted]);
 
   useEffect(() => {
-    console.log(results);
     if (results) setResults(results);
   }, [results]);
 

@@ -46,7 +46,6 @@ export const SignInForm = () => {
 
   useEffect(() => {
     if (data) {
-      console.log(data);
       if (data.status === 201) toast.error(data.statusText);
       if (data.status === 202) setLogIn(form.email, form.password);
     }
