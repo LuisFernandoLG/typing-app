@@ -30,12 +30,19 @@ export const LoginForm = () => {
 
       <GroupInput>
         <Label>Correo electrónico</Label>
-        <EmailInput value={email} onChange={(e) => setEmail(e.target.value)} />
+        <EmailInput
+          required
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </GroupInput>
 
       <GroupInput>
         <Label>Contraseña</Label>
         <PasswordInput
+          required
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />

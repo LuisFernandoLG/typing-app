@@ -63,9 +63,10 @@ export const SignInForm = () => {
       <InputGroup>
         <Label>Nombre</Label>
         <Input
+          required
+          type="text"
           name="name"
           value={form.name}
-          required
           onChange={(e) => handleChange(e)}
         />
       </InputGroup>
@@ -73,9 +74,10 @@ export const SignInForm = () => {
       <InputGroup>
         <Label>Apellido</Label>
         <Input
+          required
+          type="text"
           name="surname"
           value={form.surname}
-          required
           onChange={(e) => handleChange(e)}
         />
       </InputGroup>
@@ -83,9 +85,10 @@ export const SignInForm = () => {
       <InputGroup>
         <Label>Segundo apellido</Label>
         <Input
+          required
+          type="text"
           name="second_surname"
           value={form.second_surname}
-          required
           onChange={(e) => handleChange(e)}
         />
       </InputGroup>
@@ -93,8 +96,8 @@ export const SignInForm = () => {
       <InputGroup>
         <Label>Correo electrónico</Label>
         <Input
-          type="email"
           required
+          type="email"
           name="email"
           value={form.email}
           onChange={(e) => handleChange(e)}
@@ -104,8 +107,8 @@ export const SignInForm = () => {
       <InputGroup>
         <Label>Contraseña</Label>
         <Input
-          type="passowrd"
           required
+          type="password"
           name="password"
           value={form.password}
           onChange={(e) => handleChange(e)}
@@ -124,8 +127,8 @@ const SubmitBtn = styled.input`
   border-radius: 0.5rem;
   margin: auto;
 
-  /* border: none; */
-  /* outline: none; */
+  border: none;
+  outline: none;
 `;
 
 const SignInWrapper = styled(Wrapper)`
