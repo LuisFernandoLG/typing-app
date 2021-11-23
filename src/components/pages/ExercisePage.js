@@ -78,7 +78,7 @@ export const ExercisePage = () => {
           time_taken: timeTaken,
         }),
       };
-      fetchScore("http://localhost:8000/score", options);
+      fetchScore(endpoints.score, options);
     }
   }, [pointsCalculated]);
 

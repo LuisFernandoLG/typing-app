@@ -10,6 +10,7 @@ const score = `${HOST}/score`;
 const categories = `${HOST}/categories`;
 const search = `${HOST}/exercises/search`;
 const signIn = `${HOST}/signIn`;
+// const score = `${HOST}/score`;
 
 export const endpoints = {
   exercises,
