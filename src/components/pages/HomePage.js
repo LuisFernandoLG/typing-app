@@ -38,18 +38,6 @@ export const HomePage = () => {
       let url = `${endpoints.search}?query=${search}`;
       fetchData(url);
     }
-
-    // let url = endpoints.search;
-    // if (search !== "" && category !== -1 && category !== null) {
-    //   console.warn("SEARCH");
-    //   url = `${endpoints.search}?query=${search}`;
-    // } else if (category !== null || category !== -1) {
-    //   console.warn("SEARCH and CATEGORY");
-    //   url = `${endpoints.search}?query=${search}&category=${category}`;
-    // } else if ((search = "")) {
-    //   console.warn("CATEGORY");
-    //   url = `${endpoints.search}?category=${category}`;
-    // }
   };
 
   useEffect(() => {
@@ -62,8 +50,13 @@ export const HomePage = () => {
 
   useEffect(() => {
     if (data === null) return null;
-    setExercises(data.data);
+    setExercises(filterEnableExer(data.data));
   }, [data]);
+
+  const filterEnableExer = (items) => {
+    console.log(items);
+    return items.filter((item) => item.status !== 2);
+  };
 
   useEffect(() => {
     if (fetchErrors) {

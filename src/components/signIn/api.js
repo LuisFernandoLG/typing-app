@@ -1,3 +1,5 @@
+// const PROTOCOL = "http",
+//   DOMAIN = "localhost:8000",
 const PROTOCOL = "https",
   DOMAIN = "backendtypeandtpye.herokuapp.com",
   HOST = `${PROTOCOL}://${DOMAIN}`;
@@ -10,7 +12,9 @@ const score = `${HOST}/score`;
 const categories = `${HOST}/categories`;
 const search = `${HOST}/exercises/search`;
 const signIn = `${HOST}/signIn`;
-// const score = `${HOST}/score`;
+const adminExercises = `${HOST}/admin/exercises`;
+const putExercise = `${HOST}/admin/exercise`;
+const postExercise = `${HOST}/admin/exercise`;
 
 export const endpoints = {
   exercises,
@@ -21,4 +25,7 @@ export const endpoints = {
   categories,
   search,
   signIn,
+  adminExercises,
+  putExercise,
+  postExercise,
 };

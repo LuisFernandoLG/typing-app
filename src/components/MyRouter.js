@@ -1,6 +1,7 @@
 import { HashRouter, Route, Switch } from "react-router-dom";
 import { routes } from "../routes";
 import { NavBar } from "./NavBar/NavBar";
+import { AdminPage } from "./pages/AdminPage";
 import { ExercisePage } from "./pages/ExercisePage";
 import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
@@ -24,6 +25,11 @@ export const MyRouter = () => {
           <Route
             path={`${routes.EXERCICE_PAGE}/:idQuote`}
             children={<PrivatePage component={ExercisePage} />}
+          />
+          <Route
+            exact
+            path={routes.ADMIN_PAGE}
+            children={<PrivatePage component={AdminPage} />}
           />
           <Route
             exact

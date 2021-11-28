@@ -7,4 +7,5 @@ export const routes = {
   MY_EXERCISES_PAGE: "/misEjercicios",
   LOGIN_PAGE: "/login",
   SIGNUP_PAGE: "/signin",
+  ADMIN_PAGE: "/admin",
 };
