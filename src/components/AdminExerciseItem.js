@@ -32,28 +32,43 @@ export const AdminExerciseItem = ({
   };
 
   return (
-    <AdminExerciseItemWrapper as="form" flex wrap flex_jc_c onBlur={handleBlur}>
-      <p>{form.id}</p>
-      <input name="title" value={form.title} onChange={handleChangeForm} />
-      <textarea
-        name="textContent"
-        type="text"
-        value={form.textContent}
-        onChange={handleChangeForm}
-      />
-      <input
-        name="points"
-        type="number"
-        value={form.points}
-        onChange={handleChangeForm}
-      />
+    <AdminExerciseItemWrapper as="form" flex wrap flex_dc onBlur={handleBlur}>
+      <Id>#{form.id}</Id>
 
-      <input
-        name="time"
-        type="number"
-        value={form.time}
-        onChange={handleChangeForm}
-      />
+      <Wrapper flex flex_dc>
+        <label>Titulo</label>
+        <input name="title" value={form.title} onChange={handleChangeForm} />
+      </Wrapper>
+
+      <Wrapper flex flex_dc>
+        <label>Contenido</label>
+        <textarea
+          name="textContent"
+          type="text"
+          value={form.textContent}
+          onChange={handleChangeForm}
+        />
+      </Wrapper>
+
+      <Wrapper flex flex_dc>
+        <label>Puntos</label>
+        <input
+          name="points"
+          type="number"
+          value={form.points}
+          onChange={handleChangeForm}
+        />
+      </Wrapper>
+
+      <Wrapper flex flex_dc>
+        <label>Tiempo</label>
+        <input
+          name="time"
+          type="number"
+          value={form.time}
+          onChange={handleChangeForm}
+        />
+      </Wrapper>
 
       <select name="idCategory" onChange={handleChangeForm}>
         {categories.map(({ id, name }) => (
@@ -88,18 +103,35 @@ export const AdminExerciseItem = ({
         ))}
       </select>
 
-      <button>Borrar</button>
+      {/* <button>Borrar</button> */}
     </AdminExerciseItemWrapper>
   );
 };
 
 const AdminExerciseItemWrapper = styled(Wrapper)`
-  margin: 1rem 0;
+  width: 70%;
+  margin: 1rem auto;
   padding: 1rem;
   border-radius: 1rem;
 
   box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
-  textarea {
-    flex-basis: 100%;
+
+  div,
+  select {
+    margin: 0.8rem 0;
+  }
+
+  label {
+    font-size: 1.2rem;
+    margin: 0.3125rem 0;
+    font-weight: 600;
+  }
+
+  button {
+    background: ${({ theme: { errorColor } }) => errorColor};
+    color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+    padding: 0.5rem;
   }
 `;
+
+const Id = styled.h2``;

@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import AuthContext from "../../contexts/AuthContext";
 import { useAdminExercises } from "../../hooks/useAdminExercises";
 import { AdminExerciseItem } from "../AdminExerciseItem";
 import { ExerciseForm } from "../ExerciseForm";
@@ -17,6 +19,15 @@ export const AdminPage = () => {
     addExercise,
     exerLoadingAdded,
   } = useAdminExercises();
+
+  const { user } = useContext(AuthContext);
+
+  if (user.typeUser === 2)
+    return (
+      <h2>
+        Lo sentimos, pero no tienes permisos para acceder a este apartado :(
+      </h2>
+    );
 
   return (
     <AdminPageWrapper>

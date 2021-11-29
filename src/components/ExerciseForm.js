@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
 import { Loader } from "./Loader";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
+import { toast } from "react-toastify";
 
 const initialExerForm = {
   title: "",
@@ -13,6 +15,8 @@ const initialExerForm = {
   difficulty: null,
 };
 
+// const titleRegex =
+
 export const ExerciseForm = ({
   categories,
   difficulties,
@@ -21,6 +25,31 @@ export const ExerciseForm = ({
   exerLoadingAdded,
 }) => {
   const [form, setForm] = useState(initialExerForm);
+  const [formErrors, setFormErrors] = useState(null);
+
+  useEffect(() => {
+    console.log(form);
+
+    if (form.title === "" || form.title === null) {
+      setFormErrors("Titulo requerido");
+    } else if (form.text_content === "" || form.text_content === null) {
+      setFormErrors("Contenido requerido");
+    } else if (form.points === "" || form.points === null) {
+      setFormErrors("Puntos requerido");
+    } else if (form.time === "" || form.time === null) {
+      setFormErrors("Tiempo requerido");
+    } else if (form.category === "" || form.category === null) {
+      setFormErrors("Categoría requerida");
+    } else if (form.difficulty === "" || form.difficulty === null) {
+      setFormErrors("Dificultad requerida");
+    } else if (form.status === "" || form.status === null) {
+      setFormErrors("Status requerido");
+    } else {
+      setFormErrors(null);
+    }
+  }, [form]);
+
+  useEffect(() => {}, [formErrors]);
 
   const handleChangeForm = (e) => {
     const { value, name } = e.target;
@@ -29,82 +58,139 @@ export const ExerciseForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addExercise(form);
+    if (formErrors) toast.warn(formErrors);
+    else console.log("NO Hay errores");
   };
 
   if (exerLoadingAdded) return <Loader />;
 
   return (
-    <ExerFormStyled as="form" flex flex_jc_c onSubmit={handleSubmit}>
-      <input name="title" value={form.title} onChange={handleChangeForm} />
-      <textarea
-        name="text_content"
-        type="text"
-        value={form.text_content}
-        onChange={handleChangeForm}
-      />
-      <input
-        name="points"
-        type="number"
-        value={form.points}
-        onChange={handleChangeForm}
-      />
+    <ExerFormStyled as="form" flex flex_dc onSubmit={handleSubmit} wrap={true}>
+      <Wrapper flex flex_dc>
+        <label>Titulo</label>
+        <input
+          name="title"
+          placeholder="titulo"
+          type="text"
+          value={form.title}
+          onChange={handleChangeForm}
+        />
+      </Wrapper>
 
-      <input
-        name="time"
-        type="number"
-        value={form.time}
-        onChange={handleChangeForm}
-      />
+      <Wrapper flex flex_dc>
+        <label>Contenido</label>
+        <textarea
+          placeholder="contenido"
+          name="text_content"
+          type="text"
+          value={form.text_content}
+          onChange={handleChangeForm}
+        />
+      </Wrapper>
 
-      <select name="category" onChange={handleChangeForm}>
-        <option key={`c1`} value={null}>
-          Elegir
-        </option>
+      <Wrapper flex flex_dc>
+        <label>Puntos</label>
+        <input
+          name="points"
+          type="number"
+          placeholder="puntos"
+          value={form.points}
+          onChange={handleChangeForm}
+        />
+      </Wrapper>
 
-        {categories.map(({ id, name }) => (
-          <option key={`${id}_c`} value={id}>
-            {name}
+      <Wrapper flex flex_dc>
+        <label>Tiempo</label>
+        <input
+          name="time"
+          type="number"
+          placeholder="Tiempo"
+          value={form.time}
+          onChange={handleChangeForm}
+        />
+      </Wrapper>
+
+      <Wrapper flex>
+        <select name="category" onChange={handleChangeForm}>
+          <option key={`c1`} value="">
+            Categoría
           </option>
-        ))}
-      </select>
 
-      <select name="difficulty" onChange={handleChangeForm}>
-        <option key={`d1`} value={null}>
-          Elegir
-        </option>
+          {categories.map(({ id, name }) => (
+            <option key={`${id}_c`} value={id}>
+              {name}
+            </option>
+          ))}
+        </select>
 
-        {difficulties.map(({ id, name }) => (
-          <option key={`${id}_d`} value={id}>
-            {name}
+        <select name="difficulty" onChange={handleChangeForm}>
+          <option key={`d1`} value="">
+            Dificultad
           </option>
-        ))}
-      </select>
 
-      <select name="status" onChange={handleChangeForm}>
-        <option key={`s1`} value={null}>
-          Elegir
-        </option>
-        {statuses.map(({ id, name }) => (
-          <option key={`${id}_s`} value={id} value={id}>
-            {name}
+          {difficulties.map(({ id, name }) => (
+            <option key={`${id}_d`} value={id}>
+              {name}
+            </option>
+          ))}
+        </select>
+
+        <select name="status" onChange={handleChangeForm}>
+          <option key={`s1`} value="">
+            Estado
           </option>
-        ))}
-      </select>
+          {statuses.map(({ id, name }) => (
+            <option key={`${id}_s`} value={id}>
+              {name}
+            </option>
+          ))}
+        </select>
+      </Wrapper>
 
-      <input type="submit" value="Guardar" />
+      <input type="submit" value="Agregar" />
     </ExerFormStyled>
   );
 };
 
 const ExerFormStyled = styled(Wrapper)`
-  margin: 1rem 0;
-  margin-bottom: 10rem;
+  width: 70%;
+  margin: 1rem auto;
   padding: 1rem;
+  margin-bottom: 5rem;
   border-radius: 1rem;
 
   box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
-  textarea {
-    flex-basis: 100%;
+
+  div:nth-child(2) {
+    width: 100%;
+  }
+
+  div input {
+    padding: 0.5rem;
+  }
+
+  div label {
+    margin: 0.2rem 0;
+  }
+
+  div {
+    margin: 0.5rem 0;
+  }
+
+  label {
+    font-size: 1.2rem;
+    margin: 0.3125rem 0;
+    font-weight: 600;
+  }
+
+  input[type="submit"] {
+    width: min-content;
+    padding: 1rem;
+    background: ${({ theme: { successColor } }) => successColor};
+
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    cursor: pointer;
   }
 `;

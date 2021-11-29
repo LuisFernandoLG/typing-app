@@ -12,9 +12,18 @@ export const SearchBar = ({ setSearchQuery, search, searchByQuery }) => {
     searchByQuery(search);
   };
 
+  const handleClickOnSearchIcon = () => {
+    console.log("BUSCANDO SEGUN");
+    searchByQuery(search);
+  };
+
   return (
     <Container as="form" flex flex_ai_c gap="1rem" onSubmit={handleSubmit}>
-      <SearchIcon src={searchIcon} alt="search" />
+      <SearchIcon
+        src={searchIcon}
+        alt="search"
+        onClick={handleClickOnSearchIcon}
+      />
       <SearchInput
         value={search}
         onChange={handleChange}
@@ -33,6 +42,7 @@ const Container = styled(Wrapper)`
 `;
 const SearchIcon = styled.img`
   height: 1.5rem;
+  cursor: pointer;
 `;
 const SearchInput = styled.input`
   height: 100%;
