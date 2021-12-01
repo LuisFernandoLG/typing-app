@@ -38,7 +38,9 @@ export const StadisticsPage = () => {
           <Loader />
         ) : (
           data &&
-          exercisesScore.map((item) => <ProgressGraph scoreHistory={item} />)
+          exercisesScore.map((item) => (
+            <ProgressGraph scoreHistory={item} title={item[0].title} />
+          ))
         )}
       </GridContainer>
     </div>
