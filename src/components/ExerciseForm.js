@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Loader } from "./Loader";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
