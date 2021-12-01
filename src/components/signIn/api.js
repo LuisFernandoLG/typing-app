@@ -13,6 +13,7 @@ const categories = `${HOST}/categories`;
 const search = `${HOST}/exercises/search`;
 const signIn = `${HOST}/signIn`;
 const adminExercises = `${HOST}/admin/exercises`;
+const stadisticsUser = `${HOST}/stadistics`;
 const putExercise = `${HOST}/admin/exercise`;
 const postExercise = `${HOST}/admin/exercise`;
 
@@ -28,4 +29,5 @@ export const endpoints = {
   adminExercises,
   putExercise,
   postExercise,
+  stadisticsUser,
 };

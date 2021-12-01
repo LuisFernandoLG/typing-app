@@ -6,6 +6,8 @@ import { Loader } from "../Loader";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { endpoints } from "../signIn/api";
 import { toast } from "react-toastify";
+import { ProgressGraph } from "../ProgressGraph";
+import styled from "styled-components";
 
 export const StadisticsPage = () => {
   const { user } = useContext(AuthContext);
@@ -13,7 +15,7 @@ export const StadisticsPage = () => {
   const [exercisesScore, setExercisesScore] = useState([]);
 
   useEffect(() => {
-    const query = `${endpoints.score}/${user.id}`;
+    const query = `${endpoints.stadisticsUser}/${user.id}`;
     fetchData(query);
   }, []);
 
@@ -31,14 +33,24 @@ export const StadisticsPage = () => {
     <div>
       <h2>Estadísticas</h2>
 
-      {loading ? (
-        <Loader />
-      ) : (
-        exercisesScore.map((dataUser) => (
-          <Wrapper>{JSON.stringify(dataUser)}</Wrapper>
-        ))
-      )}
-      <Graph />
+      <GridContainer>
+        {loading ? (
+          <Loader />
+        ) : (
+          data &&
+          exercisesScore.map((item) => <ProgressGraph scoreHistory={item} />)
+        )}
+      </GridContainer>
     </div>
   );
 };
+
+const GridContainer = styled.div`
+  width: 100vw;
+  padding: 1rem;
+  margin: 2rem auto;
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
+  gap: 2rem;
+`;

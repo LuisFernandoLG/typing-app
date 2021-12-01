@@ -59,13 +59,15 @@ export const ExerciseForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formErrors) toast.warn(formErrors);
-    else console.log("NO Hay errores");
+    else addExercise(form);
   };
 
   if (exerLoadingAdded) return <Loader />;
 
   return (
     <ExerFormStyled as="form" flex flex_dc onSubmit={handleSubmit} wrap={true}>
+      <Title>Nuevo ejercicio</Title>
+
       <Wrapper flex flex_dc>
         <label>Titulo</label>
         <input
@@ -152,6 +154,10 @@ export const ExerciseForm = ({
   );
 };
 
+const Title = styled.h2`
+  font-size: 2rem;
+`;
+
 const ExerFormStyled = styled(Wrapper)`
   width: 70%;
   margin: 1rem auto;
@@ -160,6 +166,10 @@ const ExerFormStyled = styled(Wrapper)`
   border-radius: 1rem;
 
   box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
+
+  textarea {
+    padding: 0.5rem;
+  }
 
   div:nth-child(2) {
     width: 100%;
