@@ -22,7 +22,7 @@ export const ProgressGraph = ({ scoreHistory, title }) => {
         beginAtZero: true,
         title: {
           display: true,
-          text: "Tiempo",
+          text: "Tiempo (segundos)",
         },
       },
     },
@@ -48,6 +48,7 @@ export const ProgressGraph = ({ scoreHistory, title }) => {
 
 const Title = styled.h2`
   font-size: 1rem;
+  text-align: center;
 `;
 
 const Container = styled.div`
