@@ -24,7 +24,7 @@ export const LoginPage = () => {
         ¿Aún no tienes una cuenta?
         <Link to={routes.SIGNUP_PAGE}>Regístrese aquí</Link>
       </RedirectLink>
-      <FooterLogo />
+      {/* <FooterLogo /> */}
     </Container>
   );
 };
@@ -43,11 +43,9 @@ const BackGround = styled.img`
   top: 0;
   z-index: -2;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   object-fit: cover;
-
-  background: red;
 `;
 
 const Filter = styled.div`
@@ -55,7 +53,7 @@ const Filter = styled.div`
   top: 0;
   z-index: -1;
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
   opacity: 0.5;
 
@@ -64,6 +62,7 @@ const Filter = styled.div`
 
 const Container = styled(Wrapper)`
   width: 100%;
+  height: 100vh;
   position: relative;
   animation: ${fadeInAnimation} 800ms ease;
 `;

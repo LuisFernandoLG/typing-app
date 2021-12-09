@@ -53,6 +53,7 @@ export const RankingPage = () => {
 const RankingContainer = styled.div`
   flex-grow: 1;
   margin-right: 2rem;
+  min-height: 100vh;
 `;
 const Title = styled.h2`
   font-size: 3.5rem;

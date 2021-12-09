@@ -1,5 +1,6 @@
 import { HashRouter, Route, Switch } from "react-router-dom";
 import { routes } from "../routes";
+import { Footer } from "./Footer";
 import { NavBar } from "./NavBar/NavBar";
 import { AdminPage } from "./pages/AdminPage";
 import { ExercisePage } from "./pages/ExercisePage";
@@ -51,6 +52,7 @@ export const MyRouter = () => {
           <Route to="*" component={NotFoundPage} />
         </Switch>
       </Wrapper>
+      <Footer />
     </HashRouter>
   );
 };

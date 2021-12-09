@@ -73,7 +73,6 @@ const Title = styled.h2`
 
 const AdminPageWrapper = styled(Wrapper)`
   width: 100%;
-  position: absolute;
 `;
 
 const ExercisesWrapper = styled(Wrapper)`

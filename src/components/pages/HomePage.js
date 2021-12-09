@@ -98,6 +98,7 @@ const HomeContainer = styled(Wrapper)`
   margin: 1rem 2rem;
   width: 100%;
   animation: ${fadeInAnimation} 800ms ease;
+  min-height: 100vh;
 `;
 
 const QuotesContainer = styled.main``;

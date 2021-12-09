@@ -37,6 +37,9 @@ export const NavBar = () => {
 };
 
 const NavBarStyled = styled(Wrapper)`
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
 
   padding: 0.5rem;
