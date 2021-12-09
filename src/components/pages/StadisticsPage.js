@@ -31,7 +31,7 @@ export const StadisticsPage = () => {
 
   return (
     <div>
-      <h2>Estadísticas</h2>
+      <Title>Estadísticas</Title>
 
       <GridContainer>
         {loading ? (
@@ -55,4 +55,9 @@ const GridContainer = styled.div`
 
   grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
   gap: 2rem;
+`;
+
+const Title = styled.h2`
+  font-size: 3.5rem;
+  text-align: center;
 `;

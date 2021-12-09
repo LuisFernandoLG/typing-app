@@ -31,7 +31,7 @@ export const AdminPage = () => {
 
   return (
     <AdminPageWrapper>
-      <h2>AdminPage</h2>
+      <Title>Admin</Title>
       <ExerciseForm
         difficulties={difficulties}
         categories={categories}
@@ -39,8 +39,15 @@ export const AdminPage = () => {
         addExercise={addExercise}
         exerLoadingAdded={exerLoadingAdded}
       />
+      {exerLoading && (
+        <LoaderWrapper>
+          <Loader />
+        </LoaderWrapper>
+      )}
+
+      <Title>Ejercicios</Title>
+
       {loading && <Loader />}
-      {exerLoading && <Loader />}
 
       {!loading &&
         exercieses.map((adminExercise) => (
@@ -59,11 +66,29 @@ export const AdminPage = () => {
   );
 };
 
+const Title = styled.h2`
+  font-size: 3.5rem;
+  text-align: center;
+`;
+
 const AdminPageWrapper = styled(Wrapper)`
   width: 100%;
+  position: absolute;
 `;
 
 const ExercisesWrapper = styled(Wrapper)`
   margin: 0 auto;
   width: 100%;
+`;
+
+const LoaderWrapper = styled.div`
+  width: min-content;
+
+  position: fixed;
+  right: 4rem;
+  top: 50%;
+  padding: 2rem;
+
+  border-radius: 30px;
+  box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
 `;

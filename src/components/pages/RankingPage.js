@@ -56,4 +56,5 @@ const RankingContainer = styled.div`
 `;
 const Title = styled.h2`
   font-size: 3.5rem;
+  text-align: center;
 `;
