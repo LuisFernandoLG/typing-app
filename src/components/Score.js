@@ -28,7 +28,6 @@ export const Score = ({ results, pointsCalculated }) => {
 
 const ScoreContainer = styled(Wrapper)`
   margin: 1rem;
-  /* background: ${({ theme: { tertiaryColor } }) => tertiaryColor}; */
   box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
 
   padding: 2rem;
