@@ -4,6 +4,7 @@ import AuthContext from "../contexts/AuthContext";
 import { useContext } from "react";
 import { useHistory } from "react-router";
 import { routes } from "../routes";
+import { FaUserAlt } from "react-icons/fa";
 
 export const LoginButton = () => {
   const { setLogOut } = useContext(AuthContext);
@@ -16,6 +17,7 @@ export const LoginButton = () => {
 
   return (
     <Container padding="0.5rem" flex flex_ai_c>
+      <FaUserAlt />
       <LoginBtn onClick={handleClick}>Cerrar sesión</LoginBtn>
     </Container>
   );
