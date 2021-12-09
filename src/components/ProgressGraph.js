@@ -55,4 +55,5 @@ const Container = styled.div`
   padding: 1rem;
   box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
   border-radius: 1rem;
+  height: min-content;
 `;

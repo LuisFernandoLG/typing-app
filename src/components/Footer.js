@@ -5,14 +5,14 @@ export const Footer = () => {
   return (
     <FooterWrapper as="footer" flex flex_jc_se>
       <Wrapper>
-        <Title>© TypeAndType - 2011-2021</Title>
+        <Title>Type and Type® - 2021-presente</Title>
         <Paragraph>
           Blvd. Tecnológico, Col. Guaymitas 23440 San José del Cabo, México
         </Paragraph>
       </Wrapper>
 
       <Wrapper>
-        <Title>Contácto</Title>
+        <Title>Contacto</Title>
         <Paragraph>support@typeandtype.com</Paragraph>
       </Wrapper>
     </FooterWrapper>

@@ -30,7 +30,7 @@ export const StadisticsPage = () => {
   }, [fetchErrors]);
 
   return (
-    <div>
+    <PageWrapper>
       <Title>Estadísticas</Title>
 
       <GridContainer>
@@ -43,12 +43,16 @@ export const StadisticsPage = () => {
           ))
         )}
       </GridContainer>
-    </div>
+    </PageWrapper>
   );
 };
 
+const PageWrapper = styled(Wrapper)`
+  width: 100%;
+`;
+
 const GridContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   padding: 1rem;
   margin: 2rem auto;
   display: grid;
