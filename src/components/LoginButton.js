@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
-import UserIcon from "../images/user_icon.png";
 import AuthContext from "../contexts/AuthContext";
 import { useContext } from "react";
 import { useHistory } from "react-router";

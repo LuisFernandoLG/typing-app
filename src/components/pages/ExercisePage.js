@@ -89,7 +89,7 @@ export const ExercisePage = () => {
   return (
     <ExercisePageContaner>
       {results ? (
-        <Score results={results} />
+        <Score results={results} pointsCalculated={pointsCalculated} />
       ) : (
         <>
           <PrimaryButton handleClick={goToHomePage}>Volver</PrimaryButton>

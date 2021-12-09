@@ -48,33 +48,9 @@ const NavBarStyled = styled(Wrapper)`
   }
 
   .activatePage {
-    /* color: red; */
     color: ${({ theme: { secondaryColor } }) => secondaryColor};
 
     border-bottom: 0.2rem solid ${({ theme: { primaryColor } }) => primaryColor};
     padding: 0.5rem;
   }
 `;
-
-// <div className="div">
-{
-  /* <NavLink exact to={routes.HOME_PAGE} activeClassName="activatePage">
-Home
-</NavLink>
-<NavLink to={routes.CATEGORIES_PAGE} activeClassName="activatePage">
-Categories
-</NavLink>
-
-<NavLink to={routes.NUM_PAD_PAGE} activeClassName="activatePage">
-NumPad
-</NavLink>
-
-<NavLink to={routes.MY_EXERCISES_PAGE} activeClassName="activatePage">
-Mis ejercicios
-</NavLink>
-
-<NavLink to={routes.SPELLING_PAGE} activeClassName="activatePage">
-spelling
-</NavLink>
-</div> */
-}

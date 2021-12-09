@@ -13,5 +13,3 @@ export const ComboBoxCategory = ({
     </select>
   );
 };
-
-// const CategorySelect = styled
