@@ -16,7 +16,9 @@ export const AdminExerciseItem = ({
     setForm({ ...form, [name]: value });
   };
 
-  const handleBlur = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     const dataToUpdate = {
       id: form.id,
       title: form.title,
@@ -28,21 +30,32 @@ export const AdminExerciseItem = ({
       difficulty: parseInt(form.idDifficulty),
     };
     updateExercise(form.id, dataToUpdate);
-    // console.log("onBlur!!!");
   };
 
   return (
-    <AdminExerciseItemWrapper as="form" flex wrap flex_dc onBlur={handleBlur}>
+    <AdminExerciseItemWrapper
+      as="form"
+      flex
+      wrap
+      flex_dc
+      onSubmit={handleSubmit}
+    >
       <Id>#{form.id}</Id>
 
       <Wrapper flex flex_dc>
         <label>Titulo</label>
-        <input name="title" value={form.title} onChange={handleChangeForm} />
+        <input
+          required
+          name="title"
+          value={form.title}
+          onChange={handleChangeForm}
+        />
       </Wrapper>
 
       <Wrapper flex flex_dc>
         <label>Contenido</label>
         <textarea
+          required
           name="textContent"
           type="text"
           value={form.textContent}
@@ -53,6 +66,7 @@ export const AdminExerciseItem = ({
       <Wrapper flex flex_dc>
         <label>Puntos</label>
         <input
+          required
           name="points"
           type="number"
           value={form.points}
@@ -63,6 +77,7 @@ export const AdminExerciseItem = ({
       <Wrapper flex flex_dc>
         <label>Tiempo</label>
         <input
+          required
           name="time"
           type="number"
           value={form.time}
@@ -103,7 +118,7 @@ export const AdminExerciseItem = ({
         ))}
       </select>
 
-      {/* <button>Borrar</button> */}
+      <Submit type="submit" value="Guadar" />
     </AdminExerciseItemWrapper>
   );
 };
@@ -132,6 +147,17 @@ const AdminExerciseItemWrapper = styled(Wrapper)`
     color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
     padding: 0.5rem;
   }
+`;
+
+const Submit = styled.input`
+  width: min-content;
+  padding: 1rem;
+  background: ${({ theme: { successColor } }) => successColor};
+
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  cursor: pointer;
 `;
 
 const Id = styled.h2``;

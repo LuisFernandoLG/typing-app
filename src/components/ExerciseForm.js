@@ -27,8 +27,6 @@ export const ExerciseForm = ({
   const [formErrors, setFormErrors] = useState(null);
 
   useEffect(() => {
-    console.log(form);
-
     if (form.title === "" || form.title === null) {
       setFormErrors("Titulo requerido");
     } else if (form.text_content === "" || form.text_content === null) {

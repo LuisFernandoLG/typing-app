@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "./useFetch";
 import { endpoints } from "../components/signIn/api";
+import { toast } from "react-toastify";
 
 const initialExercises = [];
 export const useAdminExercises = () => {
@@ -8,6 +9,7 @@ export const useAdminExercises = () => {
   const [categories, setCategories] = useState([]);
   const [difficulties, setDifficulties] = useState([]);
   const [statuses, setStatuses] = useState([]);
+  const [errorExerciseUpdated, setErrorExerciseUpdated] = useState(null);
 
   const { fetchData, data, loading } = useFetch();
   const {
@@ -28,13 +30,11 @@ export const useAdminExercises = () => {
 
   const updateExercise = (id, exercise) => {
     const options = { method: "PUT", body: JSON.stringify(exercise) };
-    console.log(exercise);
     fetchPut(endpoints.putExercise, options);
   };
 
   const addExercise = (exercise) => {
     const options = { method: "POST", body: JSON.stringify(exercise) };
-    console.log(exercise);
     fetchPost(endpoints.postExercise, options);
   };
 
