@@ -122,7 +122,7 @@ export const SignInForm = () => {
         />
       </InputGroup>
       {loading ? <Loader /> : null}
-      <SubmitBtn type="submit" value="registrarse" />
+      <SubmitBtn type="submit" value="Registrarse" />
     </SignInWrapper>
   );
 };
