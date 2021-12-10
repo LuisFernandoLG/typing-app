@@ -24,9 +24,11 @@ export const AdminPage = () => {
 
   if (user.typeUser === 2)
     return (
-      <h2>
-        Lo sentimos, pero no tienes permisos para acceder a este apartado :(
-      </h2>
+      <NotAllowedPage flex flex_jc_c flex_ai_c>
+        <h2>
+          Lo sentimos, pero no tienes permisos para acceder a este apartado :(
+        </h2>
+      </NotAllowedPage>
     );
 
   return (
@@ -66,6 +68,11 @@ export const AdminPage = () => {
   );
 };
 
+const NotAllowedPage = styled(Wrapper)`
+  width: 100%;
+  min-height: 100vh;
+`;
+
 const Title = styled.h2`
   font-size: 3.5rem;
   text-align: center;
@@ -73,6 +80,7 @@ const Title = styled.h2`
 
 const AdminPageWrapper = styled(Wrapper)`
   width: 100%;
+  min-height: 100vh;
 `;
 
 const ExercisesWrapper = styled(Wrapper)`

@@ -7,6 +7,7 @@ import { PrimaryButton } from "../Buttons/PrimaryButton";
 import { Exercise } from "../Exercise";
 import { Loader } from "../Loader";
 import { Score } from "../Score";
+import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { endpoints } from "../signIn/api";
 import { TimerExercise } from "../TimerExercise";
 
@@ -16,6 +17,7 @@ export const ExercisePage = () => {
   const { loading, fetchData, data } = useFetch();
   const { fetchData: fetchScore } = useFetch();
   const [exercise, setExercise] = useState(null);
+  const [title, setTitle] = useState(null);
   const [time, setTime] = useState(null);
   const [isTimeOver, setIsTimeOver] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -55,6 +57,7 @@ export const ExercisePage = () => {
     if (data === null) return null;
     setExercise(data.data.textContent);
     setTime(data.data.time);
+    setTitle(data.data.title);
   }, [data]);
 
   useEffect(() => {
@@ -84,31 +87,37 @@ export const ExercisePage = () => {
 
   const goToHomePage = () => history.goBack();
 
-  if (loading) return <Loader />;
-
   return (
-    <ExercisePageContaner>
-      {results ? (
-        <Score results={results} pointsCalculated={pointsCalculated} />
+    <WrapperPage flex flex_jc_c>
+      {loading ? (
+        <Loader />
       ) : (
-        <>
-          <PrimaryButton handleClick={goToHomePage}>Volver</PrimaryButton>
-          {time === 0 ? null : (
-            <TimerExercise time={time} dicrementTime={dicrementTime} />
+        <ExercisePageContaner>
+          <Title>{title}</Title>
+
+          {results ? (
+            <Score results={results} pointsCalculated={pointsCalculated} />
+          ) : (
+            <>
+              <PrimaryButton handleClick={goToHomePage}>Volver</PrimaryButton>
+              {time === 0 ? null : (
+                <TimerExercise time={time} dicrementTime={dicrementTime} />
+              )}
+              <AuthorStyled>{data ? data.title : null}</AuthorStyled>
+              {exercise !== null && (
+                <Exercise
+                  q={exercise}
+                  isTimeOver={isTimeOver}
+                  isCompleted={isCompleted}
+                  setIsCompleted={setIsCompleted}
+                  setResults={setResults}
+                />
+              )}
+            </>
           )}
-          <AuthorStyled>{data ? data.title : null}</AuthorStyled>
-          {exercise !== null && (
-            <Exercise
-              q={exercise}
-              isTimeOver={isTimeOver}
-              isCompleted={isCompleted}
-              setIsCompleted={setIsCompleted}
-              setResults={setResults}
-            />
-          )}
-        </>
+        </ExercisePageContaner>
       )}
-    </ExercisePageContaner>
+    </WrapperPage>
   );
 };
 
@@ -118,4 +127,15 @@ const AuthorStyled = styled.h2`
 
 const ExercisePageContaner = styled.div`
   margin: 2rem auto;
+`;
+
+const WrapperPage = styled(Wrapper)`
+  min-height: 100vh;
+  width: 100%;
+  padding: 1rem;
+`;
+
+const Title = styled.h1`
+  margin: 1rem 0;
+  text-align: center;
 `;
