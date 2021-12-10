@@ -394,6 +394,8 @@ const KeyBoardStyled = styled(Wrapper)`
   border-radius: 1rem;
   gap: 1rem;
   padding: 1rem;
+
+  bottom: 10%;
 `;
 
 const KeyStyled = styled.div`

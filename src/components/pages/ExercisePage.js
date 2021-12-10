@@ -126,16 +126,16 @@ const AuthorStyled = styled.h2`
 `;
 
 const ExercisePageContaner = styled.div`
-  margin: 2rem auto;
+  margin: 1rem auto;
 `;
 
 const WrapperPage = styled(Wrapper)`
   min-height: 100vh;
   width: 100%;
-  padding: 1rem;
+  padding: 0 1rem;
 `;
 
 const Title = styled.h1`
-  margin: 1rem 0;
+  margin: 0 0;
   text-align: center;
 `;

@@ -18,7 +18,7 @@ export const Score = ({ results, pointsCalculated }) => {
   };
 
   return (
-    <ScoreContainer flex flex_jc_c flex_dc gap="1rem">
+    <ScoreContainer flex flex_jc_c flex_dc flex_ai_c gap="1rem">
       <BubbleScore percentage={successfulPercentage} />
       <Points>{pointsInt} Puntos</Points>
       <BackBtn onClick={goToHome}>Volver al inicio</BackBtn>

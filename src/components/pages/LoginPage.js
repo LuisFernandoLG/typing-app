@@ -40,10 +40,9 @@ const RedirectLink = styled.span`
 
 const BackGround = styled.img`
   position: absolute;
-  top: 0;
   z-index: -2;
   width: 100%;
-  height: 100%;
+  height: 120vh;
 
   object-fit: cover;
 `;
@@ -53,7 +52,7 @@ const Filter = styled.div`
   top: 0;
   z-index: -1;
   width: 100%;
-  height: 100%;
+  height: 110vh;
 
   opacity: 0.5;
 
@@ -63,6 +62,6 @@ const Filter = styled.div`
 const Container = styled(Wrapper)`
   width: 100%;
   height: 100vh;
-  position: relative;
+  /* position: relative; */
   animation: ${fadeInAnimation} 800ms ease;
 `;

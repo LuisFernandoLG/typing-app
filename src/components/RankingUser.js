@@ -1,24 +1,35 @@
 import styled from "styled-components";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
 
-export const RankingUser = ({ position, name, score }) => {
+export const RankingUser = ({ position, name, score, children }) => {
   return (
     <RankingUserContainer flex gap="1rem">
+      <Sticker>{children}</Sticker>
+
       <Position>{position}</Position>
       <Wrapper flex flex_dc flex_jc_c gap="0.5rem">
         <Name>{name}</Name>
-        <Score>{score}</Score>
+        <Score>
+          Puntaje: <span>{score}</span>
+        </Score>
       </Wrapper>
     </RankingUserContainer>
   );
 };
 
+const Sticker = styled.div`
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+`;
+
 const RankingUserContainer = styled(Wrapper)`
-  width: 100%;
+  position: relative;
+  width: 90%;
   box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
   padding: 1rem;
 
-  margin: 1rem 0;
+  margin: 1rem auto;
 
   border-radius: 1rem;
 `;
@@ -32,4 +43,8 @@ const Name = styled.p`
 `;
 const Score = styled.span`
   font-size: 1rem;
+
+  span {
+    font-weight: 800;
+  }
 `;

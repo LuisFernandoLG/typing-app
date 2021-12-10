@@ -23,7 +23,7 @@ const FooterWrapper = styled(Wrapper)`
   bottom: 0;
   background: red;
   padding: 1rem;
-  background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  background: #eeeeeea0;
 `;
 
 const Title = styled.h3``;
