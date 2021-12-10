@@ -15,6 +15,8 @@ const initialForm = {
   password: "",
 };
 
+const nameRegex = "[a-záéíóúÁÉÍÓÚA-Z ]{0,40}";
+
 export const SignInForm = () => {
   const { fetchData, fetchErrors, data, loading } = useFetch();
   const [form, setForm] = useState(initialForm);
@@ -63,6 +65,7 @@ export const SignInForm = () => {
       <InputGroup>
         <Label>Nombre</Label>
         <Input
+          pattern={nameRegex}
           required
           type="text"
           name="name"
@@ -74,6 +77,7 @@ export const SignInForm = () => {
       <InputGroup>
         <Label>Apellido</Label>
         <Input
+          pattern={nameRegex}
           required
           type="text"
           name="surname"
@@ -85,6 +89,7 @@ export const SignInForm = () => {
       <InputGroup>
         <Label>Segundo apellido</Label>
         <Input
+          pattern={nameRegex}
           required
           type="text"
           name="second_surname"
@@ -107,6 +112,7 @@ export const SignInForm = () => {
       <InputGroup>
         <Label>Contraseña</Label>
         <Input
+          minLength={8}
           required
           type="password"
           name="password"
