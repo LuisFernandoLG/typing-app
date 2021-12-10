@@ -55,6 +55,7 @@ export const SignInForm = () => {
   return (
     <SignInWrapper
       as="form"
+      flex
       flex_dc
       flex_ai_c
       flex_jc_c
@@ -129,9 +130,9 @@ export const SignInForm = () => {
 const SubmitBtn = styled.input`
   background: ${({ theme: { primaryColor } }) => primaryColor};
   color: ${({ theme: { bgColor } }) => bgColor};
-  padding: 0.5rem 1rem;
+  padding: 1rem 2rem;
   border-radius: 0.5rem;
-  margin: auto;
+  cursor: pointer;
 
   border: none;
   outline: none;
@@ -139,6 +140,7 @@ const SubmitBtn = styled.input`
 
 const SignInWrapper = styled(Wrapper)`
   background: ${({ theme: { bgColor } }) => bgColor};
+  box-shadow: 0 0 40px -15px #000000;
   border-radius: 1rem;
   padding: 1rem;
   margin: 0 5rem;
@@ -148,12 +150,23 @@ const SignInWrapper = styled(Wrapper)`
 const Title = styled.h2`
   text-align: center;
 `;
-const Label = styled.label``;
+const Label = styled.label`
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+`;
 const Input = styled.input`
   width: 100%;
+  border: 2px solid ${({ theme: { disableColor } }) => disableColor};
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+
+  &:focus {
+    outline: 2px solid ${({ theme: { primaryColor } }) => primaryColor};
+  }
 `;
 const InputGroup = styled(Wrapper)`
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;

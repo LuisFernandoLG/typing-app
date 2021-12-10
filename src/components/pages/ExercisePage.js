@@ -10,6 +10,7 @@ import { Score } from "../Score";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { endpoints } from "../signIn/api";
 import { TimerExercise } from "../TimerExercise";
+import { goTopPage } from "../../helpers/goToTopPage";
 
 export const ExercisePage = () => {
   const { idQuote } = useParams();
@@ -66,6 +67,11 @@ export const ExercisePage = () => {
 
   useEffect(() => {
     if (data === null) return null;
+
+    setTimeout(() => {
+      goTopPage();
+    }, 2000);
+
     setExercise(data.data.textContent);
     setTime(data.data.time);
     setTitle(data.data.title);
