@@ -89,7 +89,7 @@ export const ExercisePage = () => {
           total_score: pointsCalculated,
           user_id: user.id,
           exercise_id: data.data.id,
-          time_taken: timeTaken,
+          time_taken: isTimeOver ? data.data.time : timeTaken,
         }),
       };
       fetchScore(endpoints.score, options);
