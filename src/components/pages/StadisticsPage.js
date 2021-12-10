@@ -57,7 +57,6 @@ const GridContainer = styled.div`
   padding: 1rem;
   margin: 2rem auto;
   display: grid;
-  height: 20px;
 
   grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
   gap: 2rem;
