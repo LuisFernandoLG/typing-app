@@ -50,6 +50,17 @@ export const ExercisePage = () => {
   let history = useHistory();
 
   useEffect(() => {
+    window.addEventListener("keypress", (e) => {
+      if (e.code === "Space" && e.target === document.body) {
+        e.preventDefault();
+      }
+    });
+    return () => {
+      window.removeEventListener("keypress", () => {});
+    };
+  }, []);
+
+  useEffect(() => {
     fetchData(`${endpoints.exercise}/${idQuote}`);
   }, []);
 
