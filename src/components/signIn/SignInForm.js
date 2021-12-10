@@ -139,6 +139,7 @@ const SubmitBtn = styled.input`
 `;
 
 const SignInWrapper = styled(Wrapper)`
+  width: 80%;
   background: ${({ theme: { bgColor } }) => bgColor};
   box-shadow: 0 0 40px -15px #000000;
   border-radius: 1rem;

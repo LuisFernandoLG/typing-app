@@ -24,7 +24,6 @@ export const LoginPage = () => {
         ¿Aún no tienes una cuenta?
         <Link to={routes.SIGNUP_PAGE}>Regístrese aquí</Link>
       </RedirectLink>
-      {/* <FooterLogo /> */}
     </Container>
   );
 };
