@@ -6,7 +6,7 @@ import { endpoints } from "../signIn/api";
 const initialCategories = [
   {
     id: -1,
-    name: "categoría",
+    name: "Categoría",
   },
 ];
 

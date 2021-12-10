@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { routes } from "../routes";
 import { BubbleScore } from "./BubbleScore";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
+import { FaUndo } from "react-icons/fa";
 
 export const Score = ({ results, pointsCalculated }) => {
   let history = useHistory();
@@ -17,11 +18,18 @@ export const Score = ({ results, pointsCalculated }) => {
     history.push(routes.HOME_PAGE);
   };
 
+  const reloadPage = () => {
+    history.go(0);
+  };
+
   return (
     <ScoreContainer flex flex_jc_c flex_dc flex_ai_c gap="1rem">
       <BubbleScore percentage={successfulPercentage} />
       <Points>{pointsInt} Puntos</Points>
       <BackBtn onClick={goToHome}>Volver al inicio</BackBtn>
+      <ReloadBtn onClick={reloadPage}>
+        <FaUndo />
+      </ReloadBtn>
     </ScoreContainer>
   );
 };
@@ -35,6 +43,15 @@ const ScoreContainer = styled(Wrapper)`
 `;
 
 const BackBtn = styled.button`
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1rem;
+
+  border-radius: 1rem;
+`;
+
+const ReloadBtn = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
