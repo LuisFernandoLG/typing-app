@@ -19,7 +19,7 @@ html{
 }
 
 body{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 
 button{

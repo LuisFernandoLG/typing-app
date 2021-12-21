@@ -51,7 +51,7 @@ export const RankingPage = () => {
       {loading ? (
         <Loader />
       ) : (
-        <Wrapper>
+        <UsersWrapper>
           {rankingUsers.map(({ id, name, lastName, totalScore }, index) => (
             <RankingUser
               key={id}
@@ -64,11 +64,16 @@ export const RankingPage = () => {
               {index === 2 ? <Throphy3 /> : null}
             </RankingUser>
           ))}
-        </Wrapper>
+        </UsersWrapper>
       )}
     </RankingContainer>
   );
 };
+
+const UsersWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
+`;
 
 const RankingContainer = styled.div`
   flex-grow: 1;

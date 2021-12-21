@@ -1,23 +1,28 @@
 import { useContext, useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
 import styled, { css } from "styled-components";
 import AuthContext from "../../contexts/AuthContext";
 import { routes } from "../../routes";
+import GroupInput from "../inputs/GroupInput";
 import { Loader } from "../Loader";
+import { Wrapper } from "../shareStyleComponents/Wrapper";
 
-const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-const passwordRegex = "";
+const emailRegex = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/;
 
 export const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const { setLogIn, authLoading, isAuth } = useContext(AuthContext);
   let history = useHistory();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-  const hanldeSubmit = (e) => {
-    e.preventDefault();
-    setLogIn(email, password);
+  const hanldeSubmitOwn = (data) => {
+    setLogIn(watch("Correo"), watch("Contraseña"));
+    console.log(data);
   };
 
   useEffect(() => {
@@ -25,81 +30,62 @@ export const LoginForm = () => {
   }, [isAuth]);
 
   return (
-    <LoginFormContainer onSubmit={hanldeSubmit}>
-      <Title>¡Bienvenido de nuevo!</Title>
+    <LoginFormContainer
+      as="form"
+      flex
+      flex_dc
+      flex_ai_c
+      gap="3rem"
+      onSubmit={handleSubmit(hanldeSubmitOwn)}
+    >
+      <Title>Inicio de sesión</Title>
 
-      <GroupInput>
-        <Label>Correo electrónico</Label>
-        <EmailInput
-          required
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </GroupInput>
+      <GroupInput
+        name="Correo"
+        regex={emailRegex}
+        isRequired={true}
+        register={register}
+        errors={errors}
+      />
+      <GroupInput
+        name="Contraseña"
+        type="password"
+        isRequired={true}
+        register={register}
+        errors={errors}
+      />
 
-      <GroupInput>
-        <Label>Contraseña</Label>
-        <PasswordInput
-          required
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </GroupInput>
-
-      {authLoading ? <Loader /> : null}
-      <PrimaryButton disabled={authLoading}> Iniciar sesión</PrimaryButton>
+      {authLoading ? (
+        <Loader />
+      ) : (
+        <PrimaryButton type="submit" value="Iniciar sesión" />
+      )}
     </LoginFormContainer>
   );
 };
 
-const LoginFormContainer = styled.form`
-  margin: 5rem auto 0 auto;
-
-  border-radius: 1rem;
+const LoginFormContainer = styled(Wrapper)`
+  padding: 2rem;
 
   background: ${({ theme: { bgColor } }) => bgColor};
-
-  padding: 1.5rem;
+  box-shadow: 0 0 1.875rem -1.25rem ${({ theme: { shadowColor } }) => shadowColor};
 
   font-size: 20px;
-`;
-
-const GroupInput = styled.div`
-  margin: 1em auto;
-  display: flex;
-  flex-direction: column;
+  width: 30rem;
 `;
 
 const Title = styled.h2`
   text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 1rem;
 `;
 
-const Label = styled.label`
-  font-weight: 700;
-  margin-bottom: 0.5em;
-`;
-
-const defaultStyles = css`
+const PrimaryButton = styled.input`
+  border: none;
   outline: none;
-  border: 1px solid #272727;
-  padding: 0.2rem;
-
-  border-radius: 0.5rem;
-`;
-
-const EmailInput = styled.input.attrs({ type: "email" })`
-  ${defaultStyles}
-`;
-const PasswordInput = styled.input.attrs({ type: "password" })`
-  ${defaultStyles}
-`;
-const PrimaryButton = styled.button`
   margin-top: 1rem;
-  width: 100%;
+  width: 50%;
   padding: 0.5em;
+  cursor: pointer;
 
   background: ${({ theme: { primaryColor } }) => primaryColor};
   color: ${({ theme: { bgColor } }) => bgColor};

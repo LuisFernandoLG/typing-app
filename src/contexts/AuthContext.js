@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (fetchErrors) {
-      toast.error("Algo salió mal :(");
+      toast.error("Inicio de sesión fallido!");
     }
   }, [fetchErrors]);
 

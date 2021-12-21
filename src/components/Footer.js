@@ -3,7 +3,7 @@ import { Wrapper } from "./shareStyleComponents/Wrapper";
 
 export const Footer = () => {
   return (
-    <FooterWrapper as="footer" flex flex_jc_se>
+    <FooterWrapper as="footer" flex flex_jc_se flex_ai_c>
       <Wrapper>
         <Title>Type and Type® - 2021-presente</Title>
         <Paragraph>
@@ -20,10 +20,10 @@ export const Footer = () => {
 };
 
 const FooterWrapper = styled(Wrapper)`
-  bottom: 0;
-  background: red;
+  margin-top: 5rem;
+  width: 100%;
   padding: 1rem;
-  background: #eeeeeea0;
+  background: ${({ theme: { bgColor } }) => bgColor};
 `;
 
 const Title = styled.h3``;

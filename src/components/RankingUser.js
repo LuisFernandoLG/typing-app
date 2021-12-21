@@ -5,7 +5,6 @@ export const RankingUser = ({ position, name, score, children }) => {
   return (
     <RankingUserContainer flex gap="1rem">
       <Sticker>{children}</Sticker>
-
       <Position>{position}</Position>
       <Wrapper flex flex_dc flex_jc_c gap="0.5rem">
         <Name>{name}</Name>

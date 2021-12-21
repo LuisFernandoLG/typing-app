@@ -12,6 +12,7 @@ import { PrivatePage } from "./pages/PrivatePage";
 import { RankingPage } from "./pages/RankingPage";
 import { SignInPage } from "./pages/SignInPage";
 import { StadisticsPage } from "./pages/StadisticsPage";
+import ScrollToTop from "./ScrollToTop";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
 
 export const MyRouter = () => {
@@ -19,38 +20,40 @@ export const MyRouter = () => {
     <HashRouter>
       <NavBar />
       <Wrapper flex>
-        <Switch>
-          <Route path={routes.LOGIN_PAGE} component={LoginPage} />
-          <Route path={routes.SIGNUP_PAGE} component={SignInPage} />
+        <ScrollToTop>
+          <Switch>
+            <Route path={routes.LOGIN_PAGE} component={LoginPage} />
+            <Route path={routes.SIGNUP_PAGE} component={SignInPage} />
 
-          <Route
-            path={`${routes.EXERCICE_PAGE}/:idQuote`}
-            children={<PrivatePage component={ExercisePage} />}
-          />
-          <Route
-            exact
-            path={routes.ADMIN_PAGE}
-            children={<PrivatePage component={AdminPage} />}
-          />
-          <Route
-            exact
-            path={routes.RANKING_PAGE}
-            children={<PrivatePage component={RankingPage} />}
-          />
-          <Route
-            exact
-            path={routes.STADISTICS_PAGE}
-            children={<PrivatePage component={StadisticsPage} />}
-          />
-          <Route exact path={routes.NUM_PAD_PAGE} component={NumPadPage} />
-          <Route
-            exact
-            path={routes.HOME_PAGE}
-            children={<PrivatePage component={HomePage} />}
-          />
+            <Route
+              path={`${routes.EXERCICE_PAGE}/:idQuote`}
+              children={<PrivatePage component={ExercisePage} />}
+            />
+            <Route
+              exact
+              path={routes.ADMIN_PAGE}
+              children={<PrivatePage component={AdminPage} />}
+            />
+            <Route
+              exact
+              path={routes.RANKING_PAGE}
+              children={<PrivatePage component={RankingPage} />}
+            />
+            <Route
+              exact
+              path={routes.STADISTICS_PAGE}
+              children={<PrivatePage component={StadisticsPage} />}
+            />
+            <Route exact path={routes.NUM_PAD_PAGE} component={NumPadPage} />
+            <Route
+              exact
+              path={routes.HOME_PAGE}
+              children={<PrivatePage component={HomePage} />}
+            />
 
-          <Route to="*" component={NotFoundPage} />
-        </Switch>
+            <Route to="*" component={NotFoundPage} />
+          </Switch>
+        </ScrollToTop>
       </Wrapper>
       <Footer />
     </HashRouter>
