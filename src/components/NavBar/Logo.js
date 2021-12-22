@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import typeAndTypeIcon from "../../images/keyboard.png";
 import { useHistory } from "react-router";
+import { routes } from "../../routes";
 
 export const Logo = () => {
   let history = useHistory();
 
-  const goHomePage = () => history.push("/");
+  const goHomePage = () => history.push(routes.HOME_PAGE);
 
   return (
     <Container flex flex_ai_c onClick={goHomePage}>

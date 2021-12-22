@@ -102,25 +102,21 @@ export const ExercisePage = () => {
     }
   }, [pointsCalculated]);
 
-  const goToHomePage = () => history.goBack();
-
   return (
-    <WrapperPage flex flex_jc_c>
+    <WrapperPage flex flex_dc flex_jc_fs flex_ai_c>
       {loading ? (
         <Loader />
       ) : (
-        <ExercisePageContaner>
-          <Title>{title}</Title>
+        <>
+          <Wrapper flex flex_jc_c flex_ai_c>
+            <TimerExercise time={time} dicrementTime={dicrementTime} />
+            <Title>{title}</Title>
+          </Wrapper>
 
           {results ? (
             <Score results={results} pointsCalculated={pointsCalculated} />
           ) : (
             <>
-              <PrimaryButton handleClick={goToHomePage}>Volver</PrimaryButton>
-              {time === 0 ? null : (
-                <TimerExercise time={time} dicrementTime={dicrementTime} />
-              )}
-              <AuthorStyled>{data ? data.title : null}</AuthorStyled>
               {exercise !== null && (
                 <Exercise
                   q={exercise}
@@ -132,7 +128,7 @@ export const ExercisePage = () => {
               )}
             </>
           )}
-        </ExercisePageContaner>
+        </>
       )}
     </WrapperPage>
   );

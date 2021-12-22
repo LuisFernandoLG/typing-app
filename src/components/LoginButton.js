@@ -32,7 +32,3 @@ const LoginBtn = styled.button`
   background: transparent;
   cursor: pointer;
 `;
-
-const LoginIcon = styled.img`
-  width: 20px;
-`;

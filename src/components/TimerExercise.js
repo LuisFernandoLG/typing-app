@@ -4,6 +4,7 @@ import { Wrapper } from "./shareStyleComponents/Wrapper";
 
 export const TimerExercise = ({ time }) => {
   const timeFormated = secondsToMinutes(time);
+  if (time === 0) return null;
   return <TimeExerciseWrapper>{timeFormated}</TimeExerciseWrapper>;
 };
 

@@ -2,8 +2,9 @@ import { KeyBoard } from "./KeyBoard";
 import { Quote } from "./Quote";
 import { useKeyBoardActivity } from "../hooks/useKeyBoardActivity";
 import { ToolBar } from "./toolbar/ToolBar";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useEffectKeySounds } from "../hooks/useEffectKeySounds";
+import { useToggleKeyBoardButtons } from "../hooks/useToggleKeyBoardButtons";
 
 export const Exercise = ({
   q,
@@ -22,14 +23,16 @@ export const Exercise = ({
     results,
     calculateResults,
   } = useKeyBoardActivity(q);
-  const [isEnableSound, setIsEnableSound] = useState(true);
-  const [keyBoardVisibility, setKeyBoardVisibility] = useState(true);
+
+  const {
+    isEnableSound,
+    enableSound,
+    disableSound,
+    keyBoardVisibility,
+    enableKeyboard,
+    disableKeyBoard,
+  } = useToggleKeyBoardButtons();
   useEffectKeySounds(keyPressed, isEnableSound);
-
-  const toggleEnableSound = () => setIsEnableSound(!isEnableSound);
-
-  const toggleKeyBoardVisibility = () =>
-    setKeyBoardVisibility(!keyBoardVisibility);
 
   useEffect(() => {
     if (isTimeOver || isCompleted) calculateResults();
@@ -48,10 +51,12 @@ export const Exercise = ({
       {sizeQuote > 0 ? (
         <>
           <ToolBar
-            keyBoardVisibility={keyBoardVisibility}
-            toggleKeyBoardVisibility={toggleKeyBoardVisibility}
             isEnableSound={isEnableSound}
-            toggleEnableSound={toggleEnableSound}
+            enableSound={enableSound}
+            disableSound={disableSound}
+            keyBoardVisibility={keyBoardVisibility}
+            enableKeyboard={enableKeyboard}
+            disableKeyBoard={disableKeyBoard}
           />
           <Quote quote={quote} indexQuote={indexQuote} />
           {keyWanted !== null && keyBoardVisibility ? (

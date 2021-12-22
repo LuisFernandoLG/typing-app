@@ -1,50 +1,80 @@
 import styled from "styled-components";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
-import rankIcon from "../../images/rank.png";
-import creativeIcon from "../../images/creativity.png";
-import barGraphIcon from "../../images/bargraph.png";
 import { SideBarLink } from "./SideBarLink";
 import { routes } from "../../routes";
+import {
+  FaHome,
+  FaTrophy,
+  FaChartBar,
+  FaBars,
+  FaUserCircle,
+} from "react-icons/fa";
 import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 
-export const SideBar = () => {
-  const { isAuth } = useContext(AuthContext);
-
-  if (!isAuth) return null;
+export const SideBar = ({ toggleIsOpen }) => {
+  const { user } = useContext(AuthContext);
+  const isAdmin = user.typeUser === 1 ? true : false;
+  console.log({ user, isAdmin });
 
   return (
-    <SideBarContainer flex flex_dc gap="2rem">
+    <SideBarContainer flex flex_dc>
+      <ToggleBtnVisibility onClick={toggleIsOpen}>
+        <FaBars />
+      </ToggleBtnVisibility>
+
       <SideBarLink
-        icon={rankIcon}
+        icon={FaHome}
+        title="Inicio"
+        description="Volver al inicio"
+        linkPage={routes.HOME_PAGE}
+      />
+      <SideBarLink
+        icon={FaTrophy}
         title="Ranking"
         description="Mira los mejores puntajes."
         linkPage={routes.RANKING_PAGE}
       />
 
       <SideBarLink
-        icon={creativeIcon}
-        title="Creativo"
-        description="Construye tus propios ejercicios!"
-        linkPage="/12"
-      />
-
-      <SideBarLink
-        icon={barGraphIcon}
+        icon={FaChartBar}
         title="Estadísticas"
         description="Echa un vistazo a tu puntaje."
         linkPage={routes.STADISTICS_PAGE}
       />
+
+      {isAdmin && (
+        <SideBarLink
+          icon={FaUserCircle}
+          title="Admin"
+          description="Panel de administrador"
+          linkPage={routes.ADMIN_PAGE}
+        />
+      )}
     </SideBarContainer>
   );
 };
 
+const ToggleBtnVisibility = styled.div`
+  width: min-content;
+  padding: 1rem;
+  margin-left: auto;
+  cursor: pointer;
+`;
+
 const SideBarContainer = styled(Wrapper)`
   width: max-content;
-  height: max-content;
+  height: 100%;
 
-  margin: 0 2rem;
-  border-radius: 1rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 500;
 
-  box-shadow: 5px 5px 20px ${({ theme: { tertiaryColor } }) => tertiaryColor}; ;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+  overflow: hidden;
+
+  box-shadow: 5px 5px 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  background: ${({ theme: { bgColor } }) => bgColor};
 `;

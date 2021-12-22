@@ -6,12 +6,14 @@ export const ToggleButton = ({
   state,
   enableIcon: EnableIcon,
   disableIcon: DisableIcon,
-  toggleFunction,
+  enableFunction,
+  disableFunction,
 }) => {
   let inputRef = useRef(null);
 
   const handleClick = () => {
-    toggleFunction();
+    if (state) disableFunction();
+    else enableFunction();
     inputRef.current.blur();
   };
   return (
@@ -19,7 +21,7 @@ export const ToggleButton = ({
       <input
         ref={inputRef}
         type="checkbox"
-        defaultValue={state}
+        defaultChecked={state}
         onClick={handleClick}
       />
       {state === true ? <EnableIcon /> : <DisableIcon />}
@@ -49,6 +51,7 @@ const ToggleButtonStyled = styled(Wrapper)`
 
     &:checked + i {
       opacity: 1;
+      color: ${({ theme: { primaryColor } }) => primaryColor};
       text-shadow: 0 0 0.5rem ${({ theme: { primaryColor } }) => primaryColor};
     }
   }

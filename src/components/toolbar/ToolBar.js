@@ -7,10 +7,12 @@ const SpeakerIconEnable = () => <i className="fas fa-volume-up" />;
 const SpeakerIconDisable = () => <i className="fas fa-volume-mute" />;
 
 export const ToolBar = ({
-  keyBoardVisibility,
-  toggleKeyBoardVisibility,
   isEnableSound,
-  toggleEnableSound,
+  enableSound,
+  disableSound,
+  keyBoardVisibility,
+  enableKeyboard,
+  disableKeyBoard,
 }) => {
   return (
     <ToolBarStyled flex flex_jc_fe>
@@ -18,14 +20,16 @@ export const ToolBar = ({
         state={keyBoardVisibility}
         enableIcon={KeyBoardIcon}
         disableIcon={KeyBoardIcon}
-        toggleFunction={toggleKeyBoardVisibility}
+        enableFunction={enableKeyboard}
+        disableFunction={disableKeyBoard}
       />
 
       <ToggleButton
         state={isEnableSound}
         enableIcon={SpeakerIconEnable}
         disableIcon={SpeakerIconDisable}
-        toggleFunction={toggleEnableSound}
+        enableFunction={enableSound}
+        disableFunction={disableSound}
       />
     </ToolBarStyled>
   );

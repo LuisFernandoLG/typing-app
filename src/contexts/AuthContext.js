@@ -5,12 +5,6 @@ import { endpoints } from "../components/signIn/api";
 
 const AuthContext = createContext();
 
-const randomUser = {
-  name: "Luis",
-  email: "luis@gmail.com",
-  password: "1234567890",
-};
-
 const initialAuth = JSON.parse(localStorage.getItem("isAuth")) || false;
 const initialUser = JSON.parse(localStorage.getItem("user")) || {};
 
