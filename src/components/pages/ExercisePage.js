@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import AuthContext from "../../contexts/AuthContext";
 import { useFetch } from "../../hooks/useFetch";
-import { PrimaryButton } from "../Buttons/PrimaryButton";
 import { Exercise } from "../Exercise";
 import { Loader } from "../Loader";
 import { Score } from "../Score";
@@ -47,8 +46,6 @@ export const ExercisePage = () => {
     const interval = setInterval(dicrementTime, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  let history = useHistory();
 
   useEffect(() => {
     window.addEventListener("keypress", (e) => {
@@ -133,14 +130,6 @@ export const ExercisePage = () => {
     </WrapperPage>
   );
 };
-
-const AuthorStyled = styled.h2`
-  text-align: center;
-`;
-
-const ExercisePageContaner = styled.div`
-  margin: 1rem auto;
-`;
 
 const WrapperPage = styled(Wrapper)`
   min-height: 100vh;

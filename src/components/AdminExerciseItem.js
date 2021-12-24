@@ -107,12 +107,7 @@ export const AdminExerciseItem = ({
 
       <select name="idStatus" onChange={handleChangeForm}>
         {statuses.map(({ id, name }) => (
-          <option
-            key={`${id}_s`}
-            value={id}
-            value={id}
-            selected={form.idStatus === id}
-          >
+          <option key={`${id}_s`} value={id} selected={form.idStatus === id}>
             {name}
           </option>
         ))}

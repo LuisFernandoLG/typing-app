@@ -1,5 +1,4 @@
-import { Bubble, Line } from "react-chartjs-2";
-import { toast } from "react-toastify";
+import { Bubble } from "react-chartjs-2";
 import styled from "styled-components";
 
 export const ProgressGraph = ({ scoreHistory, title }) => {

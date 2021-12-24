@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { useFetch } from "../../hooks/useFetch";
-import { fadeInAnimation } from "../../style/animations";
 import { ExerciseItem } from "../ExerciseItem";
 import { Loader } from "../Loader";
 import { ToolBarSearch } from "../searchBar/ToolBarSearch";
@@ -54,7 +53,6 @@ export const HomePage = () => {
   }, [data]);
 
   const filterEnableExer = (items) => {
-    console.log(items);
     return items.filter((item) => item.status !== 2);
   };
 
@@ -97,7 +95,6 @@ export const HomePage = () => {
 const HomeContainer = styled(Wrapper)`
   margin: 1rem 2rem;
   width: 100%;
-  animation: ${fadeInAnimation} 800ms ease;
   min-height: 100vh;
 `;
 

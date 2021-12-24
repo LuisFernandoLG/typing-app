@@ -1,7 +1,7 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import AuthContext from "../../contexts/AuthContext";
 import { routes } from "../../routes";
 import GroupInput from "../inputs/GroupInput";

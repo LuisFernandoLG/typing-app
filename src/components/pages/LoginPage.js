@@ -5,7 +5,6 @@ import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import { Redirect } from "react-router";
 import { routes } from "../../routes";
-import { fadeInAnimation } from "../../style/animations";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as SignImg } from "../../images/webDeveloper.svg";
@@ -42,7 +41,6 @@ const RedirectLink = styled.span`
 const Container = styled(Wrapper)`
   width: 100%;
   height: 100vh;
-  animation: ${fadeInAnimation} 800ms ease;
 `;
 
 // const SignImg = styled.img`

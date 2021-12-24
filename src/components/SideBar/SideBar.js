@@ -1,24 +1,15 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { SideBarLink } from "./SideBarLink";
 import { routes } from "../../routes";
-import {
-  FaHome,
-  FaTrophy,
-  FaChartBar,
-  FaBars,
-  FaUserCircle,
-  FaChevronRight,
-  FaChevronLeft,
-} from "react-icons/fa";
-import { useContext, useEffect } from "react";
+import { FaHome, FaTrophy, FaChartBar, FaUserCircle } from "react-icons/fa";
+import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import { Logo } from "../NavBar/Logo";
 
-export const SideBar = ({ toggleIsOpen, isOpen }) => {
+export const SideBar = ({ isOpen }) => {
   const { user } = useContext(AuthContext);
   const isAdmin = user.typeUser === 1 ? true : false;
-  console.log({ user, isAdmin });
 
   return (
     <SideBarContainer flex flex_dc isOpen={isOpen}>

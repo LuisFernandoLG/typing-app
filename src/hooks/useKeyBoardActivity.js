@@ -4,7 +4,6 @@ import {
   keyBoardActivityInitialState,
   KeyBoardActivityReducer,
 } from "../reducers/KeyBoardActivityReducer";
-import { useEffectKeySounds } from "./useEffectKeySounds";
 const excludeKeysFromPressed = [
   "Control",
   "Shift",

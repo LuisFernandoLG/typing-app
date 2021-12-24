@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "./useFetch";
 import { endpoints } from "../components/signIn/api";
-import { toast } from "react-toastify";
 
-const initialExercises = [];
 export const useAdminExercises = () => {
   const [exercieses, setExercieses] = useState([]);
   const [categories, setCategories] = useState([]);
   const [difficulties, setDifficulties] = useState([]);
   const [statuses, setStatuses] = useState([]);
-  const [errorExerciseUpdated, setErrorExerciseUpdated] = useState(null);
 
   const { fetchData, data, loading } = useFetch();
   const {

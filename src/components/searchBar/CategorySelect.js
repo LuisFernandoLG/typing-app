@@ -30,7 +30,9 @@ export const CategorySelect = ({ selectCategory }) => {
   return (
     <Select onChange={handleChange}>
       {categories.map(({ id, name }) => (
-        <option value={id}>{name}</option>
+        <option value={id} key={`${id}-category`}>
+          {name}
+        </option>
       ))}
     </Select>
   );

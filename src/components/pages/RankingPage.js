@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useFetch } from "../../hooks/useFetch";
 import { Loader } from "../Loader";
 import { RankingUser } from "../RankingUser";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { endpoints } from "../signIn/api";
 import { toast } from "react-toastify";
 import { FaTrophy } from "react-icons/fa";

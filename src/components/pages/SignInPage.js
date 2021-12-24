@@ -37,10 +37,6 @@ const RedirectLink = styled.span`
   }
 `;
 
-// const FormImg = styled.div`
-//   height: 25rem;
-// `;
-
 const SignInPageWrapper = styled(Wrapper)`
   width: 100%;
   padding: 2rem 0;

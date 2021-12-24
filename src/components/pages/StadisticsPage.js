@@ -1,7 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import { useFetch } from "../../hooks/useFetch";
-import { Graph } from "../Graph";
 import { Loader } from "../Loader";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { endpoints } from "../signIn/api";
@@ -38,8 +37,8 @@ export const StadisticsPage = () => {
           <Loader />
         ) : (
           data &&
-          exercisesScore.map((item) => (
-            <ProgressGraph scoreHistory={item} title={item[0].title} />
+          exercisesScore.map((item, i) => (
+            <ProgressGraph key={i} scoreHistory={item} title={item[0].title} />
           ))
         )}
       </GridContainer>
