@@ -7,7 +7,8 @@ import { Redirect } from "react-router";
 import { routes } from "../../routes";
 import { fadeInAnimation } from "../../style/animations";
 import { Link } from "react-router-dom";
-import signImg from "../../images/webDeveloper.svg";
+
+import { ReactComponent as SignImg } from "../../images/webDeveloper.svg";
 
 export const LoginPage = () => {
   const { isAuth } = useContext(AuthContext);
@@ -23,7 +24,7 @@ export const LoginPage = () => {
           <Link to={routes.SIGNUP_PAGE}>Regístrese aquí</Link>
         </RedirectLink>
       </Wrapper>
-      <SignImg src={signImg} />
+      <SignImg />
     </Container>
   );
 };
@@ -44,6 +45,6 @@ const Container = styled(Wrapper)`
   animation: ${fadeInAnimation} 800ms ease;
 `;
 
-const SignImg = styled.img`
-  height: 25rem;
-`;
+// const SignImg = styled.img`
+//   height: 25rem;
+// `;

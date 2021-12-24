@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { SideBarLink } from "./SideBarLink";
 import { routes } from "../../routes";
@@ -8,20 +8,21 @@ import {
   FaChartBar,
   FaBars,
   FaUserCircle,
+  FaChevronRight,
+  FaChevronLeft,
 } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AuthContext from "../../contexts/AuthContext";
+import { Logo } from "../NavBar/Logo";
 
-export const SideBar = ({ toggleIsOpen }) => {
+export const SideBar = ({ toggleIsOpen, isOpen }) => {
   const { user } = useContext(AuthContext);
   const isAdmin = user.typeUser === 1 ? true : false;
   console.log({ user, isAdmin });
 
   return (
-    <SideBarContainer flex flex_dc>
-      <ToggleBtnVisibility onClick={toggleIsOpen}>
-        <FaBars />
-      </ToggleBtnVisibility>
+    <SideBarContainer flex flex_dc isOpen={isOpen}>
+      <Logo />
 
       <SideBarLink
         icon={FaHome}
@@ -55,18 +56,18 @@ export const SideBar = ({ toggleIsOpen }) => {
   );
 };
 
-const ToggleBtnVisibility = styled.div`
-  width: min-content;
-  padding: 1rem;
-  margin-left: auto;
-  cursor: pointer;
-`;
-
 const SideBarContainer = styled(Wrapper)`
   width: max-content;
-  height: 100%;
+  height: max-content;
 
-  position: absolute;
+  padding: 0.5rem;
+
+  grid-column: 1 / span 1;
+  grid-row: 1 / -1;
+
+  font-size: 10px;
+
+  position: fixed;
   left: 0;
   top: 0;
   z-index: 500;
@@ -77,4 +78,21 @@ const SideBarContainer = styled(Wrapper)`
 
   box-shadow: 5px 5px 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
   background: ${({ theme: { bgColor } }) => bgColor};
+
+  h2,
+  p {
+    transition: display 1s ease;
+  }
+
+  h2,
+  p {
+    display: none;
+  }
+
+  &:hover {
+    h2,
+    p {
+      display: flex;
+    }
+  }
 `;

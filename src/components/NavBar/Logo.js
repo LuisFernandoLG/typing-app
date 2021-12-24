@@ -10,7 +10,7 @@ export const Logo = () => {
   const goHomePage = () => history.push(routes.HOME_PAGE);
 
   return (
-    <Container flex flex_ai_c onClick={goHomePage}>
+    <Container flex flex_ai_c flex_jc_c onClick={goHomePage}>
       <ImgLogo src={typeAndTypeIcon} alt="Type and Type" />
       <AppName>Type And Type</AppName>
     </Container>
@@ -19,12 +19,13 @@ export const Logo = () => {
 
 const Container = styled(Wrapper)`
   cursor: pointer;
+  padding: 1.5;
 `;
 
-const AppName = styled.h1`
-  font-size: 1.5rem;
+const AppName = styled.h2`
+  font-size: 2em;
 `;
 
 const ImgLogo = styled.img`
-  height: 4rem;
+  height: 3.5em;
 `;

@@ -11,14 +11,14 @@ import { RankingPage } from "./RankingPage";
 import { StadisticsPage } from "./StadisticsPage";
 
 const AppLogged = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggleIsOpen = () => setIsOpen(!isOpen);
 
   return (
     <GridWrapper>
-      <NavBar toggleIsOpen={toggleIsOpen} />
-      {isOpen && <SideBar toggleIsOpen={toggleIsOpen} />}
+      <NavBar />
+      <SideBar toggleIsOpen={toggleIsOpen} isOpen={isOpen} />
       <Switch>
         <Route
           path={`${routes.EXERCICE_PAGE}/:idQuote`}
@@ -53,6 +53,7 @@ const AppLogged = () => {
 };
 
 const GridWrapper = styled.div`
+  margin-left: 5.3rem;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
@@ -60,6 +61,7 @@ const GridWrapper = styled.div`
 `;
 
 const RouteWrapper = styled.div`
+  width: 100%;
   grid-column: 1 / -1;
   grid-row: 2 / -1;
 `;

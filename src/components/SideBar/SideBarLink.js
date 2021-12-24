@@ -8,8 +8,7 @@ export const SideBarLink = ({ icon: Icon, title, description, linkPage }) => {
       <NavLink to={linkPage} activeClassName="active" exact>
         <LinkContainer flex gap="1em" flex_jc_fs flex_ai_c>
           <Icon />
-
-          <Wrapper flex flex_dc flex_jc_c gap="0.2em">
+          <Wrapper flex flex_dc flex_jc_c gap="0.5em">
             <Title>{title}</Title>
             <Description>{description}</Description>
           </Wrapper>
@@ -23,7 +22,7 @@ const WrapperSideBarLink = styled.div`
   position: relative;
 
   .active::after {
-    content: " ";
+    content: "";
     position: absolute;
     top: 0;
     width: 0.3em;
@@ -45,9 +44,8 @@ const WrapperSideBarLink = styled.div`
 `;
 
 const LinkContainer = styled(Wrapper)`
-  font-size: 10px;
   width: 100%;
-  padding: 2em;
+  padding: 1.5em;
 
   transition: background 300ms ease;
 

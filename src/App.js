@@ -24,7 +24,7 @@ function App() {
 export default App;
 
 const AppStyled = styled.div`
-  width: 95%;
+  width: 100%;
   max-width: 1920px;
   margin: 0 auto;
 `;

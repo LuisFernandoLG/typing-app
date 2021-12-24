@@ -4,7 +4,7 @@ import styled from "styled-components";
 import AuthContext from "../../contexts/AuthContext";
 import { routes } from "../../routes";
 import { SignInForm } from "../signIn/SignInForm";
-import FormImgg from "../../images/form.svg";
+import { ReactComponent as FormImg } from "../../images/form.svg";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { Link } from "react-router-dom";
 
@@ -22,7 +22,7 @@ export const SignInPage = () => {
           <Link to={routes.LOGIN_PAGE}>Iniciar sesión</Link>
         </RedirectLink>
       </Wrapper>
-      <FormImg src={FormImgg} />
+      <FormImg />
     </SignInPageWrapper>
   );
 };
@@ -37,9 +37,9 @@ const RedirectLink = styled.span`
   }
 `;
 
-const FormImg = styled.img`
-  height: 25rem;
-`;
+// const FormImg = styled.div`
+//   height: 25rem;
+// `;
 
 const SignInPageWrapper = styled(Wrapper)`
   width: 100%;
