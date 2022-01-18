@@ -59,9 +59,12 @@ export const Exercise = ({
             disableKeyBoard={disableKeyBoard}
           />
           <Quote quote={quote} indexQuote={indexQuote} />
-          {keyWanted !== null && keyBoardVisibility ? (
-            <KeyBoard keyWanted={keyWanted} keyPressed={keyPressed} />
-          ) : null}
+
+          <KeyBoard
+            keyBoardVisibility={keyBoardVisibility}
+            keyWanted={keyWanted}
+            keyPressed={keyPressed}
+          />
         </>
       ) : null}
     </>
