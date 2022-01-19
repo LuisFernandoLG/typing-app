@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useFetch } from "../../hooks/useFetch";
-import { ExerciseItem } from "../ExerciseItem";
-import { Loader } from "../Loader";
-import { ToolBarSearch } from "../searchBar/ToolBarSearch";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
+import { useFetch } from "../hooks/useFetch";
+import { ExerciseItem } from "../components/homepage/ExerciseItem";
+import { Loader } from "../components/Loader";
+import { ToolBarSearch } from "../components/searchBar/ToolBarSearch";
+import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 import { toast } from "react-toastify";
-import { endpoints } from "../signIn/api";
-import { NoResultsMessage } from "../NoResultsMessage";
+import { endpoints } from "../components/signIn/api";
+import { NoResultsMessage } from "../components/homepage/NoResultsMessage";
 
 const initialExercises = [];
 

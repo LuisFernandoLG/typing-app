@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Loader } from "./Loader";
-import { Wrapper } from "./shareStyleComponents/Wrapper";
+import { Loader } from "../Loader";
+import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { toast } from "react-toastify";
 
 const initialExerForm = {

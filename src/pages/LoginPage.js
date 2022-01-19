@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { LoginForm } from "../LoginComponents/LoginForm";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
+import { LoginForm } from "../components/LoginComponents/LoginForm";
+import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 import { useContext } from "react";
-import AuthContext from "../../contexts/AuthContext";
+import AuthContext from "../contexts/AuthContext";
 import { Redirect } from "react-router";
-import { routes } from "../../routes";
+import { routes } from "../routes";
 import { Link } from "react-router-dom";
 
-import { ReactComponent as SignImg } from "../../images/webDeveloper.svg";
+import { ReactComponent as SignImg } from "../images/webDeveloper.svg";
 
 export const LoginPage = () => {
   const { isAuth } = useContext(AuthContext);

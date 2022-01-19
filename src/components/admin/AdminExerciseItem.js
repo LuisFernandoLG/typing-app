@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Wrapper } from "./shareStyleComponents/Wrapper";
+import { Wrapper } from "../shareStyleComponents/Wrapper";
 
 export const AdminExerciseItem = ({
   adminExercise,

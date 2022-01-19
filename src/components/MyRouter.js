@@ -1,11 +1,11 @@
 import { HashRouter, Route, Switch } from "react-router-dom";
 import { routes } from "../routes";
-import { Footer } from "./Footer";
-import AppLogged from "./pages/AppLogged";
-import { LoginPage } from "./pages/LoginPage";
-import { NotFoundPage } from "./pages/NotFoundPage";
-import { PrivatePage } from "./pages/PrivatePage";
-import { SignInPage } from "./pages/SignInPage";
+import { Footer } from "../layouts/Footer";
+import AppLogged from "../pages/AppLogged";
+import { LoginPage } from "../pages/LoginPage";
+import { NotFoundPage } from "../pages/NotFoundPage";
+import { PrivatePage } from "../pages/PrivatePage";
+import { SignInPage } from "../pages/SignInPage";
 import ScrollToTop from "./ScrollToTop";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
 

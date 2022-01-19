@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { routes } from "../routes";
-import { Wrapper } from "./shareStyleComponents/Wrapper";
+import { routes } from "../../routes";
+import { Wrapper } from "../shareStyleComponents/Wrapper";
 
 export const ExerciseItem = ({ id, title, content, category, difficulty }) => {
   return (

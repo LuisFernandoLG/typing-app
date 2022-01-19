@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { Redirect } from "react-router";
 import styled from "styled-components";
-import AuthContext from "../../contexts/AuthContext";
-import { routes } from "../../routes";
-import { SignInForm } from "../signIn/SignInForm";
-import { ReactComponent as FormImg } from "../../images/form.svg";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
+import AuthContext from "../contexts/AuthContext";
+import { routes } from "../routes";
+import { SignInForm } from "../components/signIn/SignInForm";
+import { ReactComponent as FormImg } from "../images/form.svg";
+import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 import { Link } from "react-router-dom";
 
 export const SignInPage = () => {

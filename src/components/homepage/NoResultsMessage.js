@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import SadFace from "./../images/sadFace.svg";
-import { Wrapper } from "./shareStyleComponents/Wrapper";
+import { Wrapper } from "../shareStyleComponents/Wrapper";
+import SadFace from "./../../images/sadFace.svg";
 
 export const NoResultsMessage = () => {
   return (

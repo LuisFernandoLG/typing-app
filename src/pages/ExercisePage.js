@@ -1,15 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import AuthContext from "../../contexts/AuthContext";
-import { useFetch } from "../../hooks/useFetch";
-import { Exercise } from "../Exercise";
-import { Loader } from "../Loader";
-import { Score } from "../Score";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
-import { endpoints } from "../signIn/api";
-import { TimerExercise } from "../TimerExercise";
-import { goTopPage } from "../../helpers/goToTopPage";
+import AuthContext from "../contexts/AuthContext";
+import { useFetch } from "../hooks/useFetch";
+import { Exercise } from "../components/exercise/Exercise";
+import { Loader } from "../components/Loader";
+import { Score } from "../components/exercise/Score";
+import { Wrapper } from "../components/shareStyleComponents/Wrapper";
+import { endpoints } from "../components/signIn/api";
+import { TimerExercise } from "../components/exercise/TimerExercise";
+import { goTopPage } from "../helpers/goToTopPage";
 
 export const ExercisePage = () => {
   const { idQuote } = useParams();

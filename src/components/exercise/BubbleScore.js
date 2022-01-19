@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { Wrapper } from "./shareStyleComponents/Wrapper";
+import { Wrapper } from "../shareStyleComponents/Wrapper";
 
 export const BubbleScore = ({ percentage }) => {
   return (

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Wrapper } from "./shareStyleComponents/Wrapper";
+import { Wrapper } from "../shareStyleComponents/Wrapper";
 
 export const RankingUser = ({ position, name, score, children }) => {
   return (

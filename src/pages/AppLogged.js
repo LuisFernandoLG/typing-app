@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import styled from "styled-components";
-import { routes } from "../../routes";
-import { NavBar } from "../NavBar/NavBar";
-import { SideBar } from "../SideBar/SideBar";
+import { routes } from "../routes";
+import { NavBar } from "../components/NavBar/NavBar";
+import { SideBar } from "../components/SideBar/SideBar";
 import { AdminPage } from "./AdminPage";
 import { ExercisePage } from "./ExercisePage";
 import { HomePage } from "./HomePage";

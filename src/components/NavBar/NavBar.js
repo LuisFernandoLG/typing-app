@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LoginButton } from "../LoginButton";
+import { LoginButton } from "../LoginComponents/LoginButton";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 
 export const NavBar = () => {

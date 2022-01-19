@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { secondsToMinutes } from "../helpers/converterTimeHelper";
-import { Wrapper } from "./shareStyleComponents/Wrapper";
+import { secondsToMinutes } from "../../helpers/converterTimeHelper";
+import { Wrapper } from "../shareStyleComponents/Wrapper";
 
 export const TimerExercise = ({ time }) => {
   const timeFormated = secondsToMinutes(time);

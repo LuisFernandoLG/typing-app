@@ -1,11 +1,11 @@
 import { useContext, useState, useEffect } from "react";
-import AuthContext from "../../contexts/AuthContext";
-import { useFetch } from "../../hooks/useFetch";
-import { Loader } from "../Loader";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
-import { endpoints } from "../signIn/api";
+import AuthContext from "../contexts/AuthContext";
+import { useFetch } from "../hooks/useFetch";
+import { Loader } from "../components/Loader";
+import { Wrapper } from "../components/shareStyleComponents/Wrapper";
+import { endpoints } from "../components/signIn/api";
 import { toast } from "react-toastify";
-import { ProgressGraph } from "../ProgressGraph";
+import { ProgressGraph } from "../components/stadistics/ProgressGraph";
 import styled from "styled-components";
 
 export const StadisticsPage = () => {

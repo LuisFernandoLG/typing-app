@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
-import { ToggleButton } from "../ToggleButton";
+import { ToggleButton } from "../exercise/ToggleButton";
 
 const KeyBoardIcon = () => <i className="far fa-keyboard" />;
 const SpeakerIconEnable = () => <i className="fas fa-volume-up" />;

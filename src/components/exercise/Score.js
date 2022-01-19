@@ -1,9 +1,9 @@
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import { routes } from "../routes";
+import { routes } from "../../routes";
 import { BubbleScore } from "./BubbleScore";
-import { Wrapper } from "./shareStyleComponents/Wrapper";
 import { FaUndo } from "react-icons/fa";
+import { Wrapper } from "../shareStyleComponents/Wrapper";
 
 export const Score = ({ results, pointsCalculated }) => {
   let history = useHistory();

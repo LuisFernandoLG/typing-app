@@ -1,10 +1,11 @@
 import { KeyBoard } from "./KeyBoard";
+
 import { Quote } from "./Quote";
-import { useKeyBoardActivity } from "../hooks/useKeyBoardActivity";
-import { ToolBar } from "./toolbar/ToolBar";
+import { useKeyBoardActivity } from "../../hooks/useKeyBoardActivity";
+import { ToolBar } from "../toolbar/ToolBar";
 import { useEffect } from "react";
-import { useEffectKeySounds } from "../hooks/useEffectKeySounds";
-import { useToggleKeyBoardButtons } from "../hooks/useToggleKeyBoardButtons";
+import { useEffectKeySounds } from "../../hooks/useEffectKeySounds";
+import { useToggleKeyBoardButtons } from "../../hooks/useToggleKeyBoardButtons";
 
 export const Exercise = ({
   q,

@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import AuthContext from "../../contexts/AuthContext";
-import { useAdminExercises } from "../../hooks/useAdminExercises";
-import { AdminExerciseItem } from "../AdminExerciseItem";
-import { ExerciseForm } from "../ExerciseForm";
-import { Loader } from "../Loader";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
+import AuthContext from "../contexts/AuthContext";
+import { useAdminExercises } from "../hooks/useAdminExercises";
+import { AdminExerciseItem } from "../components/admin/AdminExerciseItem";
+import { ExerciseForm } from "../components/admin/ExerciseForm";
+import { Loader } from "../components/Loader";
+import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 
 export const AdminPage = () => {
   const {

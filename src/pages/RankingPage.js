@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useFetch } from "../../hooks/useFetch";
-import { Loader } from "../Loader";
-import { RankingUser } from "../RankingUser";
-import { endpoints } from "../signIn/api";
+import { useFetch } from "../hooks/useFetch";
+import { Loader } from "../components/Loader";
+import { RankingUser } from "../components/stadistics/RankingUser";
+import { endpoints } from "../components/signIn/api";
 import { toast } from "react-toastify";
 import { FaTrophy } from "react-icons/fa";
 

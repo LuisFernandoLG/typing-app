@@ -1,9 +1,9 @@
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import { routes } from "../../routes";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
+import { routes } from "../routes";
+import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 
-import notFound from "./../../images/notFoundPage.svg";
+import notFound from "../images/notFoundPage.svg";
 
 export const NotFoundPage = () => {
   let history = useHistory();

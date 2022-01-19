@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { Wrapper } from "./shareStyleComponents/Wrapper";
-import AuthContext from "../contexts/AuthContext";
+import { Wrapper } from "../shareStyleComponents/Wrapper";
+import AuthContext from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { useHistory } from "react-router";
-import { routes } from "../routes";
+import { routes } from "../../routes";
 import { FaUserAlt } from "react-icons/fa";
 
 export const LoginButton = () => {

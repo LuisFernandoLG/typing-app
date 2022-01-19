@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Wrapper } from "./shareStyleComponents/Wrapper";
+import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 
 export const Footer = () => {
   return (

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { generate } from "shortid";
 import styled, { keyframes } from "styled-components";
-import { Wrapper } from "./shareStyleComponents/Wrapper";
+import { Wrapper } from "../shareStyleComponents/Wrapper";
 
 export const Quote = ({ quote, indexQuote }) => {
   const [words, setWords] = useState(null);
