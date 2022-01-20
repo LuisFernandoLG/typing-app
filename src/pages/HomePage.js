@@ -92,10 +92,6 @@ export const HomePage = () => {
   );
 };
 
-const HomeContainer = styled(Wrapper)`
-  margin: 1rem 2rem;
-  width: 100%;
-  min-height: 100vh;
-`;
+const HomeContainer = styled(Wrapper)``;
 
 const QuotesContainer = styled.main``;

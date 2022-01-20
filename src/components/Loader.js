@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 export const Loader = () => {
   return (
     <LoaderStyled>
-      <span class="loader"></span>
+      <span className="loader"></span>
     </LoaderStyled>
   );
 };

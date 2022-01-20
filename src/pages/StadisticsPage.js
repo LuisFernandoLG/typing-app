@@ -48,7 +48,6 @@ export const StadisticsPage = () => {
 
 const PageWrapper = styled(Wrapper)`
   width: 100%;
-  min-height: 100vh;
 `;
 
 const GridContainer = styled.div`

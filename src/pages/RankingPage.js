@@ -77,7 +77,6 @@ const UsersWrapper = styled.div`
 const RankingContainer = styled.div`
   flex-grow: 1;
   margin-right: 2rem;
-  min-height: 100vh;
 
   .first {
     color: green;

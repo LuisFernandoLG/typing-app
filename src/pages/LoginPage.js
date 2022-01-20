@@ -9,7 +9,7 @@ import { FlexContainer } from "../components/shareStyleComponents/FlexContainer"
 export const LoginPage = () => {
   const { isAuth } = useContext(AuthContext);
 
-  if (isAuth) return <Redirect to={routesV2.HOME_PAGE.route} />;
+  if (isAuth) return <Redirect to={routesV2.LOGGED_APP.route} />;
 
   return (
     <FlexContainer flex_dc flex_jc_se flex_ai_c pd="5rem 1rem" gap="1rem">

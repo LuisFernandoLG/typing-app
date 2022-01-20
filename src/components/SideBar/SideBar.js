@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { SideBarLink } from "./SideBarLink";
 import { routes } from "../../routes";
-import { FaHome, FaTrophy, FaChartBar, FaUserCircle } from "react-icons/fa";
 import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
 import { Logo } from "../NavBar/Logo";
@@ -11,40 +10,7 @@ export const SideBar = ({ isOpen }) => {
   const { user } = useContext(AuthContext);
   const isAdmin = user.typeUser === 1 ? true : false;
 
-  return (
-    <SideBarContainer flex flex_dc isOpen={isOpen}>
-      <Logo />
-
-      <SideBarLink
-        icon={FaHome}
-        title="Inicio"
-        description="Volver al inicio"
-        linkPage={routes.HOME_PAGE}
-      />
-      <SideBarLink
-        icon={FaTrophy}
-        title="Ranking"
-        description="Mira los mejores puntajes."
-        linkPage={routes.RANKING_PAGE}
-      />
-
-      <SideBarLink
-        icon={FaChartBar}
-        title="Estadísticas"
-        description="Echa un vistazo a tu puntaje."
-        linkPage={routes.STADISTICS_PAGE}
-      />
-
-      {isAdmin && (
-        <SideBarLink
-          icon={FaUserCircle}
-          title="Admin"
-          description="Panel de administrador"
-          linkPage={routes.ADMIN_PAGE}
-        />
-      )}
-    </SideBarContainer>
-  );
+  return <SideBarContainer flex flex_dc isOpen={isOpen}></SideBarContainer>;
 };
 
 const SideBarContainer = styled(Wrapper)`
