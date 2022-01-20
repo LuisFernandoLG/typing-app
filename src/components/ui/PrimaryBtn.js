@@ -15,6 +15,7 @@ const Button = styled.button`
   padding: 1rem 2rem;
   background: ${({ theme: { primaryColor } }) => primaryColor};
   transition: background 300ms ease, box-shaow 300ms ease;
+  font-size: 1.2rem;
 
   color: ${({ theme: { bgColor } }) => bgColor};
   font-weight: 700;

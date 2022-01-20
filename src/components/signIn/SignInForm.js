@@ -15,10 +15,8 @@ export const SignInForm = () => {
     errors,
     handleSubmit,
     handleSubmitOwn,
-    loading,
+    fecthLoading,
   } = useSignInForm();
-
-  if (authLoading) return <Loader />;
 
   return (
     <SignInWrapper
@@ -32,25 +30,7 @@ export const SignInForm = () => {
       <Title>Registro</Title>
 
       <GroupInput
-        name="Nombre"
-        type="text"
-        regex={nameRegex}
-        isRequired={true}
-        register={register}
-        errors={errors}
-      />
-
-      <GroupInput
-        name="Apellido"
-        type="text"
-        regex={nameRegex}
-        isRequired={true}
-        register={register}
-        errors={errors}
-      />
-
-      <GroupInput
-        name="Segundo apellido"
+        name="Usuario"
         type="text"
         regex={nameRegex}
         isRequired={true}
@@ -74,7 +54,11 @@ export const SignInForm = () => {
         errors={errors}
       />
 
-      <PrimaryBtn isLoading={loading} value="Registrarse" type="submit">
+      <PrimaryBtn
+        isLoading={fecthLoading || authLoading}
+        value="Registrarse"
+        type="submit"
+      >
         Registrarse
       </PrimaryBtn>
     </SignInWrapper>
@@ -82,13 +66,13 @@ export const SignInForm = () => {
 };
 
 const SignInWrapper = styled(Wrapper)`
-  width: 30rem;
+  padding: 3rem 2rem;
   background: ${({ theme: { bgColor } }) => bgColor};
-  box-shadow: 0 0 1.875rem -1.25rem ${({ theme: { shadowColor } }) => shadowColor};
-  padding: 1rem 2rem;
-  margin: 0 5rem;
+  box-shadow: 0 0 1.875em -1.25em ${({ theme: { shadowColor } }) => shadowColor};
+  width: 30rem;
 `;
 
 const Title = styled.h2`
   text-align: center;
+  font-size: 2rem;
 `;

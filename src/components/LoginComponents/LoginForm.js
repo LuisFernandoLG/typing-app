@@ -67,29 +67,13 @@ export const LoginForm = () => {
 };
 
 const LoginFormContainer = styled(Wrapper)`
-  padding: 2rem;
-
+  padding: 3rem 2rem;
   background: ${({ theme: { bgColor } }) => bgColor};
-  box-shadow: 0 0 1.875rem -1.25rem ${({ theme: { shadowColor } }) => shadowColor};
-
-  font-size: 20px;
+  box-shadow: 0 0 1.875em -1.25em ${({ theme: { shadowColor } }) => shadowColor};
   width: 30rem;
 `;
 
 const Title = styled.h2`
+  font-size: 2em;
   text-align: center;
-  margin-bottom: 1rem;
-`;
-
-const PrimaryButton = styled.input`
-  border: none;
-  outline: none;
-  margin-top: 1rem;
-  width: 50%;
-  padding: 0.5em;
-  cursor: pointer;
-
-  background: ${({ theme: { primaryColor } }) => primaryColor};
-  color: ${({ theme: { bgColor } }) => bgColor};
-  font-weight: 600;
 `;

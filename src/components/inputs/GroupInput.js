@@ -36,9 +36,8 @@ const GroupInputStyled = styled.div`
 
   position: relative;
 
-  height: 2.5rem;
-  /* margin: 1.5rem 0; */
-  padding: 0.5rem;
+  height: 2.5em;
+  padding: 0.5em;
 
   color: ${({ error, theme: { errorColor } }) =>
     error ? errorColor : "black"};
@@ -53,7 +52,7 @@ const GroupInputStyled = styled.div`
     height: 100%;
     top: 0;
     left: 0;
-    border: 1px solid
+    border: 0.0625em solid
       ${({ error, theme: { errorColor } }) => (error ? errorColor : "black")};
     z-index: 400;
     pointer-events: none;
@@ -64,10 +63,11 @@ const GroupInputStyled = styled.div`
     outline: none;
     position: absolute;
     width: 95%;
-    padding: 0.2rem;
+    padding: 0.2em;
+    background: ${({ theme: { bgColor } }) => bgColor};
 
     &:focus + .border {
-      border: 2px solid
+      border: 0.125em solid
         ${({ error, theme: { errorColor } }) => (error ? errorColor : "black")};
       color: red;
     }
@@ -81,7 +81,7 @@ const GroupInputStyled = styled.div`
   input::after {
     position: absolute;
     width: 100%;
-    height: 5px;
+    height: 0.3125em;
     left: 0;
     background: red;
     z-index: 200;
@@ -91,7 +91,7 @@ const GroupInputStyled = styled.div`
 const Label = styled.label`
   transition: transform 200ms ease;
 
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
   font-weight: 600;
 
   position: absolute;
@@ -100,7 +100,7 @@ const Label = styled.label`
 
   color: inherit;
   background: ${({ theme: { bgColor } }) => bgColor};
-  padding: 0 0.5rem;
+  padding: 0 0.5em;
 `;
 
 const InputError = styled.p`

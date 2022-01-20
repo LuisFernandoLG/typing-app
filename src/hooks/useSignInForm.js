@@ -6,7 +6,7 @@ import AuthContext from "../contexts/AuthContext";
 import { useFetch } from "./useFetch";
 
 export const useSignInForm = () => {
-  const { fetchData, fetchErrors, data, loading } = useFetch();
+  const { fetchData, fetchErrors, data, loading: fecthLoading } = useFetch();
   const { setLogIn, authLoading } = useContext(AuthContext);
 
   const {
@@ -27,9 +27,9 @@ export const useSignInForm = () => {
 
   const formatFormForApi = (data) => ({
     id: 0,
-    name: data["Nombre"],
-    surname: data["Apellido"],
-    second_surname: data["Segundo apellido"],
+    name: data["Usuario"],
+    surname: "apellido",
+    second_surname: "segundo apellido",
     email: data["Correo"],
     password: data["Contraseña"],
     typeUser: 2,
@@ -52,7 +52,7 @@ export const useSignInForm = () => {
     authLoading,
     handleSubmitOwn,
     handleSubmit,
-    loading,
+    fecthLoading,
     errors,
     register,
   };

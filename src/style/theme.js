@@ -1,9 +1,9 @@
 export const theme = {
   primaryColor: "#4FBDBA",
   secondaryColor: "#35858B",
-  tertiaryColor: "#DDDDDD",
+  tertiaryColor: "#eeee",
   shadowColor: "#707070",
-  bgColor: "#FFFFFF",
+  bgColor: "#ffff",
 
   errorColor: "#F05454",
   successColor: "#7FC8A9",
