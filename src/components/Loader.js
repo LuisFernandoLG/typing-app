@@ -3,92 +3,25 @@ import styled, { keyframes } from "styled-components";
 export const Loader = () => {
   return (
     <LoaderStyled>
-      <div className="sk-chase-dot"></div>
-      <div className="sk-chase-dot"></div>
-      <div className="sk-chase-dot"></div>
-      <div className="sk-chase-dot"></div>
-      <div className="sk-chase-dot"></div>
-      <div className="sk-chase-dot"></div>
+      <span class="loader"></span>
     </LoaderStyled>
   );
 };
 
-const skChase = keyframes`
-100% { transform: rotate(360deg); } 
-`;
-
-const skChaseDot = keyframes`
-80%, 100% { transform: rotate(360deg); } 
-`;
-
-const skChaseDotBefore = keyframes`
- 50% {
-      transform: scale(0.4); 
-    } 100%, 0% {
-      transform: scale(1.0); 
-    } 
-`;
+const rotate = keyframes`
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg);`;
 
 const LoaderStyled = styled.div`
-  margin: 0 auto;
-  width: 2.5rem;
-  height: 2.5rem;
+  height: 0.9em;
+  width: 0.9em;
+  color: ${({ theme: { bgColor } }) => bgColor};
   position: relative;
-  animation: ${skChase} 2.5s infinite linear both;
-
-  .sk-chase-dot {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    animation: ${skChaseDot} 2s infinite ease-in-out both;
-  }
-
-  .sk-chase-dot:before {
-    content: "";
-    display: block;
-    width: 25%;
-    height: 25%;
-    background-color: ${({ theme: { primaryColor } }) => primaryColor};
-    border-radius: 100%;
-    animation: ${skChaseDotBefore} 2s infinite ease-in-out both;
-  }
-
-  .sk-chase-dot:nth-child(1) {
-    animation-delay: -1.1s;
-  }
-  .sk-chase-dot:nth-child(2) {
-    animation-delay: -1s;
-  }
-  .sk-chase-dot:nth-child(3) {
-    animation-delay: -0.9s;
-  }
-  .sk-chase-dot:nth-child(4) {
-    animation-delay: -0.8s;
-  }
-  .sk-chase-dot:nth-child(5) {
-    animation-delay: -0.7s;
-  }
-  .sk-chase-dot:nth-child(6) {
-    animation-delay: -0.6s;
-  }
-  .sk-chase-dot:nth-child(1):before {
-    animation-delay: -1.1s;
-  }
-  .sk-chase-dot:nth-child(2):before {
-    animation-delay: -1s;
-  }
-  .sk-chase-dot:nth-child(3):before {
-    animation-delay: -0.9s;
-  }
-  .sk-chase-dot:nth-child(4):before {
-    animation-delay: -0.8s;
-  }
-  .sk-chase-dot:nth-child(5):before {
-    animation-delay: -0.7s;
-  }
-  .sk-chase-dot:nth-child(6):before {
-    animation-delay: -0.6s;
-  }
+  display: inline-block;
+  border: 0.1em solid;
+  border-radius: 20rem;
+  border-top-color: transparent;
+  animation: ${rotate} 1s linear infinite;
 `;
