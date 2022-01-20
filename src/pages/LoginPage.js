@@ -4,10 +4,8 @@ import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 import { useContext } from "react";
 import AuthContext from "../contexts/AuthContext";
 import { Redirect } from "react-router";
-import { routes, routesV2 } from "../routes";
+import { routesV2 } from "../routes";
 import { Link } from "react-router-dom";
-
-import { ReactComponent as SignImg } from "../images/webDeveloper.svg";
 
 export const LoginPage = () => {
   const { isAuth } = useContext(AuthContext);
@@ -23,7 +21,6 @@ export const LoginPage = () => {
           <Link to={routesV2.SIGN_UP_PAGE.route}>Regístrese aquí</Link>
         </RedirectLink>
       </Wrapper>
-      <SignImg />
     </Container>
   );
 };
@@ -42,7 +39,3 @@ const Container = styled(Wrapper)`
   width: 100%;
   height: 100vh;
 `;
-
-// const SignImg = styled.img`
-//   height: 25rem;
-// `;

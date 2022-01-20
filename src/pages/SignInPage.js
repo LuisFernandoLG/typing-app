@@ -4,7 +4,6 @@ import styled from "styled-components";
 import AuthContext from "../contexts/AuthContext";
 import { routes, routesV2 } from "../routes";
 import { SignInForm } from "../components/signIn/SignInForm";
-import { ReactComponent as FormImg } from "../images/form.svg";
 import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 import { Link } from "react-router-dom";
 
@@ -14,15 +13,12 @@ export const SignInPage = () => {
   if (isAuth) return <Redirect to={routes.HOME_PAGE} />;
 
   return (
-    <SignInPageWrapper flex flex_jc_se flex_ai_c>
-      <Wrapper flex flex_dc flex_ai_c>
-        <SignInForm />
-        <RedirectLink>
-          ¿Ya tienes una cuenta?
-          <Link to={routesV2.LOGIN_PAGE.route}>Iniciar sesión</Link>
-        </RedirectLink>
-      </Wrapper>
-      <FormImg />
+    <SignInPageWrapper flex flex_dc flex_jc_se flex_ai_c>
+      <SignInForm />
+      <RedirectLink>
+        ¿Ya tienes una cuenta?
+        <Link to={routesV2.LOGIN_PAGE.route}>Iniciar sesión</Link>
+      </RedirectLink>
     </SignInPageWrapper>
   );
 };

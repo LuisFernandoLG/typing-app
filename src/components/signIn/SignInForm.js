@@ -3,6 +3,7 @@ import { Loader } from "../Loader";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { useSignInForm } from "../../hooks/useSignInForm";
 import GroupInput from "../inputs/GroupInput";
+import PrimaryBtn from "../ui/PrimaryBtn";
 
 const nameRegex = /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/g;
 const emailRegex = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/;
@@ -73,20 +74,12 @@ export const SignInForm = () => {
         errors={errors}
       />
 
-      {loading ? <Loader /> : <SubmitBtn type="submit" value="Registrarse" />}
+      <PrimaryBtn isLoading={loading} value="Registrarse" type="submit">
+        Registrarse
+      </PrimaryBtn>
     </SignInWrapper>
   );
 };
-
-const SubmitBtn = styled.input`
-  background: ${({ theme: { primaryColor } }) => primaryColor};
-  color: ${({ theme: { bgColor } }) => bgColor};
-  padding: 1rem;
-  cursor: pointer;
-
-  border: none;
-  outline: none;
-`;
 
 const SignInWrapper = styled(Wrapper)`
   width: 30rem;

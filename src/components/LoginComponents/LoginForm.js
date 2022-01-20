@@ -5,8 +5,8 @@ import styled from "styled-components";
 import AuthContext from "../../contexts/AuthContext";
 import { routes } from "../../routes";
 import GroupInput from "../inputs/GroupInput";
-import { Loader } from "../Loader";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
+import PrimaryBtn from "../ui/PrimaryBtn";
 
 const emailRegex = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/;
 
@@ -54,12 +54,14 @@ export const LoginForm = () => {
         register={register}
         errors={errors}
       />
-
-      {authLoading ? (
-        <Loader />
-      ) : (
-        <PrimaryButton type="submit" value="Iniciar sesión" />
-      )}
+      <PrimaryBtn
+        isLoading={authLoading}
+        type="submit"
+        as="input"
+        value="Iniciar sesión"
+      >
+        Iniciar sesión
+      </PrimaryBtn>
     </LoginFormContainer>
   );
 };
