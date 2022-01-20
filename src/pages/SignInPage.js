@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Redirect } from "react-router";
 import styled from "styled-components";
 import AuthContext from "../contexts/AuthContext";
-import { routes } from "../routes";
+import { routes, routesV2 } from "../routes";
 import { SignInForm } from "../components/signIn/SignInForm";
 import { ReactComponent as FormImg } from "../images/form.svg";
 import { Wrapper } from "../components/shareStyleComponents/Wrapper";
@@ -19,7 +19,7 @@ export const SignInPage = () => {
         <SignInForm />
         <RedirectLink>
           ¿Ya tienes una cuenta?
-          <Link to={routes.LOGIN_PAGE}>Iniciar sesión</Link>
+          <Link to={routesV2.LOGIN_PAGE.route}>Iniciar sesión</Link>
         </RedirectLink>
       </Wrapper>
       <FormImg />

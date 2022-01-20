@@ -4,7 +4,7 @@ import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 import { useContext } from "react";
 import AuthContext from "../contexts/AuthContext";
 import { Redirect } from "react-router";
-import { routes } from "../routes";
+import { routes, routesV2 } from "../routes";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as SignImg } from "../images/webDeveloper.svg";
@@ -12,7 +12,7 @@ import { ReactComponent as SignImg } from "../images/webDeveloper.svg";
 export const LoginPage = () => {
   const { isAuth } = useContext(AuthContext);
 
-  if (isAuth) return <Redirect to={routes.HOME_PAGE} />;
+  if (isAuth) return <Redirect to={routesV2.HOME_PAGE.route} />;
 
   return (
     <Container flex flex_jc_se flex_ai_c>
@@ -20,7 +20,7 @@ export const LoginPage = () => {
         <LoginForm />
         <RedirectLink>
           ¿No estás registrado?
-          <Link to={routes.SIGNUP_PAGE}>Regístrese aquí</Link>
+          <Link to={routesV2.SIGN_UP_PAGE.route}>Regístrese aquí</Link>
         </RedirectLink>
       </Wrapper>
       <SignImg />

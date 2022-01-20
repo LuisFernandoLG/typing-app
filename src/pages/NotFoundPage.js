@@ -1,6 +1,6 @@
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import { routes } from "../routes";
+import { routes, routesV2 } from "../routes";
 import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 
 import notFound from "../images/notFoundPage.svg";
@@ -9,7 +9,7 @@ export const NotFoundPage = () => {
   let history = useHistory();
 
   const handleClick = () => {
-    history.push(routes.HOME_PAGE);
+    history.push(routesV2.HOME_PAGE.route);
   };
 
   return (

@@ -1,11 +1,10 @@
 import { HashRouter, Route, Switch } from "react-router-dom";
-import { routes } from "../routes";
+import { routes, routesV2 } from "../routes";
 import { Footer } from "../layouts/Footer";
 import AppLogged from "../pages/AppLogged";
 import { LoginPage } from "../pages/LoginPage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { PrivatePage } from "../pages/PrivatePage";
-import { SignInPage } from "../pages/SignInPage";
 import ScrollToTop from "./ScrollToTop";
 import { Wrapper } from "./shareStyleComponents/Wrapper";
 
@@ -15,13 +14,30 @@ export const MyRouter = () => {
       <Wrapper flex>
         <ScrollToTop>
           <Switch>
-            <Route path={routes.LOGIN_PAGE} component={LoginPage} />
-            <Route path={routes.SIGNUP_PAGE} component={SignInPage} />
-            <Route
-              path={routes.APP}
-              children={<PrivatePage component={AppLogged} />}
-            />
-            <Route to="*" component={NotFoundPage} />
+            {Object.values(routesV2).map(
+              ({
+                id,
+                route,
+                component: PageComponent,
+                isPrivate,
+                routeProps,
+              }) =>
+                isPrivate ? (
+                  <Route
+                    key={`page-${id}`}
+                    path={route}
+                    children={<PrivatePage component={PageComponent} />}
+                    {...routeProps}
+                  />
+                ) : (
+                  <Route
+                    key={`page-${id}`}
+                    path={route}
+                    component={PageComponent}
+                    {...routeProps}
+                  />
+                )
+            )}
           </Switch>
         </ScrollToTop>
       </Wrapper>
