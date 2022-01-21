@@ -65,15 +65,12 @@ export const routesV2 = {
       },
       EXERCISE_PAGE: {
         id: 4,
-        route: `${app}/exercise`,
+        route: `${app}/item/:idQuote`,
         name: "exercise",
         component: ExercisePage,
         isPrivate: true,
         routeProps: {
-          exact: true,
-        },
-        routeProps: {
-          exact: true,
+          exact: false,
         },
       },
       RANKING_PAGE: {

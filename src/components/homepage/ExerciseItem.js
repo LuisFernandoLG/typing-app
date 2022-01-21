@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { routes } from "../../routes";
+import { routesV2 } from "../../routes";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import Skeleton from "react-loading-skeleton";
 
 export const ExerciseItem = ({ id, title, content, category, difficulty }) => {
+  const exerciseRoute = routesV2.LOGGED_APP.subPages.EXERCISE_PAGE.route;
+
   return (
-    <Link to={`${routes.EXERCICE_PAGE}/${id}`}>
+    <Link to={`${exerciseRoute}/${id}`}>
       <ExerciseItemContainer>
         <Title>{title || <Skeleton />}</Title>
         <Content>{content || <Skeleton count={2} />}</Content>
