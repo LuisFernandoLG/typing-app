@@ -2,16 +2,14 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useFetch } from "../hooks/useFetch";
 import { ExerciseItem } from "../components/homepage/ExerciseItem";
-import { Loader } from "../components/Loader";
 import { ToolBarSearch } from "../components/searchBar/ToolBarSearch";
 import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 import { toast } from "react-toastify";
 import { endpoints } from "../components/signIn/api";
 import { NoResultsMessage } from "../components/homepage/NoResultsMessage";
-import { ExerciseItemSkeleton } from "../components/skeletons/ExerciseItemSkeleton";
 import { getArrayBySize } from "../helpers/getArrayBySize";
 
-const initialExercises = [];
+const initialExercises = null;
 
 export const HomePage = () => {
   const [exercises, setExercises] = useState(initialExercises);
@@ -74,7 +72,7 @@ export const HomePage = () => {
         search={search}
         searchByQuery={searchByQuery}
       />
-      {loading ? (
+      {loading || !exercises ? (
         <QuotesContainer>
           {skeletons.map(() => (
             <ExerciseItem />

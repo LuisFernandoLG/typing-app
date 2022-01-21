@@ -27,7 +27,7 @@ const Button = styled.button`
 
   &:hover, &:focus {
     background: ${({ theme: { secondaryColor } }) => secondaryColor};
-    box-shadow: 0 10px 30px -10px ${({ theme: { secondaryColor } }) => secondaryColor};
+    box-shadow: 0 0.4375rem 1.575rem -0.625rem ${({ theme: { secondaryColor } }) => secondaryColor};
   }
 `;
 

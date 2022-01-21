@@ -10,7 +10,7 @@ export const ExerciseItem = ({ id, title, content, category, difficulty }) => {
   return (
     <Link to={`${exerciseRoute}/${id}`}>
       <ExerciseItemContainer>
-        <Title>{title || <Skeleton />}</Title>
+        <Title>{title || <Skeleton width={"20%"} />}</Title>
         <Content>{content || <Skeleton count={1} />}</Content>
         <Wrapper flex flex_jc_fe gap="1rem">
           <Category>{difficulty || <Skeleton width={"3rem"} />}</Category>
@@ -38,9 +38,17 @@ const Title = styled.h3`
 `;
 const Content = styled.p`
   margin: 0.5rem 0;
+  max-width: 90%;
   font-size: 1rem;
   color: ${({ theme: { secondaryColor } }) => secondaryColor};
   line-height: 1.5rem;
+  text-align: left;
+
+  /* Limit lines */
+  text-overflow: ellipsis;
+  /* Needed to make it work */
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 const TagStyle = styled.span`
