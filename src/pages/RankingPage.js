@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useFetch } from "../hooks/useFetch";
-import { Loader } from "../components/Loader";
 import { RankingUser } from "../components/stadistics/RankingUser";
 import { endpoints } from "../components/signIn/api";
 import { toast } from "react-toastify";
 import { FaTrophy } from "react-icons/fa";
+import { getArrayBySize } from "../helpers/getArrayBySize";
 
 const Throphy1 = () => {
   const style = { color: "#FFD06C", fontSize: "2.5rem" };
@@ -21,6 +21,8 @@ const Throphy3 = () => {
   const style = { color: "#DC8C44", fontSize: "2.5rem" };
   return <FaTrophy style={style} />;
 };
+
+const skeletons = getArrayBySize({ size: 12 });
 
 export const RankingPage = () => {
   const [rankingUsers, setRankingUsers] = useState([]);
@@ -46,25 +48,22 @@ export const RankingPage = () => {
   return (
     <RankingContainer>
       <Title>Ranking</Title>
-
-      {loading ? (
-        <Loader />
-      ) : (
-        <UsersWrapper>
-          {rankingUsers.map(({ id, name, lastName, totalScore }, index) => (
-            <RankingUser
-              key={id}
-              position={index + 1}
-              name={`${name} ${lastName}`}
-              score={totalScore}
-            >
-              {index === 0 ? <Throphy1 /> : null}
-              {index === 1 ? <Throphy2 /> : null}
-              {index === 2 ? <Throphy3 /> : null}
-            </RankingUser>
-          ))}
-        </UsersWrapper>
-      )}
+      <UsersWrapper>
+        {loading
+          ? skeletons.map(() => <RankingUser />)
+          : rankingUsers.map(({ id, name, lastName, totalScore }, index) => (
+              <RankingUser
+                key={id}
+                position={index + 1}
+                name={`${name} ${lastName}`}
+                score={totalScore}
+              >
+                {index === 0 ? <Throphy1 /> : null}
+                {index === 1 ? <Throphy2 /> : null}
+                {index === 2 ? <Throphy3 /> : null}
+              </RankingUser>
+            ))}
+      </UsersWrapper>
     </RankingContainer>
   );
 };

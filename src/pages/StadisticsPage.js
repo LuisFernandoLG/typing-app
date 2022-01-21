@@ -1,12 +1,13 @@
 import { useContext, useState, useEffect } from "react";
 import AuthContext from "../contexts/AuthContext";
 import { useFetch } from "../hooks/useFetch";
-import { Loader } from "../components/Loader";
-import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 import { endpoints } from "../components/signIn/api";
 import { toast } from "react-toastify";
 import { ProgressGraph } from "../components/stadistics/ProgressGraph";
 import styled from "styled-components";
+import { getArrayBySize } from "../helpers/getArrayBySize";
+
+const skeletons = getArrayBySize({ size: 6 });
 
 export const StadisticsPage = () => {
   const { user } = useContext(AuthContext);
@@ -33,20 +34,22 @@ export const StadisticsPage = () => {
       <Title>Estadísticas</Title>
 
       <GridContainer>
-        {loading ? (
-          <Loader />
-        ) : (
-          data &&
-          exercisesScore.map((item, i) => (
-            <ProgressGraph key={i} scoreHistory={item} title={item[0].title} />
-          ))
-        )}
+        {loading
+          ? skeletons.map(() => <ProgressGraph />)
+          : data &&
+            exercisesScore.map((item, i) => (
+              <ProgressGraph
+                key={i}
+                scoreHistory={item}
+                title={item[0].title}
+              />
+            ))}
       </GridContainer>
     </PageWrapper>
   );
 };
 
-const PageWrapper = styled(Wrapper)`
+const PageWrapper = styled.div`
   width: 100%;
 `;
 

@@ -1,7 +1,21 @@
 import { Bubble } from "react-chartjs-2";
 import styled from "styled-components";
+import Skeleton from "react-loading-skeleton";
 
 export const ProgressGraph = ({ scoreHistory, title }) => {
+  return (
+    <Container>
+      <Title>{title || <Skeleton width={"5rem"} />}</Title>
+      {scoreHistory ? (
+        <Graph scoreHistory={scoreHistory} />
+      ) : (
+        <Skeleton height={"10rem"} />
+      )}
+    </Container>
+  );
+};
+
+const Graph = ({ scoreHistory }) => {
   const scores = scoreHistory.map(({ totalScore, lastTimeTaken }) => ({
     x: lastTimeTaken,
     y: totalScore,
@@ -37,12 +51,7 @@ export const ProgressGraph = ({ scoreHistory, title }) => {
     ],
   };
 
-  return (
-    <Container>
-      <Title>{title}</Title>
-      <Bubble options={options} data={data} />
-    </Container>
-  );
+  return <Bubble options={options} data={data} />;
 };
 
 const Title = styled.h2`

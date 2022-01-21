@@ -1,3 +1,4 @@
+import Skeleton from "react-loading-skeleton";
 import styled from "styled-components";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 
@@ -5,11 +6,17 @@ export const RankingUser = ({ position, name, score, children }) => {
   return (
     <RankingUserContainer flex gap="1rem">
       <Sticker>{children}</Sticker>
-      <Position>{position}</Position>
+      <Position>{position || <Skeleton width={"3rem"} />}</Position>
       <Wrapper flex flex_dc flex_jc_c gap="0.5rem">
-        <Name>{name}</Name>
+        <Name>{name || <Skeleton width={"6rem"} />}</Name>
         <Score>
-          Puntaje: <span>{score}</span>
+          {score ? (
+            <>
+              Puntaje: <span>{score}</span>
+            </>
+          ) : (
+            <Skeleton width={"5rem"} />
+          )}
         </Score>
       </Wrapper>
     </RankingUserContainer>

@@ -1,6 +1,7 @@
 import styled, { ThemeProvider } from "styled-components";
 import "normalize.css";
 import "react-toastify/dist/ReactToastify.min.css";
+import "react-loading-skeleton/dist/skeleton.css";
 import { theme } from "./style/theme";
 import { GlobalStyles } from "./style/GlobalStyles";
 import { MyRouter } from "./components/MyRouter";
