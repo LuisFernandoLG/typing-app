@@ -91,7 +91,7 @@ const NormalKey = styled.span`
   transition: color 0.5s ease-in-out;
   white-space: pre-wrap;
 
-  color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  color: ${({ theme: { bgColor } }) => bgColor};
 `;
 
 const WantedKey = styled(NormalKey)`
@@ -110,7 +110,7 @@ const WantedKey = styled(NormalKey)`
     height: 100%;
     border-radius: 1rem;
     animation: ${flickeringAnimation} 0.5s ease-in-out infinite alternate;
-    background: ${({ theme: { primaryColor } }) => primaryColor};
+    background: ${({ theme: { secondaryColor } }) => secondaryColor};
   }
 `;
 

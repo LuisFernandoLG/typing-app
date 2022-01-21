@@ -55,6 +55,7 @@ const GroupInputStyled = styled.div`
     border: 0.0625em solid
       ${({ error, theme: { errorColor } }) => (error ? errorColor : "black")};
     z-index: 400;
+    border-radius: 5px;
     pointer-events: none;
   }
 

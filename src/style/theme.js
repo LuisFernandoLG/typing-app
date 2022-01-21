@@ -9,4 +9,6 @@ export const theme = {
   successColor: "#7FC8A9",
   correctedColor: "#FFAA4C",
   disableColor: "#EDEDED",
+
+  border_radius: "10px",
 };

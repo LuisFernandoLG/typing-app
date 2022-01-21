@@ -26,5 +26,4 @@ const Container = styled(Wrapper)`
   width: 70%;
   border-radius: 1rem;
   padding: 0.5rem;
-  box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
 `;

@@ -40,7 +40,7 @@ const NavBarStyled = styled(Wrapper)`
 
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 200;
   background: ${({ theme: { bgColor } }) => bgColor};
-  box-shadow: 0 0.2rem 30px -10px ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  box-shadow: 0 0.2rem 20px -15px ${({ theme: { secondaryColor } }) => secondaryColor};
 `;

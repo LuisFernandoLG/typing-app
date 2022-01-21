@@ -1,5 +1,6 @@
 import Skeleton from "react-loading-skeleton";
 import styled from "styled-components";
+import { FlexContainer } from "../shareStyleComponents/FlexContainer";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 
 export const RankingUser = ({ position, name, score, children }) => {
@@ -7,7 +8,7 @@ export const RankingUser = ({ position, name, score, children }) => {
     <RankingUserContainer flex gap="1rem">
       <Sticker>{children}</Sticker>
       <Position>{position || <Skeleton width={"3rem"} />}</Position>
-      <Wrapper flex flex_dc flex_jc_c gap="0.5rem">
+      <FlexContainer flex_dc flex_jc_c gap="0.5rem" overflow_h>
         <Name>{name || <Skeleton width={"6rem"} />}</Name>
         <Score>
           {score ? (
@@ -18,10 +19,20 @@ export const RankingUser = ({ position, name, score, children }) => {
             <Skeleton width={"5rem"} />
           )}
         </Score>
-      </Wrapper>
+      </FlexContainer>
     </RankingUserContainer>
   );
 };
+
+const RankingUserContainer = styled(Wrapper)`
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background ${({ theme: { bgColor } }) => bgColor};
+  
+  
+  `;
 
 const Sticker = styled.div`
   position: absolute;
@@ -29,23 +40,14 @@ const Sticker = styled.div`
   left: -1rem;
 `;
 
-const RankingUserContainer = styled(Wrapper)`
-  position: relative;
-  width: 90%;
-  box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
-  padding: 1rem;
-
-  margin: 1rem auto;
-
-  border-radius: 1rem;
-`;
-
 const Position = styled.div`
   font-size: 4rem;
   font-weight: 700;
 `;
 const Name = styled.p`
+  display: block;
   font-size: 1.5rem;
+  white-space: nowrap;
 `;
 const Score = styled.span`
   font-size: 1rem;

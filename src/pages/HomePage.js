@@ -100,4 +100,8 @@ export const HomePage = () => {
 
 const HomeContainer = styled(Wrapper)``;
 
-const QuotesContainer = styled.main``;
+const QuotesContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;

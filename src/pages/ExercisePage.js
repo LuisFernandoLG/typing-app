@@ -140,4 +140,5 @@ const WrapperPage = styled(Wrapper)`
 const Title = styled.h1`
   margin: 0 0;
   text-align: center;
+  color: ${({ theme: { bgColor } }) => bgColor};
 `;

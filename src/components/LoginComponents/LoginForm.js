@@ -68,9 +68,9 @@ export const LoginForm = () => {
 
 const LoginFormContainer = styled(Wrapper)`
   padding: 3rem 2rem;
-  background: ${({ theme: { bgColor } }) => bgColor};
-  box-shadow: 0 0 1.875em -1.25em ${({ theme: { shadowColor } }) => shadowColor};
   width: 30rem;
+  background: ${({ theme: { bgColor } }) => bgColor};
+  border-radius: ${({ theme: { border_radius } }) => border_radius};
 `;
 
 const Title = styled.h2`

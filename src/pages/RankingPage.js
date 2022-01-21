@@ -71,6 +71,7 @@ export const RankingPage = () => {
 const UsersWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
+  gap: 2rem;
 `;
 
 const RankingContainer = styled.div`

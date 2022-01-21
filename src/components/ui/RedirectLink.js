@@ -13,5 +13,5 @@ const RedirectLinkStyled = styled.span`
   margin: 1rem 0;
   font-weight: 700;
   text-decoration: underline;
-  color: ${({ theme: { primaryColor } }) => primaryColor};
+  color: ${({ theme: { secondaryColor } }) => secondaryColor};
 `;

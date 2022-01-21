@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const FlexContainer = styled.div`
   display: flex;
@@ -21,4 +21,11 @@ export const FlexContainer = styled.div`
 
   ${({ pd }) => `padding: ${pd}`};
   ${({ bg }) => `background: ${bg}`};
+  ${({ w }) => `width:${w}`};
+  ${({ overflow_h }) =>
+    overflow_h
+      ? css`
+          overflow: hidden;
+        `
+      : null}
 `;

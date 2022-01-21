@@ -40,16 +40,15 @@ export const CategorySelect = ({ selectCategory }) => {
 
 const Select = styled.select`
   width: auto;
-  padding: 0.5rem;
-  background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  padding: 1rem;
+  background: ${({ theme: { bgColor } }) => bgColor};
+  border-radius: ${({ theme: { border_radius } }) => border_radius};
 
   font-weight: 700;
 
   border: none;
   outline: none;
-
   cursor: pointer;
 
-  border-radius: 1rem;
   font-size: 1em;
 `;

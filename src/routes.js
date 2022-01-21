@@ -66,6 +66,7 @@ export const routesV2 = {
       EXERCISE_PAGE: {
         id: 4,
         route: `${app}/item/:idQuote`,
+        routBaseParam: `${app}/item`,
         name: "exercise",
         component: ExercisePage,
         isPrivate: true,

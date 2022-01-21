@@ -385,8 +385,7 @@ const KeyBoardStyled = styled(Wrapper)`
   font-size: 12px;
 
   background: ${({ theme: { bgColor } }) => bgColor};
-  box-shadow: 0.5em 0.5em 1.25em
-    ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  ${({ theme: { tertiaryColor } }) => tertiaryColor};
   width: min-content;
   margin: 2em auto;
 

@@ -61,7 +61,7 @@ const Title = styled.h2`
 
 const Container = styled.div`
   padding: 1rem;
-  box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  background ${({ theme: { bgColor } }) => bgColor};
   border-radius: 1rem;
   height: min-content;
 `;
