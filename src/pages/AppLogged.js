@@ -26,9 +26,11 @@ const AppLogged = () => {
 };
 
 const SubPageContainer = styled.div`
-  max-width: 1200px;
+  max-width: 1000px;
   width: 90%;
   margin: 0 auto;
+
+  min-height: 90vh;
 `;
 
 const GridWrapper = styled.div`

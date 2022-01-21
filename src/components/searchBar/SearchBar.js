@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
-import searchIcon from "../../images/search.png";
+import { FaSearch } from "react-icons/fa";
 
 export const SearchBar = ({ setSearchQuery, search, searchByQuery }) => {
   const handleChange = (e) => {
@@ -19,11 +19,9 @@ export const SearchBar = ({ setSearchQuery, search, searchByQuery }) => {
 
   return (
     <Container as="form" flex flex_ai_c gap="1rem" onSubmit={handleSubmit}>
-      <SearchIcon
-        src={searchIcon}
-        alt="search"
-        onClick={handleClickOnSearchIcon}
-      />
+      <SearchIcon onClick={handleClickOnSearchIcon}>
+        <FaSearch />
+      </SearchIcon>
       <SearchInput
         value={search}
         onChange={handleChange}
@@ -40,9 +38,11 @@ const Container = styled(Wrapper)`
   background: ${({ theme: { bgColor } }) => bgColor};
   padding: 1rem;
 `;
-const SearchIcon = styled.img`
-  height: 1.5rem;
+const SearchIcon = styled.button`
   cursor: pointer;
+  font-size: 1.5rem;
+  color: ${({ theme: { shadowColor } }) => shadowColor};
+  background: ${({ theme: { bgColor } }) => bgColor};
 `;
 const SearchInput = styled.input`
   height: 100%;
