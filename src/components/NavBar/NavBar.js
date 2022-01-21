@@ -2,11 +2,13 @@ import styled from "styled-components";
 import { LoginButton } from "../LoginComponents/LoginButton";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { RedirectLink } from "../ui/RedirectLink";
-import { FaHome, FaTrophy, FaChartBar, FaUserCircle } from "react-icons/fa";
 import { routesV2 } from "../../routes";
 import { Logo } from "./Logo";
+import { useSession } from "../../hooks/useSession";
 
 export const NavBar = () => {
+  const { isAdmin } = useSession();
+
   return (
     <NavBarStyled as="nav" flex flex_ai_c flex_jc_sb gap="1rem">
       <Logo />
@@ -17,6 +19,13 @@ export const NavBar = () => {
       <RedirectLink to={routesV2.LOGGED_APP.subPages.STADISTICS_PAGE.route}>
         Estadísticas
       </RedirectLink>
+
+      {isAdmin && (
+        <RedirectLink to={routesV2.LOGGED_APP.subPages.ADMING_PAGE.route}>
+          Admin
+        </RedirectLink>
+      )}
+
       <LoginButton />
     </NavBarStyled>
   );
