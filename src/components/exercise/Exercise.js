@@ -1,5 +1,4 @@
 import { KeyBoard } from "./KeyBoard";
-
 import { Quote } from "./Quote";
 import { useKeyBoardActivity } from "../../hooks/useKeyBoardActivity";
 import { ToolBar } from "../toolbar/ToolBar";
@@ -33,6 +32,7 @@ export const Exercise = ({
     enableKeyboard,
     disableKeyBoard,
   } = useToggleKeyBoardButtons();
+
   useEffectKeySounds(keyPressed, isEnableSound);
 
   useEffect(() => {
@@ -61,11 +61,13 @@ export const Exercise = ({
           />
           <Quote quote={quote} indexQuote={indexQuote} />
 
-          <KeyBoard
-            keyBoardVisibility={keyBoardVisibility}
-            keyWanted={keyWanted}
-            keyPressed={keyPressed}
-          />
+          {keyBoardVisibility && (
+            <KeyBoard
+              keyBoardVisibility={keyBoardVisibility}
+              keyWanted={keyWanted}
+              keyPressed={keyPressed}
+            />
+          )}
         </>
       ) : null}
     </>
