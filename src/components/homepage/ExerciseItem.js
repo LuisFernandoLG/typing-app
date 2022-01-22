@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { routesV2 } from "../../routes";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import Skeleton from "react-loading-skeleton";
@@ -9,7 +9,7 @@ export const ExerciseItem = ({ id, title, content, category, difficulty }) => {
     routesV2.LOGGED_APP.subPages.EXERCISE_PAGE.routBaseParam;
 
   return (
-    <ExerciseItemContainer to={`${exerciseRoute}/${id}`}>
+    <ExerciseItemContainer to={`${exerciseRoute}/${id}`} id={id}>
       <Title>{title || <Skeleton width={"20%"} />}</Title>
       <Content>{content || <Skeleton count={1} />}</Content>
       <Wrapper flex flex_jc_fe gap="1rem">
@@ -28,6 +28,14 @@ const ExerciseItemContainer = styled(Link)`
   &:hover {
     background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
   }
+
+  ${({ id }) =>
+    id === undefined
+      ? css`
+          pointer-events: none;
+          cursor: default;
+        `
+      : null}
 `;
 const Title = styled.h3`
   font-size: 1.5rem;
