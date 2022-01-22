@@ -34,9 +34,9 @@ const ToggleButtonStyled = styled(Wrapper)`
   width: fit-content;
   padding: 5px;
   border-radius: 1rem;
+  color: ${({ theme: { secondaryColor } }) => secondaryColor};
 
   i {
-    color: ${({ theme: { secondaryColor } }) => secondaryColor};
     opacity: 0.5;
     pointer-events: none;
   }
@@ -52,7 +52,6 @@ const ToggleButtonStyled = styled(Wrapper)`
     &:checked + i {
       opacity: 1;
       color: ${({ theme: { primaryColor } }) => primaryColor};
-      text-shadow: 0 0 0.5rem ${({ theme: { primaryColor } }) => primaryColor};
     }
   }
 `;

@@ -13,12 +13,12 @@ const PrimaryBtn = ({ children, isLoading, onClick }, props) => {
 const Button = styled.button`
   position: relative;
   padding: 1rem 2rem;
-  background: ${({ theme: { primaryColor } }) => primaryColor};
-  transition: background 300ms ease, box-shaow 300ms ease;
+  background: ${({ theme: { bgColor } }) => bgColor};
+  transition: background 300ms ease, box-shadow 300ms ease;
   font-size: 1.2rem;
   border-radius: ${({ theme: { border_radius } }) => border_radius};
 
-  color: ${({ theme: { bgColor } }) => bgColor};
+  color: ${({ theme: { primaryColor } }) => primaryColor};
   font-weight: 700;
 
   user-select: none;

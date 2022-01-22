@@ -17,7 +17,7 @@ const rotate = keyframes`
 const LoaderStyled = styled.div`
   height: 0.9em;
   width: 0.9em;
-  color: ${({ theme: { bgColor } }) => bgColor};
+  color: ${({ theme: { primaryColor } }) => primaryColor};
   position: relative;
   display: inline-block;
   border: 0.1em solid;

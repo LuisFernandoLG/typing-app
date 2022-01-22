@@ -29,7 +29,7 @@ const RankingUserContainer = styled(Wrapper)`
   width: 100%;
   padding: 1rem;
   border-radius: 1rem;
-  background ${({ theme: { bgColor } }) => bgColor};
+  background ${({ theme: { primaryColor } }) => primaryColor};
   
   
   `;

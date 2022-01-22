@@ -91,7 +91,7 @@ const NormalKey = styled.span`
   transition: color 0.5s ease-in-out;
   white-space: pre-wrap;
 
-  color: ${({ theme: { bgColor } }) => bgColor};
+  color: ${({ theme: { disableColor } }) => disableColor};
 `;
 
 const WantedKey = styled(NormalKey)`
@@ -138,6 +138,8 @@ const SucceedKey = styled(NormalKey)`
 const QuoteStyled = styled(Wrapper)`
   padding: 1rem;
   display: flex;
+  background: ${({ theme: { primaryColor } }) => primaryColor};
+  border-radius: ${({ theme: { border_radius } }) => border_radius};
 `;
 
 const Word = styled.div`

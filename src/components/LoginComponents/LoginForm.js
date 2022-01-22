@@ -69,11 +69,12 @@ export const LoginForm = () => {
 const LoginFormContainer = styled(Wrapper)`
   padding: 3rem 2rem;
   width: 30rem;
-  background: ${({ theme: { bgColor } }) => bgColor};
+  background: ${({ theme: { primaryColor } }) => primaryColor};
   border-radius: ${({ theme: { border_radius } }) => border_radius};
 `;
 
 const Title = styled.h2`
   font-size: 2em;
   text-align: center;
+  color: ${({ theme: { fontColor } }) => fontColor};
 `;

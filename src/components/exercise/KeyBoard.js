@@ -384,7 +384,7 @@ export const KeyBoard = ({ keyPressed, keyWanted }) => {
 const KeyBoardStyled = styled(Wrapper)`
   font-size: 12px;
 
-  background: ${({ theme: { bgColor } }) => bgColor};
+  background: ${({ theme: { primaryColor } }) => primaryColor};
   ${({ theme: { tertiaryColor } }) => tertiaryColor};
   width: min-content;
   margin: 2em auto;
@@ -400,7 +400,7 @@ const KeyBoardStyled = styled(Wrapper)`
 `;
 
 const KeyStyled = styled.div`
-  background: ${({ theme: { bgColor } }) => bgColor};
+  background: ${({ theme: { primaryColor } }) => primaryColor};
 
   width: 100%;
   height: 100%;
@@ -434,8 +434,8 @@ const KeyStyled = styled.div`
 `;
 
 const KeyPressedStyled = styled(KeyStyled)`
-  background: ${({ theme: { primaryColor } }) => primaryColor};
-  color: ${({ theme: { secondaryColor } }) => secondaryColor};
+  background: ${({ theme: { secondaryColor } }) => secondaryColor};
+  color: ${({ theme: { primaryColor } }) => primaryColor};
   font-weight: 600;
 `;
 
@@ -452,7 +452,7 @@ const glow = keyframes`
 
 const WrongPressedKey = styled(KeyStyled)`
   background: ${({ theme: { errorColor } }) => errorColor};
-  color: ${({ theme: { secondaryColor } }) => secondaryColor};
+  color: ${({ theme: { primaryColor } }) => primaryColor};
   opacity: 0.8;
 
   animation: ${glow} 1s ease forwards;

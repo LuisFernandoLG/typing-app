@@ -23,10 +23,10 @@ export const ExerciseItem = ({ id, title, content, category, difficulty }) => {
 const ExerciseItemContainer = styled(Link)`
   padding: 2rem;
   border-radius: ${({ theme: { border_radius } }) => border_radius};
-  background: ${({ theme: { bgColor } }) => bgColor};
+  background: ${({ theme: { primaryColor } }) => primaryColor};
 
   &:hover {
-    background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+    background: ${({ theme: { disableColor } }) => disableColor};
   }
 
   ${({ id }) =>
@@ -45,7 +45,7 @@ const Content = styled.p`
   margin: 0.5rem 0;
   max-width: 90%;
   font-size: 1.2rem;
-  color: ${({ theme: { secondaryColor } }) => secondaryColor};
+  color: ${({ theme: { fontColor } }) => fontColor};
   line-height: 1.5rem;
   text-align: left;
 
@@ -57,9 +57,9 @@ const Content = styled.p`
 `;
 
 const TagStyle = styled.span`
-  background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  background: ${({ theme: { disableColor } }) => disableColor};
   padding: 0.5rem 1rem;
-  color: ${({ theme: { secondaryColor } }) => secondaryColor};
+  color: ${({ theme: { fontColor } }) => fontColor};
 
   font-weight: 700;
   border-radius: ${({ theme: { border_radius } }) => border_radius};

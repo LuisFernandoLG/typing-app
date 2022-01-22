@@ -31,14 +31,12 @@ const waveAnimation = keyframes`
 const drop = (percentage) => keyframes`
  0% {}
     100% {
-    /* 100% - percetage */
     bottom: -${100 - percentage}%;
-    /* bottom: -${100 - 50}%; */
     }
 `;
 
 const Percentage = styled.p`
-  color: ${({ theme: { secondaryColor } }) => secondaryColor};
+  color: ${({ theme: { primaryColor } }) => primaryColor};
   font-weight: 600;
   z-index: 100;
   font-size: 2.5em;
@@ -52,8 +50,6 @@ const BubbleScoreContainer = styled(Wrapper)`
   background: ${({ theme: { bgColor } }) => bgColor};
   position: relative;
   overflow: hidden;
-
-  box-shadow: 0 0 0.5rem ${({ theme: { primaryColor } }) => primaryColor};
 `;
 
 const Wave = styled.svg`
@@ -66,7 +62,7 @@ const Wave = styled.svg`
 
 const Wave1 = styled(Wave)`
   path {
-    fill: ${({ theme: { primaryColor } }) => primaryColor};
+    fill: ${({ theme: { tertiaryColor } }) => tertiaryColor};
   }
 
   animation: ${({ percentage }) => drop(percentage)} 1s ease forwards,
@@ -76,7 +72,7 @@ const Wave1 = styled(Wave)`
 const Wave2 = styled(Wave)`
   opacity: 0.8;
   path {
-    fill: ${({ theme: { primaryColor } }) => primaryColor};
+    fill: ${({ theme: { secondaryColor } }) => secondaryColor};
   }
 
   animation: ${({ percentage }) => drop(percentage)} 1s ease forwards,

@@ -24,6 +24,7 @@ const Container = styled(Wrapper)`
 
 const AppName = styled.h2`
   font-size: 2em;
+  color: ${({ theme: { fontColor } }) => fontColor};
 `;
 
 const ImgLogo = styled.img`

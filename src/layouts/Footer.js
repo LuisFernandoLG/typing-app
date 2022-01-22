@@ -23,7 +23,7 @@ const FooterWrapper = styled(Wrapper)`
   margin-top: 5rem;
   width: 100%;
   padding: 1rem;
-  background: ${({ theme: { bgColor } }) => bgColor};
+  background: ${({ theme: { primaryColor } }) => primaryColor};
 `;
 
 const Title = styled.h3``;

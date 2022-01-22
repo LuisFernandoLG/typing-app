@@ -41,6 +41,6 @@ const NavBarStyled = styled(Wrapper)`
   position: sticky;
   top: 0;
   z-index: 200;
-  background: ${({ theme: { bgColor } }) => bgColor};
+  background: ${({ theme: { primaryColor } }) => primaryColor};
   box-shadow: 0 0.2rem 20px -15px ${({ theme: { secondaryColor } }) => secondaryColor};
 `;

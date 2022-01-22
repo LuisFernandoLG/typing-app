@@ -10,7 +10,7 @@ export const TimerExercise = ({ time }) => {
 
 const TimeExerciseWrapper = styled(Wrapper)`
   width: min-content;
-  color: ${({ theme: { primaryColor } }) => primaryColor};
+  color: ${({ theme: { secondaryColor } }) => secondaryColor};
   padding: 1rem;
   font-size: 2rem;
   font-weight: 800;

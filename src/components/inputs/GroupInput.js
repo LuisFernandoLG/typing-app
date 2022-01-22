@@ -39,8 +39,8 @@ const GroupInputStyled = styled.div`
   height: 2.5em;
   padding: 0.5em;
 
-  color: ${({ error, theme: { errorColor } }) =>
-    error ? errorColor : "black"};
+  color: ${({ error, theme: { errorColor, fontColor } }) =>
+    error ? errorColor : fontColor};
   &,
   label {
     cursor: text;
@@ -53,7 +53,8 @@ const GroupInputStyled = styled.div`
     top: 0;
     left: 0;
     border: 0.0625em solid
-      ${({ error, theme: { errorColor } }) => (error ? errorColor : "black")};
+      ${({ error, theme: { errorColor, fontColor } }) =>
+        error ? errorColor : fontColor};
     z-index: 400;
     border-radius: 5px;
     pointer-events: none;
@@ -65,16 +66,14 @@ const GroupInputStyled = styled.div`
     position: absolute;
     width: 95%;
     padding: 0.2em;
-    background: ${({ theme: { bgColor } }) => bgColor};
+    color: inherit;
+    background: ${({ theme: { primaryColor } }) => primaryColor};
 
     &:focus + .border {
-      border: 0.125em solid
-        ${({ error, theme: { errorColor } }) => (error ? errorColor : "black")};
-      color: red;
+      border: 0.125em solid inherit};
     }
 
     &:focus + .border + label {
-      /* color: green; */
       font-weight: 600;
     }
   }
@@ -100,7 +99,7 @@ const Label = styled.label`
   transform: translateY(-100%);
 
   color: inherit;
-  background: ${({ theme: { bgColor } }) => bgColor};
+  background: ${({ theme: { primaryColor } }) => primaryColor};
   padding: 0 0.5em;
 `;
 

@@ -1,14 +1,14 @@
 export const theme = {
-  primaryColor: "#95D1CC",
+  primaryColor: "#ffffff",
   secondaryColor: "#35858B",
-  tertiaryColor: "#eeee",
-  shadowColor: "#707070",
-  bgColor: "#ffff",
+  tertiaryColor: "#AAD8D3",
+  bgColor: "#95D1CC",
+  disableColor: "#eeee",
+  fontColor: "#000000",
 
   errorColor: "#F05454",
   successColor: "#7FC8A9",
   correctedColor: "#FFAA4C",
-  disableColor: "#EDEDED",
 
   border_radius: "10px",
 };

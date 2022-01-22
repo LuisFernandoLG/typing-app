@@ -68,11 +68,12 @@ export const SignInForm = () => {
 const SignInWrapper = styled(Wrapper)`
   padding: 3rem 2rem;
   width: 30rem;
-  background: ${({ theme: { bgColor } }) => bgColor};
+  background: ${({ theme: { primaryColor } }) => primaryColor};
   border-radius: ${({ theme: { border_radius } }) => border_radius};
 `;
 
 const Title = styled.h2`
   text-align: center;
   font-size: 2rem;
+  color: ${({ theme: { fontColor } }) => fontColor};
 `;

@@ -20,7 +20,7 @@ html{
 
 body{
     font-family: 'Nunito', sans-serif;
-    background: ${({ theme: { primaryColor } }) => primaryColor};
+    background: ${({ theme: { bgColor } }) => bgColor};
 }
 
 button{

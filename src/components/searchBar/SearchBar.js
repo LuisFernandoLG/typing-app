@@ -35,14 +35,14 @@ export const SearchBar = ({ setSearchQuery, search, searchByQuery }) => {
 const Container = styled(Wrapper)`
   flex-grow: 1;
   border-radius: ${({ theme: { border_radius } }) => border_radius};
-  background: ${({ theme: { bgColor } }) => bgColor};
+  background: ${({ theme: { primaryColor } }) => primaryColor};
   padding: 1rem;
 `;
 const SearchIcon = styled.button`
   cursor: pointer;
   font-size: 1.5rem;
-  color: ${({ theme: { shadowColor } }) => shadowColor};
-  background: ${({ theme: { bgColor } }) => bgColor};
+  color: ${({ theme: { fontColor } }) => fontColor};
+  background: inherit;
 `;
 const SearchInput = styled.input`
   height: 100%;
@@ -50,4 +50,10 @@ const SearchInput = styled.input`
 
   border: none;
   outline: none;
+  color: ${({ theme: { fontColor } }) => fontColor};
+
+  &::placeholder {
+    color: ${({ theme: { fontColor } }) => fontColor};
+    opacity: 0.6;
+  }
 `;

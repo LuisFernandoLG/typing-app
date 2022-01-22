@@ -61,7 +61,7 @@ const Title = styled.h2`
 
 const Container = styled.div`
   padding: 1rem;
-  background ${({ theme: { bgColor } }) => bgColor};
+  background ${({ theme: { primaryColor } }) => primaryColor};
   border-radius: 1rem;
   height: min-content;
 `;

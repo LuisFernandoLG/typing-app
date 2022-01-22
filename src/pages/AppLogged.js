@@ -39,7 +39,7 @@ const GridWrapper = styled.div`
   grid-template-rows: auto auto 1fr;
   gap: 2rem;
 
-  background: ${({ theme: { primaryColor } }) => primaryColor};
+  background: ${({ theme: { bgColor } }) => bgColor};
 `;
 
 export default AppLogged;

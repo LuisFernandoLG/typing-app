@@ -41,8 +41,9 @@ export const CategorySelect = ({ selectCategory }) => {
 const Select = styled.select`
   width: auto;
   padding: 1rem;
-  background: ${({ theme: { bgColor } }) => bgColor};
+  background: ${({ theme: { primaryColor } }) => primaryColor};
   border-radius: ${({ theme: { border_radius } }) => border_radius};
+  color: ${({ theme: { fontColor } }) => fontColor};
 
   font-weight: 700;
 
