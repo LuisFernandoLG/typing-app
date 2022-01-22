@@ -4,7 +4,7 @@ import { routes, routesV2 } from "../routes";
 import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 
 import notFound from "../images/notFoundPage.svg";
-import PrimaryBtn from "../components/ui/PrimaryBtn";
+import { Button } from "../components/ui/Button";
 
 export const NotFoundPage = () => {
   let history = useHistory();
@@ -17,7 +17,9 @@ export const NotFoundPage = () => {
     <Container flex flex_dc flex_jc_c flex_ai_c>
       <Image src={notFound} />
       <p>Vaya, no hemos podido encontrar lo que buscas.</p>
-      <PrimaryBtn onClick={handleClick}>Volver al inicio</PrimaryBtn>
+      <Button primary={true} onClick={handleClick}>
+        Volver al inicio
+      </Button>
     </Container>
   );
 };

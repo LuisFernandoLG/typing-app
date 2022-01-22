@@ -4,7 +4,7 @@ import { routes } from "../../routes";
 import { BubbleScore } from "./BubbleScore";
 import { FaUndo } from "react-icons/fa";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
-import PrimaryBtn from "../ui/PrimaryBtn";
+import { Button } from "../ui/Button";
 
 export const Score = ({ results, pointsCalculated }) => {
   let history = useHistory();
@@ -27,10 +27,12 @@ export const Score = ({ results, pointsCalculated }) => {
     <ScoreContainer flex flex_jc_c flex_dc flex_ai_c gap="1rem">
       <BubbleScore percentage={successfulPercentage} />
       <Points>{pointsInt} Puntos</Points>
-      <PrimaryBtn onClick={goToHome}>Volver al inicio</PrimaryBtn>
-      <ReloadBtn onClick={reloadPage}>
+      <Button primary={true} onClick={goToHome}>
+        Volver al inicio
+      </Button>
+      <Button secondary={true} onClick={reloadPage}>
         <FaUndo />
-      </ReloadBtn>
+      </Button>
     </ScoreContainer>
   );
 };
@@ -40,24 +42,6 @@ const ScoreContainer = styled(Wrapper)`
   background: ${({ theme: { primaryColor } }) => primaryColor};
 
   padding: 2rem;
-  border-radius: 1rem;
-`;
-
-const BackBtn = styled.button`
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 1rem;
-
-  border-radius: 1rem;
-`;
-
-const ReloadBtn = styled.button`
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 1rem;
-
   border-radius: 1rem;
 `;
 

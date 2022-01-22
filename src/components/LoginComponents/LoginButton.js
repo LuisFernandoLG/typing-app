@@ -1,8 +1,12 @@
 import { useSession } from "../../hooks/useSession";
-import PrimaryBtn from "../ui/PrimaryBtn";
+import { Button } from "../ui/Button";
 
 export const LoginButton = () => {
   const { handleLogOut } = useSession();
 
-  return <PrimaryBtn onClick={handleLogOut}>Cerrar sesión</PrimaryBtn>;
+  return (
+    <Button primary={true} onClick={handleLogOut}>
+      Cerrar sesión
+    </Button>
+  );
 };

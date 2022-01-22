@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { Loader } from "../Loader";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { useSignInForm } from "../../hooks/useSignInForm";
 import GroupInput from "../inputs/GroupInput";
-import PrimaryBtn from "../ui/PrimaryBtn";
+import { Button } from "../ui/Button";
 
 const nameRegex = /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/g;
 const emailRegex = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/;
@@ -54,13 +53,14 @@ export const SignInForm = () => {
         errors={errors}
       />
 
-      <PrimaryBtn
+      <Button
+        primary={true}
         isLoading={fecthLoading || authLoading}
         value="Registrarse"
         type="submit"
       >
         Registrarse
-      </PrimaryBtn>
+      </Button>
     </SignInWrapper>
   );
 };

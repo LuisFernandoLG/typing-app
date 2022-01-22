@@ -6,7 +6,7 @@ import AuthContext from "../../contexts/AuthContext";
 import { routes } from "../../routes";
 import GroupInput from "../inputs/GroupInput";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
-import PrimaryBtn from "../ui/PrimaryBtn";
+import { Button } from "../ui/Button";
 
 const emailRegex = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/;
 
@@ -54,14 +54,15 @@ export const LoginForm = () => {
         register={register}
         errors={errors}
       />
-      <PrimaryBtn
+      <Button
+        primary={true}
         isLoading={authLoading}
         type="submit"
         as="input"
         value="Iniciar sesión"
       >
         Iniciar sesión
-      </PrimaryBtn>
+      </Button>
     </LoginFormContainer>
   );
 };
