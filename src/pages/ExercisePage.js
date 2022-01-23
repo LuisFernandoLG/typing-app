@@ -10,6 +10,7 @@ import { Wrapper } from "../components/shareStyleComponents/Wrapper";
 import { endpoints } from "../components/signIn/api";
 import { TimerExercise } from "../components/exercise/TimerExercise";
 import { goTopPage } from "../helpers/goToTopPage";
+import Skeleton from "react-loading-skeleton";
 
 export const ExercisePage = () => {
   const { idQuote } = useParams();
@@ -101,31 +102,26 @@ export const ExercisePage = () => {
 
   return (
     <WrapperPage flex flex_dc flex_jc_fs flex_ai_c>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <Wrapper flex flex_jc_c flex_ai_c>
-            <TimerExercise time={time} dicrementTime={dicrementTime} />
-            <Title>{title}</Title>
-          </Wrapper>
+      <Title>{title || <Skeleton />}</Title>
+      <TimerExercise time={time} dicrementTime={dicrementTime} />
 
-          {results ? (
-            <Score results={results} pointsCalculated={pointsCalculated} />
-          ) : (
-            <>
-              {exercise !== null && (
-                <Exercise
-                  q={exercise}
-                  isTimeOver={isTimeOver}
-                  isCompleted={isCompleted}
-                  setIsCompleted={setIsCompleted}
-                  setResults={setResults}
-                />
-              )}
-            </>
-          )}
-        </>
+      {!results && !loading ? (
+        <Exercise
+          q={exercise}
+          isTimeOver={isTimeOver}
+          isCompleted={isCompleted}
+          setIsCompleted={setIsCompleted}
+          setResults={setResults}
+        />
+      ) : (
+        loading && (
+          <Skeleton
+            style={{ width: "60rem", height: "10rem", margin: "2rem 0" }}
+          />
+        )
+      )}
+      {results && (
+        <Score results={results} pointsCalculated={pointsCalculated} />
       )}
     </WrapperPage>
   );
@@ -138,6 +134,8 @@ const WrapperPage = styled(Wrapper)`
 `;
 
 const Title = styled.h1`
+  width: 100%;
+  height: 1rem;
   margin: 0 0;
   text-align: center;
   color: ${({ theme: { primaryColor } }) => primaryColor};
