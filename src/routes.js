@@ -1,5 +1,5 @@
+import { lazy } from "react";
 import { AdminPage } from "./pages/AdminPage";
-import AppLogged from "./pages/AppLogged";
 import { ExercisePage } from "./pages/ExercisePage";
 import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
@@ -7,6 +7,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { RankingPage } from "./pages/RankingPage";
 import { SignInPage } from "./pages/SignInPage";
 import { StadisticsPage } from "./pages/StadisticsPage";
+const AppLogged = lazy(() => import("./pages/AppLogged"));
 
 const app = "/app";
 
