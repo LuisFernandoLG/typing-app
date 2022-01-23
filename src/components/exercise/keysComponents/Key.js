@@ -14,43 +14,16 @@ const flickeringAnimation = keyframes`
   }`;
 
 const wantedKeyStyles = css`
-  font-weight: 600;
   color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    position: absolute;
-    bottom: 0;
-    left: -20%;
-    content: " ";
-    display: block;
-    width: 0.3rem;
-    height: 100%;
-    border-radius: 1rem;
-    animation: ${flickeringAnimation} 0.5s ease-in-out infinite alternate;
-    background: ${({ theme: { secondaryColor } }) => secondaryColor};
-  }
+  border: 2px solid ${({ theme: { tertiaryColor } }) => tertiaryColor};
 `;
 
 const wrongKeyStyles = css`
   color: ${({ theme: { errorColor } }) => errorColor};
-  position: relative;
-
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 5%;
-    bottom: 0;
-    left: 0;
-    background: ${({ theme: { errorColor } }) => errorColor};
-  }
 `;
 
 const succeedKeyStyles = css`
-  color: ${({ theme: { secondaryColor } }) => secondaryColor};
+  color: ${({ theme: { successColor } }) => successColor};
 `;
 
 const untriedKeyStyles = css`
@@ -58,11 +31,12 @@ const untriedKeyStyles = css`
 `;
 
 const KeyStyled = styled.span`
+  border: 2px solid transparent;
+  padding: 0 0.2rem;
   font-size: 2rem;
+  transition: color 300ms ease-in-out;
+
   font-weight: 700;
-  margin: 0.5rem 0.1rem;
-  transition: color 0.5s ease-in-out;
-  white-space: pre-wrap;
 
   ${({ type }) => (type === keyTypes.WANTED_KEY ? wantedKeyStyles : null)}
   ${({ type }) => (type === keyTypes.UNDTRIED_KEY ? untriedKeyStyles : null)}

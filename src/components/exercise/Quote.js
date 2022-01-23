@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { generate } from "shortid";
-import styled, { keyframes } from "styled-components";
-import { keyTypes } from "../../constants/keyTypes";
+import styled from "styled-components";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
 import { Key } from "./keysComponents/Key";
 
@@ -38,18 +37,23 @@ export const Quote = ({ quote, indexQuote }) => {
 
   const getWords = () => {
     let xwords = [];
-    let word = { id: null, items: [] };
+    let word = { id: generate(), items: [] };
     const sizeQuote = quote.length - 1;
 
     quote.forEach((item, i) => {
-      if (item.key === " " || sizeQuote === i) {
+      if (item.content === " ") {
         word.items.push(item);
-        word.id = generate();
         xwords.push(word);
-        word = { id: null, items: [] };
-      } else word.items.push(item);
+        word = { id: generate(), items: [] };
+      } else if (sizeQuote === i) {
+        word.items.push(item);
+        xwords.push(word);
+      } else {
+        word.items.push(item);
+      }
     });
 
+    console.log(xwords);
     return xwords;
   };
 
@@ -69,13 +73,18 @@ export const Quote = ({ quote, indexQuote }) => {
 
 const QuoteStyled = styled(Wrapper)`
   padding: 1rem;
-  display: flex;
   background: ${({ theme: { primaryColor } }) => primaryColor};
   border-radius: ${({ theme: { border_radius } }) => border_radius};
-  height: auto;
+
+  max-height: 213px;
+  overflow-y: scroll;
   margin: 2rem 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 `;
 
 const Word = styled.div`
-  margin: 0.2rem;
+  margin: 0.5rem 0;
 `;
