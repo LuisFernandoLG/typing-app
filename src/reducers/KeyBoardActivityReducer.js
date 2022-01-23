@@ -1,5 +1,6 @@
 import { generate } from "shortid";
 import { TYPES } from "../actions/KeyBoardActivityActions";
+import { keyTypes } from "../constants/keyTypes";
 
 export const keyBoardActivityInitialState = {
   quote: [],
@@ -15,7 +16,9 @@ export function KeyBoardActivityReducer(state, action) {
       const characterWanted = state.quote[state.indexQuote].content;
       const characterPressed = action.payload;
       let newStatus =
-        characterPressed === characterWanted ? "SUCCEED" : "FAILED";
+        characterPressed === characterWanted
+          ? keyTypes.SUCCEED_KEY
+          : keyTypes.WRONG_KEY;
       let newIndexQuote =
         state.indexQuote === state.sizeQuote
           ? state.indexQuote
@@ -34,6 +37,11 @@ export function KeyBoardActivityReducer(state, action) {
                 status: newStatus,
                 attempts: keyElement.attempts + 1,
               }
+            : index === state.indexQuote + 1
+            ? {
+                ...keyElement,
+                status: keyTypes.WANTED_KEY,
+              }
             : keyElement
         ),
       };
@@ -47,7 +55,7 @@ export function KeyBoardActivityReducer(state, action) {
             item.id === state.quote[state.indexQuote].id
               ? {
                   ...item,
-                  status: "UNTRIED",
+                  status: keyTypes.UNDTRIED_KEY,
                 }
               : item
           ),
@@ -70,7 +78,7 @@ export function KeyBoardActivityReducer(state, action) {
         indexQuote: 0,
         quote: state.quote.map((item) => ({
           ...item,
-          status: "UNTRIED",
+          status: keyTypes.UNDTRIED_KEY,
           attempts: 0,
         })),
       };
@@ -80,10 +88,10 @@ export function KeyBoardActivityReducer(state, action) {
         ...state,
         indexQuote: 0,
         sizeQuote: action.payload.length - 1,
-        quote: action.payload.split("").map((character) => ({
+        quote: action.payload.split("").map((character, i) => ({
           id: generate(),
           content: character.toLowerCase(),
-          status: "UNTRIED",
+          status: i === 0 ? keyTypes.WANTED_KEY : keyTypes.UNDTRIED_KEY,
           attempts: 0,
         })),
       };
@@ -98,7 +106,7 @@ export function KeyBoardActivityReducer(state, action) {
         ...state,
         results: state.quote.reduce(
           (prev, item, _) =>
-            item.status === "SUCCEED"
+            item.status === keyTypes.SUCCEED_KEY
               ? { ...prev, succeed: prev.succeed + 1 }
               : { ...prev, failed: prev.failed + 1 },
           resTemplate
