@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { generate } from "shortid";
 import styled, { keyframes } from "styled-components";
+import { keyTypes } from "../../constants/keyTypes";
 import { Wrapper } from "../shareStyleComponents/Wrapper";
+import { Key } from "./keysComponents/Key";
 
 export const Quote = ({ quote, indexQuote }) => {
   const [words, setWords] = useState(null);
@@ -34,19 +36,6 @@ export const Quote = ({ quote, indexQuote }) => {
     setWords(copyWords);
   };
 
-  const getTypeKey = (item) => {
-    if (item.id === quote[indexQuote].id)
-      return <WantedKey key={item.id}>{item.content}</WantedKey>;
-    switch (item.status) {
-      case "SUCCEED":
-        return <SucceedKey key={item.id}>{item.content}</SucceedKey>;
-      case "FAILED":
-        return <WrongKey key={item.id}>{item.content}</WrongKey>;
-      case "UNTRIED":
-        return <NormalKey key={item.id}>{item.content}</NormalKey>;
-    }
-  };
-
   const getWords = () => {
     let xwords = [];
     let word = { id: null, items: [] };
@@ -69,77 +58,22 @@ export const Quote = ({ quote, indexQuote }) => {
       {words &&
         words.map((word) => (
           <Word key={word.id}>
-            {word.items.map((letter) => getTypeKey(letter))}
+            {word.items.map(({ status, content }) => (
+              <Key type={status}>{content}</Key>
+            ))}
           </Word>
         ))}
     </QuoteStyled>
   );
 };
 
-const flickeringAnimation = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 100%;
-  }`;
-
-const NormalKey = styled.span`
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0.5rem 0.1rem;
-  transition: color 0.5s ease-in-out;
-  white-space: pre-wrap;
-
-  color: ${({ theme: { disableColor } }) => disableColor};
-`;
-
-const WantedKey = styled(NormalKey)`
-  font-weight: 600;
-  color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    position: absolute;
-    bottom: 0;
-    left: -20%;
-    content: " ";
-    display: block;
-    width: 0.3rem;
-    height: 100%;
-    border-radius: 1rem;
-    animation: ${flickeringAnimation} 0.5s ease-in-out infinite alternate;
-    background: ${({ theme: { secondaryColor } }) => secondaryColor};
-  }
-`;
-
-const WrongKey = styled(NormalKey)`
-  color: ${({ theme: { errorColor } }) => errorColor};
-  position: relative;
-
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 5%;
-    bottom: 0;
-    left: 0;
-    /* right: 50%; */
-    background: ${({ theme: { errorColor } }) => errorColor};
-  }
-`;
-
-const SucceedKey = styled(NormalKey)`
-  color: ${({ theme: { secondaryColor } }) => secondaryColor};
-`;
-
 const QuoteStyled = styled(Wrapper)`
   padding: 1rem;
   display: flex;
   background: ${({ theme: { primaryColor } }) => primaryColor};
   border-radius: ${({ theme: { border_radius } }) => border_radius};
+  height: auto;
+  margin: 2rem 0;
 `;
 
 const Word = styled.div`
