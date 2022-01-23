@@ -51,11 +51,16 @@ export function KeyBoardActivityReducer(state, action) {
       if (state.indexQuote > 0)
         return {
           ...state,
-          quote: state.quote.map((item) =>
+          quote: state.quote.map((item, index) =>
             item.id === state.quote[state.indexQuote].id
               ? {
                   ...item,
                   status: keyTypes.UNDTRIED_KEY,
+                }
+              : index === state.indexQuote - 1
+              ? {
+                  ...item,
+                  status: keyTypes.WANTED_KEY,
                 }
               : item
           ),
