@@ -21,7 +21,7 @@ export const Button = (
 
 const primaryStyles = css`
   color: ${({ theme: { primaryColor } }) => primaryColor};
-  background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  background: ${({ theme: { secondaryColor } }) => secondaryColor};
 
   &:hover,
   &:focus {
