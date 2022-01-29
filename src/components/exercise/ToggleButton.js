@@ -1,33 +1,32 @@
-import { useRef } from "react";
-import styled from "styled-components";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
+import { useRef } from 'react'
+import styled from 'styled-components'
+import { Wrapper } from '../shareStyleComponents/Wrapper'
 
 export const ToggleButton = ({
   state,
   enableIcon: EnableIcon,
   disableIcon: DisableIcon,
-  enableFunction,
-  disableFunction,
+  ToggleFunction,
 }) => {
-  let inputRef = useRef(null);
+  let inputRef = useRef(null)
 
   const handleClick = () => {
-    if (state) disableFunction();
-    else enableFunction();
-    inputRef.current.blur();
-  };
+    ToggleFunction()
+    inputRef.current.blur()
+  }
+
   return (
     <ToggleButtonStyled>
       <input
         ref={inputRef}
-        type="checkbox"
+        type='checkbox'
         defaultChecked={state}
         onClick={handleClick}
       />
       {state === true ? <EnableIcon /> : <DisableIcon />}
     </ToggleButtonStyled>
-  );
-};
+  )
+}
 
 const ToggleButtonStyled = styled(Wrapper)`
   position: relative;
@@ -54,4 +53,4 @@ const ToggleButtonStyled = styled(Wrapper)`
       color: ${({ theme: { primaryColor } }) => primaryColor};
     }
   }
-`;
+`
