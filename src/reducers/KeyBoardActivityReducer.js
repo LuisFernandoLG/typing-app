@@ -1,6 +1,7 @@
-import { generate } from "shortid";
-import { TYPES } from "../actions/KeyBoardActivityActions";
-import { keyTypes } from "../constants/keyTypes";
+import { generate } from 'shortid'
+import { TYPES } from '../actions/KeyBoardActivityActions'
+import { keyTypes } from '../constants/keyTypes'
+import { groupInwordsGroup } from '../helpers/groupInWords'
 
 export const keyBoardActivityInitialState = {
   quote: [],
@@ -8,22 +9,23 @@ export const keyBoardActivityInitialState = {
   indexQuote: 0,
   isCompleted: false,
   results: null,
-};
+}
 
 export function KeyBoardActivityReducer(state, action) {
   switch (action.type) {
     case TYPES.ADD_KEY_PRESSED: {
-      const characterWanted = state.quote[state.indexQuote].content;
-      const characterPressed = action.payload;
+      const characterWanted = state.quote[state.indexQuote].content
+      const characterPressed = action.payload
       let newStatus =
         characterPressed === characterWanted
           ? keyTypes.SUCCEED_KEY
-          : keyTypes.WRONG_KEY;
+          : keyTypes.WRONG_KEY
       let newIndexQuote =
         state.indexQuote === state.sizeQuote
           ? state.indexQuote
-          : state.indexQuote + 1;
-      let isCompleted = state.indexQuote === state.sizeQuote;
+          : state.indexQuote + 1
+
+      let isCompleted = state.indexQuote === state.sizeQuote
 
       return {
         ...state,
@@ -44,7 +46,7 @@ export function KeyBoardActivityReducer(state, action) {
               }
             : keyElement
         ),
-      };
+      }
     }
 
     case TYPES.REMOVE_KEY_PRESSED: {
@@ -65,9 +67,9 @@ export function KeyBoardActivityReducer(state, action) {
               : item
           ),
           indexQuote: state.indexQuote - 1,
-        };
+        }
       else {
-        return state;
+        return state
       }
     }
 
@@ -75,7 +77,7 @@ export function KeyBoardActivityReducer(state, action) {
       return {
         ...state,
         isCompleted: true,
-      };
+      }
 
     case TYPES.RESTART:
       return {
@@ -86,26 +88,29 @@ export function KeyBoardActivityReducer(state, action) {
           status: keyTypes.UNDTRIED_KEY,
           attempts: 0,
         })),
-      };
+      }
 
-    case TYPES.ADD_QUOTE:
+    case TYPES.ADD_QUOTE: {
+      const keys = action.payload.split('').map((character, i) => ({
+        id: generate(),
+        content: character.toLowerCase(),
+        status: i === 0 ? keyTypes.WANTED_KEY : keyTypes.UNDTRIED_KEY,
+        attempts: 0,
+      }))
+
       return {
         ...state,
         indexQuote: 0,
         sizeQuote: action.payload.length - 1,
-        quote: action.payload.split("").map((character, i) => ({
-          id: generate(),
-          content: character.toLowerCase(),
-          status: i === 0 ? keyTypes.WANTED_KEY : keyTypes.UNDTRIED_KEY,
-          attempts: 0,
-        })),
-      };
+        quote: keys,
+      }
+    }
 
     case TYPES.CALCULATE_RESULTS: {
       let resTemplate = {
         succeed: 0,
         failed: 0,
-      };
+      }
 
       return {
         ...state,
@@ -116,10 +121,10 @@ export function KeyBoardActivityReducer(state, action) {
               : { ...prev, failed: prev.failed + 1 },
           resTemplate
         ),
-      };
+      }
     }
 
     default:
-      return state;
+      return state
   }
 }
