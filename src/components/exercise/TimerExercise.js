@@ -1,16 +1,20 @@
-import Skeleton from "react-loading-skeleton";
-import styled from "styled-components";
-import { secondsToMinutes } from "../../helpers/converterTimeHelper";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
+import { useEffect } from 'react'
+import Skeleton from 'react-loading-skeleton'
+import styled from 'styled-components'
+import { secondsToMinutes } from '../../helpers/converterTimeHelper'
+import { Wrapper } from '../shareStyleComponents/Wrapper'
 
-export const TimerExercise = ({ time }) => {
-  if (time === 0) return null;
+export const TimerExercise = ({ time, markAsTimeOver }) => {
+  useEffect(() => {
+    if (time === 0) markAsTimeOver()
+  }, [time])
+
   return (
     <TimeExerciseWrapper>
       {time ? secondsToMinutes(time) : <Skeleton />}
     </TimeExerciseWrapper>
-  );
-};
+  )
+}
 
 const TimeExerciseWrapper = styled(Wrapper)`
   width: 50%;
@@ -24,4 +28,4 @@ const TimeExerciseWrapper = styled(Wrapper)`
   font-weight: 800;
 
   margin: 1rem 0;
-`;
+`

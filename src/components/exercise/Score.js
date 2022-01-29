@@ -1,32 +1,68 @@
-import { useHistory } from "react-router";
-import styled from "styled-components";
-import { routes } from "../../routes";
-import { BubbleScore } from "./BubbleScore";
-import { FaUndo } from "react-icons/fa";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
-import { Button } from "../ui/Button";
+import { useHistory } from 'react-router'
+import styled from 'styled-components'
+import { routes } from '../../routes'
+import { BubbleScore } from './BubbleScore'
+import { FaUndo } from 'react-icons/fa'
+import { Wrapper } from '../shareStyleComponents/Wrapper'
+import { Button } from '../ui/Button'
+import { useEffect } from 'react'
+import { getPercentage } from '../../helpers/getPercentage'
+import { useSession } from '../../hooks/useSession'
+import { useFetch } from '../../hooks/useFetch'
+import { endpoints } from '../signIn/api'
 
-export const Score = ({ results, pointsCalculated }) => {
-  let history = useHistory();
+const getPutScoreOptions = ({
+  pointsScored,
+  userId,
+  currentExercise,
+  timeTaken,
+}) => ({
+  method: 'POST',
+  body: JSON.stringify({
+    total_score: pointsScored,
+    user_id: userId,
+    exercise_id: currentExercise.id,
+    time_taken: timeTaken,
+  }),
+})
 
-  let pointsInt = parseInt(pointsCalculated);
+const getSuccessfulPercentage = ({ results }) =>
+  Math.trunc((results.succeed * 100) / (results.succeed + results.failed))
 
-  let successfulPercentage = Math.trunc(
-    (results.succeed * 100) / (results.succeed + results.failed)
-  );
+export const Score = ({ results, currentExercise, timeTaken }) => {
+  const { loading, fetchErrors, fetchData } = useFetch()
+  const { user } = useSession()
+
+  const percentageScored = getSuccessfulPercentage({ results })
+  const pointsScored = getPercentage({
+    percentage: percentageScored,
+    maxPoints: currentExercise.points,
+  })
+
+  useEffect(() => {
+    const options = getPutScoreOptions({
+      pointsScored,
+      currentExercise,
+      userId: user.id,
+      timeTaken,
+    })
+    fetchData(endpoints.score, options)
+  }, [])
+
+  let history = useHistory()
 
   const goToHome = () => {
-    history.push(routes.HOME_PAGE);
-  };
+    history.push(routes.HOME_PAGE)
+  }
 
   const reloadPage = () => {
-    history.go(0);
-  };
+    history.go(0)
+  }
 
   return (
-    <ScoreContainer flex flex_jc_c flex_dc flex_ai_c gap="1rem">
-      <BubbleScore percentage={successfulPercentage} />
-      <Points>{pointsInt} Puntos</Points>
+    <ScoreContainer flex flex_jc_c flex_dc flex_ai_c gap='1rem'>
+      <BubbleScore percentage={percentageScored} />
+      <Points>{pointsScored} Puntos</Points>
       <Button primary={true} onClick={goToHome}>
         Volver al inicio
       </Button>
@@ -34,8 +70,8 @@ export const Score = ({ results, pointsCalculated }) => {
         <FaUndo />
       </Button>
     </ScoreContainer>
-  );
-};
+  )
+}
 
 const ScoreContainer = styled(Wrapper)`
   margin: 1rem;
@@ -43,9 +79,9 @@ const ScoreContainer = styled(Wrapper)`
 
   padding: 2rem;
   border-radius: 1rem;
-`;
+`
 
 const Points = styled.p`
   text-align: center;
   font-weight: 800;
-`;
+`

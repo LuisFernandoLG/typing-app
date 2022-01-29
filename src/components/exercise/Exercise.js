@@ -1,17 +1,14 @@
-import { KeyBoard } from "./KeyBoard";
-import { Quote } from "./Quote";
-import { useKeyBoardActivity } from "../../hooks/useKeyBoardActivity";
-import { ToolBar } from "../toolbar/ToolBar";
-import { useEffect } from "react";
-import { useEffectKeySounds } from "../../hooks/useEffectKeySounds";
-import { useToggleKeyBoardButtons } from "../../hooks/useToggleKeyBoardButtons";
+import { KeyBoard } from './KeyBoard'
+import { Quote } from './Quote'
+import { useKeyBoardActivity } from '../../hooks/useKeyBoardActivity'
+import { useEffect } from 'react'
 
 export const Exercise = ({
   q,
-  isTimeOver,
-  setIsCompleted,
-  isCompleted,
+  isKeyboardActive,
+  markAsCompleted,
   setResults,
+  isTimeOver,
 }) => {
   const {
     indexQuote,
@@ -22,54 +19,34 @@ export const Exercise = ({
     sizeQuote,
     results,
     calculateResults,
-  } = useKeyBoardActivity(q);
-
-  const {
-    isEnableSound,
-    enableSound,
-    disableSound,
-    keyBoardVisibility,
-    enableKeyboard,
-    disableKeyBoard,
-  } = useToggleKeyBoardButtons();
-
-  useEffectKeySounds(keyPressed, isEnableSound);
+  } = useKeyBoardActivity(q)
 
   useEffect(() => {
-    if (isTimeOver || isCompleted) calculateResults();
-  }, [isTimeOver, isCompleted]);
+    if (isExerciseCompleted || isTimeOver) {
+      markAsCompleted()
+      calculateResults()
+    }
+  }, [isExerciseCompleted, isTimeOver])
 
   useEffect(() => {
-    if (results) setResults(results);
-  }, [results]);
-
-  useEffect(() => {
-    if (isExerciseCompleted) setIsCompleted(true);
-  }, [isExerciseCompleted]);
+    if (results !== null) setResults(results)
+  }, [results])
 
   return (
     <>
-      {sizeQuote > 0 ? (
+      {sizeQuote && (
         <>
-          <ToolBar
-            isEnableSound={isEnableSound}
-            enableSound={enableSound}
-            disableSound={disableSound}
-            keyBoardVisibility={keyBoardVisibility}
-            enableKeyboard={enableKeyboard}
-            disableKeyBoard={disableKeyBoard}
-          />
           <Quote quote={quote} indexQuote={indexQuote} />
 
-          {keyBoardVisibility && (
+          {isKeyboardActive && (
             <KeyBoard
-              keyBoardVisibility={keyBoardVisibility}
+              keyBoardVisibility={isKeyboardActive}
               keyWanted={keyWanted}
               keyPressed={keyPressed}
             />
           )}
         </>
-      ) : null}
+      )}
     </>
-  );
-};
+  )
+}
