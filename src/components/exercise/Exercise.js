@@ -19,7 +19,7 @@ export const Exercise = ({
     sizeQuote,
     results,
     calculateResults,
-  } = useKeyBoardActivity(q)
+  } = useKeyBoardActivity({ textQuote: q })
 
   useEffect(() => {
     if (isExerciseCompleted || isTimeOver) {
@@ -34,18 +34,14 @@ export const Exercise = ({
 
   return (
     <>
-      {sizeQuote && (
-        <>
-          <Quote quote={quote} indexQuote={indexQuote} />
+      <Quote quote={quote} indexQuote={indexQuote} />
 
-          {isKeyboardActive && (
-            <KeyBoard
-              keyBoardVisibility={isKeyboardActive}
-              keyWanted={keyWanted}
-              keyPressed={keyPressed}
-            />
-          )}
-        </>
+      {isKeyboardActive && (
+        <KeyBoard
+          keyBoardVisibility={isKeyboardActive}
+          keyWanted={keyWanted}
+          keyPressed={keyPressed}
+        />
       )}
     </>
   )

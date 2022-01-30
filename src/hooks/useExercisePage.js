@@ -20,7 +20,7 @@ export const useExercisePage = () => {
   const [timer, setTimer] = useState(null)
   const [isTimeOver, setIsTimeOver] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false)
-  const [results, setResults] = useState(null)
+  const [results, setResults] = useState([])
 
   const dicrementTime = () => {
     setTimer((timer) => (timer > 0 ? timer - 1 : timer))
@@ -36,7 +36,6 @@ export const useExercisePage = () => {
 
   useEffect(() => {
     fetchData(`${endpoints.exercise}/${idQuote}`)
-    fixSpaceKeyErrorWithScroll()
   }, [])
 
   useEffect(() => {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { fixSpaceKeyErrorWithScroll } from '../../helpers/fixSpaceKeyErrorWithScroll'
 import { groupInwordsGroup } from '../../helpers/groupInWords'
 import { Key } from './keysComponents/Key'
 
@@ -8,6 +9,7 @@ export const Quote = ({ quote, indexQuote }) => {
 
   useEffect(() => {
     const wordsGroup = groupInwordsGroup({ quote })
+    fixSpaceKeyErrorWithScroll()
     setWords(wordsGroup)
   }, [])
 
@@ -51,8 +53,9 @@ export const Quote = ({ quote, indexQuote }) => {
 
 const QuoteStyled = styled.div`
   padding: 1rem;
-  background: ${({ theme: { primaryColor } }) => primaryColor};
+  background: ${({ theme: { whiteColor } }) => whiteColor};
   border-radius: ${({ theme: { border_radius } }) => border_radius};
+  font-size: 1.5rem;
 
   max-height: 213px;
   overflow-y: scroll;
