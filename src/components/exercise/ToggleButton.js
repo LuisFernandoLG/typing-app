@@ -36,7 +36,6 @@ const ToggleButtonStyled = styled(Wrapper)`
   color: ${({ theme: { secondaryColor } }) => secondaryColor};
 
   i {
-    opacity: 0.5;
     pointer-events: none;
   }
 

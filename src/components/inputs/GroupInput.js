@@ -1,11 +1,11 @@
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const GroupInput = ({ name, regex, type, isRequired, errors, register }) => {
   return (
     <GroupInputStyled error={errors[name]}>
       <input
-        placeholder={" "}
+        placeholder={' '}
         type={type}
         id={name}
         {...register(name, {
@@ -13,15 +13,14 @@ const GroupInput = ({ name, regex, type, isRequired, errors, register }) => {
           pattern: regex,
         })}
       />
-      <div className="border"></div>
       <Label htmlFor={name}>{name}</Label>
-      {errors[name]?.type === "required" && <InputError>Requerido</InputError>}
-      {errors[name]?.type === "pattern" && (
+      {errors[name]?.type === 'required' && <InputError>Requerido</InputError>}
+      {errors[name]?.type === 'pattern' && (
         <InputError>{name} inválido</InputError>
       )}
     </GroupInputStyled>
-  );
-};
+  )
+}
 
 GroupInput.propTypes = {
   name: PropTypes.string.isRequired,
@@ -29,7 +28,7 @@ GroupInput.propTypes = {
   type: PropTypes.string,
   isRequired: PropTypes.bool,
   errors: PropTypes.object.isRequired,
-};
+}
 
 const GroupInputStyled = styled.div`
   width: 100%;
@@ -39,38 +38,31 @@ const GroupInputStyled = styled.div`
   height: 2.5em;
   padding: 0.5em;
 
-  color: ${({ error, theme: { errorColor, fontColor } }) =>
-    error ? errorColor : fontColor};
-  &,
+  border-radius: ${({ theme: { border_radius } }) => border_radius};
+  box-shadow: 0 0.05em 0.4em -0.1em ${({ error, theme: { errorColor, disableColor } }) => (error ? errorColor : disableColor)};
+
+  color: ${({ error, theme: { errorColor, tertiaryColor } }) =>
+    error ? errorColor : tertiaryColor};
+
   label {
     cursor: text;
   }
 
-  .border {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border: 0.0625em solid
-      ${({ error, theme: { errorColor, fontColor } }) =>
-        error ? errorColor : fontColor};
-    z-index: 400;
-    border-radius: 5px;
-    pointer-events: none;
-  }
+  background: ${({ theme: { whiteColor } }) => whiteColor};
 
   input {
     border: none;
     outline: none;
     position: absolute;
+    left: 0.5rem;
+    top: 0;
+    height: 100%;
     width: 95%;
-    padding: 0.2em;
     color: inherit;
-    background: ${({ theme: { primaryColor } }) => primaryColor};
+    background: inherit;
 
     &:focus + .border {
-      border: 0.125em solid inherit};
+      border: 0.125em solid inherit;
     }
 
     &:focus + .border + label {
@@ -86,22 +78,20 @@ const GroupInputStyled = styled.div`
     background: red;
     z-index: 200;
   }
-`;
+`
 
 const Label = styled.label`
   transition: transform 200ms ease;
 
-  margin-bottom: 0.5em;
   font-weight: 600;
 
   position: absolute;
   z-index: 500;
-  transform: translateY(-100%);
+  transform: translateY(-160%);
 
   color: inherit;
-  background: ${({ theme: { primaryColor } }) => primaryColor};
-  padding: 0 0.5em;
-`;
+  left: 0;
+`
 
 const InputError = styled.p`
   z-index: 300;
@@ -109,6 +99,6 @@ const InputError = styled.p`
   bottom: -65%;
   color: inherit;
   left: 0;
-`;
+`
 
-export default GroupInput;
+export default GroupInput

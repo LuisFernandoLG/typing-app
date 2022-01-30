@@ -1,14 +1,16 @@
 export const theme = {
-  primaryColor: "#ffffff",
-  secondaryColor: "#35858B",
-  tertiaryColor: "#AAD8D3",
-  bgColor: "#95D1CC",
-  disableColor: "#eeee",
-  fontColor: "#000000",
+  primaryColor: '#9AD0EC',
+  secondaryColor: '#064663',
+  tertiaryColor: '#323232',
+  whiteColor: '#fff',
 
-  errorColor: "#F05454",
-  successColor: "#7FC8A9",
-  correctedColor: "#FFAA4C",
+  bgColor: '#f0f1f7',
+  disableColor: '#878fb8',
+  fontColor: '#484b5c',
 
-  border_radius: "10px",
-};
+  errorColor: '#F05454',
+  successColor: '#7FC8A9',
+  correctedColor: '#FFAA4C',
+
+  border_radius: '10px',
+}

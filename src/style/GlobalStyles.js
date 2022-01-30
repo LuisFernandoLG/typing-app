@@ -1,10 +1,17 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
 *,*::after,*::before{
     padding: 0;
     margin:0;
     box-sizing: border-box;
+}
+
+/*  */
+h1{
+    padding: 0;
+    margin:0;
+    
 }
 
 /* Reset */
@@ -19,7 +26,7 @@ html{
 }
 
 body{
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background: ${({ theme: { bgColor } }) => bgColor};
 }
 
@@ -28,4 +35,4 @@ button{
     outline:none;
 }
 
-`;
+`

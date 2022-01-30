@@ -1,17 +1,14 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 export const RedirectLink = ({ children, ...props }) => {
-  return (
-    <Link {...props}>
-      <RedirectLinkStyled>{children}</RedirectLinkStyled>
-    </Link>
-  );
-};
+  return <RedirectLinkStyled {...props}>{children}</RedirectLinkStyled>
+}
 
-const RedirectLinkStyled = styled.span`
+const RedirectLinkStyled = styled(Link)`
   margin: 1rem 0;
   font-weight: 700;
   text-decoration: underline;
-  color: ${({ theme: { secondaryColor } }) => secondaryColor};
-`;
+  color: inherit;
+  font-size: inherit;
+`

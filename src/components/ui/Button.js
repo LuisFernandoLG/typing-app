@@ -1,8 +1,8 @@
-import styled, { css } from "styled-components";
-import { Loader } from "../Loader";
+import styled, { css } from 'styled-components'
+import { Loader } from '../Loader'
 
 export const Button = (
-  { children, isLoading, onClick, primary, secondary },
+  { children, isLoading, onClick, primary, secondary, pd },
   props
 ) => {
   return (
@@ -11,46 +11,49 @@ export const Button = (
       disabled={isLoading}
       primary={primary}
       secondary={secondary}
-      {...props}
-    >
+      pd={pd}
+      {...props}>
       <Content> {isLoading ? <Loader /> : children} </Content>
       <BaseSizeHelper>{children}</BaseSizeHelper>
     </ButtonStyled>
-  );
-};
+  )
+}
 
 const primaryStyles = css`
-  color: ${({ theme: { primaryColor } }) => primaryColor};
-  background: ${({ theme: { secondaryColor } }) => secondaryColor};
+  color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  background: ${({ theme: { primaryColor } }) => primaryColor};
+  box-shadow: 0 0.4375rem 1.575rem -1.125rem ${({ theme: { tertiaryColor } }) => tertiaryColor};
 
   &:hover,
   &:focus {
-    background: ${({ theme: { secondaryColor } }) => secondaryColor};
     box-shadow: 0 0.4375rem 1.575rem -0.625rem ${({ theme: { secondaryColor } }) => secondaryColor};
   }
-`;
+`
 
 const secondaryStyles = css`
-  color: ${({ theme: { bgColor } }) => bgColor};
-  background: ${({ theme: { primaryColor } }) => primaryColor};
+  color: ${({ theme: { disableColor } }) => disableColor};
   border: 3px solid ${({ theme: { bgColor } }) => bgColor};
+  background: transparent;
 
   &:hover,
   &:focus {
-    color: ${({ theme: { primaryColor } }) => primaryColor};
-    background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
   }
-`;
+`
 
 const ButtonStyled = styled.button`
   position: relative;
-  padding: 1rem 2rem;
+  ${({ pd }) =>
+    pd
+      ? css`
+          padding: ${pd};
+        `
+      : 'padding: 1rem 2rem;'}
 
-  transition: background 300ms ease, box-shadow 300ms ease;
   border-radius: ${({ theme: { border_radius } }) => border_radius};
+  transition: box-shadow 300ms ease;
 
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 600;
   user-select: none;
   cursor: pointer;
 
@@ -58,14 +61,14 @@ const ButtonStyled = styled.button`
 
   ${({ primary }) => (primary ? primaryStyles : null)} 
   ${({ secondary }) => (secondary ? secondaryStyles : null)}
-`;
+`
 
 const BaseSizeHelper = styled.span`
   opacity: 0;
-`;
+`
 const Content = styled.span`
   position: absolute;
   margin: 0 auto;
   left: 0;
   right: 0;
-`;
+`

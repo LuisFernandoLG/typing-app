@@ -15,7 +15,7 @@ export const LazyLoading = () => {
 const LazyLoadingStyled = styled(FlexContainer)`
   position: absolute;
   z-index: 1000;
-  background: ${({ theme: { primaryColor } }) => primaryColor};
+  background: ${({ theme: { bgColor } }) => bgColor};
 
   width: 100%;
   height: 100vh;
