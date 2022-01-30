@@ -4,10 +4,12 @@ import { Quote } from '../components/exercise/Quote'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { Button } from '../components/ui/Button'
 import { useKeyBoardActivity } from '../hooks/useKeyBoardActivity'
+import { useLinkRouter } from '../hooks/useLinkRouter'
 
 const textQuote = 'Hola, bievenido a type and type'
 
 export const IndexPage = () => {
+  const { goSignUpPage } = useLinkRouter()
   const { quote, indexQuote, isExerciseCompleted, reset } = useKeyBoardActivity(
     {
       textQuote,
@@ -24,7 +26,7 @@ export const IndexPage = () => {
 
       {isExerciseCompleted ? (
         <FlexContainer fd_c gap='1rem'>
-          <Button primary onClick={reset}>
+          <Button primary onClick={goSignUpPage}>
             Registrarse
           </Button>
           <Button secondary onClick={reset}>
