@@ -8,9 +8,13 @@ import { ToolBar } from '../components/toolbar/ToolBar'
 import { useToggle } from '../hooks/useToggle'
 import { ToggleButton } from '../components/exercise/ToggleButton'
 import { useExercisePage } from '../hooks/useExercisePage'
-
-const KeyBoardIcon = () => <i className='far fa-keyboard' />
-const SpeakerIcon = () => <i className='fas fa-volume-up' />
+import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
+import {
+  FaVolumeUp,
+  FaVolumeMute,
+  FaRegKeyboard,
+  FaKeyboard,
+} from 'react-icons/fa'
 
 export const ExercisePage = () => {
   const {
@@ -30,34 +34,36 @@ export const ExercisePage = () => {
 
   return (
     <WrapperPage>
-      <Title>{currentExercise.title || <Skeleton />}</Title>
-      {!isTimeOver && !isCompleted && (
-        <TimerExercise
-          time={timeLeft}
-          dicrementTime={dicrementTime}
-          markAsTimeOver={markAsTimeOver}
-        />
-      )}
-      <ToolBar>
-        <ToggleButton
-          state={isSoundActive}
-          enableIcon={SpeakerIcon}
-          disableIcon={SpeakerIcon}
-          ToggleFunction={toggleIsSoundActive}
-        />
-        <ToggleButton
-          state={isKeyboardActive}
-          enableIcon={KeyBoardIcon}
-          disableIcon={KeyBoardIcon}
-          ToggleFunction={toggleIsKeyboardActive}
-        />
-      </ToolBar>
+      <FlexContainer jc_c ai_c>
+        {!isTimeOver && !isCompleted && (
+          <TimerExercise
+            time={timeLeft}
+            dicrementTime={dicrementTime}
+            markAsTimeOver={markAsTimeOver}
+          />
+        )}
+        <Title>{currentExercise.title || <Skeleton />}</Title>
+        <ToolBar>
+          <ToggleButton
+            state={isSoundActive}
+            enableIcon={FaVolumeUp}
+            disableIcon={FaVolumeMute}
+            ToggleFunction={toggleIsSoundActive}
+          />
+          <ToggleButton
+            state={isKeyboardActive}
+            enableIcon={FaKeyboard}
+            disableIcon={FaRegKeyboard}
+            ToggleFunction={toggleIsKeyboardActive}
+          />
+        </ToolBar>
+      </FlexContainer>
 
       {loading || !currentExercise.id ? (
         <Skeleton
           style={{ width: '60rem', height: '10rem', margin: '2rem 0' }}
         />
-      ) : results !== null ? (
+      ) : (isCompleted || isTimeOver) && results.length !== 0 ? (
         <Score
           results={results}
           currentExercise={currentExercise}
