@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { LoginButton } from '../LoginComponents/LoginButton'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
 import { RedirectLink } from '../ui/RedirectLink'
 import { routesV2 } from '../../routes'
@@ -37,5 +36,5 @@ const NavBarStyled = styled(Wrapper)`
 
   z-index: 200;
   color: ${({ theme: { disableColor } }) => disableColor};
-  font-size:1.5rem;
+  font-size: 1.5rem;
 `
