@@ -1,9 +1,8 @@
 import { LoginForm } from '../components/LoginComponents/LoginForm'
-import { useContext } from 'react'
-import AuthContext from '../contexts/AuthContext'
 import { Redirect } from 'react-router'
 import { routesV2 } from '../routes'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
+import { useSession } from '../hooks/useSession'
 
 export const LoginPage = () => {
   const { isAuth } = useSession()
