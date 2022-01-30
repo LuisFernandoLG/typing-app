@@ -1,12 +1,12 @@
-import { Route, Switch } from "react-router-dom";
-import styled from "styled-components";
-import { routesV2 } from "../routes";
-import { NavBar } from "../components/NavBar/NavBar";
+import { Route, Switch } from 'react-router-dom'
+import styled from 'styled-components'
+import { routesV2 } from '../routes'
+import { NavBar } from '../components/NavBar/NavBar'
 
 const AppLogged = () => {
   return (
     <GridWrapper>
-      <NavBar />
+      {/* <NavBar /> */}
       <SubPageContainer>
         <Switch>
           {Object.values(routesV2.LOGGED_APP.subPages).map(
@@ -22,8 +22,8 @@ const AppLogged = () => {
         </Switch>
       </SubPageContainer>
     </GridWrapper>
-  );
-};
+  )
+}
 
 const SubPageContainer = styled.div`
   max-width: 1000px;
@@ -31,7 +31,7 @@ const SubPageContainer = styled.div`
   margin: 0 auto;
 
   min-height: 90vh;
-`;
+`
 
 const GridWrapper = styled.div`
   display: grid;
@@ -40,6 +40,6 @@ const GridWrapper = styled.div`
   gap: 2rem;
 
   background: ${({ theme: { bgColor } }) => bgColor};
-`;
+`
 
-export default AppLogged;
+export default AppLogged
