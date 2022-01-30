@@ -1,15 +1,20 @@
 import { generate } from 'shortid'
 import { TYPES } from '../actions/KeyBoardActivityActions'
 import { keyTypes } from '../constants/keyTypes'
-import { groupInwordsGroup } from '../helpers/groupInWords'
 
-export const keyBoardActivityInitialState = {
-  quote: [],
-  sizeQuote: null,
+export const keyBoardActivityInitialState = ({ textQuote }) => ({
+  textQuote: textQuote,
+  quote: textQuote.split('').map((character, i) => ({
+    id: generate(),
+    content: character.toLowerCase(),
+    status: i === 0 ? keyTypes.WANTED_KEY : keyTypes.UNDTRIED_KEY,
+    attempts: 0,
+  })),
+  sizeQuote: textQuote.length - 1,
   indexQuote: 0,
   isCompleted: false,
-  results: null,
-}
+  results: [],
+})
 
 export function KeyBoardActivityReducer(state, action) {
   switch (action.type) {
@@ -80,15 +85,7 @@ export function KeyBoardActivityReducer(state, action) {
       }
 
     case TYPES.RESTART:
-      return {
-        ...state,
-        indexQuote: 0,
-        quote: state.quote.map((item) => ({
-          ...item,
-          status: keyTypes.UNDTRIED_KEY,
-          attempts: 0,
-        })),
-      }
+      return keyBoardActivityInitialState({ textQuote: state.textQuote })
 
     case TYPES.ADD_QUOTE: {
       const keys = action.payload.split('').map((character, i) => ({

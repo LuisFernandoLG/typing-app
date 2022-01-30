@@ -31,15 +31,14 @@ const specialKeys = {
   BACK_SPACE: 'Backspace',
 }
 
-export const useKeyBoardActivity = (textQuote) => {
+export const useKeyBoardActivity = ({ textQuote }) => {
   const [state, dispatch] = useReducer(
     KeyBoardActivityReducer,
-    keyBoardActivityInitialState
+    keyBoardActivityInitialState({ textQuote })
   )
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown)
-    dispatch({ type: TYPES.ADD_QUOTE, payload: textQuote })
     return () => window.removeEventListener('keydown', () => {})
   }, [])
 
@@ -57,6 +56,8 @@ export const useKeyBoardActivity = (textQuote) => {
     }
   }
 
+  const reset = () => dispatch({ type: TYPES.RESTART })
+
   const isExcludeKey = (character) => {
     return !excludeKeysFromPressed.every((item) => item !== character)
   }
@@ -73,6 +74,7 @@ export const useKeyBoardActivity = (textQuote) => {
     keyPressed: state.keyPressed,
     sizeQuote: state.sizeQuote,
     results: state.results,
-    calculateResults: calculateResults,
+    calculateResults,
+    reset,
   }
 }
