@@ -17,7 +17,7 @@ export const IndexPage = () => {
   return (
     <FlexContainer fd_c ai_c gap='2rem'>
       <FlexContainer fd_c ai_c>
-        <Title>Mejora tus escritura</Title>
+        <Title>Mejora tu escritura</Title>
         <SubTitle>¡Comienza a teclear!</SubTitle>
         <Paragraph>¡Diviértete!</Paragraph>
       </FlexContainer>
