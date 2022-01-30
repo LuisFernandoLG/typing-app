@@ -4,7 +4,7 @@ import AuthContext from '../contexts/AuthContext'
 import { routesV2 } from '../routes'
 
 export const useSession = () => {
-  const { setLogOut, user } = useContext(AuthContext)
+  const { setLogOut, user, isAuth } = useContext(AuthContext)
   let history = useHistory()
 
   const handleLogOut = () => {
@@ -20,5 +20,6 @@ export const useSession = () => {
     handleLogOut,
     isAdmin,
     user,
+    isAuth,
   }
 }

@@ -1,34 +1,33 @@
-import { lazy } from "react";
-import { AdminPage } from "./pages/AdminPage";
-import { ExercisePage } from "./pages/ExercisePage";
-import { HomePage } from "./pages/HomePage";
-import { LoginPage } from "./pages/LoginPage";
-import { NotFoundPage } from "./pages/NotFoundPage";
-import { RankingPage } from "./pages/RankingPage";
-import { SignInPage } from "./pages/SignInPage";
-import { StadisticsPage } from "./pages/StadisticsPage";
-const AppLogged = lazy(() => import("./pages/AppLogged"));
+import { lazy } from 'react'
+import { AdminPage } from './pages/AdminPage'
+import { ExercisePage } from './pages/ExercisePage'
+import { HomePage } from './pages/HomePage'
+import { IndexPage } from './pages/IndexPage'
+import { LoginPage } from './pages/LoginPage'
+import { NotFoundPage } from './pages/NotFoundPage'
+import { RankingPage } from './pages/RankingPage'
+import { SignInPage } from './pages/SignInPage'
+import { StadisticsPage } from './pages/StadisticsPage'
+const AppLogged = lazy(() => import('./pages/AppLogged'))
 
-const app = "/app";
-
-const Index = () => <p>Index</p>;
+const app = '/app'
 
 export const routes = {
-  LOGIN_PAGE: "/logIn",
-  SIGNUP_PAGE: "/signUp",
-  ADMIN_PAGE: "/admin",
+  LOGIN_PAGE: '/logIn',
+  SIGNUP_PAGE: '/signUp',
+  ADMIN_PAGE: '/admin',
   HOME_PAGE: app,
   EXERCICE_PAGE: `${app}/exercise`,
   RANKING_PAGE: `${app}/ranking`,
   STADISTICS_PAGE: `${app}/estadisticas`,
-};
+}
 
 export const routesV2 = {
-  INDEX: {
+  INDEX_PAGE: {
     id: 0,
-    route: "/",
-    name: "index",
-    component: Index,
+    route: '/',
+    name: 'index',
+    component: IndexPage,
     isPrivate: false,
     routeProps: {
       exact: true,
@@ -37,7 +36,7 @@ export const routesV2 = {
   LOGGED_APP: {
     id: 10,
     route: `${app}`,
-    name: "app",
+    name: 'app',
     component: AppLogged,
     isPrivate: true,
     routeProps: {
@@ -47,7 +46,7 @@ export const routesV2 = {
       HOME_PAGE: {
         id: 1,
         route: `${app}`,
-        name: "home",
+        name: 'home',
         component: HomePage,
         isPrivate: true,
         routeProps: {
@@ -57,7 +56,7 @@ export const routesV2 = {
       ADMING_PAGE: {
         id: 3,
         route: `${app}/adminPage`,
-        name: "admin",
+        name: 'admin',
         component: AdminPage,
         isPrivate: true,
         routeProps: {
@@ -68,7 +67,7 @@ export const routesV2 = {
         id: 4,
         route: `${app}/item/:idQuote`,
         routBaseParam: `${app}/item`,
-        name: "exercise",
+        name: 'exercise',
         component: ExercisePage,
         isPrivate: true,
         routeProps: {
@@ -78,7 +77,7 @@ export const routesV2 = {
       RANKING_PAGE: {
         id: 6,
         route: `${app}/ranking`,
-        name: "Ranking",
+        name: 'Ranking',
         component: RankingPage,
         isPrivate: true,
         routeProps: {
@@ -88,7 +87,7 @@ export const routesV2 = {
       STADISTICS_PAGE: {
         id: 6,
         route: `${app}/resultados`,
-        name: "Stadistics",
+        name: 'Stadistics',
         component: StadisticsPage,
         isPrivate: true,
         routeProps: {
@@ -99,8 +98,8 @@ export const routesV2 = {
   },
   LOGIN_PAGE: {
     id: 2,
-    route: "/login",
-    name: "login",
+    route: '/login',
+    name: 'login',
     component: LoginPage,
     isPrivate: false,
     routeProps: {
@@ -109,8 +108,8 @@ export const routesV2 = {
   },
   SIGN_UP_PAGE: {
     id: 7,
-    route: "/SignUp",
-    name: "Sign Up",
+    route: '/SignUp',
+    name: 'Sign Up',
     component: SignInPage,
     isPrivate: false,
     routeProps: {
@@ -119,12 +118,12 @@ export const routesV2 = {
   },
   NOT_FOUND_PAGE: {
     id: 5,
-    route: "*",
-    name: "Not Found Page",
+    route: '*',
+    name: 'Not Found Page',
     component: NotFoundPage,
     isPrivate: false,
     routeProps: {
       exact: false,
     },
   },
-};
+}
