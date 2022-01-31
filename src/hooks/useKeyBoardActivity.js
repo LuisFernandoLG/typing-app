@@ -37,11 +37,6 @@ export const useKeyBoardActivity = ({ textQuote }) => {
     keyBoardActivityInitialState({ textQuote })
   )
 
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', () => {})
-  }, [])
-
   const handleKeyDown = (e) => {
     let character = e.key
     if (isExcludeKey(character)) return null
@@ -58,13 +53,15 @@ export const useKeyBoardActivity = ({ textQuote }) => {
 
   const reset = () => dispatch({ type: TYPES.RESTART })
 
-  const isExcludeKey = (character) => {
-    return !excludeKeysFromPressed.every((item) => item !== character)
-  }
+  const isExcludeKey = (character) =>
+    !excludeKeysFromPressed.every((item) => item !== character)
 
-  const calculateResults = () => {
-    dispatch({ type: TYPES.CALCULATE_RESULTS })
-  }
+  const calculateResults = () => dispatch({ type: TYPES.CALCULATE_RESULTS })
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
 
   return {
     quote: state.quote,
