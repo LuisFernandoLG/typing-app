@@ -10,6 +10,7 @@ import { getPercentage } from '../../helpers/getPercentage'
 import { useSession } from '../../hooks/useSession'
 import { useFetch } from '../../hooks/useFetch'
 import { endpoints } from '../signIn/api'
+import { useLinkRouter } from '../../hooks/useLinkRouter'
 
 const getPutScoreOptions = ({
   pointsScored,
@@ -32,6 +33,7 @@ const getSuccessfulPercentage = ({ results }) =>
 export const Score = ({ results, currentExercise, timeTaken }) => {
   const { loading, fetchErrors, fetchData } = useFetch()
   const { user } = useSession()
+  const { goHomePage, reloadPage } = useLinkRouter()
 
   const percentageScored = getSuccessfulPercentage({ results })
   const pointsScored = getPercentage({
@@ -49,21 +51,11 @@ export const Score = ({ results, currentExercise, timeTaken }) => {
     fetchData(endpoints.score, options)
   }, [])
 
-  let history = useHistory()
-
-  const goToHome = () => {
-    history.push(routes.HOME_PAGE)
-  }
-
-  const reloadPage = () => {
-    history.go(0)
-  }
-
   return (
     <ScoreContainer flex flex_jc_c flex_dc flex_ai_c gap='1rem'>
       <BubbleScore percentage={percentageScored} />
       <Points>{pointsScored} Puntos</Points>
-      <Button primary={true} onClick={goToHome}>
+      <Button primary={true} onClick={goHomePage}>
         Volver al inicio
       </Button>
       <Button secondary={true} onClick={reloadPage}>

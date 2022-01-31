@@ -9,11 +9,13 @@ export const useLinkRouter = () => {
   const goLoginPage = () => history.push(routesV2.LOGIN_PAGE.route)
   const goSignUpPage = () => history.push(routesV2.SIGN_UP_PAGE.route)
   const goIndexPage = () => history.push(routesV2.INDEX_PAGE.route)
+  const reloadPage = () => history.go(0)
 
   return {
     goHomePage,
     goLoginPage,
     goSignUpPage,
     goIndexPage,
+    reloadPage,
   }
 }
