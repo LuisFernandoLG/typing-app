@@ -42,17 +42,6 @@ export const IndexPage = () => {
 const Title = styled.h1`
   font-weight: 700;
   font-size: 3rem;
-
-  /* background: -webkit-linear-gradient(
-      to right,
-      ${({ theme: { primaryColor } }) => primaryColor} 0%,
-      ${({ theme: { secondaryColor } }) => secondaryColor} 100%
-      );
-      background: -moz-linear-gradient(
-          to right,
-          ${({ theme: { primaryColor } }) => primaryColor} 0%,
-          ${({ theme: { secondaryColor } }) => secondaryColor} 100%
-  ); */
   background: linear-gradient(
     to right,
     ${({ theme: { primaryColor } }) => primaryColor} 0%,
@@ -64,10 +53,10 @@ const Title = styled.h1`
 const SubTitle = styled.h2`
   font-weight: 600;
   font-size: 2rem;
+  color: ${({ theme: { fontColor } }) => fontColor};
 `
 const Paragraph = styled.p`
   font-weight: 400;
   font-size: 1.5rem;
   color: ${({ theme: { fontColor } }) => fontColor};
-  /* color: red; */
 `

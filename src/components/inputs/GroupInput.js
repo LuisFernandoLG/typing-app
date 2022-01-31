@@ -41,8 +41,8 @@ const GroupInputStyled = styled.div`
   border-radius: ${({ theme: { border_radius } }) => border_radius};
   box-shadow: 0 0.05em 0.4em -0.1em ${({ error, theme: { errorColor, disableColor } }) => (error ? errorColor : disableColor)};
 
-  color: ${({ error, theme: { errorColor, tertiaryColor } }) =>
-    error ? errorColor : tertiaryColor};
+  color: ${({ error, theme: { errorColor, fontColor } }) =>
+    error ? errorColor : fontColor};
 
   label {
     cursor: text;
@@ -58,7 +58,8 @@ const GroupInputStyled = styled.div`
     top: 0;
     height: 100%;
     width: 95%;
-    color: inherit;
+    color: ${({ theme: { disableColor } }) => disableColor};
+    font-weight: 600;
     background: inherit;
 
     &:focus + .border {

@@ -66,5 +66,5 @@ const LoginFormContainer = styled(Wrapper)`
 const Title = styled.h2`
   font-size: 2em;
   text-align: center;
-  color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  color: ${({ theme: { fontColor } }) => fontColor};
 `
