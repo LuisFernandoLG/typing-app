@@ -20,7 +20,7 @@ export const IndexPage = () => {
       <FlexContainer fd_c ai_c>
         <Title>Mejora tu escritura</Title>
         <SubTitle>¡Comienza a teclear!</SubTitle>
-        <Paragraph>¡Diviértete!</Paragraph>
+        <Paragraph>⌨️</Paragraph>
       </FlexContainer>
 
       {isExerciseCompleted ? (
@@ -57,6 +57,6 @@ const SubTitle = styled.h2`
 `
 const Paragraph = styled.p`
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: ${({ theme: { fontColor } }) => fontColor};
 `
