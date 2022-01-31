@@ -1,16 +1,16 @@
-import styled from "styled-components";
-import LogoImg from "../images/keyboard.png";
-import { FlexContainer } from "../components/shareStyleComponents/FlexContainer";
-import { Loader } from "./Loader";
+import styled from 'styled-components'
+import { Loader } from './Loader'
+import { Logo } from '../components/NavBar/Logo'
+import { FlexContainer } from './shareStyleComponents/FlexContainer'
 
 export const LazyLoading = () => {
   return (
     <LazyLoadingStyled flex_dc flex_jc_c flex_ai_c>
-      <img src={LogoImg} alt="logo" />
+      <Logo />
       <Loader />
     </LazyLoadingStyled>
-  );
-};
+  )
+}
 
 const LazyLoadingStyled = styled(FlexContainer)`
   position: absolute;
@@ -22,8 +22,7 @@ const LazyLoadingStyled = styled(FlexContainer)`
 
   img {
     width: 7rem;
-    weight: 7rem;
     cursor: none;
     pointer-events: none;
   }
-`;
+`

@@ -1,21 +1,22 @@
 import styled from 'styled-components'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
-import typeAndTypeIcon from '../../images/keyboard.png'
 import { useLinkRouter } from '../../hooks/useLinkRouter'
+import { BsKeyboard } from 'react-icons/bs'
 
 export const Logo = () => {
   const { goIndexPage } = useLinkRouter()
 
   return (
     <Container flex flex_ai_c flex_jc_c onClick={goIndexPage}>
-      <ImgLogo src={typeAndTypeIcon} alt='Type and Type' />
-      {/* <AppName>Type And Type</AppName> */}
+      <BsKeyboard />
     </Container>
   )
 }
 
 const Container = styled(Wrapper)`
   cursor: pointer;
+  font-size: 4rem;
+  color: ${({ theme: { fontColor } }) => fontColor};
 `
 
 const AppName = styled.h2`

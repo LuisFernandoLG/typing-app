@@ -37,6 +37,7 @@ const secondaryStyles = css`
 
   &:hover,
   &:focus {
+    color: ${({ theme: { fontColor } }) => fontColor};
   }
 `
 
@@ -50,7 +51,7 @@ const ButtonStyled = styled.button`
       : 'padding: 1rem 2rem;'}
 
   border-radius: ${({ theme: { border_radius } }) => border_radius};
-  transition: box-shadow 300ms ease;
+  transition: box-shadow 300ms ease, color 300ms ease;
 
   font-size: 1.2rem;
   font-weight: 600;
