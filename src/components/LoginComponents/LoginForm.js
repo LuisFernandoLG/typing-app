@@ -4,14 +4,11 @@ import GroupInput from '../inputs/GroupInput'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
 import { Button } from '../ui/Button'
 import { useSession } from '../../hooks/useSession'
-import { useEffect } from 'react'
-import { useLinkRouter } from '../../hooks/useLinkRouter'
 
 const emailRegex = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/
 
 export const LoginForm = () => {
   const { handleLogIn, authLoading, isAuth } = useSession()
-  const { goHomePage } = useLinkRouter()
 
   const {
     register,
@@ -22,10 +19,6 @@ export const LoginForm = () => {
 
   const hanldeSubmitOwn = (data) =>
     handleLogIn({ email: watch('Correo'), password: watch('Contraseña') })
-
-  useEffect(() => {
-    if (isAuth) goHomePage()
-  }, [isAuth])
 
   return (
     <LoginFormContainer
