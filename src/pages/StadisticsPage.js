@@ -35,7 +35,7 @@ export const StadisticsPage = () => {
 
       <GridContainer>
         {loading
-          ? skeletons.map(({ _, i }) => <ProgressGraph key={`${i}-pb`}/>)
+          ? skeletons.map((_, i) => <ProgressGraph key={`${i}-pb`}/>)
           : data &&
             exercisesScore.map((item, i) => (
               <ProgressGraph

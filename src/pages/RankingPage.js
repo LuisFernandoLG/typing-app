@@ -50,7 +50,7 @@ export const RankingPage = () => {
       <Title>Ranking</Title>
       <UsersWrapper>
         {loading
-          ? skeletons.map((_, index) => <RankingUser key={`${index}-rankUser`}/>)
+          ? skeletons.map((_, i) => <RankingUser key={`${i}-ru`}/>)
           : rankingUsers.map(({ id, name, lastName, totalScore }, index) => (
               <RankingUser
                 key={id}
