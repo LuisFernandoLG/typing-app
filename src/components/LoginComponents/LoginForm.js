@@ -1,18 +1,15 @@
-import { useContext, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import AuthContext from '../../contexts/AuthContext'
-import { routes } from '../../routes'
 import GroupInput from '../inputs/GroupInput'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
 import { Button } from '../ui/Button'
+import { useSession } from '../../hooks/useSession'
 
 const emailRegex = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/
 
 export const LoginForm = () => {
-  const { setLogIn, authLoading, isAuth } = useContext(AuthContext)
-  let history = useHistory()
+  const { handleLogIn, authLoading } = useSession()
+
   const {
     register,
     handleSubmit,
@@ -20,14 +17,8 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm()
 
-  const hanldeSubmitOwn = (data) => {
-    setLogIn(watch('Correo'), watch('Contraseña'))
-    console.log(data)
-  }
-
-  useEffect(() => {
-    if (isAuth) history.push(routes.HOME_PAGE)
-  }, [isAuth])
+  const hanldeSubmitOwn = (data) =>
+    handleLogIn({ email: watch('Correo'), password: watch('Contraseña') })
 
   return (
     <LoginFormContainer

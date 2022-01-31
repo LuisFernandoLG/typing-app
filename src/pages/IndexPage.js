@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import styled from 'styled-components'
 import { Quote } from '../components/exercise/Quote'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
