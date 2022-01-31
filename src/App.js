@@ -8,7 +8,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import { ToastContainer } from 'react-toastify'
 import { useTheme } from './hooks/useTheme'
 
-function App() {
+function App () {
   const { currentTheme } = useTheme()
 
   return (

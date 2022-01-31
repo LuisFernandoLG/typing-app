@@ -1,5 +1,5 @@
-import Skeleton from "react-loading-skeleton";
+import Skeleton from 'react-loading-skeleton'
 
 export const ExerciseItemSkeleton = () => {
-  return <Skeleton />;
-};
+  return <Skeleton />
+}

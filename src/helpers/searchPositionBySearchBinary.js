@@ -1,17 +1,17 @@
-function busquedaBinaria(arr, busqueda) {
-  const puntoMedio = Math.floor(arr.length / 2);
+function busquedaBinaria (arr, busqueda) {
+  const puntoMedio = Math.floor(arr.length / 2)
 
   if (arr[puntoMedio] === busqueda) {
-    return arr[puntoMedio];
+    return arr[puntoMedio]
   }
 
   if (arr[puntoMedio] < busqueda && arr.length > 1) {
-    return busquedaBinaria(arr.slice(puntoMedio), busqueda);
+    return busquedaBinaria(arr.slice(puntoMedio), busqueda)
   }
 
   if (arr[puntoMedio] > busqueda && arr.length > 1) {
-    return busquedaBinaria(arr.slice(0, puntoMedio), busqueda);
+    return busquedaBinaria(arr.slice(0, puntoMedio), busqueda)
   }
 
-  return "no encontrado :(";
+  return 'no encontrado :('
 }

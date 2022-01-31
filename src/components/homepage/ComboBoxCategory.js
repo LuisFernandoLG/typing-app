@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ComboBoxCategory = ({
   currentCategory,
   categories,
-  setCategory,
+  setCategory
 }) => {
   return (
     <select>
@@ -11,5 +11,5 @@ export const ComboBoxCategory = ({
         <option>{item}</option>
       ))}
     </select>
-  );
-};
+  )
+}

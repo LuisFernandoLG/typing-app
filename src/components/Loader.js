@@ -1,18 +1,18 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components'
 
 export const Loader = () => {
   return (
     <LoaderStyled>
       <span className="loader"></span>
     </LoaderStyled>
-  );
-};
+  )
+}
 
 const rotate = keyframes`
   0% {
     transform: rotate(0); }
   100% {
-    transform: rotate(360deg);`;
+    transform: rotate(360deg);`
 
 const LoaderStyled = styled.div`
   height: 0.9em;
@@ -24,4 +24,4 @@ const LoaderStyled = styled.div`
   border-radius: 20rem;
   border-top-color: transparent;
   animation: ${rotate} 1s linear infinite;
-`;
+`

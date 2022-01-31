@@ -1,5 +1,5 @@
-const alphabet = "abcdefghijklmnopqrstuvwxyz";
+const alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 export const getRandomLetterFromABC = () => {
-  return alphabet[Math.floor(Math.random() * alphabet.length)];
-};
+  return alphabet[Math.floor(Math.random() * alphabet.length)]
+}

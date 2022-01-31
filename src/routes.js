@@ -19,7 +19,7 @@ export const routes = {
   HOME_PAGE: app,
   EXERCICE_PAGE: `${app}/exercise`,
   RANKING_PAGE: `${app}/ranking`,
-  STADISTICS_PAGE: `${app}/estadisticas`,
+  STADISTICS_PAGE: `${app}/estadisticas`
 }
 
 export const routesV2 = {
@@ -30,8 +30,8 @@ export const routesV2 = {
     component: IndexPage,
     isPrivate: false,
     routeProps: {
-      exact: true,
-    },
+      exact: true
+    }
   },
   LOGGED_APP: {
     id: 10,
@@ -40,7 +40,7 @@ export const routesV2 = {
     component: AppLogged,
     isPrivate: true,
     routeProps: {
-      exact: false,
+      exact: false
     },
     subPages: {
       HOME_PAGE: {
@@ -50,8 +50,8 @@ export const routesV2 = {
         component: HomePage,
         isPrivate: true,
         routeProps: {
-          exact: true,
-        },
+          exact: true
+        }
       },
       ADMING_PAGE: {
         id: 3,
@@ -60,8 +60,8 @@ export const routesV2 = {
         component: AdminPage,
         isPrivate: true,
         routeProps: {
-          exact: true,
-        },
+          exact: true
+        }
       },
       EXERCISE_PAGE: {
         id: 4,
@@ -71,8 +71,8 @@ export const routesV2 = {
         component: ExercisePage,
         isPrivate: true,
         routeProps: {
-          exact: false,
-        },
+          exact: false
+        }
       },
       RANKING_PAGE: {
         id: 6,
@@ -81,8 +81,8 @@ export const routesV2 = {
         component: RankingPage,
         isPrivate: true,
         routeProps: {
-          exact: true,
-        },
+          exact: true
+        }
       },
       STADISTICS_PAGE: {
         id: 6,
@@ -91,10 +91,10 @@ export const routesV2 = {
         component: StadisticsPage,
         isPrivate: true,
         routeProps: {
-          exact: true,
-        },
-      },
-    },
+          exact: true
+        }
+      }
+    }
   },
   LOGIN_PAGE: {
     id: 2,
@@ -103,8 +103,8 @@ export const routesV2 = {
     component: LoginPage,
     isPrivate: false,
     routeProps: {
-      exact: true,
-    },
+      exact: true
+    }
   },
   SIGN_UP_PAGE: {
     id: 7,
@@ -113,8 +113,8 @@ export const routesV2 = {
     component: SignInPage,
     isPrivate: false,
     routeProps: {
-      exact: true,
-    },
+      exact: true
+    }
   },
   NOT_FOUND_PAGE: {
     id: 5,
@@ -123,7 +123,7 @@ export const routesV2 = {
     component: NotFoundPage,
     isPrivate: false,
     routeProps: {
-      exact: false,
-    },
-  },
+      exact: false
+    }
+  }
 }

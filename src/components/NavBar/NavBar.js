@@ -7,7 +7,7 @@ import {
   IoHomeOutline,
   IoTrophyOutline,
   IoBarChartOutline,
-  IoKeyOutline,
+  IoKeyOutline
 } from 'react-icons/io5'
 
 export const NavBar = () => {

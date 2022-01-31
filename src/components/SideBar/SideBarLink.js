@@ -1,6 +1,6 @@
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
+import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
+import { Wrapper } from '../shareStyleComponents/Wrapper'
 
 export const SideBarLink = ({ icon: Icon, title, description, linkPage }) => {
   return (
@@ -15,8 +15,8 @@ export const SideBarLink = ({ icon: Icon, title, description, linkPage }) => {
         </LinkContainer>
       </NavLink>
     </WrapperSideBarLink>
-  );
-};
+  )
+}
 
 const WrapperSideBarLink = styled.div`
   position: relative;
@@ -41,7 +41,7 @@ const WrapperSideBarLink = styled.div`
   .active > div > div > p {
     color: ${({ theme: { primaryColor } }) => primaryColor};
   }
-`;
+`
 
 const LinkContainer = styled(Wrapper)`
   width: 100%;
@@ -57,13 +57,13 @@ const LinkContainer = styled(Wrapper)`
     color: ${({ theme: { secondaryColor } }) => secondaryColor};
     font-size: 2.5em;
   }
-`;
+`
 
 const Title = styled.h2`
   font-size: 2em;
   color: ${({ theme: { secondaryColor } }) => secondaryColor}; ;
-`;
+`
 const Description = styled.p`
   font-size: 1em;
   color: ${({ theme: { secondaryColor } }) => secondaryColor}; ;
-`;
+`

@@ -8,7 +8,7 @@ export const Exercise = ({
   isKeyboardActive,
   markAsCompleted,
   setResults,
-  isTimeOver,
+  isTimeOver
 }) => {
   const {
     indexQuote,
@@ -16,9 +16,8 @@ export const Exercise = ({
     keyWanted,
     keyPressed,
     isExerciseCompleted,
-    sizeQuote,
     results,
-    calculateResults,
+    calculateResults
   } = useKeyBoardActivity({ textQuote: q })
 
   useEffect(() => {

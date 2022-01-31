@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
-import SadFace from "./../../images/sadFace.svg";
+import styled from 'styled-components'
+import { Wrapper } from '../shareStyleComponents/Wrapper'
+import SadFace from './../../images/sadFace.svg'
 
 export const NoResultsMessage = () => {
   return (
@@ -8,16 +8,16 @@ export const NoResultsMessage = () => {
       <Title>No hemos encontrado resultados</Title>
       <Image src={SadFace} />
     </Wrapper>
-  );
-};
+  )
+}
 
 const Title = styled.h2`
   text-align: center;
   margin: 2rem;
   text-decoration: underline;
   color: ${({ theme: { primaryColor } }) => primaryColor};
-`;
+`
 
 const Image = styled.img`
   width: 30%;
-`;
+`

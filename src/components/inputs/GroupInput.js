@@ -10,7 +10,7 @@ const GroupInput = ({ name, regex, type, isRequired, errors, register }) => {
         id={name}
         {...register(name, {
           required: isRequired,
-          pattern: regex,
+          pattern: regex
         })}
       />
       <Label htmlFor={name}>{name}</Label>
@@ -22,13 +22,13 @@ const GroupInput = ({ name, regex, type, isRequired, errors, register }) => {
   )
 }
 
-GroupInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  regex: PropTypes.string,
-  type: PropTypes.string,
-  isRequired: PropTypes.bool,
-  errors: PropTypes.object.isRequired,
-}
+// GroupInput.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   regex: PropTypes.string,
+//   type: PropTypes.string,
+//   isRequired: PropTypes.bool,
+//   errors: PropTypes.object.isRequired,
+// }
 
 const GroupInputStyled = styled.div`
   width: 100%;

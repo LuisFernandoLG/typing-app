@@ -6,6 +6,6 @@ export const useTheme = () => {
   return {
     currentTheme,
     setDarkTheme,
-    setLightTheme,
+    setLightTheme
   }
 }

@@ -28,7 +28,7 @@ export const Quote = ({ quote, indexQuote }) => {
           temp.id = subItem.id
           subIndex++
           return temp
-        }),
+        })
       }
     })
 

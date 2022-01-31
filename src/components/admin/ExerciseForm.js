@@ -1,18 +1,18 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
-import { Loader } from "../Loader";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
-import { toast } from "react-toastify";
+import { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { Loader } from '../Loader'
+import { Wrapper } from '../shareStyleComponents/Wrapper'
+import { toast } from 'react-toastify'
 
 const initialExerForm = {
-  title: "",
-  text_content: "",
+  title: '',
+  text_content: '',
   points: 0,
   time: 30,
   category: null,
   status: null,
-  difficulty: null,
-};
+  difficulty: null
+}
 
 // const titleRegex =
 
@@ -21,45 +21,45 @@ export const ExerciseForm = ({
   difficulties,
   statuses,
   addExercise,
-  exerLoadingAdded,
+  exerLoadingAdded
 }) => {
-  const [form, setForm] = useState(initialExerForm);
-  const [formErrors, setFormErrors] = useState(null);
+  const [form, setForm] = useState(initialExerForm)
+  const [formErrors, setFormErrors] = useState(null)
 
   useEffect(() => {
-    if (form.title === "" || form.title === null) {
-      setFormErrors("Titulo requerido");
-    } else if (form.text_content === "" || form.text_content === null) {
-      setFormErrors("Contenido requerido");
-    } else if (form.points === "" || form.points === null) {
-      setFormErrors("Puntos requerido");
-    } else if (form.time === "" || form.time === null) {
-      setFormErrors("Tiempo requerido");
-    } else if (form.category === "" || form.category === null) {
-      setFormErrors("Categoría requerida");
-    } else if (form.difficulty === "" || form.difficulty === null) {
-      setFormErrors("Dificultad requerida");
-    } else if (form.status === "" || form.status === null) {
-      setFormErrors("Status requerido");
+    if (form.title === '' || form.title === null) {
+      setFormErrors('Titulo requerido')
+    } else if (form.text_content === '' || form.text_content === null) {
+      setFormErrors('Contenido requerido')
+    } else if (form.points === '' || form.points === null) {
+      setFormErrors('Puntos requerido')
+    } else if (form.time === '' || form.time === null) {
+      setFormErrors('Tiempo requerido')
+    } else if (form.category === '' || form.category === null) {
+      setFormErrors('Categoría requerida')
+    } else if (form.difficulty === '' || form.difficulty === null) {
+      setFormErrors('Dificultad requerida')
+    } else if (form.status === '' || form.status === null) {
+      setFormErrors('Status requerido')
     } else {
-      setFormErrors(null);
+      setFormErrors(null)
     }
-  }, [form]);
+  }, [form])
 
-  useEffect(() => {}, [formErrors]);
+  useEffect(() => {}, [formErrors])
 
   const handleChangeForm = (e) => {
-    const { value, name } = e.target;
-    setForm({ ...form, [name]: value });
-  };
+    const { value, name } = e.target
+    setForm({ ...form, [name]: value })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formErrors) toast.warn(formErrors);
-    else addExercise(form);
-  };
+    e.preventDefault()
+    if (formErrors) toast.warn(formErrors)
+    else addExercise(form)
+  }
 
-  if (exerLoadingAdded) return <Loader />;
+  if (exerLoadingAdded) return <Loader />
 
   return (
     <ExerFormStyled as="form" flex flex_dc onSubmit={handleSubmit} wrap={true}>
@@ -111,7 +111,7 @@ export const ExerciseForm = ({
 
       <Wrapper flex>
         <select name="category" onChange={handleChangeForm}>
-          <option key={`c1`} value="">
+          <option key={'c1'} value="">
             Categoría
           </option>
 
@@ -123,7 +123,7 @@ export const ExerciseForm = ({
         </select>
 
         <select name="difficulty" onChange={handleChangeForm}>
-          <option key={`d1`} value="">
+          <option key={'d1'} value="">
             Dificultad
           </option>
 
@@ -135,7 +135,7 @@ export const ExerciseForm = ({
         </select>
 
         <select name="status" onChange={handleChangeForm}>
-          <option key={`s1`} value="">
+          <option key={'s1'} value="">
             Estado
           </option>
           {statuses.map(({ id, name }) => (
@@ -148,12 +148,12 @@ export const ExerciseForm = ({
 
       <input type="submit" value="Agregar" />
     </ExerFormStyled>
-  );
-};
+  )
+}
 
 const Title = styled.h2`
   font-size: 2rem;
-`;
+`
 
 const ExerFormStyled = styled(Wrapper)`
   width: 70%;
@@ -200,4 +200,4 @@ const ExerFormStyled = styled(Wrapper)`
     border-radius: 1rem;
     cursor: pointer;
   }
-`;
+`

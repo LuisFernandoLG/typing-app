@@ -13,7 +13,7 @@ export const themes = {
     successColor: '#7FC8A9',
     correctedColor: '#FFAA4C',
 
-    border_radius: '10px',
+    border_radius: '10px'
   },
 
   darkTheme: {
@@ -30,6 +30,6 @@ export const themes = {
     successColor: '#7FC8A9',
     correctedColor: '#FFAA4C',
 
-    border_radius: '10px',
-  },
+    border_radius: '10px'
+  }
 }

@@ -16,21 +16,23 @@ export const MyRouter = () => {
           <Switch>
             {Object.values(routesV2).map(
               ({ id, route, component: Page, isPrivate, routeProps }) =>
-                isPrivate ? (
+                isPrivate
+                  ? (
                   <Route
                     key={`page-${id}`}
                     path={route}
                     children={<PrivatePage component={Page} />}
                     {...routeProps}
                   />
-                ) : (
+                    )
+                  : (
                   <Route
                     key={`page-${id}`}
                     path={route}
                     component={Page}
                     {...routeProps}
                   />
-                )
+                    )
             )}
           </Switch>
         </ScrollToTop>

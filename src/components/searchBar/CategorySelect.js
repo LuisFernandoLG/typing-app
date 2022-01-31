@@ -1,31 +1,31 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
-import { useFetch } from "../../hooks/useFetch";
-import { endpoints } from "../signIn/api";
+import { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { useFetch } from '../../hooks/useFetch'
+import { endpoints } from '../signIn/api'
 
 const initialCategories = [
   {
     id: -1,
-    name: "Categoría",
-  },
-];
+    name: 'Categoría'
+  }
+]
 
 export const CategorySelect = ({ selectCategory }) => {
-  const [categories, setCategories] = useState(initialCategories);
-  const { fetchData, data } = useFetch();
+  const [categories, setCategories] = useState(initialCategories)
+  const { fetchData, data } = useFetch()
 
   useEffect(() => {
-    fetchData(endpoints.categories);
-  }, []);
+    fetchData(endpoints.categories)
+  }, [])
 
   useEffect(() => {
     if (data) {
-      const newCategories = data.data.categories;
-      setCategories([...categories, ...newCategories]);
+      const newCategories = data.data.categories
+      setCategories([...categories, ...newCategories])
     }
-  }, [data]);
+  }, [data])
 
-  const handleChange = (e) => selectCategory(e.target.value);
+  const handleChange = (e) => selectCategory(e.target.value)
 
   return (
     <Select onChange={handleChange}>
@@ -35,8 +35,8 @@ export const CategorySelect = ({ selectCategory }) => {
         </option>
       ))}
     </Select>
-  );
-};
+  )
+}
 
 const Select = styled.select`
   width: auto;
@@ -52,4 +52,4 @@ const Select = styled.select`
   cursor: pointer;
 
   font-size: 1em;
-`;
+`

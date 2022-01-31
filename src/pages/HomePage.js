@@ -28,13 +28,13 @@ export const HomePage = () => {
   const searchByQuery = () => {
     if (search === '' && category === null) return 0
     if (category !== null && category !== -1 && search !== '') {
-      let url = `${endpoints.search}?query=${search}&category=${category}`
+      const url = `${endpoints.search}?query=${search}&category=${category}`
       fetchData(url)
     } else if (category !== null && category !== -1) {
-      let url = `${endpoints.search}?category=${category}`
+      const url = `${endpoints.search}?category=${category}`
       fetchData(url)
     } else if (search !== '') {
-      let url = `${endpoints.search}?query=${search}`
+      const url = `${endpoints.search}?query=${search}`
       fetchData(url)
     }
   }
@@ -72,15 +72,19 @@ export const HomePage = () => {
         search={search}
         searchByQuery={searchByQuery}
       />
-      {loading || !exercises ? (
+      {loading || !exercises
+        ? (
         <QuotesContainer>
           {skeletons.map(() => (
             <ExerciseItem />
           ))}
         </QuotesContainer>
-      ) : exercises.length === 0 ? (
+          )
+        : exercises.length === 0
+          ? (
         <NoResultsMessage />
-      ) : (
+            )
+          : (
         <QuotesContainer>
           {exercises.map(({ id, title, textContent, category, difficulty }) => (
             <ExerciseItem
@@ -93,7 +97,7 @@ export const HomePage = () => {
             />
           ))}
         </QuotesContainer>
-      )}
+            )}
     </HomeContainer>
   )
 }

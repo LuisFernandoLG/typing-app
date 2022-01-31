@@ -2,7 +2,7 @@ import { useEffect, useReducer } from 'react'
 import { TYPES } from '../actions/KeyBoardActivityActions'
 import {
   keyBoardActivityInitialState,
-  KeyBoardActivityReducer,
+  KeyBoardActivityReducer
 } from '../reducers/KeyBoardActivityReducer'
 const excludeKeysFromPressed = [
   'Control',
@@ -24,11 +24,11 @@ const excludeKeysFromPressed = [
   'F10',
   'F11',
   'F12',
-  'Dead',
+  'Dead'
 ]
 
 const specialKeys = {
-  BACK_SPACE: 'Backspace',
+  BACK_SPACE: 'Backspace'
 }
 
 export const useKeyBoardActivity = ({ textQuote }) => {
@@ -38,7 +38,7 @@ export const useKeyBoardActivity = ({ textQuote }) => {
   )
 
   const handleKeyDown = (e) => {
-    let character = e.key
+    const character = e.key
     if (isExcludeKey(character)) return null
     switch (character) {
       case specialKeys.BACK_SPACE: {
@@ -72,6 +72,6 @@ export const useKeyBoardActivity = ({ textQuote }) => {
     sizeQuote: state.sizeQuote,
     results: state.results,
     calculateResults,
-    reset,
+    reset
   }
 }

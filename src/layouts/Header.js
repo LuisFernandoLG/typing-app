@@ -15,14 +15,16 @@ export const Header = () => {
   return (
     <HeaderStyled as='header' jc_sb ai_c gap='0.5rem'>
       <Logo />
-      {isAuth ? (
+      {isAuth
+        ? (
         <FlexChild>
           <NavBar />
           <Button secondary={true} onClick={handleLogOut} pd='0.5rem'>
             <IoLogOutOutline />
           </Button>
         </FlexChild>
-      ) : (
+          )
+        : (
         <FlexChild jc_fe gap='0.5rem'>
           <Button secondary={true} onClick={goLoginPage} pd='0.5rem 1.5rem'>
             Ingreso
@@ -31,7 +33,7 @@ export const Header = () => {
             Registro
           </Button>
         </FlexChild>
-      )}
+          )}
       <ThemeSwitcher />
     </HeaderStyled>
   )

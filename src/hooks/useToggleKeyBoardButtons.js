@@ -1,28 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
-const initialIsEnableSound = JSON.parse(localStorage.getItem("isEnableSound"));
+const initialIsEnableSound = JSON.parse(localStorage.getItem('isEnableSound'))
 const initialKeyBoardVisibility = JSON.parse(
-  localStorage.getItem("keyBoardVisibility")
-);
+  localStorage.getItem('keyBoardVisibility')
+)
 
 export const useToggleKeyBoardButtons = () => {
-  const [isEnableSound, setIsEnableSound] = useState(initialIsEnableSound);
+  const [isEnableSound, setIsEnableSound] = useState(initialIsEnableSound)
   const [keyBoardVisibility, setKeyBoardVisibility] = useState(
     initialKeyBoardVisibility
-  );
+  )
 
-  const enableSound = () => setIsEnableSound(true);
-  const disableSound = () => setIsEnableSound(false);
-  const enableKeyboard = () => setKeyBoardVisibility(true);
-  const disableKeyBoard = () => setKeyBoardVisibility(false);
+  const enableSound = () => setIsEnableSound(true)
+  const disableSound = () => setIsEnableSound(false)
+  const enableKeyboard = () => setKeyBoardVisibility(true)
+  const disableKeyBoard = () => setKeyBoardVisibility(false)
 
   useEffect(() => {
-    localStorage.setItem("isEnableSound", JSON.stringify(isEnableSound));
+    localStorage.setItem('isEnableSound', JSON.stringify(isEnableSound))
     localStorage.setItem(
-      "keyBoardVisibility",
+      'keyBoardVisibility',
       JSON.stringify(keyBoardVisibility)
-    );
-  }, [isEnableSound, keyBoardVisibility]);
+    )
+  }, [isEnableSound, keyBoardVisibility])
 
   return {
     isEnableSound,
@@ -30,6 +30,6 @@ export const useToggleKeyBoardButtons = () => {
     disableSound,
     keyBoardVisibility,
     enableKeyboard,
-    disableKeyBoard,
-  };
-};
+    disableKeyBoard
+  }
+}

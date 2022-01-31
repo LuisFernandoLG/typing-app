@@ -14,7 +14,7 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors }
   } = useForm()
 
   const hanldeSubmitOwn = (data) =>

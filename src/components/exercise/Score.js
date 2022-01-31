@@ -16,15 +16,15 @@ const getPutScoreOptions = ({
   pointsScored,
   userId,
   currentExercise,
-  timeTaken,
+  timeTaken
 }) => ({
   method: 'POST',
   body: JSON.stringify({
     total_score: pointsScored,
     user_id: userId,
     exercise_id: currentExercise.id,
-    time_taken: timeTaken,
-  }),
+    time_taken: timeTaken
+  })
 })
 
 const getSuccessfulPercentage = ({ results }) =>
@@ -38,7 +38,7 @@ export const Score = ({ results, currentExercise, timeTaken }) => {
   const percentageScored = getSuccessfulPercentage({ results })
   const pointsScored = getPercentage({
     percentage: percentageScored,
-    maxPoints: currentExercise.points,
+    maxPoints: currentExercise.points
   })
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export const Score = ({ results, currentExercise, timeTaken }) => {
       pointsScored,
       currentExercise,
       userId: user.id,
-      timeTaken,
+      timeTaken
     })
     fetchData(endpoints.score, options)
   }, [])

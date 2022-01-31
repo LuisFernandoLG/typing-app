@@ -1,23 +1,23 @@
-import { useState } from "react";
-import styled from "styled-components";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
+import { useState } from 'react'
+import styled from 'styled-components'
+import { Wrapper } from '../shareStyleComponents/Wrapper'
 
 export const AdminExerciseItem = ({
   adminExercise,
   categories,
   difficulties,
   statuses,
-  updateExercise,
+  updateExercise
 }) => {
-  const [form, setForm] = useState(adminExercise);
+  const [form, setForm] = useState(adminExercise)
 
   const handleChangeForm = (e) => {
-    const { value, name } = e.target;
-    setForm({ ...form, [name]: value });
-  };
+    const { value, name } = e.target
+    setForm({ ...form, [name]: value })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const dataToUpdate = {
       id: form.id,
@@ -27,10 +27,10 @@ export const AdminExerciseItem = ({
       time: form.time,
       status: parseInt(form.idStatus),
       category: parseInt(form.idCategory),
-      difficulty: parseInt(form.idDifficulty),
-    };
-    updateExercise(form.id, dataToUpdate);
-  };
+      difficulty: parseInt(form.idDifficulty)
+    }
+    updateExercise(form.id, dataToUpdate)
+  }
 
   return (
     <AdminExerciseItemWrapper
@@ -115,8 +115,8 @@ export const AdminExerciseItem = ({
 
       <Submit type="submit" value="Guadar" />
     </AdminExerciseItemWrapper>
-  );
-};
+  )
+}
 
 const AdminExerciseItemWrapper = styled(Wrapper)`
   width: 70%;
@@ -142,7 +142,7 @@ const AdminExerciseItemWrapper = styled(Wrapper)`
     color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
     padding: 0.5rem;
   }
-`;
+`
 
 const Submit = styled.input`
   width: min-content;
@@ -153,6 +153,6 @@ const Submit = styled.input`
   outline: none;
   border-radius: 1rem;
   cursor: pointer;
-`;
+`
 
-const Id = styled.h2``;
+const Id = styled.h2``

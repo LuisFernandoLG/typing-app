@@ -1,10 +1,10 @@
-import { Button, Input } from "style-components";
-import styled from "styled-components";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
+import { Button, Input } from 'style-components'
+import styled from 'styled-components'
+import { Wrapper } from '../shareStyleComponents/Wrapper'
 
 export const KeyBoardVisibilitySwitcher = ({
   keyBoardVisibility,
-  toggleKeyBoardVisibility,
+  toggleKeyBoardVisibility
 }) => {
   return (
     <KeyBoardVisibilitySwitcherStyled>
@@ -15,8 +15,8 @@ export const KeyBoardVisibilitySwitcher = ({
       />
       <i className="far fa-keyboard"></i>
     </KeyBoardVisibilitySwitcherStyled>
-  );
-};
+  )
+}
 
 const KeyBoardVisibilitySwitcherStyled = styled(Wrapper)`
   position: relative;
@@ -43,4 +43,4 @@ const KeyBoardVisibilitySwitcherStyled = styled(Wrapper)`
       text-shadow: 0 0 0.5rem ${({ theme: { primaryColor } }) => primaryColor};
     }
   }
-`;
+`

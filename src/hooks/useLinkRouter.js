@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom'
 import { routesV2 } from '../routes'
 
 export const useLinkRouter = () => {
-  let history = useHistory()
+  const history = useHistory()
 
   const goHomePage = () => history.push(routesV2.LOGGED_APP.route)
   const goLoginPage = () => history.push(routesV2.LOGIN_PAGE.route)
@@ -15,6 +15,6 @@ export const useLinkRouter = () => {
     goLoginPage,
     goSignUpPage,
     goIndexPage,
-    reloadPage,
+    reloadPage
   }
 }

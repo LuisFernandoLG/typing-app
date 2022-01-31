@@ -11,7 +11,7 @@ export const IndexPage = () => {
   const { goSignUpPage } = useLinkRouter()
   const { quote, indexQuote, isExerciseCompleted, reset } = useKeyBoardActivity(
     {
-      textQuote,
+      textQuote
     }
   )
 
@@ -23,7 +23,8 @@ export const IndexPage = () => {
         <Paragraph>⌨️</Paragraph>
       </FlexContainer>
 
-      {isExerciseCompleted ? (
+      {isExerciseCompleted
+        ? (
         <FlexContainer fd_c gap='1rem'>
           <Button primary onClick={goSignUpPage}>
             Registrarse
@@ -32,9 +33,10 @@ export const IndexPage = () => {
             Intentar de nuevo
           </Button>
         </FlexContainer>
-      ) : (
+          )
+        : (
         <Quote quote={quote} indexQuote={indexQuote} />
-      )}
+          )}
     </FlexContainer>
   )
 }

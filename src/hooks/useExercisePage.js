@@ -9,7 +9,7 @@ const initialExerciseItem = {
   title: null,
   time: null,
   textContent: null,
-  points: null,
+  points: null
 }
 
 export const useExercisePage = () => {
@@ -54,6 +54,6 @@ export const useExercisePage = () => {
     setResults,
     results,
     isTimeOver,
-    isCompleted,
+    isCompleted
   }
 }

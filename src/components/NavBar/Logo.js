@@ -18,12 +18,3 @@ const Container = styled(Wrapper)`
   font-size: 4rem;
   color: ${({ theme: { fontColor } }) => fontColor};
 `
-
-const AppName = styled.h2`
-  font-size: 1em;
-  color: ${({ theme: { fontColor } }) => fontColor};
-`
-
-const ImgLogo = styled.img`
-  height: 3.5em;
-`

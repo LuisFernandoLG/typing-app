@@ -1,7 +1,7 @@
 import { generate } from 'shortid'
 
 export const groupInwordsGroup = ({ quote }) => {
-  let wordsGroup = []
+  const wordsGroup = []
   let word = { id: generate(), items: [] }
   const sizeQuote = quote.length - 1
 

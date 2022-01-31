@@ -1,56 +1,56 @@
-import { useState, useEffect } from "react";
-import styled from "styled-components";
-import { useFetch } from "../hooks/useFetch";
-import { RankingUser } from "../components/stadistics/RankingUser";
-import { endpoints } from "../components/signIn/api";
-import { toast } from "react-toastify";
-import { FaTrophy } from "react-icons/fa";
-import { getArrayBySize } from "../helpers/getArrayBySize";
+import { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { useFetch } from '../hooks/useFetch'
+import { RankingUser } from '../components/stadistics/RankingUser'
+import { endpoints } from '../components/signIn/api'
+import { toast } from 'react-toastify'
+import { FaTrophy } from 'react-icons/fa'
+import { getArrayBySize } from '../helpers/getArrayBySize'
 
 const Throphy1 = () => {
-  const style = { color: "#FFD06C", fontSize: "2.5rem" };
-  return <FaTrophy style={style} />;
-};
+  const style = { color: '#FFD06C', fontSize: '2.5rem' }
+  return <FaTrophy style={style} />
+}
 
 const Throphy2 = () => {
-  const style = { color: "#808080", fontSize: "2.5rem" };
-  return <FaTrophy style={style} />;
-};
+  const style = { color: '#808080', fontSize: '2.5rem' }
+  return <FaTrophy style={style} />
+}
 
 const Throphy3 = () => {
-  const style = { color: "#DC8C44", fontSize: "2.5rem" };
-  return <FaTrophy style={style} />;
-};
+  const style = { color: '#DC8C44', fontSize: '2.5rem' }
+  return <FaTrophy style={style} />
+}
 
-const skeletons = getArrayBySize({ size: 12 });
+const skeletons = getArrayBySize({ size: 12 })
 
 export const RankingPage = () => {
-  const [rankingUsers, setRankingUsers] = useState([]);
+  const [rankingUsers, setRankingUsers] = useState([])
 
-  const { fetchData, fetchErrors, loading, data } = useFetch();
+  const { fetchData, fetchErrors, loading, data } = useFetch()
 
   useEffect(() => {
-    fetchData(endpoints.ranking);
-  }, []);
+    fetchData(endpoints.ranking)
+  }, [])
 
   useEffect(() => {
     if (data) {
-      setRankingUsers(data.data);
+      setRankingUsers(data.data)
     }
-  }, [data]);
+  }, [data])
 
   useEffect(() => {
     if (fetchErrors) {
-      toast.error("Algo salió mal :(");
+      toast.error('Algo salió mal :(')
     }
-  }, [fetchErrors]);
+  }, [fetchErrors])
 
   return (
     <RankingContainer>
       <Title>Ranking</Title>
       <UsersWrapper>
         {loading
-          ? skeletons.map(() => <RankingUser />)
+          ? skeletons.map((_, index) => <RankingUser key={`${index}-rankUser`}/>)
           : rankingUsers.map(({ id, name, lastName, totalScore }, index) => (
               <RankingUser
                 key={id}
@@ -62,17 +62,17 @@ export const RankingPage = () => {
                 {index === 1 ? <Throphy2 /> : null}
                 {index === 2 ? <Throphy3 /> : null}
               </RankingUser>
-            ))}
+          ))}
       </UsersWrapper>
     </RankingContainer>
-  );
-};
+  )
+}
 
 const UsersWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
   gap: 2rem;
-`;
+`
 
 const RankingContainer = styled.div`
   flex-grow: 1;
@@ -89,8 +89,8 @@ const RankingContainer = styled.div`
   .thrith {
     color: yellow;
   }
-`;
+`
 const Title = styled.h2`
   font-size: 3.5rem;
   text-align: center;
-`;
+`

@@ -30,7 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "co": "sui-mono commit"
+    "co": "sui-mono commit",
+    "lint": "eslint ./"
   },
   "eslintConfig": {
     "extends": [
@@ -51,7 +52,13 @@
     ]
   },
   "devDependencies": {
-    "@s-ui/mono": "^2.18.0"
+    "@s-ui/mono": "^2.18.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-react": "^7.28.0"
   },
   "config": {
     "sui-mono": {

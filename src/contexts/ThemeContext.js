@@ -1,5 +1,5 @@
-import { createContext } from 'react'
-import { useState } from 'react'
+import { createContext, useState } from 'react'
+
 import { themes as initialThemes } from '../style/theme'
 
 const initialCurrentTheme = 'lightTheme'
@@ -23,7 +23,7 @@ const ThemeProvider = ({ children }) => {
   const values = {
     currentTheme,
     setDarkTheme,
-    setLightTheme,
+    setLightTheme
   }
 
   return (

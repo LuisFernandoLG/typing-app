@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
-import { CategorySelect } from "./CategorySelect";
-import { SearchBar } from "./SearchBar";
+import styled from 'styled-components'
+import { Wrapper } from '../shareStyleComponents/Wrapper'
+import { CategorySelect } from './CategorySelect'
+import { SearchBar } from './SearchBar'
 
 export const ToolBarSearch = ({
   selectCategory,
   setSearchQuery,
   search,
-  searchByQuery,
+  searchByQuery
 }) => {
   return (
     <Container flex flex_jc_c gap="0.5rem">
@@ -18,12 +18,12 @@ export const ToolBarSearch = ({
       />
       <CategorySelect selectCategory={selectCategory} />
     </Container>
-  );
-};
+  )
+}
 
 const Container = styled(Wrapper)`
   margin: 0 auto;
   width: 70%;
   border-radius: 1rem;
   padding: 0.5rem;
-`;
+`

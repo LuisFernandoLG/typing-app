@@ -26,6 +26,6 @@ export const useSession = () => {
     user,
     isAuth,
     handleLogIn,
-    authLoading,
+    authLoading
   }
 }

@@ -7,339 +7,339 @@ const initialKeys = [
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '|',
+    name: '|'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '1',
+    name: '1'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '2',
+    name: '2'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '3',
+    name: '3'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '4',
+    name: '4'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '5',
+    name: '5'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '6',
+    name: '6'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '7',
+    name: '7'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '8',
+    name: '8'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '9',
+    name: '9'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '0',
+    name: '0'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '?',
+    name: '?'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '¿',
+    name: '¿'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'Backspace',
+    name: 'Backspace'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'Tab',
+    name: 'Tab'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'q',
+    name: 'q'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'w',
+    name: 'w'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'e',
+    name: 'e'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'r',
+    name: 'r'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 't',
+    name: 't'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'y',
+    name: 'y'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'u',
+    name: 'u'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'i',
+    name: 'i'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'o',
+    name: 'o'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'p',
+    name: 'p'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '´',
+    name: '´'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '+',
+    name: '+'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'Enter',
+    name: 'Enter'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'CapsLock',
+    name: 'CapsLock'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'a',
+    name: 'a'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 's',
+    name: 's'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'd',
+    name: 'd'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'f',
+    name: 'f'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'g',
+    name: 'g'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'h',
+    name: 'h'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'j',
+    name: 'j'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'k',
+    name: 'k'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'l',
+    name: 'l'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'ñ',
+    name: 'ñ'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '{',
+    name: '{'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '}',
+    name: '}'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'Shift',
+    name: 'Shift'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '<',
+    name: '<'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'z',
+    name: 'z'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'x',
+    name: 'x'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'c',
+    name: 'c'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'v',
+    name: 'v'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'b',
+    name: 'b'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'n',
+    name: 'n'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'm',
+    name: 'm'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: ',',
+    name: ','
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '.',
+    name: '.'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '-',
+    name: '-'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'shift right',
+    name: 'shift right'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'Control',
+    name: 'Control'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'Alt',
+    name: 'Alt'
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: ' ',
+    name: ' '
   },
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: 'AltGraph',
+    name: 'AltGraph'
   },
 
   {
     id: generate(),
     status: 'UNPRESSED',
-    name: '____',
-  },
+    name: '____'
+  }
 ]
 
 export const KeyBoard = ({ keyPressed, keyWanted, keyBoardVisibility }) => {
@@ -352,10 +352,11 @@ export const KeyBoard = ({ keyPressed, keyWanted, keyBoardVisibility }) => {
       keys.map((key) => {
         if (key.name === keyWanted.content) return { ...key, status: 'WANTED' }
         if (keyPressed) {
-          if (keyPressed.content === key.name)
+          if (keyPressed.content === key.name) {
             return keyPressed.status === 'FAILED'
               ? { ...key, status: 'FAILED' }
               : { ...key, status: 'UNPRESSED' }
+          }
         }
 
         return { ...key, status: 'UNPRESSED' }

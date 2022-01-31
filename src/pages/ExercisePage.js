@@ -13,7 +13,7 @@ import {
   FaVolumeUp,
   FaVolumeMute,
   FaRegKeyboard,
-  FaKeyboard,
+  FaKeyboard
 } from 'react-icons/fa'
 
 export const ExercisePage = () => {
@@ -27,7 +27,7 @@ export const ExercisePage = () => {
     loading,
     results,
     setResults,
-    isTimeOver,
+    isTimeOver
   } = useExercisePage()
   const [isSoundActive, toggleIsSoundActive] = useToggle({ init: false })
   const [isKeyboardActive, toggleIsKeyboardActive] = useToggle({ init: false })
@@ -59,17 +59,21 @@ export const ExercisePage = () => {
         </ToolBar>
       </FlexContainer>
 
-      {loading || !currentExercise.id ? (
+      {loading || !currentExercise.id
+        ? (
         <Skeleton
           style={{ width: '60rem', height: '10rem', margin: '2rem 0' }}
         />
-      ) : (isCompleted || isTimeOver) && results.length !== 0 ? (
+          )
+        : (isCompleted || isTimeOver) && results.length !== 0
+            ? (
         <Score
           results={results}
           currentExercise={currentExercise}
           timeTaken={isTimeOver}
         />
-      ) : (
+              )
+            : (
         <Exercise
           q={currentExercise.textContent}
           isKeyboardActive={isKeyboardActive}
@@ -77,7 +81,7 @@ export const ExercisePage = () => {
           setResults={setResults}
           isTimeOver={isTimeOver}
         />
-      )}
+              )}
     </WrapperPage>
   )
 }

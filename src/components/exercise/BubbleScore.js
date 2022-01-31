@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components";
-import { Wrapper } from "../shareStyleComponents/Wrapper";
+import styled, { keyframes } from 'styled-components'
+import { Wrapper } from '../shareStyleComponents/Wrapper'
 
 export const BubbleScore = ({ percentage }) => {
   return (
@@ -14,8 +14,8 @@ export const BubbleScore = ({ percentage }) => {
         <path d="M409.5,336Q350,422,250,423Q150,424,122,337Q94,250,116.5,154Q139,58,242,72Q345,86,407,168Q469,250,409.5,336Z"></path>
       </Wave2>
     </BubbleScoreContainer>
-  );
-};
+  )
+}
 
 const waveAnimation = keyframes`
  0% {
@@ -26,21 +26,21 @@ const waveAnimation = keyframes`
   100% {
     transform: rotate(720deg) scale(1.7);
   } 
-`;
+`
 
 const drop = (percentage) => keyframes`
  0% {}
     100% {
     bottom: -${100 - percentage}%;
     }
-`;
+`
 
 const Percentage = styled.p`
   color: ${({ theme: { primaryColor } }) => primaryColor};
   font-weight: 600;
   z-index: 100;
   font-size: 2.5em;
-`;
+`
 
 const BubbleScoreContainer = styled(Wrapper)`
   width: 10rem;
@@ -50,7 +50,7 @@ const BubbleScoreContainer = styled(Wrapper)`
   background: ${({ theme: { bgColor } }) => bgColor};
   position: relative;
   overflow: hidden;
-`;
+`
 
 const Wave = styled.svg`
   position: absolute;
@@ -58,7 +58,7 @@ const Wave = styled.svg`
 
   width: 100%;
   height: 100%;
-`;
+`
 
 const Wave1 = styled(Wave)`
   path {
@@ -67,7 +67,7 @@ const Wave1 = styled(Wave)`
 
   animation: ${({ percentage }) => drop(percentage)} 1s ease forwards,
     ${waveAnimation} 2s ease forwards;
-`;
+`
 
 const Wave2 = styled(Wave)`
   opacity: 0.8;
@@ -77,4 +77,4 @@ const Wave2 = styled(Wave)`
 
   animation: ${({ percentage }) => drop(percentage)} 1s ease forwards,
     ease forwards, ${waveAnimation} 2s ease forwards 200ms;
-`;
+`

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Wrapper } from "./shareStyleComponents/Wrapper";
+import styled from 'styled-components'
+import { Wrapper } from './shareStyleComponents/Wrapper'
 
 export const BubbleKey = ({ keyWanted }) => {
   return (
@@ -11,8 +11,8 @@ export const BubbleKey = ({ keyWanted }) => {
         </BubbleKeyStyled>
       )}
     </Wrapper>
-  );
-};
+  )
+}
 
 const BubbleKeyStyled = styled.div`
   padding: 1rem;
@@ -29,4 +29,4 @@ const BubbleKeyStyled = styled.div`
   align-items: center;
 
   /* } */
-`;
+`

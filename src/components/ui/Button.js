@@ -58,7 +58,7 @@ const ButtonStyled = styled.button`
   user-select: none;
   cursor: pointer;
 
-  ${({ isLoading }) => isLoading && `color:transparent;`}
+  ${({ isLoading }) => isLoading && 'color:transparent;'}
 
   ${({ primary }) => (primary ? primaryStyles : null)} 
   ${({ secondary }) => (secondary ? secondaryStyles : null)}

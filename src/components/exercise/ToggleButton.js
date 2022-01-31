@@ -6,9 +6,9 @@ export const ToggleButton = ({
   state,
   enableIcon: EnableIcon,
   disableIcon: DisableIcon,
-  ToggleFunction,
+  ToggleFunction
 }) => {
-  let inputRef = useRef(null)
+  const inputRef = useRef(null)
 
   const handleClick = () => {
     ToggleFunction()

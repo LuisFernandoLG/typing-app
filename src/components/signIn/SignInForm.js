@@ -14,7 +14,7 @@ export const SignInForm = () => {
     errors,
     handleSubmit,
     handleSubmitOwn,
-    fecthLoading,
+    fecthLoading
   } = useSignInForm()
 
   return (

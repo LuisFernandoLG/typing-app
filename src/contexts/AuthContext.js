@@ -1,63 +1,63 @@
-import { createContext, useState, useEffect } from "react";
-import { useFetch } from "../hooks/useFetch";
-import { toast } from "react-toastify";
-import { endpoints } from "../components/signIn/api";
+import { createContext, useState, useEffect } from 'react'
+import { useFetch } from '../hooks/useFetch'
+import { toast } from 'react-toastify'
+import { endpoints } from '../components/signIn/api'
 
-const AuthContext = createContext();
+const AuthContext = createContext()
 
-const initialAuth = JSON.parse(localStorage.getItem("isAuth")) || false;
-const initialUser = JSON.parse(localStorage.getItem("user")) || {};
+const initialAuth = JSON.parse(localStorage.getItem('isAuth')) || false
+const initialUser = JSON.parse(localStorage.getItem('user')) || {}
 
 const AuthProvider = ({ children }) => {
-  const [isAuth, setIsAuth] = useState(initialAuth);
-  const [user, setUser] = useState(initialUser);
-  const { fetchData, loading, data, fetchErrors } = useFetch();
+  const [isAuth, setIsAuth] = useState(initialAuth)
+  const [user, setUser] = useState(initialUser)
+  const { fetchData, loading, data, fetchErrors } = useFetch()
 
   const setLogIn = (email, password) => {
-    let options = {
-      method: "POST",
+    const options = {
+      method: 'POST',
       body: JSON.stringify({ email, password }),
-      "Content-Type": "application/json",
-    };
-    fetchData(endpoints.logIn, options);
-  };
+      'Content-Type': 'application/json'
+    }
+    fetchData(endpoints.logIn, options)
+  }
 
   useEffect(() => {
     if (data) {
-      if (data.status === "202") {
-        toast.error(data.statusText);
+      if (data.status === '202') {
+        toast.error(data.statusText)
       }
-      if (data.status === "201") {
-        setIsAuth(true);
-        setUser(data.data.user);
+      if (data.status === '201') {
+        setIsAuth(true)
+        setUser(data.data.user)
       }
     }
-  }, [data]);
+  }, [data])
 
   useEffect(() => {
     if (fetchErrors) {
-      toast.error("Inicio de sesión fallido!");
+      toast.error('Inicio de sesión fallido!')
     }
-  }, [fetchErrors]);
+  }, [fetchErrors])
 
   const setLogOut = () => {
-    setIsAuth(false);
-    setUser({});
-  };
+    setIsAuth(false)
+    setUser({})
+  }
 
   useEffect(() => {
     if (isAuth) {
-      localStorage.setItem("isAuth", JSON.stringify(isAuth));
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem('isAuth', JSON.stringify(isAuth))
+      localStorage.setItem('user', JSON.stringify(user))
     } else {
-      localStorage.removeItem("isAuth");
-      localStorage.removeItem("user");
+      localStorage.removeItem('isAuth')
+      localStorage.removeItem('user')
     }
-  }, [isAuth]);
+  }, [isAuth])
 
-  const values = { isAuth, setLogIn, setLogOut, user, authLoading: loading };
-  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
-};
+  const values = { isAuth, setLogIn, setLogOut, user, authLoading: loading }
+  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
+}
 
-export { AuthProvider };
-export default AuthContext;
+export { AuthProvider }
+export default AuthContext
