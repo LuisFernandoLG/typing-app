@@ -67,7 +67,6 @@ export const useAdminExercises = () => {
     categories,
     difficulties,
     statuses,
-    updateExercise,
     exerLoading,
     addExercise,
     exerLoadingAdded

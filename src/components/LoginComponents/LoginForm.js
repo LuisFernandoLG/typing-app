@@ -5,10 +5,10 @@ import { Wrapper } from '../shareStyleComponents/Wrapper'
 import { Button } from '../ui/Button'
 import { useSession } from '../../hooks/useSession'
 
-const emailRegex = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/
+const emailRegex = /^\w+([.-]?\w+)+@\w+([.:]?\w+)+(.[a-zA-Z0-9]{2,3})+$/
 
 export const LoginForm = () => {
-  const { handleLogIn, authLoading, isAuth } = useSession()
+  const { handleLogIn, authLoading } = useSession()
 
   const {
     register,

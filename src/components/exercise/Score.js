@@ -1,6 +1,4 @@
-import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { routes } from '../../routes'
 import { BubbleScore } from './BubbleScore'
 import { FaUndo } from 'react-icons/fa'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
@@ -31,7 +29,7 @@ const getSuccessfulPercentage = ({ results }) =>
   Math.trunc((results.succeed * 100) / (results.succeed + results.failed))
 
 export const Score = ({ results, currentExercise, timeTaken }) => {
-  const { loading, fetchErrors, fetchData } = useFetch()
+  const { fetchData } = useFetch()
   const { user } = useSession()
   const { goHomePage, reloadPage } = useLinkRouter()
 

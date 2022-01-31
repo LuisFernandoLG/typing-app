@@ -18,12 +18,9 @@ export const MyRouter = () => {
               ({ id, route, component: Page, isPrivate, routeProps }) =>
                 isPrivate
                   ? (
-                  <Route
-                    key={`page-${id}`}
-                    path={route}
-                    children={<PrivatePage component={Page} />}
-                    {...routeProps}
-                  />
+                  <Route key={`page-${id}`} path={route} {...routeProps}>
+                    <PrivatePage component={Page} />
+                  </Route>
                     )
                   : (
                   <Route

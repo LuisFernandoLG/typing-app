@@ -1,7 +1,6 @@
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import { routesV2 } from '../routes'
-import { NavBar } from '../components/NavBar/NavBar'
 
 const AppLogged = () => {
   return (

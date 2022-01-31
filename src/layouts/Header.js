@@ -6,7 +6,7 @@ import { ThemeSwitcher } from '../components/ThemeSwitcher'
 import { Button } from '../components/ui/Button'
 import { useLinkRouter } from '../hooks/useLinkRouter'
 import { useSession } from '../hooks/useSession'
-import { IoLogOutOutline, IoLogInSharp } from 'react-icons/io5'
+import { IoLogOutOutline } from 'react-icons/io5'
 
 export const Header = () => {
   const { isAuth, handleLogOut } = useSession()

@@ -15,7 +15,6 @@ const ThemeProvider = ({ children }) => {
   )
 
   const setDarkTheme = () => {
-    console.log(currentTheme)
     setCurrentTheme(themes[darkThemeKey])
   }
   const setLightTheme = () => setCurrentTheme(themes[lightThemeKey])
@@ -23,7 +22,8 @@ const ThemeProvider = ({ children }) => {
   const values = {
     currentTheme,
     setDarkTheme,
-    setLightTheme
+    setLightTheme,
+    setThemes
   }
 
   return (

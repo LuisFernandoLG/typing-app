@@ -16,6 +16,6 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
-    'unused-imports/no-unused-imports': 'error',
+    "camelcase": [0, { "properties": "never", "ignoreDestructuring": true }]
   },
 }

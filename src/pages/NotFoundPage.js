@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { routes, routesV2 } from '../routes'
+import { routesV2 } from '../routes'
 import { Wrapper } from '../components/shareStyleComponents/Wrapper'
 
 import notFound from '../images/notFoundPage.svg'
@@ -29,10 +29,3 @@ const Container = styled(Wrapper)`
 `
 
 const Image = styled.img``
-
-const BackBtn = styled.button`
-  padding: 1rem;
-  margin-top: 1rem;
-  border-radius: 1rem;
-  cursor: pointer;
-`

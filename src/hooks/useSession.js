@@ -1,11 +1,11 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import AuthContext from '../contexts/AuthContext'
 import { useLinkRouter } from '../hooks/useLinkRouter'
 
 export const useSession = () => {
   const { isAuth, setLogIn, setLogOut, user, authLoading } =
     useContext(AuthContext)
-  const { goHomePage, goIndexPage } = useLinkRouter()
+  const { goIndexPage } = useLinkRouter()
 
   const handleLogOut = () => {
     setLogOut()

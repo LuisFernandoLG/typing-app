@@ -5,7 +5,7 @@ import GroupInput from '../inputs/GroupInput'
 import { Button } from '../ui/Button'
 
 const nameRegex = /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/g
-const emailRegex = /^\w+([\.-]?\w+)+@\w+([\.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/
+const emailRegex = /^\w+([.-]?\w+)+@\w+([.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/
 
 export const SignInForm = () => {
   const {

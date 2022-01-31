@@ -54,9 +54,9 @@ export const AdminPage = () => {
 
       {!loading &&
         exercieses.map((adminExercise) => (
-          <ExercisesWrapper flex flex_jc_c>
+          <ExercisesWrapper key={exercieses.id}
+          flex flex_jc_c>
             <AdminExerciseItem
-              key={exercieses.id}
               adminExercise={adminExercise}
               categories={categories}
               difficulties={difficulties}

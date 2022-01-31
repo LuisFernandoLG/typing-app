@@ -10,7 +10,6 @@ export const ThemeSwitcher = () => {
   const { setDarkTheme, setLightTheme } = useTheme()
 
   useEffect(() => {
-    console.log(isDarkMode)
     if (isDarkMode) setDarkTheme()
     else setLightTheme()
   }, [isDarkMode])

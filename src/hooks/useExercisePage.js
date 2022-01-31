@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { endpoints } from '../components/signIn/api'
-import { fixSpaceKeyErrorWithScroll } from '../helpers/fixSpaceKeyErrorWithScroll'
 import { useFetch } from './useFetch'
 
 const initialExerciseItem = {

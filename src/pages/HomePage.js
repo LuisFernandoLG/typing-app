@@ -75,8 +75,8 @@ export const HomePage = () => {
       {loading || !exercises
         ? (
         <QuotesContainer>
-          {skeletons.map(() => (
-            <ExerciseItem />
+          {skeletons.map(({ _, index }) => (
+            <ExerciseItem key={`${index}-execiteItem`} />
           ))}
         </QuotesContainer>
           )
