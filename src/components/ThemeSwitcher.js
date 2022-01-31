@@ -1,6 +1,6 @@
 import { useToggle } from '../hooks/useToggle'
 import { ToggleButton } from './exercise/ToggleButton'
-import { FaMoon, FaSun } from 'react-icons/fa'
+import { IoMoon, IoSunny } from 'react-icons/io5'
 import styled from 'styled-components'
 
 export const ThemeSwitcher = () => {
@@ -11,8 +11,8 @@ export const ThemeSwitcher = () => {
       <ToggleButton
         state={isDarkMode}
         ToggleFunction={toggleIsDarkMode}
-        enableIcon={FaMoon}
-        disableIcon={FaSun}
+        enableIcon={IoMoon}
+        disableIcon={IoSunny}
       />
     </ThemeSwitcherStyled>
   )

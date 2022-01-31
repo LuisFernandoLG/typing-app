@@ -3,7 +3,12 @@ import { Wrapper } from '../shareStyleComponents/Wrapper'
 import { RedirectLink } from '../ui/RedirectLink'
 import { routesV2 } from '../../routes'
 import { useSession } from '../../hooks/useSession'
-import { FaHome, FaTools, FaRegChartBar, FaTrophy } from 'react-icons/fa'
+import {
+  IoHomeOutline,
+  IoTrophyOutline,
+  IoBarChartOutline,
+  IoKeyOutline,
+} from 'react-icons/io5'
 
 export const NavBar = () => {
   const { isAdmin } = useSession()
@@ -11,18 +16,18 @@ export const NavBar = () => {
   return (
     <NavBarStyled as='nav' flex flex_ai_c flex_jc_c gap='1rem'>
       <RedirectLink to={routesV2.LOGGED_APP.route}>
-        <FaHome />
+        <IoHomeOutline />
       </RedirectLink>
       <RedirectLink to={routesV2.LOGGED_APP.subPages.RANKING_PAGE.route}>
-        <FaTrophy />
+        <IoTrophyOutline />
       </RedirectLink>
       <RedirectLink to={routesV2.LOGGED_APP.subPages.STADISTICS_PAGE.route}>
-        <FaRegChartBar />
+        <IoBarChartOutline />
       </RedirectLink>
 
       {isAdmin && (
         <RedirectLink to={routesV2.LOGGED_APP.subPages.ADMING_PAGE.route}>
-          <FaTools />
+          <IoKeyOutline />
         </RedirectLink>
       )}
     </NavBarStyled>
