@@ -1,12 +1,13 @@
 import { LoginForm } from '../components/LoginComponents/LoginForm'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { useSession } from '../hooks/useSession'
-import { useLinkRouter } from '../hooks/useLinkRouter'
+import { Redirect } from 'react-router-dom'
+import { routesV2 } from '../routes'
 
 export const LoginPage = () => {
   const { isAuth } = useSession()
-  const { goHomePage } = useLinkRouter()
-  if (isAuth) goHomePage()
+  if (isAuth)
+    return <Redirect to={routesV2.LOGGED_APP.subPages.HOME_PAGE.route} />
 
   return (
     <FlexContainer fd_c jc_c ai_c>
