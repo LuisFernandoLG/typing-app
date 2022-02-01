@@ -5,17 +5,17 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { GlobalStyles } from './style/GlobalStyles'
 import { MyRouter } from './components/MyRouter'
 import { AuthProvider } from './contexts/AuthContext'
-import { ToastContainer } from 'react-toastify'
 import { useTheme } from './hooks/useTheme'
+import { ToastStyled } from './components/toasts/ToastStyled'
 
 function App () {
   const { currentTheme } = useTheme()
 
   return (
     <AuthProvider>
-      <ToastContainer />
       <AppStyled>
         <ThemeProvider theme={currentTheme}>
+          <ToastStyled/>
           <GlobalStyles />
           <MyRouter />
         </ThemeProvider>
