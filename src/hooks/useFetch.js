@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const defaultOptions = {
   headers: {
@@ -11,10 +11,14 @@ export const useFetch = () => {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
   const [fetchErrors, setFetchErrors] = useState(null)
+  const controller = new AbortController()
+  const signal = controller.signal
+
+  const cancellFetch = () => {
+    if (!signal.aborted) controller.abort()
+  }
 
   const fetchData = async (url, options) => {
-    const controller = new AbortController()
-    const signal = controller.signal
     try {
       setLoading(true)
 
@@ -57,10 +61,15 @@ export const useFetch = () => {
     }
   }
 
+  useEffect(() => {
+    return () => cancellFetch()
+  }, [])
+
   return {
     data,
     fetchErrors,
     loading,
-    fetchData
+    fetchData,
+    cancellFetch
   }
 }
