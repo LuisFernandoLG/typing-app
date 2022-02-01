@@ -69,5 +69,6 @@ const Container = styled.div`
   background: ${({ theme: { whiteColor } }) => whiteColor};
   border-radius: 1rem;
   height: min-content;
+  padding:1rem;
   
 `
