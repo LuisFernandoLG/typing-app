@@ -35,11 +35,11 @@ export const StadisticsPage = () => {
 
       <GridContainer>
         {loading
-          ? skeletons.map((_, i) => <ProgressGraph key={`${i}-pb`}/>)
+          ? skeletons.map((_, i) => <ProgressGraph key={`${i}-pbs`}/>)
           : data &&
             exercisesScore.map((item, i) => (
               <ProgressGraph
-                key={i}
+              key={`${i}-pb`}
                 scoreHistory={item}
                 title={item[0].title}
               />
@@ -56,7 +56,7 @@ const PageWrapper = styled.div`
 const GridContainer = styled.div`
   width: 100%;
   padding: 1rem;
-  margin: 2rem auto;
+  margin-top:2rem;
   display: grid;
 
   grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
@@ -66,4 +66,5 @@ const GridContainer = styled.div`
 const Title = styled.h2`
   font-size: 3.5rem;
   text-align: center;
+  color: ${({ theme: { fontColor } }) => fontColor};
 `

@@ -35,13 +35,13 @@ export const SearchBar = ({ setSearchQuery, search, searchByQuery }) => {
 const Container = styled(Wrapper)`
   flex-grow: 1;
   border-radius: ${({ theme: { border_radius } }) => border_radius};
-  background: ${({ theme: { primaryColor } }) => primaryColor};
+  background: ${({ theme: { whiteColor } }) => whiteColor};
   padding: 1rem;
 `
 const SearchIcon = styled.button`
   cursor: pointer;
   font-size: 1.5rem;
-  color: ${({ theme: { fontColor } }) => fontColor};
+  color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
   background: inherit;
 `
 const SearchInput = styled.input`

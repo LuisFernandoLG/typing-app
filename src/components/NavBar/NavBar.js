@@ -15,7 +15,7 @@ export const NavBar = () => {
 
   return (
     <NavBarStyled as='nav' flex flex_ai_c flex_jc_c gap='1rem'>
-      <RedirectLink to={routesV2.LOGGED_APP.route}>
+      <RedirectLink to={routesV2.LOGGED_APP.subPages.HOME_PAGE.route}>
         <IoHomeOutline />
       </RedirectLink>
       <RedirectLink to={routesV2.LOGGED_APP.subPages.RANKING_PAGE.route}>
@@ -35,11 +35,6 @@ export const NavBar = () => {
 }
 
 const NavBarStyled = styled(Wrapper)`
-  grid-column: 1 /-1;
-  grid-row: 1 / span 1;
-  width: 100%;
-
   z-index: 200;
-  color: ${({ theme: { disableColor } }) => disableColor};
   font-size: 1.5rem;
 `

@@ -1,16 +1,15 @@
-import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { routesV2 } from '../routes'
 import { Wrapper } from '../components/shareStyleComponents/Wrapper'
 
 import notFound from '../images/notFoundPage.svg'
 import { Button } from '../components/ui/Button'
+import { useLinkRouter } from '../hooks/useLinkRouter'
 
 export const NotFoundPage = () => {
-  const history = useHistory()
+  const { goHomePage } = useLinkRouter()
 
   const handleClick = () => {
-    history.push(routesV2.LOGGED_APP.route)
+    goHomePage()
   }
 
   return (

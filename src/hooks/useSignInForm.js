@@ -45,7 +45,6 @@ export const useSignInForm = () => {
     if (data) {
       if (data.status === 201) toast.error(data.statusText)
       if (data.status === 202) setLogIn(watch('Correo'), watch('Contraseña'))
-      // console.log()
     }
   }, [data])
   return {

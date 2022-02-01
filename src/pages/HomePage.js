@@ -105,6 +105,7 @@ export const HomePage = () => {
 const HomeContainer = styled(Wrapper)``
 
 const QuotesContainer = styled.main`
+  margin-top:2rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;

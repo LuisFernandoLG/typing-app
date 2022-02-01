@@ -69,6 +69,8 @@ export const RankingPage = () => {
 }
 
 const UsersWrapper = styled.div`
+
+margin-top:2rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(18.75rem, 1fr));
   gap: 2rem;
@@ -76,7 +78,6 @@ const UsersWrapper = styled.div`
 
 const RankingContainer = styled.div`
   flex-grow: 1;
-  margin-right: 2rem;
 
   .first {
     color: green;
@@ -93,4 +94,5 @@ const RankingContainer = styled.div`
 const Title = styled.h2`
   font-size: 3.5rem;
   text-align: center;
+  color: ${({ theme: { fontColor } }) => fontColor};
 `

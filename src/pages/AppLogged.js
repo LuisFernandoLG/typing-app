@@ -1,24 +1,23 @@
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 import { routesV2 } from '../routes'
 
 const AppLogged = () => {
   return (
     <GridWrapper>
-      {/* <NavBar /> */}
       <SubPageContainer>
-        <Switch>
+        <Routes>
           {Object.values(routesV2.LOGGED_APP.subPages).map(
             ({ id, route, component: Page, routeProps }) => (
               <Route
                 key={`sub-page-${id}`}
                 path={route}
-                component={Page}
+                element={<Page/>}
                 {...routeProps}
               />
             )
           )}
-        </Switch>
+        </Routes>
       </SubPageContainer>
     </GridWrapper>
   )

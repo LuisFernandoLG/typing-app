@@ -1,4 +1,4 @@
-import { Redirect } from 'react-router'
+import { Navigate } from 'react-router-dom'
 import { routesV2 } from '../routes'
 import { SignInForm } from '../components/signIn/SignInForm'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
@@ -6,7 +6,7 @@ import { useSession } from '../hooks/useSession'
 
 export const SignInPage = () => {
   const { isAuth } = useSession()
-  if (isAuth) return <Redirect to={routesV2.LOGGED_APP.subPages.HOME_PAGE} />
+  if (isAuth) return <Navigate to={routesV2.LOGGED_APP.subPages.HOME_PAGE.route} />
 
   return (
     <FlexContainer fd_c jc_se ai_c>

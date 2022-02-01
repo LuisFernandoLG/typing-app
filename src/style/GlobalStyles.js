@@ -16,6 +16,10 @@ h1{
 
 /* Reset */
 
+li{
+    list-style: none;
+}
+
 
 a{
     text-decoration: none;
@@ -34,5 +38,9 @@ button{
     border:none;
     outline:none;
 }
+
+/* .activated{
+    color:yellow;
+} */
 
 `

@@ -10,89 +10,63 @@ import { SignInPage } from './pages/SignInPage'
 import { StadisticsPage } from './pages/StadisticsPage'
 const AppLogged = lazy(() => import('./pages/AppLogged'))
 
-const app = '/app'
-
-export const routes = {
-  LOGIN_PAGE: '/logIn',
-  SIGNUP_PAGE: '/signUp',
-  ADMIN_PAGE: '/admin',
-  HOME_PAGE: app,
-  EXERCICE_PAGE: `${app}/exercise`,
-  RANKING_PAGE: `${app}/ranking`,
-  STADISTICS_PAGE: `${app}/estadisticas`
-}
-
 export const routesV2 = {
   INDEX_PAGE: {
     id: 0,
-    route: '/',
+    route: '/home',
     name: 'index',
     component: IndexPage,
     isPrivate: false,
-    routeProps: {
-      exact: true
-    }
+    routeProps: {}
   },
   LOGGED_APP: {
     id: 10,
-    route: `${app}`,
+    route: '/*',
     name: 'app',
     component: AppLogged,
     isPrivate: true,
-    routeProps: {
-      exact: false
-    },
+    routeProps: {},
     subPages: {
       HOME_PAGE: {
         id: 1,
-        route: `${app}`,
+        route: '/',
         name: 'home',
         component: HomePage,
         isPrivate: true,
-        routeProps: {
-          exact: true
-        }
+        routeProps: {}
       },
       ADMING_PAGE: {
         id: 3,
-        route: `${app}/adminPage`,
+        route: 'adminPage',
         name: 'admin',
         component: AdminPage,
         isPrivate: true,
-        routeProps: {
-          exact: true
-        }
+        routeProps: {}
       },
       EXERCISE_PAGE: {
         id: 4,
-        route: `${app}/item/:idQuote`,
-        routBaseParam: `${app}/item`,
+        route: ':idQuote',
+        routBaseParam: '/item',
         name: 'exercise',
         component: ExercisePage,
         isPrivate: true,
-        routeProps: {
-          exact: false
-        }
+        routeProps: {}
       },
       RANKING_PAGE: {
         id: 6,
-        route: `${app}/ranking`,
+        route: 'ranking',
         name: 'Ranking',
         component: RankingPage,
         isPrivate: true,
-        routeProps: {
-          exact: true
-        }
+        routeProps: {}
       },
       STADISTICS_PAGE: {
         id: 6,
-        route: `${app}/resultados`,
-        name: 'Stadistics',
+        route: 'estadisticas',
+        name: 'stadistics',
         component: StadisticsPage,
         isPrivate: true,
-        routeProps: {
-          exact: true
-        }
+        routeProps: {}
       }
     }
   },
@@ -102,9 +76,7 @@ export const routesV2 = {
     name: 'login',
     component: LoginPage,
     isPrivate: false,
-    routeProps: {
-      exact: true
-    }
+    routeProps: {}
   },
   SIGN_UP_PAGE: {
     id: 7,
@@ -112,9 +84,7 @@ export const routesV2 = {
     name: 'Sign Up',
     component: SignInPage,
     isPrivate: false,
-    routeProps: {
-      exact: true
-    }
+    routeProps: {}
   },
   NOT_FOUND_PAGE: {
     id: 5,
@@ -122,8 +92,6 @@ export const routesV2 = {
     name: 'Not Found Page',
     component: NotFoundPage,
     isPrivate: false,
-    routeProps: {
-      exact: false
-    }
+    routeProps: {}
   }
 }

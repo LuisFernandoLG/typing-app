@@ -1,10 +1,10 @@
-import { Redirect } from 'react-router'
+import { Navigate } from 'react-router-dom'
 import { useSession } from '../hooks/useSession'
 import { routesV2 } from '../routes'
-export const PrivatePage = ({ component: Component }) => {
+export const PrivatePage = ({ children }) => {
   const { isAuth } = useSession()
 
   return (
-    <>{isAuth ? <Component /> : <Redirect to={routesV2.LOGIN_PAGE.route} />}</>
+    <>{isAuth ? children : <Navigate to={routesV2.LOGIN_PAGE.route} />}</>
   )
 }

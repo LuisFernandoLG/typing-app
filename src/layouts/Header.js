@@ -15,34 +15,31 @@ export const Header = () => {
   return (
     <HeaderStyled as='header' jc_sb ai_c gap='0.5rem'>
       <Logo />
-      {isAuth
-        ? (
-        <FlexChild>
-          <NavBar />
+      {isAuth && <NavBar />}
+
+      <FlexContainer>
+        {isAuth
+          ? (
           <Button secondary={true} onClick={handleLogOut} pd='0.5rem'>
             <IoLogOutOutline />
           </Button>
-        </FlexChild>
-          )
-        : (
-        <FlexChild jc_fe gap='0.5rem'>
-          <Button secondary={true} onClick={goLoginPage} pd='0.5rem 1.5rem'>
-            Ingreso
-          </Button>
-          <Button primary={true} onClick={goSignUpPage} pd='0.5rem 1.5rem'>
-            Registro
-          </Button>
-        </FlexChild>
-          )}
-      <ThemeSwitcher />
+            )
+          : (
+          <>
+            <Button secondary={true} onClick={goLoginPage} pd='0.5rem 1.5rem'>
+              Ingreso
+            </Button>
+            <Button primary={true} onClick={goSignUpPage} pd='0.5rem 1.5rem'>
+              Registro
+            </Button>
+          </>
+            )}
+            <ThemeSwitcher />
+      </FlexContainer>
     </HeaderStyled>
   )
 }
 
 const HeaderStyled = styled(FlexContainer)`
   padding: 1rem 1.5rem;
-`
-
-const FlexChild = styled(FlexContainer)`
-  flex-grow: 1;
 `
