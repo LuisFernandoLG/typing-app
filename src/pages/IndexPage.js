@@ -8,7 +8,7 @@ import { useSession } from '../hooks/useSession'
 import { Navigate } from 'react-router-dom'
 import { routesV2 } from '../routes'
 
-const textQuote = 'Hola, bievenido a type and type'
+const textQuote = 'Hola, bienvenido a type and type'
 
 export const IndexPage = () => {
   const { isAuth } = useSession()
@@ -23,7 +23,7 @@ export const IndexPage = () => {
   return (
     <FlexContainer fd_c ai_c gap='2rem'>
       <FlexContainer fd_c ai_c>
-        <Title>Mejora tu escritura</Title>
+        <Title>Mejora tu velocidad</Title>
         <SubTitle>¡Comienza a teclear!</SubTitle>
         <Paragraph>⌨️</Paragraph>
       </FlexContainer>
