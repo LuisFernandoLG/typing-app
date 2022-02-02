@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import styled from 'styled-components'
-import { Wrapper } from '../shareStyleComponents/Wrapper'
+import { FlexContainer } from '../shareStyleComponents/FlexContainer'
 
 export const ToggleButton = ({
   state,
@@ -16,7 +16,7 @@ export const ToggleButton = ({
   }
 
   return (
-    <ToggleButtonStyled>
+    <ToggleButtonStyled jc_c ai_c>
       <input
         ref={inputRef}
         type='checkbox'
@@ -28,16 +28,12 @@ export const ToggleButton = ({
   )
 }
 
-const ToggleButtonStyled = styled(Wrapper)`
+const ToggleButtonStyled = styled(FlexContainer)`
   position: relative;
   width: fit-content;
   padding: 5px;
   border-radius: 1rem;
-  color: ${({ theme: { secondaryColor } }) => secondaryColor};
-
-  i {
-    pointer-events: none;
-  }
+  color: ${({ theme: { fontColor } }) => fontColor};
 
   input {
     position: absolute;
@@ -46,10 +42,5 @@ const ToggleButtonStyled = styled(Wrapper)`
     cursor: pointer;
 
     opacity: 0;
-
-    &:checked + i {
-      opacity: 1;
-      color: ${({ theme: { primaryColor } }) => primaryColor};
-    }
   }
 `

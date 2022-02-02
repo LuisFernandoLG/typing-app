@@ -15,7 +15,7 @@ export const Footer = () => {
 }
 
 const FooterWrapper = styled(Wrapper)`
-  margin-top: 20rem;
+  margin-top: 10rem;
   width: 100%;
   padding: 0.5rem;
   background: ${({ theme: { secondaryColor } }) => secondaryColor};

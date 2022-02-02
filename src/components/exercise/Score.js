@@ -55,10 +55,10 @@ export const Score = ({ results, currentExercise, timeTaken }) => {
     <ScoreContainer flex flex_jc_c flex_dc flex_ai_c gap='1rem'>
       <BubbleScore percentage={percentageScored} />
       <Points>{pointsScored} Puntos</Points>
-      <Button primary={true} onClick={goHomePage}>
+      <Button primary={true} onClick={goHomePage} pd="1rem 2rem">
         Volver al inicio
       </Button>
-      <Button secondary={true} onClick={reloadPage}>
+      <Button secondary={true} onClick={reloadPage} pd="1rem 2rem">
         <FaUndo />
       </Button>
     </ScoreContainer>

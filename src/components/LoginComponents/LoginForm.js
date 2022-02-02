@@ -49,7 +49,9 @@ export const LoginForm = () => {
         isLoading={authLoading}
         type='submit'
         as='input'
-        value='Iniciar sesión'>
+        value='Iniciar sesión'
+        pd="1rem 2rem">
+
         Iniciar sesión
       </Button>
     </LoginFormContainer>
@@ -57,10 +59,8 @@ export const LoginForm = () => {
 }
 
 const LoginFormContainer = styled(Wrapper)`
-  padding: 3rem 2rem;
+  max-width: 25rem;
   width: 30rem;
-  background: ${({ theme: { bgColor } }) => bgColor};
-  border-radius: ${({ theme: { border_radius } }) => border_radius};
 `
 
 const Title = styled.h2`

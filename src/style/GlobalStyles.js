@@ -32,6 +32,7 @@ html{
 body{
     font-family: 'Montserrat', sans-serif;
     background: ${({ theme: { bgColor } }) => bgColor};
+    transition: background 300ms ease;
 }
 
 button{

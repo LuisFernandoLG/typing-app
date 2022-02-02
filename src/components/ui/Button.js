@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components'
 import { Loader } from '../Loader'
+import { FlexContainer } from '../shareStyleComponents/FlexContainer'
 
 export const Button = (
-  { children, isLoading, onClick, primary, secondary, pd },
+  { children, isLoading, onClick, primary, secondary, pd, fontSize },
   props
 ) => {
   return (
@@ -11,10 +12,11 @@ export const Button = (
       disabled={isLoading}
       primary={primary}
       secondary={secondary}
+      fontSize={fontSize}
       pd={pd}
       {...props}>
-      <Content> {isLoading ? <Loader /> : children} </Content>
-      <BaseSizeHelper>{children}</BaseSizeHelper>
+      <Content jc_c ai_c> {isLoading ? <Loader /> : children} </Content>
+      <BaseSizeHelper jc_c ai_c>{children}</BaseSizeHelper>
     </ButtonStyled>
   )
 }
@@ -32,7 +34,6 @@ const primaryStyles = css`
 
 const secondaryStyles = css`
   color: ${({ theme: { disableColor } }) => disableColor};
-  border: 3px solid ${({ theme: { bgColor } }) => bgColor};
   background: transparent;
 
   &:hover,
@@ -48,12 +49,13 @@ const ButtonStyled = styled.button`
       ? css`
           padding: ${pd};
         `
-      : 'padding: 1rem 2rem;'}
+      : null}
 
   border-radius: ${({ theme: { border_radius } }) => border_radius};
   transition: box-shadow 300ms ease, color 300ms ease;
 
-  font-size: 1.2rem;
+  ${({ fontSize }) => fontSize ? `font-size: ${fontSize}` : 'font-size: 1.2rem'};
+  
   font-weight: 600;
   user-select: none;
   cursor: pointer;
@@ -64,10 +66,10 @@ const ButtonStyled = styled.button`
   ${({ secondary }) => (secondary ? secondaryStyles : null)}
 `
 
-const BaseSizeHelper = styled.span`
+const BaseSizeHelper = styled(FlexContainer)`
   opacity: 0;
 `
-const Content = styled.span`
+const Content = styled(FlexContainer)`
   position: absolute;
   margin: 0 auto;
   left: 0;

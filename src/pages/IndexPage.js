@@ -31,10 +31,10 @@ export const IndexPage = () => {
       {isExerciseCompleted
         ? (
         <FlexContainer fd_c gap='1rem'>
-          <Button primary onClick={goSignUpPage}>
+          <Button primary onClick={goSignUpPage} pd="1rem 2rem">
             Registrarse
           </Button>
-          <Button secondary onClick={reset}>
+          <Button secondary onClick={reset} pd="1rem 2rem">
             Intentar de nuevo
           </Button>
         </FlexContainer>

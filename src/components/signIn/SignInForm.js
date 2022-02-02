@@ -56,7 +56,8 @@ export const SignInForm = () => {
         primary={true}
         isLoading={fecthLoading || authLoading}
         value='Registrarse'
-        type='submit'>
+        type='submit'
+        pd="1rem 2rem">
         Registrarse
       </Button>
     </SignInWrapper>
@@ -64,10 +65,8 @@ export const SignInForm = () => {
 }
 
 const SignInWrapper = styled(Wrapper)`
-  padding: 3rem 2rem;
+  max-width: 25rem;
   width: 30rem;
-  background: ${({ theme: { bgColor } }) => bgColor};
-  border-radius: ${({ theme: { border_radius } }) => border_radius};
 `
 
 const Title = styled.h2`

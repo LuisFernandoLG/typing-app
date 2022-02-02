@@ -6,7 +6,7 @@ import { ThemeSwitcher } from '../components/ThemeSwitcher'
 import { Button } from '../components/ui/Button'
 import { useLinkRouter } from '../hooks/useLinkRouter'
 import { useSession } from '../hooks/useSession'
-import { IoLogOutOutline } from 'react-icons/io5'
+import { IoLogOut } from 'react-icons/io5'
 import { routesV2 } from '../routes'
 import { Link } from 'react-router-dom'
 
@@ -22,19 +22,19 @@ export const Header = () => {
       </Link>
       {isAuth && <NavBar />}
 
-      <FlexContainer>
+      <FlexContainer gap="1rem" jc_c ai_c>
         {isAuth
           ? (
-          <Button secondary={true} onClick={handleLogOut} pd='0.5rem'>
-            <IoLogOutOutline />
+          <Button secondary={true} onClick={handleLogOut} fontSize="2rem">
+            <IoLogOut />
           </Button>
             )
           : (
           <>
-            <Button secondary={true} onClick={goLoginPage} pd='0.5rem 1.5rem'>
+            <Button secondary={true} onClick={goLoginPage} pd="1rem 2rem">
               Ingreso
             </Button>
-            <Button primary={true} onClick={goSignUpPage} pd='0.5rem 1.5rem'>
+            <Button primary={true} onClick={goSignUpPage} pd="1rem 2rem">
               Registro
             </Button>
           </>
