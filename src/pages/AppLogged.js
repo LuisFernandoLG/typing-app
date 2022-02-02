@@ -36,8 +36,6 @@ const GridWrapper = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: auto auto 1fr;
   gap: 2rem;
-
-  background: ${({ theme: { bgColor } }) => bgColor};
 `
 
 export default AppLogged
