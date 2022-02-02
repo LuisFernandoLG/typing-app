@@ -1,7 +1,6 @@
 import { Bubble } from 'react-chartjs-2'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import Skeleton from 'react-loading-skeleton'
-import { useTheme } from '../../hooks/useTheme'
 
 export const ProgressGraph = ({ scoreHistory, title }) => {
   return (
@@ -24,7 +23,7 @@ const Graph = ({ scoreHistory }) => {
     y: totalScore
   }))
 
-  const { currentTheme: { primaryColor } } = useTheme()
+  const theme = useTheme()
 
   const options = {
     scales: {
@@ -51,7 +50,7 @@ const Graph = ({ scoreHistory }) => {
       {
         label: 'Intentos',
         data: scores,
-        backgroundColor: primaryColor
+        backgroundColor: theme.primaryColor
       }
     ]
   }

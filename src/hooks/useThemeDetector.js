@@ -11,7 +11,7 @@ export const useThemeDetector = () => {
   useEffect(() => {
     const themeMatchMedia = window.matchMedia('(prefers-color-scheme: dark)')
     themeMatchMedia.addEventListener('change', changeTheme)
-    return () => themeMatchMedia.removeEventListener(changeTheme)
+    return () => themeMatchMedia.removeEventListener('change', changeTheme)
   }, [])
 
   return { isOSDarkMode }
