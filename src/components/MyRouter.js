@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { routesV2 } from '../routes'
 import { Footer } from '../layouts/Footer'
 import { PrivatePage } from '../pages/PrivatePage'
@@ -10,7 +10,7 @@ import { Header } from '../layouts/Header'
 export const MyRouter = () => {
   return (
     <Suspense fallback={<LazyLoading />}>
-      <HashRouter>
+      <BrowserRouter>
         <Header />
         {/* <ScrollToTop> */}
         <Routes>
@@ -41,7 +41,7 @@ export const MyRouter = () => {
         </Routes>
         {/* </ScrollToTop> */}
         <Footer />
-      </HashRouter>
+      </BrowserRouter>
     </Suspense>
   )
 }
