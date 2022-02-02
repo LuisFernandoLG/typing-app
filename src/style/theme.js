@@ -1,5 +1,6 @@
 export const themes = {
   lightTheme: {
+    name: 'light Theme',
     primaryColor: '#9AD0EC',
     secondaryColor: '#064663',
     tertiaryColor: '#323232',
@@ -17,6 +18,7 @@ export const themes = {
   },
 
   darkTheme: {
+    name: 'dark Theme',
     primaryColor: '#9AD0EC',
     secondaryColor: '#064663',
     tertiaryColor: '#323232',
