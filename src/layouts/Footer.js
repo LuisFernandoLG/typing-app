@@ -22,6 +22,6 @@ const FooterWrapper = styled(Wrapper)`
 `
 
 const ExternalLink = styled.a`
-  font-size: 2rem;
+  font-size: 1.3rem;
   color: ${({ theme: { bgColor } }) => bgColor};
 `
