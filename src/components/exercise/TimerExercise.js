@@ -4,10 +4,15 @@ import styled from 'styled-components'
 import { secondsToMinutes } from '../../helpers/converterTimeHelper'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
 
-export const TimerExercise = ({ time, markAsTimeOver }) => {
+export const TimerExercise = ({ time, markAsTimeOver, dicrementTime }) => {
   useEffect(() => {
     if (time === 0) markAsTimeOver()
   }, [time])
+
+  useEffect(() => {
+    const interval = setInterval(dicrementTime, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <TimeExerciseWrapper>
@@ -17,7 +22,6 @@ export const TimerExercise = ({ time, markAsTimeOver }) => {
 }
 
 const TimeExerciseWrapper = styled(Wrapper)`
-  width: 50%;
   padding: 1rem;
   height: 1rem;
 

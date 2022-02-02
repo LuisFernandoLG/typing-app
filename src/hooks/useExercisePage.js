@@ -29,11 +29,6 @@ export const useExercisePage = () => {
   const markAsTimeOver = () => setIsTimeOver(true)
 
   useEffect(() => {
-    const interval = setInterval(dicrementTime, 1000)
-    return () => clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
     fetchData(`${endpoints.exercise}/${idQuote}`)
   }, [])
 

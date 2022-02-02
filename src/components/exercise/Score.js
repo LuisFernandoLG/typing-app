@@ -33,8 +33,6 @@ export const Score = ({ results, currentExercise, timeTaken }) => {
   const { user } = useSession()
   const { goHomePage, reloadPage } = useLinkRouter()
 
-  console.log({ timeTaken, currentExercise })
-
   const percentageScored = getSuccessfulPercentage({ results })
   const pointsScored = getPercentage({
     percentage: percentageScored,

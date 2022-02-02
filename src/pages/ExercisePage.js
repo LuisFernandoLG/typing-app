@@ -70,7 +70,7 @@ export const ExercisePage = () => {
         <Score
           results={results}
           currentExercise={currentExercise}
-          timeTaken={isTimeOver}
+          timeTaken={isTimeOver ? currentExercise.time : currentExercise.time - timeLeft}
         />
               )
             : (
