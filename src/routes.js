@@ -12,7 +12,7 @@ const AppLogged = lazy(() => import('./pages/AppLogged'))
 
 export const routesV2 = {
   INDEX_PAGE: {
-    id: 0,
+    id: 1,
     route: '/home',
     name: 'index',
     component: IndexPage,
@@ -20,7 +20,7 @@ export const routesV2 = {
     routeProps: {}
   },
   LOGGED_APP: {
-    id: 10,
+    id: 2,
     route: '/*',
     name: 'app',
     component: AppLogged,
@@ -28,7 +28,7 @@ export const routesV2 = {
     routeProps: {},
     subPages: {
       HOME_PAGE: {
-        id: 1,
+        id: 3,
         route: '/',
         name: 'home',
         component: HomePage,
@@ -36,7 +36,7 @@ export const routesV2 = {
         routeProps: {}
       },
       ADMING_PAGE: {
-        id: 3,
+        id: 4,
         route: 'adminPage',
         name: 'admin',
         component: AdminPage,
@@ -44,7 +44,7 @@ export const routesV2 = {
         routeProps: {}
       },
       EXERCISE_PAGE: {
-        id: 4,
+        id: 5,
         route: 'item/:idQuote',
         routBaseParam: '/item',
         name: 'exercise',
@@ -61,7 +61,7 @@ export const routesV2 = {
         routeProps: {}
       },
       STADISTICS_PAGE: {
-        id: 6,
+        id: 7,
         route: 'estadisticas',
         name: 'stadistics',
         component: StadisticsPage,
@@ -71,7 +71,7 @@ export const routesV2 = {
     }
   },
   LOGIN_PAGE: {
-    id: 2,
+    id: 8,
     route: '/login',
     name: 'login',
     component: LoginPage,
@@ -79,7 +79,7 @@ export const routesV2 = {
     routeProps: {}
   },
   SIGN_UP_PAGE: {
-    id: 7,
+    id: 9,
     route: '/SignUp',
     name: 'Sign Up',
     component: SignInPage,
@@ -87,7 +87,7 @@ export const routesV2 = {
     routeProps: {}
   },
   NOT_FOUND_PAGE: {
-    id: 5,
+    id: 0,
     route: '*',
     name: 'Not Found Page',
     component: NotFoundPage,
