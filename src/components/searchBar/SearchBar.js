@@ -41,7 +41,7 @@ const Container = styled(Wrapper)`
 const SearchIcon = styled.button`
   cursor: pointer;
   font-size: 1.5rem;
-  color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  color: ${({ theme: { disableColor } }) => disableColor};
   background: inherit;
 `
 const SearchInput = styled.input`
@@ -50,7 +50,8 @@ const SearchInput = styled.input`
 
   border: none;
   outline: none;
-  color: ${({ theme: { fontColor } }) => fontColor};
+  font-weight:600;
+  color: ${({ theme: { disableColor } }) => disableColor};
 
   &::placeholder {
     color: ${({ theme: { fontColor } }) => fontColor};
