@@ -25,7 +25,7 @@ export const NavBar = () => {
         <IoBarChart />
       </RedirectLink>
 
-      {isAdmin && (
+      {isAdmin() && (
         <RedirectLink to={routesV2.LOGGED_APP.subPages.ADMING_PAGE.route}>
           <IoKeySharp />
         </RedirectLink>

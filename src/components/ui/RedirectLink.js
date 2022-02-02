@@ -23,7 +23,6 @@ const RedirectLinkStyled = styled.li`
     color: ${({ theme: { disableColor } }) => disableColor};
     padding:0.5rem;
     border-radius:10px;
-    box-shadow:0 0 10px -4px${({ theme: { disableColor } }) => disableColor};    
   }
   
   .activated{
