@@ -4,10 +4,14 @@ import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { Button } from '../components/ui/Button'
 import { useKeyBoardActivity } from '../hooks/useKeyBoardActivity'
 import { useLinkRouter } from '../hooks/useLinkRouter'
+import { useSession } from '../hooks/useSession'
+import { Navigate } from 'react-router-dom'
+import { routesV2 } from '../routes'
 
 const textQuote = 'Hola, bievenido a type and type'
 
 export const IndexPage = () => {
+  const { isAuth } = useSession()
   const { goSignUpPage } = useLinkRouter()
   const { quote, indexQuote, isExerciseCompleted, reset } = useKeyBoardActivity(
     {
@@ -15,6 +19,7 @@ export const IndexPage = () => {
     }
   )
 
+  if (isAuth) { return <Navigate to={routesV2.LOGGED_APP.subPages.HOME_PAGE.route} /> }
   return (
     <FlexContainer fd_c ai_c gap='2rem'>
       <FlexContainer fd_c ai_c>

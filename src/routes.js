@@ -13,7 +13,7 @@ const AppLogged = lazy(() => import('./pages/AppLogged'))
 export const routesV2 = {
   INDEX_PAGE: {
     id: 1,
-    route: '/home',
+    route: '/',
     name: 'index',
     component: IndexPage,
     isPrivate: false,
@@ -29,7 +29,7 @@ export const routesV2 = {
     subPages: {
       HOME_PAGE: {
         id: 3,
-        route: '/',
+        route: '/app',
         name: 'home',
         component: HomePage,
         isPrivate: true,
@@ -37,7 +37,7 @@ export const routesV2 = {
       },
       ADMING_PAGE: {
         id: 4,
-        route: 'adminPage',
+        route: '/adminPage',
         name: 'admin',
         component: AdminPage,
         isPrivate: true,
@@ -45,7 +45,7 @@ export const routesV2 = {
       },
       EXERCISE_PAGE: {
         id: 5,
-        route: 'item/:idQuote',
+        route: '/item/:idQuote',
         routBaseParam: '/item',
         name: 'exercise',
         component: ExercisePage,
@@ -54,7 +54,7 @@ export const routesV2 = {
       },
       RANKING_PAGE: {
         id: 6,
-        route: 'ranking',
+        route: '/ranking',
         name: 'Ranking',
         component: RankingPage,
         isPrivate: true,
@@ -62,7 +62,7 @@ export const routesV2 = {
       },
       STADISTICS_PAGE: {
         id: 7,
-        route: 'estadisticas',
+        route: '/estadisticas',
         name: 'stadistics',
         component: StadisticsPage,
         isPrivate: true,
