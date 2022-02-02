@@ -67,6 +67,14 @@ export const routesV2 = {
         component: StadisticsPage,
         isPrivate: true,
         routeProps: {}
+      },
+      NOT_FOUND_PAGE: {
+        id: 0,
+        route: '*',
+        name: 'Not Found Page',
+        component: NotFoundPage,
+        isPrivate: false,
+        routeProps: {}
       }
     }
   },
