@@ -49,11 +49,7 @@ export const IndexPage = () => {
 const Title = styled.h1`
   font-weight: 700;
   font-size: 3rem;
-  background: linear-gradient(
-    to right,
-    ${({ theme: { primaryColor } }) => primaryColor} 0%,
-    ${({ theme: { secondaryColor } }) => secondaryColor} 100%
-  );
+  background: ${({ theme: { primaryGradient } }) => primaryGradient};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `

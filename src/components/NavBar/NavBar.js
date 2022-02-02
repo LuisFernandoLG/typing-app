@@ -4,10 +4,10 @@ import { RedirectLink } from '../ui/RedirectLink'
 import { routesV2 } from '../../routes'
 import { useSession } from '../../hooks/useSession'
 import {
-  IoHomeOutline,
-  IoTrophyOutline,
-  IoBarChartOutline,
-  IoKeyOutline
+  IoTrophy,
+  IoBarChart,
+  IoKeySharp,
+  IoHomeSharp
 } from 'react-icons/io5'
 
 export const NavBar = () => {
@@ -16,18 +16,18 @@ export const NavBar = () => {
   return (
     <NavBarStyled as='nav' flex flex_ai_c flex_jc_c gap='1rem'>
       <RedirectLink to={routesV2.LOGGED_APP.subPages.HOME_PAGE.route}>
-        <IoHomeOutline />
+        <IoHomeSharp />
       </RedirectLink>
       <RedirectLink to={routesV2.LOGGED_APP.subPages.RANKING_PAGE.route}>
-        <IoTrophyOutline />
+        <IoTrophy />
       </RedirectLink>
       <RedirectLink to={routesV2.LOGGED_APP.subPages.STADISTICS_PAGE.route}>
-        <IoBarChartOutline />
+        <IoBarChart />
       </RedirectLink>
 
       {isAdmin && (
         <RedirectLink to={routesV2.LOGGED_APP.subPages.ADMING_PAGE.route}>
-          <IoKeyOutline />
+          <IoKeySharp />
         </RedirectLink>
       )}
     </NavBarStyled>

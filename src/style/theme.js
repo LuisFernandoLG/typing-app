@@ -9,6 +9,7 @@ export const themes = {
     bgColor: '#f0f1f7',
     disableColor: '#878fb8',
     fontColor: '#484b5c',
+    primaryGradient: 'linear-gradient(to right, #9AD0EC, #064663)',
 
     errorColor: '#F05454',
     successColor: '#7FC8A9',
@@ -27,6 +28,8 @@ export const themes = {
     bgColor: '#172330',
     disableColor: '#484B5C',
     fontColor: '#eeeeee',
+
+    primaryGradient: 'linear-gradient(to right, #9AD0EC, #064663)',
 
     errorColor: '#F05454',
     successColor: '#7FC8A9',

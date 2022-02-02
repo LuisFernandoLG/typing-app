@@ -27,12 +27,7 @@ const ExerciseItemContainer = styled(Link)`
   transition:background 300ms ease;
 
   &:hover {
-    background: linear-gradient(
-    to right,
-    ${({ theme: { primaryColor } }) => primaryColor} 0%,
-    ${({ theme: { secondaryColor } }) => secondaryColor} 100%
-  );
-
+    background: ${({ theme: { primaryGradient } }) => primaryGradient};
 
   }
 
