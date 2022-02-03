@@ -47,4 +47,9 @@ export const Header = () => {
 
 const HeaderStyled = styled(FlexContainer)`
   padding: 1rem 1.5rem;
+  position:sticky;
+  top:0;
+  background: ${({ theme: { bgColor } }) => bgColor};
+  transition: background 300ms ease;
+  z-index:100;
 `
