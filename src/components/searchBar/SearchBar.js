@@ -54,7 +54,7 @@ const SearchInput = styled.input`
   color: ${({ theme: { disableColor } }) => disableColor};
 
   &::placeholder {
-    color: ${({ theme: { fontColor } }) => fontColor};
-    opacity: 0.6;
+    color: ${({ theme: { disableColor } }) => disableColor};
+    opacity: 0.7;
   }
 `
