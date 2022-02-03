@@ -3,9 +3,7 @@ import { Wrapper } from '../shareStyleComponents/Wrapper'
 import { useSignInForm } from '../../hooks/useSignInForm'
 import GroupInput from '../inputs/GroupInput'
 import { Button } from '../ui/Button'
-
-const nameRegex = /^[A-Za-z0-9]+([A-Za-z0-9]*|[._-]?[A-Za-z0-9]+)*$/g
-const emailRegex = /^\w+([.-]?\w+)+@\w+([.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/
+import { emailRegex, nickNameRegex } from '../../constants/regexs'
 
 export const SignInForm = () => {
   const {
@@ -30,7 +28,7 @@ export const SignInForm = () => {
       <GroupInput
         name='Usuario'
         type='text'
-        regex={nameRegex}
+        regex={nickNameRegex}
         isRequired={true}
         register={register}
         errors={errors}

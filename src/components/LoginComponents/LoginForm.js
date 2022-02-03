@@ -4,8 +4,7 @@ import GroupInput from '../inputs/GroupInput'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
 import { Button } from '../ui/Button'
 import { useSession } from '../../hooks/useSession'
-
-const emailRegex = /^\w+([.-]?\w+)+@\w+([.:]?\w+)+(.[a-zA-Z0-9]{2,3})+$/
+import { emailRegex } from '../../constants/regexs'
 
 export const LoginForm = () => {
   const { handleLogIn, authLoading } = useSession()
