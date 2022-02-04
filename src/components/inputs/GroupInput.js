@@ -1,22 +1,34 @@
 import styled from 'styled-components'
 
-const GroupInput = ({ name, regex, type, isRequired, errors, register }) => {
+const GroupInput = ({
+  name,
+  regex,
+  type,
+  isRequired,
+  errors,
+  register,
+  maxLength
+}) => {
+  console.log({ errors })
+
   return (
     <GroupInputStyled error={errors[name]}>
       <input
-        placeholder={' '}
         type={type}
+        placeholder={' '}
         id={name}
         {...register(name, {
           required: isRequired,
-          pattern: regex
+          pattern: regex,
+          maxLength: maxLength
         })}
       />
       <Label htmlFor={name}>{name}</Label>
-      {errors[name]?.type === 'required' && <InputError>Requerido</InputError>}
-      {errors[name]?.type === 'pattern' && (
-        <InputError>{name} inválido</InputError>
-      )}
+      <InputError>
+        {errors[name]?.type === 'required' && 'Requerido'}
+        {errors[name]?.type === 'pattern' && `${name} inválido`}
+        {errors[name]?.type === 'maxLength' && `${maxLength} límite`}
+      </InputError>
     </GroupInputStyled>
   )
 }

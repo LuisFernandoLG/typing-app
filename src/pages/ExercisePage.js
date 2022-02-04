@@ -34,7 +34,7 @@ export const ExercisePage = () => {
 
   return (
     <WrapperPage>
-      <FlexContainer jc_c ai_c>
+      <FlexContainer jc_se ai_c gap="1rem">
         {!isTimeOver && !isCompleted && (
           <TimerExercise
             time={timeLeft}
@@ -94,8 +94,7 @@ const WrapperPage = styled(Wrapper)`
 
 const Title = styled.h1`
   width: 100%;
-  height: 1rem;
   margin: 0 0;
   text-align: center;
-  color: ${({ theme: { primaryColor } }) => primaryColor};
+  color: ${({ theme: { fontColor } }) => fontColor};
 `

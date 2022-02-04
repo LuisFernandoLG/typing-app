@@ -32,6 +32,7 @@ export const SignInForm = () => {
         isRequired={true}
         register={register}
         errors={errors}
+        maxLength={20}
       />
 
       <GroupInput
@@ -40,6 +41,7 @@ export const SignInForm = () => {
         isRequired={true}
         register={register}
         errors={errors}
+        maxLength={30}
       />
 
       <GroupInput
@@ -48,6 +50,7 @@ export const SignInForm = () => {
         isRequired={true}
         register={register}
         errors={errors}
+        maxLength={15}
       />
 
       <Button

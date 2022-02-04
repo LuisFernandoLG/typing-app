@@ -35,6 +35,7 @@ export const LoginForm = () => {
         isRequired={true}
         register={register}
         errors={errors}
+        maxLength={50}
       />
       <GroupInput
         name='Contraseña'
@@ -42,6 +43,7 @@ export const LoginForm = () => {
         isRequired={true}
         register={register}
         errors={errors}
+        maxLength={30}
       />
       <Button
         primary={true}
