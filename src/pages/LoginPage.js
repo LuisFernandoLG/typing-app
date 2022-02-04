@@ -1,4 +1,4 @@
-import { LoginForm } from '../components/LoginComponents/LoginForm'
+import { LoginForm } from '../components/forms/LoginForm'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { useSession } from '../hooks/useSession'
 import { Navigate } from 'react-router-dom'

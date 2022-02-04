@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom'
 import { routesV2 } from '../routes'
-import { SignInForm } from '../components/signIn/SignInForm'
+import { SignInForm } from '../components/forms/SignInForm'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { useSession } from '../hooks/useSession'
 
