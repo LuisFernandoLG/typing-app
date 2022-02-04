@@ -22,14 +22,10 @@ export const TimerExercise = ({ time, markAsTimeOver, dicrementTime }) => {
 }
 
 const TimeExerciseWrapper = styled(Wrapper)`
-  padding: 1rem;
-  height: 1rem;
 
   text-align: center;
-  color: ${({ theme: { secondaryColor } }) => secondaryColor};
+  color: ${({ theme: { primaryColor } }) => primaryColor};
 
   font-size: 2rem;
   font-weight: 800;
-
-  margin: 1rem 0;
 `

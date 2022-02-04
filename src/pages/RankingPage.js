@@ -55,7 +55,7 @@ export const RankingPage = () => {
               <RankingUser
                 key={id}
                 position={index + 1}
-                name={`${name} ${lastName}`}
+                name={name}
                 score={totalScore}
               >
                 {index === 0 ? <Throphy1 /> : null}
