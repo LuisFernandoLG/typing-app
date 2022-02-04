@@ -1,6 +1,6 @@
 export const themes = {
   lightTheme: {
-    name: 'light Theme',
+    name: 'light theme',
     primaryColor: '#9AD0EC',
     secondaryColor: '#064663',
     tertiaryColor: '#323232',
@@ -19,7 +19,7 @@ export const themes = {
   },
 
   darkTheme: {
-    name: 'dark Theme',
+    name: 'dark theme',
     primaryColor: '#9AD0EC',
     secondaryColor: '#064663',
     tertiaryColor: '#323232',
