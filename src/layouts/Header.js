@@ -51,5 +51,5 @@ const HeaderStyled = styled(FlexContainer)`
   top:0;
   background: ${({ theme: { bgColor } }) => bgColor};
   transition: background 300ms ease;
-  z-index:500;
+  z-index:900;
 `
