@@ -3,6 +3,7 @@ import { generate } from 'shortid'
 import { AdminPage } from './pages/AdminPage'
 import { ChoicePage } from './pages/ChoicePage'
 import { ConfigProgilePage } from './pages/ConfigProfilePage'
+import { EnglishSectionPage } from './pages/EnglishSectionPage'
 import { ExercisePage } from './pages/ExercisePage'
 import { HomePage } from './pages/HomePage'
 import { IndexPage } from './pages/IndexPage'
@@ -68,6 +69,15 @@ export const routesV2 = {
         route: '/confi',
         name: 'confi',
         component: ConfigProgilePage,
+        isPrivate: true,
+        routeProps: {}
+      },
+
+      ENGLISH_SECTION_PAGE: {
+        id: generate(),
+        route: '/ingles',
+        name: 'ingles',
+        component: EnglishSectionPage,
         isPrivate: true,
         routeProps: {}
       },
