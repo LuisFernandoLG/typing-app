@@ -1,17 +1,17 @@
 import { ToggleButton } from './exercise/ToggleButton'
 import { IoMoon, IoSunny } from 'react-icons/io5'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { useTheme } from '../hooks/useTheme'
 import { FlexContainer } from './shareStyleComponents/FlexContainer'
 
-export const ThemeSwitcher = () => {
+export const ThemeSwitcher = ({ size }) => {
   const { toggleTheme, isDarkMode } = useTheme()
 
   return (
-    <ThemeSwitcherStyled jc_c ai_c>
+    <ThemeSwitcherStyled jc_c ai_c size={size}>
       <ToggleButton
         state={isDarkMode}
-        ToggleFunction={ toggleTheme }
+        ToggleFunction={toggleTheme}
         enableIcon={IoSunny}
         disableIcon={IoMoon}
       />
@@ -20,5 +20,10 @@ export const ThemeSwitcher = () => {
 }
 
 const ThemeSwitcherStyled = styled(FlexContainer)`
-  font-size: 2rem;
+  ${({ size }) =>
+    size
+      ? css`
+          font-size: {size};
+        `
+      : null}
 `

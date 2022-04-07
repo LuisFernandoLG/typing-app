@@ -1,35 +1,31 @@
 import { Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
+// import { NavBar } from '../components/NavBar/NavBar'
+// import { Layout } from '../layouts/Layout'
+// import { MenuNavigator } from '../components/MenuNavigator'
 import { routesV2 } from '../routes'
 
 const AppLogged = () => {
   return (
     <GridWrapper>
-      <SubPageContainer>
-        <Routes>
-          {Object.values(routesV2.LOGGED_APP.subPages).map(
-            ({ id, route, component: Page, routeProps }) => (
-              <Route
-                key={`sub-page-${id}`}
-                path={route}
-                element={<Page/>}
-                {...routeProps}
-              />
-            )
-          )}
-        </Routes>
-      </SubPageContainer>
+      {/* <MenuNavigator/> */}
+        {/* <NavBar /> */}
+
+          <Routes>
+            {Object.values(routesV2.LOGGED_APP.subPages).map(
+              ({ id, route, component: Page, routeProps }) => (
+                <Route
+                  key={`sub-page-${id}`}
+                  path={route}
+                  element={<Page />}
+                  {...routeProps}
+                />
+              )
+            )}
+          </Routes>
     </GridWrapper>
   )
 }
-
-const SubPageContainer = styled.div`
-  max-width: 1000px;
-  width: 90%;
-  margin: 0 auto;
-
-  min-height: 90vh;
-`
 
 const GridWrapper = styled.div`
   display: grid;

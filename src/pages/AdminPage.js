@@ -52,19 +52,19 @@ export const AdminPage = () => {
 
       {loading && <Loader />}
 
-      {!loading &&
-        exercieses.map((adminExercise) => (
-          <ExercisesWrapper key={exercieses.id}
-          flex flex_jc_c>
+      <ExercisesWrapper>
+        {!loading &&
+          exercieses.map((adminExercise) => (
             <AdminExerciseItem
+              key={exercieses.id}
               adminExercise={adminExercise}
               categories={categories}
               difficulties={difficulties}
               statuses={statuses}
               updateExercise={updateExercise}
             />
-          </ExercisesWrapper>
-        ))}
+          ))}
+      </ExercisesWrapper>
     </AdminPageWrapper>
   )
 }
@@ -75,7 +75,7 @@ const NotAllowedPage = styled(Wrapper)`
 `
 
 const Title = styled.h2`
-  font-size: 3.5rem;
+  font-size: 3.5em;
   text-align: center;
 `
 
@@ -85,8 +85,11 @@ const AdminPageWrapper = styled(Wrapper)`
 `
 
 const ExercisesWrapper = styled(Wrapper)`
-  margin: 0 auto;
   width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
 `
 
 const LoaderWrapper = styled.div`

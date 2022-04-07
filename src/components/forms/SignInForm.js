@@ -53,6 +53,17 @@ export const SignInForm = () => {
         maxLength={15}
       />
 
+      {/* TODO this part doesn't work yet */}
+
+      <GroupInput
+        name='Confirmar contraseña'
+        type='password'
+        isRequired={true}
+        register={register}
+        errors={errors}
+        maxLength={15}
+      />
+
       <Button
         primary={true}
         isLoading={fecthLoading || authLoading}
