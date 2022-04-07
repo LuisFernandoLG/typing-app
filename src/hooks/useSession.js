@@ -13,7 +13,6 @@ export const useSession = () => {
   }
 
   const isAdmin = () => {
-    console.log({ user })
     return user.typeUser === 1
   }
 
