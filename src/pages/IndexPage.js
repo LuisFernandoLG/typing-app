@@ -19,7 +19,7 @@ export const IndexPage = () => {
     }
   )
 
-  if (isAuth) { return <Navigate to={routesV2.LOGGED_APP.subPages.HOME_PAGE.route} /> }
+  if (isAuth) { return <Navigate to={routesV2.LOGGED_APP.subPages.CHOICE_PAGE.route} /> }
   return (
     <FlexContainer fd_c ai_c gap='2rem'>
       <FlexContainer fd_c ai_c>

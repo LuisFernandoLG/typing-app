@@ -5,6 +5,7 @@ export const useLinkRouter = () => {
   const navigate = useNavigate()
 
   const goHomePage = () => navigate(routesV2.LOGGED_APP.subPages.HOME_PAGE.route)
+  const goToConfigProfilePage = () => navigate(routesV2.LOGGED_APP.subPages.CONFIG_PROFILE_PAGE.route)
   const goLoginPage = () => navigate(routesV2.LOGIN_PAGE.route)
   const goSignUpPage = () => navigate(routesV2.SIGN_UP_PAGE.route)
   const goIndexPage = () => navigate(routesV2.INDEX_PAGE.route)
@@ -15,6 +16,7 @@ export const useLinkRouter = () => {
     goLoginPage,
     goSignUpPage,
     goIndexPage,
-    reloadPage
+    reloadPage,
+    goToConfigProfilePage
   }
 }
