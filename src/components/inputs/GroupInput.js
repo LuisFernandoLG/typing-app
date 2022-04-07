@@ -9,8 +9,6 @@ const GroupInput = ({
   register,
   maxLength
 }) => {
-  console.log({ errors })
-
   return (
     <GroupInputStyled error={errors[name]}>
       <input
@@ -27,7 +25,8 @@ const GroupInput = ({
       <InputError>
         {errors[name]?.type === 'required' && 'Requerido'}
         {errors[name]?.type === 'pattern' && `${name} inválido`}
-        {errors[name]?.type === 'maxLength' && `${maxLength} límite`}
+        {errors[name]?.type === 'maxLength' &&
+          `${maxLength} caracteres máximos`}
       </InputError>
     </GroupInputStyled>
   )
@@ -50,7 +49,7 @@ const GroupInputStyled = styled.div`
   padding: 0.5em;
 
   border-radius: ${({ theme: { border_radius } }) => border_radius};
-  box-shadow: 0 0.05em 0.4em -0.1em ${({ error, theme: { errorColor, disableColor } }) => (error ? errorColor : disableColor)};
+  /* box-shadow: 0.05rem 0.05em 0.5em -.rem ${({ error, theme: { errorColor, disableColor } }) => (error ? errorColor : disableColor)}; */
 
   color: ${({ error, theme: { errorColor, fontColor } }) =>
     error ? errorColor : fontColor};
@@ -59,7 +58,7 @@ const GroupInputStyled = styled.div`
     cursor: text;
   }
 
-  background: ${({ theme: { whiteColor } }) => whiteColor};
+  background: ${({ theme: { accentColor } }) => accentColor};
 
   input {
     border: none;
