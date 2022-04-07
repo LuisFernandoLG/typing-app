@@ -32,7 +32,6 @@ export const StadisticsPage = () => {
   return (
     <PageWrapper>
       <Title>Estadísticas</Title>
-
       <GridContainer>
         {loading
           ? skeletons.map((_, i) => <ProgressGraph key={`${i}-pbs`}/>)
@@ -56,7 +55,6 @@ const PageWrapper = styled.div`
 const GridContainer = styled.div`
   width: 100%;
   padding: 1rem;
-  margin-top:2rem;
   display: grid;
 
   grid-template-columns: repeat(auto-fill, minmax(14.75rem, 1fr));
@@ -64,7 +62,7 @@ const GridContainer = styled.div`
 `
 
 const Title = styled.h2`
-  font-size: 3.5rem;
+  font-size: 2rem;
   text-align: center;
   color: ${({ theme: { fontColor } }) => fontColor};
 `

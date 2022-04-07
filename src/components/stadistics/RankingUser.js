@@ -31,7 +31,8 @@ const RankingUserContainer = styled(Wrapper)`
   width: 100%;
   padding: 1rem;
   border-radius: 1rem;
-  background: ${({ theme: { whiteColor } }) => whiteColor};
+  background: ${({ theme: { accentColor } }) => accentColor};
+  color:${({ theme: { fontColor } }) => fontColor};
   
   `
 

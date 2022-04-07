@@ -36,5 +36,6 @@ export const NavBar = () => {
 
 const NavBarStyled = styled(Wrapper)`
   z-index: 200;
-  font-size: 1.5rem;
+  margin-right: 1rem;
+
 `

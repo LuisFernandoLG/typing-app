@@ -6,8 +6,10 @@ export const Key = ({ type, children }) => {
 }
 
 const wantedKeyStyles = css`
-  color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
-  border: 2px solid ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  color: ${({ theme: { fontColor } }) => fontColor};
+  border: 2px solid ${({ theme: { secondaryColor } }) => secondaryColor};
+  background: ${({ theme: { primaryColor } }) => primaryColor};
+  border-radius: 0.325rem;
 `
 
 const wrongKeyStyles = css`
@@ -19,7 +21,7 @@ const succeedKeyStyles = css`
 `
 
 const untriedKeyStyles = css`
-  color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  color: ${({ theme: { fontColor } }) => fontColor};
 `
 
 const KeyStyled = styled.span`

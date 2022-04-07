@@ -29,6 +29,7 @@ export const ToggleButton = ({
 }
 
 const ToggleButtonStyled = styled(FlexContainer)`
+  font-size:inherit;
   position: relative;
   width: fit-content;
   padding: 5px;
@@ -43,4 +44,5 @@ const ToggleButtonStyled = styled(FlexContainer)`
 
     opacity: 0;
   }
+
 `

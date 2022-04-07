@@ -119,20 +119,21 @@ export const AdminExerciseItem = ({
 }
 
 const AdminExerciseItemWrapper = styled(Wrapper)`
-  width: 70%;
-  margin: 1rem auto;
-  padding: 1rem;
-  border-radius: 1rem;
+/* width:100%; */
+  /* font-size: 12px; */
+  /* margin: 1em auto; */
+  padding: 1em;
+  border-radius: 1em;
 
-  box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  box-shadow: 0 0 20px -10px ${({ theme: { tertiaryColor } }) => tertiaryColor};
 
   div,
   select {
-    margin: 0.8rem 0;
+    margin: 0.8em 0;
   }
 
   label {
-    font-size: 1.2rem;
+    font-size: 1.2em;
     margin: 0.3125rem 0;
     font-weight: 600;
   }
@@ -140,18 +141,18 @@ const AdminExerciseItemWrapper = styled(Wrapper)`
   button {
     background: ${({ theme: { errorColor } }) => errorColor};
     color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
-    padding: 0.5rem;
+    padding: 0.5em;
   }
 `
 
 const Submit = styled.input`
   width: min-content;
-  padding: 1rem;
+  padding: 1em;
   background: ${({ theme: { successColor } }) => successColor};
 
   border: none;
   outline: none;
-  border-radius: 1rem;
+  border-radius: 1em;
   cursor: pointer;
 `
 

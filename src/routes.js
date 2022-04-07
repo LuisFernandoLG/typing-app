@@ -1,26 +1,38 @@
 import { lazy } from 'react'
+import { generate } from 'shortid'
 import { AdminPage } from './pages/AdminPage'
+import { ChoicePage } from './pages/ChoicePage'
+import { ConfigProgilePage } from './pages/ConfigProfilePage'
 import { ExercisePage } from './pages/ExercisePage'
 import { HomePage } from './pages/HomePage'
 import { IndexPage } from './pages/IndexPage'
 import { LoginPage } from './pages/LoginPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import { RankingPage } from './pages/RankingPage'
+import { RecoverPasswordPage } from './pages/RecoverPasswordPage'
 import { SignInPage } from './pages/SignInPage'
 import { StadisticsPage } from './pages/StadisticsPage'
 const AppLogged = lazy(() => import('./pages/AppLogged'))
 
 export const routesV2 = {
   INDEX_PAGE: {
-    id: 1,
+    id: generate(),
     route: '/',
     name: 'index',
     component: IndexPage,
     isPrivate: false,
     routeProps: {}
   },
+  RECOVER_PASSWORD_PAGE: {
+    id: generate(),
+    route: '/recuperar',
+    name: 'recuperar contraseña',
+    component: RecoverPasswordPage,
+    isPrivate: false,
+    routeProps: {}
+  },
   LOGGED_APP: {
-    id: 2,
+    id: generate(),
     route: '/*',
     name: 'app',
     component: AppLogged,
@@ -28,23 +40,40 @@ export const routesV2 = {
     routeProps: {},
     subPages: {
       HOME_PAGE: {
-        id: 3,
+        id: generate(),
         route: '/app',
         name: 'home',
         component: HomePage,
         isPrivate: true,
         routeProps: {}
       },
+      CHOICE_PAGE: {
+        id: generate(),
+        route: '/menu',
+        name: 'choicePage',
+        component: ChoicePage,
+        isPrivate: true,
+        routeProps: {}
+      },
       ADMING_PAGE: {
-        id: 4,
+        id: generate(),
         route: '/adminPage',
         name: 'admin',
         component: AdminPage,
         isPrivate: true,
         routeProps: {}
       },
+      CONFIG_PROFILE_PAGE: {
+        id: generate(),
+        route: '/confi',
+        name: 'confi',
+        component: ConfigProgilePage,
+        isPrivate: true,
+        routeProps: {}
+      },
+
       EXERCISE_PAGE: {
-        id: 5,
+        id: generate(),
         route: '/item/:idQuote',
         routBaseParam: '/item',
         name: 'exercise',
@@ -53,7 +82,7 @@ export const routesV2 = {
         routeProps: {}
       },
       RANKING_PAGE: {
-        id: 6,
+        id: generate(),
         route: '/ranking',
         name: 'Ranking',
         component: RankingPage,
@@ -61,7 +90,7 @@ export const routesV2 = {
         routeProps: {}
       },
       STADISTICS_PAGE: {
-        id: 7,
+        id: generate(),
         route: '/estadisticas',
         name: 'stadistics',
         component: StadisticsPage,
@@ -69,7 +98,7 @@ export const routesV2 = {
         routeProps: {}
       },
       NOT_FOUND_PAGE: {
-        id: 0,
+        id: generate(),
         route: '*',
         name: 'Not Found Page',
         component: NotFoundPage,
@@ -79,7 +108,7 @@ export const routesV2 = {
     }
   },
   LOGIN_PAGE: {
-    id: 8,
+    id: generate(),
     route: '/login',
     name: 'login',
     component: LoginPage,
@@ -87,7 +116,7 @@ export const routesV2 = {
     routeProps: {}
   },
   SIGN_UP_PAGE: {
-    id: 9,
+    id: generate(),
     route: '/SignUp',
     name: 'Sign Up',
     component: SignInPage,
@@ -95,7 +124,7 @@ export const routesV2 = {
     routeProps: {}
   },
   NOT_FOUND_PAGE: {
-    id: 0,
+    id: generate(),
     route: '*',
     name: 'Not Found Page',
     component: NotFoundPage,

@@ -53,7 +53,7 @@ export const Quote = ({ quote, indexQuote }) => {
 
 const QuoteStyled = styled.div`
   padding: 1rem;
-  background: ${({ theme: { whiteColor } }) => whiteColor};
+  background: ${({ theme: { accentColor } }) => accentColor};
   border-radius: ${({ theme: { border_radius } }) => border_radius};
   font-size: 1.5rem;
 

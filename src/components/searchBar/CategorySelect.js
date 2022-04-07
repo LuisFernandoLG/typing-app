@@ -6,7 +6,7 @@ import { endpoints } from '../signIn/api'
 const initialCategories = [
   {
     id: -1,
-    name: 'Categoría'
+    name: 'tema'
   }
 ]
 
@@ -41,9 +41,9 @@ export const CategorySelect = ({ selectCategory }) => {
 const Select = styled.select`
   width: auto;
   padding: 1rem;
-  background: ${({ theme: { whiteColor } }) => whiteColor};
+  background: ${({ theme: { accentColor } }) => accentColor};
   border-radius: ${({ theme: { border_radius } }) => border_radius};
-  color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  color: ${({ theme: { fontColor } }) => fontColor};
 
   font-weight: 700;
 

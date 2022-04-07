@@ -23,7 +23,7 @@ export const ExerciseItem = ({ id, title, content, category, difficulty }) => {
 const ExerciseItemContainer = styled(Link)`
   padding: 2rem;
   border-radius: ${({ theme: { border_radius } }) => border_radius};
-  background: ${({ theme: { whiteColor } }) => whiteColor};
+  background: ${({ theme: { accentColor } }) => accentColor};
   transition:background 300ms ease;
 
   &:hover {
@@ -41,13 +41,13 @@ const ExerciseItemContainer = styled(Link)`
 `
 const Title = styled.h3`
   font-size: 1.5rem;
-  color: ${({ theme: { secondaryColor } }) => secondaryColor}; ;
+  color:${({ theme: { fontColor } }) => fontColor};
 `
 const Content = styled.p`
   margin: 0.5rem 0;
   max-width: 90%;
   font-size: 1.2rem;
-  color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  color: ${({ theme: { fontColor } }) => fontColor};
   line-height: 1.5rem;
   text-align: left;
 

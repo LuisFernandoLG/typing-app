@@ -21,14 +21,16 @@ const RedirectLinkStyled = styled.li`
   
   a{
     color: ${({ theme: { disableColor } }) => disableColor};
-    padding:0.5rem;
-    border-radius:10px;
+    opacity: 0.3;
+    /* padding:0.5rem; */
+    /* border-radius:10px; */
   }
-  
+
   .activated{
-    background: ${({ theme: { disableColor } }) => disableColor};
-    color: ${({ theme: { fontColor } }) => fontColor};
-    box-shadow:0 0 10px -4px${({ theme: { disableColor } }) => disableColor};
-    /* padding: */
+    opacity: 1;
+    /* background: ${({ theme: { disableColor } }) => disableColor}; */
+    /* color: ${({ theme: { fontColor } }) => fontColor}; */
+    /* box-shadow:0 0 10px -4px${({ theme: { disableColor } }) => disableColor}; */
+    border-bottom: 3px solid ${({ theme: { disableColor } }) => disableColor};s;
   }
 `

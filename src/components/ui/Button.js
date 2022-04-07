@@ -22,12 +22,12 @@ export const Button = (
 }
 
 const primaryStyles = css`
-  color: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  color: ${({ theme: { fontColor } }) => fontColor};
   background: ${({ theme: { primaryColor } }) => primaryColor};
-  box-shadow: 0 0.4375rem 1.575rem -1.125rem ${({ theme: { tertiaryColor } }) => tertiaryColor};
-
+  
   &:hover,
   &:focus {
+    /* box-shadow: 0 0.4375rem 1.575rem -1.125rem ${({ theme: { accentColor } }) => accentColor}; */
     box-shadow: 0 0.4375rem 1.575rem -0.625rem ${({ theme: { secondaryColor } }) => secondaryColor};
   }
 `

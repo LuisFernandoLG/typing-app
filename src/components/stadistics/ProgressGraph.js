@@ -61,11 +61,12 @@ const Graph = ({ scoreHistory }) => {
 const Title = styled.h2`
   font-size: 1rem;
   text-align: center;
+  color:${({ theme: { fontColor } }) => fontColor};
 `
 
 const Container = styled.div`
   margin-top:2rem;
-  background: ${({ theme: { whiteColor } }) => whiteColor};
+  background: ${({ theme: { accentColor } }) => accentColor};
   border-radius: 1rem;
   height: min-content;
   padding:1rem;

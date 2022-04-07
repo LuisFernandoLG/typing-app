@@ -2,7 +2,7 @@ import { ToastContainer, Slide } from 'react-toastify'
 import styled from 'styled-components'
 
 export const ToastStyled = () => <ToastStyledX
-position="top-right"
+position="top-center"
 autoClose={2000}
 hideProgressBar={false}
 newestOnTop={false}
