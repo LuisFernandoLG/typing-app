@@ -3,6 +3,7 @@ import { generate } from 'shortid'
 import { AdminPage } from './pages/AdminPage'
 import { ChoicePage } from './pages/ChoicePage'
 import { ConfigProgilePage } from './pages/ConfigProfilePage'
+import { EnglishExercisePage } from './pages/EnglishExercisePage'
 import { EnglishSectionPage } from './pages/EnglishSectionPage'
 import { ExercisePage } from './pages/ExercisePage'
 import { HomePage } from './pages/HomePage'
@@ -75,7 +76,7 @@ export const routesV2 = {
 
       ENGLISH_SECTION_PAGE: {
         id: generate(),
-        route: '/ingles',
+        route: '/english',
         name: 'ingles',
         component: EnglishSectionPage,
         isPrivate: true,
@@ -91,6 +92,16 @@ export const routesV2 = {
         isPrivate: true,
         routeProps: {}
       },
+      ENGLISH_EXERCISE_PAGE: {
+        id: generate(),
+        route: '/english/:categoryId/:exerciseId',
+        routBaseParam: '/english',
+        name: 'EnglishExercise',
+        component: EnglishExercisePage,
+        isPrivate: true,
+        routeProps: {}
+      },
+
       RANKING_PAGE: {
         id: generate(),
         route: '/ranking',

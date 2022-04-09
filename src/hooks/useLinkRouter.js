@@ -10,6 +10,7 @@ export const useLinkRouter = () => {
   const goSignUpPage = () => navigate(routesV2.SIGN_UP_PAGE.route)
   const goIndexPage = () => navigate(routesV2.INDEX_PAGE.route)
   const reloadPage = () => navigate(0)
+  const goToEnglishHomePage = () => navigate(routesV2.LOGGED_APP.subPages.ENGLISH_SECTION_PAGE.route)
 
   return {
     goHomePage,
@@ -17,6 +18,7 @@ export const useLinkRouter = () => {
     goSignUpPage,
     goIndexPage,
     reloadPage,
-    goToConfigProfilePage
+    goToConfigProfilePage,
+    goToEnglishHomePage
   }
 }
