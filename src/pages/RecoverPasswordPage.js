@@ -5,15 +5,17 @@ import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { Button } from '../components/ui/Button'
 import { emailRegex } from '../constants/regexs'
 import { Layout } from '../layouts/Layout'
-import { IoDocuments } from 'react-icons/io5'
+import { IoDocuments, IoArrowBackOutline } from 'react-icons/io5'
 import { useState } from 'react'
 import { useClipPath } from '../hooks/useClipPath'
 import { toast } from 'react-toastify'
+import { useLinkRouter } from '../hooks/useLinkRouter'
 
 export const RecoverPasswordPage = () => {
   // eslint-disable-next-line no-unused-vars
   const [recoPassword, setRecoPassword] = useState(null)
   const { copyToClipPath } = useClipPath()
+  const { goToEnglishHomePage } = useLinkRouter()
 
   const copyPassword = () => {
     toast.success('Contraseña copiada')
@@ -30,7 +32,13 @@ export const RecoverPasswordPage = () => {
     setRecoPassword('probandoAndo!')
   }
   return (
-    <Layout width='500px' mg='0 auto'>
+    <Layout>
+      <Button secondary={true} onClick={goToEnglishHomePage}>
+        <FlexContainer gap='0.5rem' jc_c ai_c>
+          <IoArrowBackOutline /> <span>Regresar</span>
+      </FlexContainer>
+      </Button>
+      <Layout width="500px" mg='2rem auto'>
       <Title>Recupera tu contraseña</Title>
       <FormStyled
         fd_c
@@ -62,6 +70,7 @@ export const RecoverPasswordPage = () => {
           <span>{recoPassword}</span> <IoDocuments onClick={copyPassword} />{' '}
         </PasswordField>
       )}
+      </Layout>
     </Layout>
   )
 }
