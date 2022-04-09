@@ -9,8 +9,6 @@ import { useLinkRouter } from '../hooks/useLinkRouter'
 import { EnglishExercisesMockup } from '../constants/englishExercisesTest'
 
 const searchLocalExercise = ({ categoryId, exerciseId }) => {
-//   categoryId = parseInt(categoryId)
-//   categoryId = parseInt(categoryId)
   const categoryIndex = EnglishExercisesMockup.findIndex(({ id }) => categoryId === id)
   //   console.log(EnglishExercisesMockup[categoryIndex])
   const itemFound = EnglishExercisesMockup[categoryIndex].exercises.find(({ id }) => id === exerciseId)

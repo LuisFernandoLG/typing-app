@@ -11,6 +11,7 @@ export const useLinkRouter = () => {
   const goIndexPage = () => navigate(routesV2.INDEX_PAGE.route)
   const reloadPage = () => navigate(0)
   const goToEnglishHomePage = () => navigate(routesV2.LOGGED_APP.subPages.ENGLISH_SECTION_PAGE.route)
+  const goToChoicePage = () => navigate(routesV2.LOGGED_APP.subPages.CHOICE_PAGE.route)
 
   return {
     goHomePage,
@@ -19,6 +20,7 @@ export const useLinkRouter = () => {
     goIndexPage,
     reloadPage,
     goToConfigProfilePage,
-    goToEnglishHomePage
+    goToEnglishHomePage,
+    goToChoicePage
   }
 }

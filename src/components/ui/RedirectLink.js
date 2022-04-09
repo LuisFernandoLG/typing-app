@@ -30,6 +30,7 @@ const RedirectLinkStyled = styled.li`
     opacity: 1;
     /* background: ${({ theme: { disableColor } }) => disableColor}; */
     color: ${({ theme: { fontColor } }) => fontColor};
+    /* color: ${({ theme: { fontColor } }) => fontColor}; */
     /* box-shadow:0 0 10px -4px${({ theme: { disableColor } }) => disableColor}; */
     /* color: ${({ theme: { secondaryColor } }) => secondaryColor}; */
     border-bottom: 3px solid ${({ theme: { fontColor } }) => fontColor};s;
