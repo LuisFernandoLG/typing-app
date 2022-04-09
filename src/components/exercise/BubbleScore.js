@@ -47,7 +47,7 @@ const BubbleScoreContainer = styled(Wrapper)`
   height: 10rem;
   border-radius: 100%;
 
-  background: ${({ theme: { bgColor } }) => bgColor};
+  background: ${({ theme: { disableColor } }) => disableColor};
   position: relative;
   overflow: hidden;
 `

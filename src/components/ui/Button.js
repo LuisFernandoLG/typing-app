@@ -43,6 +43,7 @@ const secondaryStyles = css`
 `
 
 const ButtonStyled = styled.button`
+  user-select: none;
   position: relative;
   ${({ pd }) =>
     pd

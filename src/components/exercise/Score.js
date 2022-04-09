@@ -65,6 +65,8 @@ export const Score = ({ results, currentExercise, timeTaken }) => {
 
 const ScoreContainer = styled(Wrapper)`
   margin: 1rem;
+  background: ${({ theme: { accentColor } }) => accentColor};
+  
 
   padding: 2rem;
   border-radius: 1rem;

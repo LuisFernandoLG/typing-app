@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { useFetch } from '../hooks/useFetch'
 import { ExerciseItem } from '../components/homepage/ExerciseItem'
 import { ToolBarSearch } from '../components/searchBar/ToolBarSearch'
-import { Wrapper } from '../components/shareStyleComponents/Wrapper'
 import { toast } from 'react-toastify'
 import { endpoints } from '../components/signIn/api'
 import { NoResultsMessage } from '../components/homepage/NoResultsMessage'
 import { getArrayBySize } from '../helpers/getArrayBySize'
+import { Layout } from '../layouts/Layout'
 
 const initialExercises = null
 
@@ -65,47 +65,49 @@ export const HomePage = () => {
   const skeletons = getArrayBySize({ size: 6 })
 
   return (
-    <HomeContainer>
-      <ToolBarSearch
-        selectCategory={selectCategory}
-        setSearchQuery={setSearchQuery}
-        search={search}
-        searchByQuery={searchByQuery}
-      />
-      {loading || !exercises
-        ? (
-        <QuotesContainer>
-          {skeletons.map((_, i) => (
-            <ExerciseItem key={`${i}-ei`} />
-          ))}
-        </QuotesContainer>
-          )
-        : exercises.length === 0
+    <Layout>
+      <Layout>
+        <ToolBarSearch
+          selectCategory={selectCategory}
+          setSearchQuery={setSearchQuery}
+          search={search}
+          searchByQuery={searchByQuery}
+        />
+        {loading || !exercises
           ? (
-        <NoResultsMessage />
+          <QuotesContainer>
+            {skeletons.map((_, i) => (
+              <ExerciseItem key={`${i}-ei`} />
+            ))}
+          </QuotesContainer>
             )
-          : (
-        <QuotesContainer>
-          {exercises.map(({ id, title, textContent, category, difficulty }) => (
-            <ExerciseItem
-              key={id}
-              id={id}
-              title={title}
-              content={textContent}
-              category={category}
-              difficulty={difficulty}
-            />
-          ))}
-        </QuotesContainer>
+          : exercises.length === 0
+            ? (
+          <NoResultsMessage />
+              )
+            : (
+          <QuotesContainer>
+            {exercises.map(
+              ({ id, title, textContent, category, difficulty }) => (
+                <ExerciseItem
+                  key={id}
+                  id={id}
+                  title={title}
+                  content={textContent}
+                  category={category}
+                  difficulty={difficulty}
+                />
+              )
             )}
-    </HomeContainer>
+          </QuotesContainer>
+              )}
+      </Layout>
+    </Layout>
   )
 }
 
-const HomeContainer = styled(Wrapper)``
-
 const QuotesContainer = styled.main`
-  margin-top:2rem;
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
