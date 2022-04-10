@@ -1,22 +1,13 @@
 import { Layout } from '../layouts/Layout'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { routesV2 } from '../routes'
+import { routesV3 } from '../routes'
 import { EnglishExercisesMockup } from '../constants/englishExercisesTest'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
-import { useLinkRouter } from '../hooks/useLinkRouter'
-import { IoArrowBackOutline } from 'react-icons/io5'
-import { Button } from '../components/ui/Button'
 
 export const EnglishSectionPage = () => {
-  const { goToChoicePage } = useLinkRouter()
   return (
     <Layout>
-      <Button secondary={true} onClick={goToChoicePage}>
-        <FlexContainer gap='0.5rem' jc_c ai_c>
-          <IoArrowBackOutline /> <span>Regresar</span>
-        </FlexContainer>
-      </Button>
       <Layout mg="1rem 0">
         {EnglishExercisesMockup.map(({ id, categoryName, exercises }) => (
           <Layout key={id}>
@@ -25,7 +16,7 @@ export const EnglishSectionPage = () => {
               {exercises.map((item) => (
                 <Link
                   key={item.id}
-                  to={`${routesV2.LOGGED_APP.subPages.ENGLISH_EXERCISE_PAGE.routBaseParam}/${id}/${item.id}`}>
+                  to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.route}/${id}/${item.id}`}>
                   <ExerciseBubble jc_c ai_c>
                     {item.name}
                   </ExerciseBubble>

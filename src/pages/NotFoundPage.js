@@ -5,10 +5,10 @@ import { useLinkRouter } from '../hooks/useLinkRouter'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 
 export const NotFoundPage = () => {
-  const { goHomePage } = useLinkRouter()
+  const { goIndexPage } = useLinkRouter()
 
   const handleClick = () => {
-    goHomePage()
+    goIndexPage()
   }
 
   return (

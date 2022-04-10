@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import English2 from '../images/english2.png'
 import { Layout } from '../layouts/Layout'
-import { routesV2 } from '../routes'
+import { routesV3 } from '../routes'
 // import SpeedImg from '../images/clock.png'
 // import SLiberty from '../images/sliberty.png'
 
@@ -14,7 +14,7 @@ export const ChoicePage = () => {
       id: generate(),
       title: 'Aprende Mecanografía',
       img: English2,
-      toLink: routesV2.LOGGED_APP.subPages.HOME_PAGE.route
+      toLink: routesV3.MECA_PAGE.route
     },
 
     {
@@ -27,7 +27,7 @@ export const ChoicePage = () => {
       id: generate(),
       title: 'Aprende inglés',
       img: English2,
-      toLink: routesV2.LOGGED_APP.subPages.ENGLISH_SECTION_PAGE.route
+      toLink: routesV3.ENGLISH_PAGE.route
     }
   ]
 
