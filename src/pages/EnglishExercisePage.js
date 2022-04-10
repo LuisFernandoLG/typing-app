@@ -2,10 +2,9 @@ import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { Button } from '../components/ui/Button'
 import { Layout } from '../layouts/Layout'
-import { IoArrowForward, IoArrowBackOutline } from 'react-icons/io5'
+import { IoArrowForward } from 'react-icons/io5'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { useState } from 'react'
-import { useLinkRouter } from '../hooks/useLinkRouter'
 import { EnglishExercisesMockup } from '../constants/englishExercisesTest'
 
 const searchLocalExercise = ({ categoryId, exerciseId }) => {
@@ -18,7 +17,6 @@ const searchLocalExercise = ({ categoryId, exerciseId }) => {
 export const EnglishExercisePage = () => {
   const [itemSelected, setItemSelected] = useState(null)
   const { categoryId, exerciseId } = useParams()
-  const { goToEnglishHomePage } = useLinkRouter()
   // eslint-disable-next-line no-unused-vars
   const [currentExercise, setCurrentExercise] = useState(searchLocalExercise({ categoryId: parseInt(categoryId), exerciseId: parseInt(exerciseId) }))
 
@@ -29,12 +27,6 @@ export const EnglishExercisePage = () => {
 
   return (
     <Layout>
-      <Button secondary={true} onClick={goToEnglishHomePage}>
-        <FlexContainer gap='0.5rem' jc_c ai_c>
-          <IoArrowBackOutline /> <span>Regresar</span>
-        </FlexContainer>
-      </Button>
-
       <Layout>
         <Title>{currentExercise.title}</Title>
         <FlexContainer fd_c jc_c ai_c gap='1rem' mg='1rem'>

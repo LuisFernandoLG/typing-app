@@ -22,8 +22,8 @@ export const ProfileMenu = () => {
 }
 
 const Photo = styled.img`
-  width: 45px;
-  height: 45px;
+  width: 55px;
+  height: 55px;
   object-fit: cover;
   border-radius: 5rem;
   cursor: pointer;

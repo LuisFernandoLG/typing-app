@@ -20,7 +20,7 @@ export const FlexContainer = styled.div`
   align-content: ${({ flex_ac_c }) => flex_ac_c && 'alignContent : center'};
 
   ${({ pd }) => `padding: ${pd}`};
-  ${({ mg }) => mg ? `padding: ${mg}` : null};
+  ${({ mg }) => mg ? `margin: ${mg}` : null};
   ${({ bg }) => `background: ${bg}`};
   ${({ w }) => `width:${w}`};
   ${({ overflow_h }) =>

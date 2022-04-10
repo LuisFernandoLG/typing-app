@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { Logo } from '../components/NavBar/Logo'
-import { NavBar } from '../components/NavBar/NavBar'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { Button } from '../components/ui/Button'
 import { useLinkRouter } from '../hooks/useLinkRouter'
@@ -23,8 +22,6 @@ export const Header = () => {
         <Logo />
       </Link>
       <FlexContainer>
-        {isAuth && <NavBar />}
-
         <FlexContainer gap='1rem' jc_c ai_c>
           {isAuth
             ? (
