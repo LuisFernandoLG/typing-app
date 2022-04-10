@@ -16,6 +16,55 @@ import { SignInPage } from './pages/SignInPage'
 import { StadisticsPage } from './pages/StadisticsPage'
 const AppLogged = lazy(() => import('./pages/AppLogged'))
 
+export const routesV3 = {
+  HOME_PAGE: {
+    route: '/'
+  },
+  LOGIN_PAGE: {
+    route: '/sesion'
+  },
+  SIGNUP_PAGE: {
+    route: '/registro'
+  },
+  RECOVER_PASS_PAGE: {
+    route: '/recuperar'
+  },
+  MENU_PAGE: {
+    route: '/menu'
+  },
+  CONFIG_PAGE: {
+    route: 'confi'
+  },
+
+  MECA_PAGE: {
+    route: '/meca',
+    subRoutes: {
+      RANKING_PAGE: {
+        route: 'ranking'
+      },
+
+      STATS_PAGE: {
+        route: 'stats'
+      },
+      ADMIN_PAGE: {
+        route: 'admin'
+      },
+      EXERCISE_PAGE: {
+        route: 'item'
+      }
+    }
+  },
+
+  ENGLISH_PAGE: {
+    route: '/english',
+    subRoutes: {
+      ENGLISH_EXERCISE_PAGE: {
+        route: 'item'
+      }
+    }
+  }
+}
+
 export const routesV2 = {
   INDEX_PAGE: {
     id: generate(),
