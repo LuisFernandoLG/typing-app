@@ -5,17 +5,16 @@ import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { Button } from '../components/ui/Button'
 import { emailRegex } from '../constants/regexs'
 import { Layout } from '../layouts/Layout'
-import { IoDocuments, IoArrowBackOutline } from 'react-icons/io5'
+import { IoDocuments } from 'react-icons/io5'
 import { useState } from 'react'
 import { useClipPath } from '../hooks/useClipPath'
 import { toast } from 'react-toastify'
-import { useLinkRouter } from '../hooks/useLinkRouter'
+import { BackPageButton } from '../components/ui/BackPageButton'
 
 export const RecoverPasswordPage = () => {
   // eslint-disable-next-line no-unused-vars
   const [recoPassword, setRecoPassword] = useState(null)
   const { copyToClipPath } = useClipPath()
-  const { goToEnglishHomePage } = useLinkRouter()
 
   const copyPassword = () => {
     toast.success('Contraseña copiada')
@@ -33,43 +32,39 @@ export const RecoverPasswordPage = () => {
   }
   return (
     <Layout>
-      <Button secondary={true} onClick={goToEnglishHomePage}>
-        <FlexContainer gap='0.5rem' jc_c ai_c>
-          <IoArrowBackOutline /> <span>Regresar</span>
-      </FlexContainer>
-      </Button>
-      <Layout width="500px" mg='2rem auto'>
-      <Title>Recupera tu contraseña</Title>
-      <FormStyled
-        fd_c
-        ai_c
-        jc_c
-        as='form'
-        gap='1rem'
-        onSubmit={handleSubmit(handleOnSubmit)}>
-        <GroupInput
-          name='Correo'
-          regex={emailRegex}
-          isRequired={true}
-          register={register}
-          errors={errors}
-          maxLength={50}
-        />
-        <Button
-          primary={true}
-          isLoading={false}
-          type='submit'
-          as='input'
-          value='Buscar'
-          pd='1rem 2rem'>
-          Buscar
-        </Button>
-      </FormStyled>
-      {recoPassword && (
-        <PasswordField pd='1rem' gap='1rem' jc_c>
-          <span>{recoPassword}</span> <IoDocuments onClick={copyPassword} />{' '}
-        </PasswordField>
-      )}
+      <BackPageButton />
+      <Layout width='500px' mg='2rem auto'>
+        <Title>Recupera tu contraseña</Title>
+        <FormStyled
+          fd_c
+          ai_c
+          jc_c
+          as='form'
+          gap='1rem'
+          onSubmit={handleSubmit(handleOnSubmit)}>
+          <GroupInput
+            name='Correo'
+            regex={emailRegex}
+            isRequired={true}
+            register={register}
+            errors={errors}
+            maxLength={50}
+          />
+          <Button
+            primary={true}
+            isLoading={false}
+            type='submit'
+            as='input'
+            value='Buscar'
+            pd='1rem 2rem'>
+            Buscar
+          </Button>
+        </FormStyled>
+        {recoPassword && (
+          <PasswordField pd='1rem' gap='1rem' jc_c>
+            <span>{recoPassword}</span> <IoDocuments onClick={copyPassword} />{' '}
+          </PasswordField>
+        )}
       </Layout>
     </Layout>
   )

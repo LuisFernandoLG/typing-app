@@ -4,9 +4,11 @@ import styled from 'styled-components'
 import GroupInput from '../components/inputs/GroupInput'
 import { ProfileImageInput } from '../components/inputs/ProfileImgInput'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
+import { BackPageButton } from '../components/ui/BackPageButton'
 import { Button } from '../components/ui/Button'
 import { emailRegex, nickNameRegex } from '../constants/regexs'
 import { useSession } from '../hooks/useSession'
+import { Layout } from '../layouts/Layout'
 // import { nickNameRegex } from '../constants/regexs'
 
 export const ConfigProgilePage = () => {
@@ -38,7 +40,12 @@ export const ConfigProgilePage = () => {
   }, [])
 
   return (
-    <Layout jc_c>
+    <Layout>
+      <FlexContainer jc_fs ai_fs>
+      <BackPageButton/>
+      </FlexContainer>
+      <FlexContainer jc_c ai_c>
+
       <FormStyled
         as='form'
         fd_c
@@ -88,15 +95,11 @@ export const ConfigProgilePage = () => {
           Guardar cambios
         </Button>
       </FormStyled>
+</FlexContainer>
     </Layout>
   )
 }
 
 const FormStyled = styled(FlexContainer)`
   width: 400px;
-`
-
-const Layout = styled(FlexContainer)`
-  width: 100%;
-  margin: 0 auto;
 `
