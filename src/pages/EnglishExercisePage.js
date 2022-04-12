@@ -27,6 +27,10 @@ export const EnglishExercisePage = () => {
   const nextBtnRef = useRef(null)
   const homeBtnRef = useRef(null)
 
+  const option1 = useRef(null)
+  const option2 = useRef(null)
+  const option3 = useRef(null)
+
   const searchForExercise = ({ exerciseId }) =>
     exercises.find(({ id }) => id === exerciseId)
 
@@ -80,6 +84,24 @@ export const EnglishExercisePage = () => {
     }
   }
 
+  const handleKeyDownOptions = (e) => {
+    if (e.code === 'Digit1') option1.current.click()
+    if (e.code === 'Digit2') option2.current.click()
+    if (e.code === 'Digit3') option3.current.click()
+  }
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDownOptions)
+
+    return () => window.removeEventListener('keydown', handleKeyDownOptions)
+  }, [])
+
+  const getRef = ({ index }) => {
+    if (index === 0) return option1
+    if (index === 1) return option2
+    if (index === 2) return option3
+  }
+
   return (
     <Layout>
       <BackPageButton backRoute={routesV3.ENGLISH_PAGE.route} />
@@ -88,6 +110,7 @@ export const EnglishExercisePage = () => {
         <FlexContainer fd_c jc_c ai_c gap='1rem' mg='1rem'>
           {(currentExercise?.answers || [1, 2, 3]).map((item, index) => (
             <Answer
+              ref={getRef({ index })}
               tabIndex={index + 1}
               type='button'
               key={item?.id}
@@ -102,6 +125,7 @@ export const EnglishExercisePage = () => {
                   : null
               }
               onClick={() => selectAnswer({ itemSelected: item })}>
+              <span className='num-option'>{index + 1}</span>
               {item?.content}
             </Answer>
           ))}
@@ -171,6 +195,17 @@ const Answer = styled.button`
   font-size: 1.5rem;
 
   transition: transform 300ms ease;
+  position:relative;
+
+  .num-option{
+    padding:0 0.5rem;
+    position:absolute;
+    top:0.5rem;
+    left:0.5rem;
+    border-radius:10px;
+    color:${({ theme: { bgColor } }) => bgColor};
+    border: 2px solid ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  }
 
   &.yes {
     background: ${({ theme: { successColor } }) => successColor};
