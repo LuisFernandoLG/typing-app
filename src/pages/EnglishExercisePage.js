@@ -12,6 +12,7 @@ import { BackPageButton } from '../components/ui/BackPageButton'
 import { ShorHandKey } from '../components/ShortHandKey'
 import { EnterKey } from '../components/shortHandKeys/EnterKey'
 import { FloatContainer } from '../components/FloatContainer'
+import { useShortSound } from '../hooks/useShortSound'
 
 const setExercisesFromArray = ({ categoryId }) => {
   return EnglishExercisesMockup.find(({ id }) => categoryId === id).exercises
@@ -26,6 +27,8 @@ export const EnglishExercisePage = () => {
   const [exerciseIndex, setExerciseIndex] = useState(null)
   const nextBtnRef = useRef(null)
   const homeBtnRef = useRef(null)
+  const [playSuccesSound] = useShortSound({ soundPath: 'success.mp3' })
+  const [playFailSound] = useShortSound({ soundPath: 'failure.mp3' })
 
   const option1 = useRef(null)
   const option2 = useRef(null)
@@ -69,6 +72,8 @@ export const EnglishExercisePage = () => {
   }, [exerciseId])
 
   const selectAnswer = ({ itemSelected }) => {
+    if (itemSelected.isCorrect) playSuccesSound()
+    else playFailSound()
     setItemSelected(itemSelected)
   }
 
@@ -195,15 +200,15 @@ const Answer = styled.button`
   font-size: 1.5rem;
 
   transition: transform 300ms ease;
-  position:relative;
+  position: relative;
 
-  .num-option{
-    padding:0 0.5rem;
-    position:absolute;
-    top:0.5rem;
-    left:0.5rem;
-    border-radius:10px;
-    color:${({ theme: { bgColor } }) => bgColor};
+  .num-option {
+    padding: 0 0.5rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    border-radius: 10px;
+    color: ${({ theme: { bgColor } }) => bgColor};
     border: 2px solid ${({ theme: { tertiaryColor } }) => tertiaryColor};
   }
 
