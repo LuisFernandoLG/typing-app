@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 import { Loader } from './Loader'
-import { Logo } from '../components/NavBar/Logo'
+// import { Logo } from '../components/NavBar/Logo'
 import { FlexContainer } from './shareStyleComponents/FlexContainer'
+import { FingerLoader } from './loaders/FingerLoader'
 
 export const LazyLoading = () => {
   return (
     <LazyLoadingStyled flex_dc flex_jc_c flex_ai_c>
-      <Logo />
+      <FingerLoader />
       <Loader />
     </LazyLoadingStyled>
   )
