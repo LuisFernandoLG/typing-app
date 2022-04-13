@@ -5,8 +5,6 @@ import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import English2 from '../images/english2.png'
 import { Layout } from '../layouts/Layout'
 import { routesV3 } from '../routes'
-// import SpeedImg from '../images/clock.png'
-// import SLiberty from '../images/sliberty.png'
 
 export const ChoicePage = () => {
   const choices = [
@@ -14,14 +12,14 @@ export const ChoicePage = () => {
       id: generate(),
       title: 'Aprende Mecanografía',
       img: English2,
-      toLink: routesV3.MECA_PAGE.route
+      toLink: routesV3.MECA_TIME_PAGE.route
     },
 
     {
       id: generate(),
       title: 'Mejora tu velocidad',
       img: English2,
-      toLink: '/'
+      toLink: routesV3.MECA_PAGE.route
     },
     {
       id: generate(),

@@ -12,10 +12,10 @@ import { LoginPage } from '../pages/LoginPage'
 import { SignInPage } from '../pages/SignInPage'
 import { RecoverPasswordPage } from '../pages/RecoverPasswordPage'
 import { ChoicePage } from '../pages/ChoicePage'
-import { HomePage } from '../pages/HomePage'
+import { HomePagex } from '../pages/HomePage'
 import { RankingPage } from '../pages/RankingPage'
 import { StadisticsPage } from '../pages/StadisticsPage'
-import { MecaPage } from '../pages/MecaPage'
+import { MecaTimePage } from '../pages/MecaTimePage'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { AdminPage } from '../pages/AdminPage'
 import { EnglishSectionPage } from '../pages/EnglishSectionPage'
@@ -23,6 +23,7 @@ import { ExercisePage } from '../pages/ExercisePage'
 import { ConfigProgilePage as ConfigProfilePage } from '../pages/ConfigProfilePage'
 import { EnglishPage } from '../pages/EnglishPage'
 import { EnglishExercisePage } from '../pages/EnglishExercisePage'
+import { MecaExercise } from './MecaExercise'
 
 export const MyRouter = () => {
   return (
@@ -50,22 +51,22 @@ export const MyRouter = () => {
                 element={<ConfigProfilePage />}
               />
 
-              <Route path={routesV3.MECA_PAGE.route} element={<MecaPage />}>
-                <Route index element={<HomePage />} />
+              <Route path={routesV3.MECA_TIME_PAGE.route} element={<MecaTimePage />}>
+                <Route index element={<HomePagex />} />
                 <Route
-                  path={`${routesV3.MECA_PAGE.subRoutes.EXERCISE_PAGE.route}/:idQuote`}
+                  path={`${routesV3.MECA_TIME_PAGE.subRoutes.EXERCISE_PAGE.route}/:idQuote`}
                   element={<ExercisePage />}
                 />
                 <Route
-                  path={routesV3.MECA_PAGE.subRoutes.RANKING_PAGE.route}
+                  path={routesV3.MECA_TIME_PAGE.subRoutes.RANKING_PAGE.route}
                   element={<RankingPage />}
                 />
                 <Route
-                  path={routesV3.MECA_PAGE.subRoutes.STATS_PAGE.route}
+                  path={routesV3.MECA_TIME_PAGE.subRoutes.STATS_PAGE.route}
                   element={<StadisticsPage />}
                 />
                 <Route
-                  path={routesV3.MECA_PAGE.subRoutes.ADMIN_PAGE.route}
+                  path={routesV3.MECA_TIME_PAGE.subRoutes.ADMIN_PAGE.route}
                   element={<AdminPage />}
                 />
                 <Route
@@ -73,6 +74,11 @@ export const MyRouter = () => {
                   element={<NotFoundPage />}
                 />
               </Route>
+
+              <Route
+                path={routesV3.MECA_PAGE.route}
+                element={<MecaExercise />}
+              />
 
               <Route
                 path={routesV3.ENGLISH_PAGE.route}

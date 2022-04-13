@@ -17,18 +17,18 @@ export const NavBar = () => {
   return (
     <Container pd="1rem" mg="1rem 2rem 0 0">
     <NavBarStyled as='nav' flex flex_dc flex_ai_fs flex_jc_fs gap='1rem'>
-      <RedirectLink to={routesV3.MECA_PAGE.route}>
+      <RedirectLink to={routesV3.MECA_TIME_PAGE.route}>
         <IoHomeSharp />
       </RedirectLink>
-      <RedirectLink to={routesV3.MECA_PAGE.subRoutes.RANKING_PAGE.route}>
+      <RedirectLink to={routesV3.MECA_TIME_PAGE.subRoutes.RANKING_PAGE.route}>
         <IoTrophy />
       </RedirectLink>
-      <RedirectLink to={routesV3.MECA_PAGE.subRoutes.STATS_PAGE.route}>
+      <RedirectLink to={routesV3.MECA_TIME_PAGE.subRoutes.STATS_PAGE.route}>
         <IoBarChart />
       </RedirectLink>
 
       {isAdmin() && (
-        <RedirectLink to={routesV3.MECA_PAGE.subRoutes.ADMIN_PAGE.route}>
+        <RedirectLink to={routesV3.MECA_TIME_PAGE.subRoutes.ADMIN_PAGE.route}>
           <IoKeySharp />
         </RedirectLink>
       )}

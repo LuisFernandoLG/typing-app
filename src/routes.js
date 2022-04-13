@@ -6,7 +6,7 @@ import { ConfigProgilePage } from './pages/ConfigProfilePage'
 import { EnglishExercisePage } from './pages/EnglishExercisePage'
 import { EnglishSectionPage } from './pages/EnglishSectionPage'
 import { ExercisePage } from './pages/ExercisePage'
-import { HomePage } from './pages/HomePage'
+import { HomePagex } from './pages/HomePage'
 import { IndexPage } from './pages/IndexPage'
 import { LoginPage } from './pages/LoginPage'
 import { NotFoundPage } from './pages/NotFoundPage'
@@ -38,6 +38,10 @@ export const routesV3 = {
 
   MECA_PAGE: {
     route: '/meca',
+    subpages: {}
+  },
+  MECA_TIME_PAGE: {
+    route: '/mecatime',
     subRoutes: {
       RANKING_PAGE: {
         route: 'ranking'
@@ -94,7 +98,7 @@ export const routesV2 = {
         id: generate(),
         route: '/app',
         name: 'home',
-        component: HomePage,
+        component: HomePagex,
         isPrivate: true,
         routeProps: {}
       },

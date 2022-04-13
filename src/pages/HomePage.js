@@ -11,7 +11,7 @@ import { Layout } from '../layouts/Layout'
 
 const initialExercises = null
 
-export const HomePage = () => {
+export const HomePagex = () => {
   const [exercises, setExercises] = useState(initialExercises)
   const { fetchData, fetchErrors, loading, data } = useFetch()
   const [category, setCategory] = useState(null)

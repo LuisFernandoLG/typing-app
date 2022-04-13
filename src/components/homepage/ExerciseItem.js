@@ -11,7 +11,7 @@ export const ExerciseItem = ({ id, title, content, category, difficulty }) => {
 
   return (
     <ExerciseItemContainer
-      to={`${routesV3.MECA_PAGE.subRoutes.EXERCISE_PAGE.route}/${id}`}
+      to={`${routesV3.MECA_TIME_PAGE.subRoutes.EXERCISE_PAGE.route}/${id}`}
       id={id}>
       <Title>{title || <Skeleton width={'20%'} />}</Title>
       <Content>{content || <Skeleton count={1} />}</Content>
