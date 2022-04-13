@@ -10,14 +10,14 @@ export const ChoicePage = () => {
   const choices = [
     {
       id: generate(),
-      title: 'Aprende Mecanografía',
+      title: 'Mejora tu velocidad',
       img: English2,
       toLink: routesV3.MECA_TIME_PAGE.route
     },
 
     {
       id: generate(),
-      title: 'Mejora tu velocidad',
+      title: 'Aprende Mecanografía',
       img: English2,
       toLink: routesV3.MECA_PAGE.route
     },
