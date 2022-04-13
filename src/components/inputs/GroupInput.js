@@ -48,7 +48,7 @@ const GroupInputStyled = styled.div`
   height: 2.5em;
   padding: 0.5em;
 
-  border-radius: ${({ theme: { border_radius } }) => border_radius};
+  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   /* box-shadow: 0.05rem 0.05em 0.5em -.rem ${({ error, theme: { errorColor, disableColor } }) => (error ? errorColor : disableColor)}; */
 
   color: ${({ error, theme: { errorColor, fontColor } }) =>

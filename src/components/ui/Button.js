@@ -52,7 +52,7 @@ const ButtonStyled = styled.button`
         `
       : null}
 
-  border-radius: ${({ theme: { border_radius } }) => border_radius};
+  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   transition: box-shadow 300ms ease, color 300ms ease;
 
   ${({ fontSize }) => fontSize ? `font-size: ${fontSize}` : 'font-size: 1.2rem'};
