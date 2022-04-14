@@ -75,7 +75,7 @@ export const MyRouter = () => {
                 }>
                 <Route index element={<HomePagex />} />
                 <Route
-                  path={`${routesV3.MECA_TIME_PAGE.subRoutes.EXERCISE_PAGE.route}/:idQuote`}
+                  path={`${routesV3.MECA_TIME_PAGE.subRoutes.EXERCISE_PAGE.routeWithParams}`}
                   element={<ExercisePage />}
                 />
                 <Route
@@ -114,7 +114,7 @@ export const MyRouter = () => {
                 }>
                 <Route index element={<EnglishSectionPage />} />
                 <Route
-                  path={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.route}/:categoryId/:exerciseId`}
+                  path={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.routeWithParams}`}
                   element={<EnglishExercisePage />}
                 />
               </Route>

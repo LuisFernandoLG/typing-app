@@ -54,7 +54,8 @@ export const routesV3 = {
         route: 'admin'
       },
       EXERCISE_PAGE: {
-        route: 'item'
+        route: 'item',
+        routeWithParams: 'item/:idQuote'
       }
     }
   },
@@ -63,7 +64,8 @@ export const routesV3 = {
     route: '/english',
     subRoutes: {
       ENGLISH_EXERCISE_PAGE: {
-        route: 'item'
+        route: 'item',
+        routeWithParams: 'item/:courseId/:exerciseId'
       }
     }
   }
@@ -147,7 +149,7 @@ export const routesV2 = {
       },
       ENGLISH_EXERCISE_PAGE: {
         id: generate(),
-        route: '/english/:categoryId/:exerciseId',
+        route: '/english/:courseId/:exerciseId',
         routBaseParam: '/english',
         name: 'EnglishExercise',
         component: EnglishExercisePage,
