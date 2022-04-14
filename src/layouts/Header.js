@@ -47,7 +47,7 @@ export const Header = () => {
 }
 
 const HeaderStyled = styled(FlexContainer)`
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   position: sticky;
   top: 0;
   background: ${({ theme: { tertiaryColor } }) => tertiaryColor};

@@ -54,11 +54,11 @@ export const Quote = ({ quote, indexQuote }) => {
 const QuoteStyled = styled.div`
   padding: 1rem;
   background: ${({ theme: { accentColor } }) => accentColor};
-  border-radius: ${({ theme: { border_radius } }) => border_radius};
+  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   font-size: 1.5rem;
 
-  max-height: 213px;
-  overflow-y: scroll;
+  /* max-height: 213px; */
+  overflow-y: hidden;
   margin: 2rem 0;
 
   display: flex;

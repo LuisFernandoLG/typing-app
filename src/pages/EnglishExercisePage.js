@@ -1,116 +1,25 @@
-import { useParams, Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { Button } from '../components/ui/Button'
 import { Layout } from '../layouts/Layout'
-import { IoArrowForward } from 'react-icons/io5'
-import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
-import { useState, useEffect, useRef } from 'react'
-import { EnglishExercisesMockup } from '../constants/englishExercisesTest'
-import { routesV3 } from '../routes'
-import Skeleton from 'react-loading-skeleton'
 import { BackPageButton } from '../components/ui/BackPageButton'
-import { ShorHandKey } from '../components/ShortHandKey'
-import { EnterKey } from '../components/shortHandKeys/EnterKey'
-import { FloatContainer } from '../components/FloatContainer'
-import { useShortSound } from '../hooks/useShortSound'
-
-const setExercisesFromArray = ({ categoryId }) => {
-  return EnglishExercisesMockup.find(({ id }) => categoryId === id).exercises
-}
+import { routesV3 } from '../routes'
+import { useParams } from 'react-router-dom'
+import { AbcExercise } from '../components/exercises/AbcExercise'
 
 export const EnglishExercisePage = () => {
-  // Get all exericses
-  const [exercises, setExercises] = useState(null)
-  const { categoryId, exerciseId } = useParams()
-  const [itemSelected, setItemSelected] = useState(null)
-  const [currentExercise, setCurrentExercise] = useState()
-  const [exerciseIndex, setExerciseIndex] = useState(null)
-  const nextBtnRef = useRef(null)
-  const homeBtnRef = useRef(null)
-  const [playSuccesSound] = useShortSound({ soundPath: 'success.mp3' })
-  const [playFailSound] = useShortSound({ soundPath: 'failure.mp3' })
+  const { courseId, exerciseId } = useParams()
+  console.log({ courseId, exerciseId })
+  // debugger
 
-  const option1 = useRef(null)
-  const option2 = useRef(null)
-  const option3 = useRef(null)
-
-  const searchForExercise = ({ exerciseId }) =>
-    exercises.find(({ id }) => id === exerciseId)
-
-  const searchForExerciseIndex = ({ exerciseId }) => {
-    return exercises.findIndex(({ id }) => id === exerciseId)
-  }
-
-  useEffect(
-    () =>
-      setExercises(setExercisesFromArray({ categoryId: parseInt(categoryId) })),
-    []
-  )
-
-  useEffect(() => {
-    if (exercises !== null) {
-      const item = searchForExercise({ exerciseId: parseInt(exerciseId) })
-      const index = searchForExerciseIndex({ exerciseId: parseInt(exerciseId) })
-      setCurrentExercise(item)
-      setExerciseIndex(index)
-    }
-  }, [exercises])
-
-  // const goNext = () => {
-  //   }
-  // }
-
-  useEffect(() => {
-    setItemSelected(null)
-    if (exercises) {
-      const newIndex = exerciseIndex + 1
-      if (newIndex < exercises.length) {
-        setExerciseIndex(exerciseIndex + 1)
-        setCurrentExercise(exercises[exerciseIndex + 1])
-      }
-    }
-  }, [exerciseId])
-
-  const selectAnswer = ({ itemSelected }) => {
-    if (itemSelected.isCorrect) playSuccesSound()
-    else playFailSound()
-    setItemSelected(itemSelected)
-  }
-
-  const isLastItem = () => {
-    return exercises.length - 1 === exerciseIndex
-  }
-
-  const handleKeyDown = () => {
-    if (isLastItem()) {
-      homeBtnRef.current.click()
-    } else {
-      nextBtnRef.current.click()
-    }
-  }
-
-  const handleKeyDownOptions = (e) => {
-    if (e.code === 'Digit1') option1.current.click()
-    if (e.code === 'Digit2') option2.current.click()
-    if (e.code === 'Digit3') option3.current.click()
-  }
-
-  useEffect(() => {
-    window.addEventListener('keydown', handleKeyDownOptions)
-
-    return () => window.removeEventListener('keydown', handleKeyDownOptions)
-  }, [])
-
-  const getRef = ({ index }) => {
-    if (index === 0) return option1
-    if (index === 1) return option2
-    if (index === 2) return option3
+  const Exercise = ({ exerciseType }) => {
+    // if(exerciseType==="meca") return <
+    if (exerciseType === 'abcExercise') { return <AbcExercise courseId={courseId} exerciseId={exerciseId} /> }
   }
 
   return (
     <Layout>
       <BackPageButton backRoute={routesV3.ENGLISH_PAGE.route} />
-      <Layout>
+
+      {<Exercise exerciseType={'abcExercise'} />}
+      {/* <Layout>
         <Title>{currentExercise?.title || <Skeleton width={'20%'} />}</Title>
         <FlexContainer fd_c jc_c ai_c gap='1rem' mg='1rem'>
           {(currentExercise?.answers || [1, 2, 3]).map((item, index) => (
@@ -173,65 +82,9 @@ export const EnglishExercisePage = () => {
               </Link>
             )}
           </FlexContainer>
-        </>
-        // </Link>
-      )}
+        </> */}
+      {/* // </Link> */}
+      {/* )} */}
     </Layout>
   )
 }
-
-const Title = styled.h2`
-  color: ${({ theme: { fontColor } }) => fontColor};
-  text-align: center;
-  font-weight: 600;
-`
-const Answer = styled.button`
-  &:focus {
-    outline: 5px solid ${({ theme: { disableColor } }) => disableColor};
-  }
-  min-width: 28.25rem;
-  padding: 2rem 3rem;
-  user-select: none;
-  background: ${({ theme: { accentColor } }) => accentColor};
-  color: ${({ theme: { fontColor } }) => fontColor};
-  cursor: pointer;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 1.5rem;
-
-  transition: transform 300ms ease;
-  position: relative;
-
-  .num-option {
-    padding: 0 0.5rem;
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-    border-radius: 10px;
-    color: ${({ theme: { bgColor } }) => bgColor};
-    border: 2px solid ${({ theme: { tertiaryColor } }) => tertiaryColor};
-  }
-
-  &.yes {
-    background: ${({ theme: { successColor } }) => successColor};
-    color: ${({ theme: { fontColor } }) => fontColor};
-  }
-
-  &.no {
-    background: ${({ theme: { errorColor } }) => errorColor};
-    color: ${({ theme: { fontColor } }) => fontColor};
-  }
-
-  &.yes,
-  &.no {
-    pointer-events: none;
-  }
-
-  &:hover {
-    transform: scale(1.05);
-  }
-
-  &:active {
-    /* transform: scale(0.95); */
-  }
-`

@@ -6,9 +6,6 @@ import Skeleton from 'react-loading-skeleton'
 import { routesV3 } from '../../routes'
 
 export const ExerciseItem = ({ id, title, content, category, difficulty }) => {
-  // const exerciseRoute =
-  // routesV2.LOGGED_APP.subPages.EXERCISE_PAGE.routBaseParam
-
   return (
     <ExerciseItemContainer
       to={`${routesV3.MECA_TIME_PAGE.subRoutes.EXERCISE_PAGE.route}/${id}`}
@@ -62,7 +59,7 @@ const Content = styled.p`
 
 const TagStyle = styled.span`
   background: ${({ theme: { disableColor } }) => disableColor};
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   color: ${({ theme: { fontColor } }) => fontColor};
 
   font-weight: 700;
