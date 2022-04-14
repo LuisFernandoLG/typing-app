@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { generate } from 'shortid'
 import styled from 'styled-components'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
-import English2 from '../images/english2.png'
+import English2 from '../images/ilustrations/girl.svg'
 import { Layout } from '../layouts/Layout'
 import { routesV3 } from '../routes'
 
