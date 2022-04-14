@@ -532,24 +532,11 @@ const finger5Animation = keyframes`
     }`
 
 const StyledFingerLoader = styled.div`
-/* border:1px solid red; */
-  /* #loader {
-    background-color: ${({ theme: { accentColor } }) => accentColor};
-    left: 0;
-    top: 0;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 3000;
-  } */
   .loading {
-    /* position: absolute; */
-    /* left: 50%; */
-    /* top: 50%; */
+    transform:translateX(25%);
     margin: -35px 0 0 -56px;
     width: 112px;
     height: 70px;
-    *zoom: 1;
   }
   .loading:before,
   .loading:after {
@@ -624,7 +611,7 @@ const StyledFingerLoader = styled.div`
     -moz-background-clip: padding;
     border-radius: 6px 6px 8px 8px;
     background-clip: padding-box;
-    background-color: ${({ theme: { primaryColor } }) => primaryColor};
+    background-color: ${({ theme: { fontColor } }) => fontColor};
   }
   .loading .finger-item span {
     position: absolute;
@@ -677,7 +664,7 @@ const StyledFingerLoader = styled.div`
     -moz-background-clip: padding;
     border-radius: 0 5px 14px 0;
     background-clip: padding-box;
-    background-color: ${({ theme: { primaryColor } }) => primaryColor};
+    background-color: ${({ theme: { fontColor } }) => fontColor};
     -webkit-animation: ${finger5Animation} ${speed} infinite linear;
     animation: ${finger5Animation} ${speed} infinite linear;
   }
@@ -687,7 +674,7 @@ const StyledFingerLoader = styled.div`
     top: -8px;
     width: 22px;
     height: 8px;
-    background-color: ${({ theme: { primaryColor } }) => primaryColor};
+    background-color: ${({ theme: { fontColor } }) => fontColor};
     overflow: hidden;
   }
   .loading .last-finger-item i:after {
