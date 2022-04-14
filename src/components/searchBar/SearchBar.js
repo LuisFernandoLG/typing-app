@@ -34,7 +34,7 @@ export const SearchBar = ({ setSearchQuery, search, searchByQuery }) => {
 
 const Container = styled(Wrapper)`
   flex-grow: 1;
-  border-radius: ${({ theme: { border_radius } }) => border_radius};
+  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   background: ${({ theme: { accentColor } }) => accentColor};
   padding: 1rem;
   `

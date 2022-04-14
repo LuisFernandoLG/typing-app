@@ -42,7 +42,7 @@ const Select = styled.select`
   width: auto;
   padding: 1rem;
   background: ${({ theme: { accentColor } }) => accentColor};
-  border-radius: ${({ theme: { border_radius } }) => border_radius};
+  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   color: ${({ theme: { fontColor } }) => fontColor};
 
   font-weight: 700;

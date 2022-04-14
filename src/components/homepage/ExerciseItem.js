@@ -25,7 +25,7 @@ export const ExerciseItem = ({ id, title, content, category, difficulty }) => {
 
 const ExerciseItemContainer = styled(Link)`
   padding: 2rem;
-  border-radius: ${({ theme: { border_radius } }) => border_radius};
+  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   background: ${({ theme: { accentColor } }) => accentColor};
   transition: background 300ms ease;
 
@@ -66,7 +66,7 @@ const TagStyle = styled.span`
   color: ${({ theme: { fontColor } }) => fontColor};
 
   font-weight: 700;
-  border-radius: ${({ theme: { border_radius } }) => border_radius};
+  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
 `
 
 const Category = styled(TagStyle)``
