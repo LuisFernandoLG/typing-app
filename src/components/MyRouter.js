@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { lazy, Suspense } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import { Footer } from '../layouts/Footer'
 import { ScrollToTop } from './ScrollToTop'
@@ -15,15 +15,19 @@ import { ChoicePage } from '../pages/ChoicePage'
 import { HomePagex } from '../pages/HomePage'
 import { RankingPage } from '../pages/RankingPage'
 import { StadisticsPage } from '../pages/StadisticsPage'
-import { MecaTimePage } from '../pages/MecaTimePage'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { AdminPage } from '../pages/AdminPage'
-import { EnglishSectionPage } from '../pages/EnglishSectionPage'
 import { ExercisePage } from '../pages/ExercisePage'
 import { ConfigProgilePage as ConfigProfilePage } from '../pages/ConfigProfilePage'
-import { EnglishPage } from '../pages/EnglishPage'
 import { EnglishExercisePage } from '../pages/EnglishExercisePage'
 import { MecaExercise } from './MecaExercise'
+// import { EnglishPage } from '../pages/EnglishPage'
+import { EnglishSectionPage } from '../pages/EnglishSectionPage'
+import { PrivateRoute } from '../pages/PrivateRoute'
+
+const MecaTimePage = lazy(() => import('../pages/MecaTimePage'))
+const EnglishPage = lazy(() => import('../pages/EnglishPage'))
+// const MecaPage = lazy(() => import('../pages/MecaTimePage'))
 
 export const MyRouter = () => {
   return (
@@ -45,13 +49,30 @@ export const MyRouter = () => {
                 element={<SignInPage />}
               />
 
-              <Route path={routesV3.MENU_PAGE.route} element={<ChoicePage />} />
+              <Route
+                path={routesV3.MENU_PAGE.route}
+                element={
+                  <PrivateRoute>
+                    <ChoicePage />
+                  </PrivateRoute>
+                }
+              />
               <Route
                 path={routesV3.CONFIG_PAGE.route}
-                element={<ConfigProfilePage />}
+                element={
+                  <PrivateRoute>
+                    <ConfigProfilePage />
+                  </PrivateRoute>
+                }
               />
 
-              <Route path={routesV3.MECA_TIME_PAGE.route} element={<MecaTimePage />}>
+              <Route
+                path={routesV3.MECA_TIME_PAGE.route}
+                element={
+                  <PrivateRoute>
+                    <MecaTimePage />
+                  </PrivateRoute>
+                }>
                 <Route index element={<HomePagex />} />
                 <Route
                   path={`${routesV3.MECA_TIME_PAGE.subRoutes.EXERCISE_PAGE.route}/:idQuote`}
@@ -77,12 +98,20 @@ export const MyRouter = () => {
 
               <Route
                 path={routesV3.MECA_PAGE.route}
-                element={<MecaExercise />}
+                element={
+                  <PrivateRoute>
+                    <MecaExercise />
+                  </PrivateRoute>
+                }
               />
 
               <Route
                 path={routesV3.ENGLISH_PAGE.route}
-                element={<EnglishPage />}>
+                element={
+                  <PrivateRoute>
+                    <EnglishPage />
+                  </PrivateRoute>
+                }>
                 <Route index element={<EnglishSectionPage />} />
                 <Route
                   path={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.route}/:categoryId/:exerciseId`}

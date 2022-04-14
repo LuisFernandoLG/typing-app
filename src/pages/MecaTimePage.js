@@ -5,7 +5,7 @@ import { BackPageButton } from '../components/ui/BackPageButton'
 import { Layout } from '../layouts/Layout'
 import { routesV3 } from '../routes'
 
-export const MecaTimePage = () => {
+const MecaTimePage = () => {
   return (
     <Layout porRe={true}>
         <BackPageButton backRoute={routesV3.MENU_PAGE.route} text="Menú"/>
@@ -18,3 +18,5 @@ export const MecaTimePage = () => {
     </Layout>
   )
 }
+
+export default MecaTimePage

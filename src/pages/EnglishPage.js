@@ -2,10 +2,12 @@ import { Outlet } from 'react-router-dom'
 // import { BackPageButton } from '../components/ui/BackPageButton'
 import { Layout } from '../layouts/Layout'
 
-export const EnglishPage = () => {
+const EnglishPage = () => {
   return (
     <Layout>
       <Outlet />
     </Layout>
   )
 }
+
+export default EnglishPage
