@@ -62,15 +62,15 @@ export const ExerciseForm = ({
   if (exerLoadingAdded) return <Loader />
 
   return (
-    <ExerFormStyled as="form" flex flex_dc onSubmit={handleSubmit} wrap={true}>
+    <ExerFormStyled as='form' flex flex_dc onSubmit={handleSubmit} wrap={true}>
       <Title>Nuevo ejercicio</Title>
 
       <Wrapper flex flex_dc>
         <label>Titulo</label>
         <input
-          name="title"
-          placeholder="titulo"
-          type="text"
+          name='title'
+          placeholder='titulo'
+          type='text'
           value={form.title}
           onChange={handleChangeForm}
         />
@@ -79,9 +79,10 @@ export const ExerciseForm = ({
       <Wrapper flex flex_dc>
         <label>Contenido</label>
         <textarea
-          placeholder="contenido"
-          name="text_content"
-          type="text"
+          placeholder='contenido'
+          name='text_content'
+          type='text'
+          maxLength={60}
           value={form.text_content}
           onChange={handleChangeForm}
         />
@@ -90,9 +91,9 @@ export const ExerciseForm = ({
       <Wrapper flex flex_dc>
         <label>Puntos</label>
         <input
-          name="points"
-          type="number"
-          placeholder="puntos"
+          name='points'
+          type='number'
+          placeholder='puntos'
           value={form.points}
           onChange={handleChangeForm}
         />
@@ -101,17 +102,17 @@ export const ExerciseForm = ({
       <Wrapper flex flex_dc>
         <label>Tiempo</label>
         <input
-          name="time"
-          type="number"
-          placeholder="Tiempo"
+          name='time'
+          type='number'
+          placeholder='Tiempo'
           value={form.time}
           onChange={handleChangeForm}
         />
       </Wrapper>
 
       <Wrapper flex>
-        <select name="category" onChange={handleChangeForm}>
-          <option key={'c1'} value="">
+        <select name='category' onChange={handleChangeForm}>
+          <option key={'c1'} value=''>
             Categoría
           </option>
 
@@ -122,8 +123,8 @@ export const ExerciseForm = ({
           ))}
         </select>
 
-        <select name="difficulty" onChange={handleChangeForm}>
-          <option key={'d1'} value="">
+        <select name='difficulty' onChange={handleChangeForm}>
+          <option key={'d1'} value=''>
             Dificultad
           </option>
 
@@ -134,8 +135,8 @@ export const ExerciseForm = ({
           ))}
         </select>
 
-        <select name="status" onChange={handleChangeForm}>
-          <option key={'s1'} value="">
+        <select name='status' onChange={handleChangeForm}>
+          <option key={'s1'} value=''>
             Estado
           </option>
           {statuses.map(({ id, name }) => (
@@ -146,7 +147,7 @@ export const ExerciseForm = ({
         </select>
       </Wrapper>
 
-      <input type="submit" value="Agregar" />
+      <input type='submit' value='Agregar' />
     </ExerFormStyled>
   )
 }
@@ -190,7 +191,7 @@ const ExerFormStyled = styled(Wrapper)`
     font-weight: 600;
   }
 
-  input[type="submit"] {
+  input[type='submit'] {
     width: min-content;
     padding: 1rem;
     background: ${({ theme: { successColor } }) => successColor};
