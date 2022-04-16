@@ -3,7 +3,7 @@ import AuthContext from '../contexts/AuthContext'
 import { useLinkRouter } from '../hooks/useLinkRouter'
 
 export const useSession = () => {
-  const { isAuth, setLogIn, setLogOut, user, authLoading, updateUserManually } =
+  const { isAuth, setLogIn, setLogOut, user, authLoading } =
     useContext(AuthContext)
   const { goIndexPage } = useLinkRouter()
 
@@ -26,7 +26,6 @@ export const useSession = () => {
     user,
     isAuth,
     handleLogIn,
-    authLoading,
-    updateUserManually
+    authLoading
   }
 }

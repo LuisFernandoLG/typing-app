@@ -34,11 +34,6 @@ const AuthProvider = ({ children }) => {
     }
   }, [data])
 
-  const updateUserManually = ({ manualUser }) => {
-    localStorage.setItem('user', JSON.stringify({ ...user, ...manualUser }))
-    setUser(manualUser)
-  }
-
   useEffect(() => {
     if (fetchErrors) {
       toast.error('Inicio de sesión fallido!')
@@ -65,8 +60,7 @@ const AuthProvider = ({ children }) => {
     setLogIn,
     setLogOut,
     user,
-    authLoading: loading,
-    updateUserManually
+    authLoading: loading
   }
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
 }
