@@ -29,10 +29,15 @@ const AuthProvider = ({ children }) => {
       }
       if (data.status === '201') {
         setIsAuth(true)
-        setUser(data.data.user)
+        setUser({ ...data.data.user })
       }
     }
   }, [data])
+
+  const updateUserManually = ({ manualUser }) => {
+    localStorage.setItem('user', JSON.stringify({ ...user, ...manualUser }))
+    setUser(manualUser)
+  }
 
   useEffect(() => {
     if (fetchErrors) {
@@ -53,9 +58,16 @@ const AuthProvider = ({ children }) => {
       localStorage.removeItem('isAuth')
       localStorage.removeItem('user')
     }
-  }, [isAuth])
+  }, [isAuth, user])
 
-  const values = { isAuth, setLogIn, setLogOut, user, authLoading: loading }
+  const values = {
+    isAuth,
+    setLogIn,
+    setLogOut,
+    user,
+    authLoading: loading,
+    updateUserManually
+  }
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
 }
 
