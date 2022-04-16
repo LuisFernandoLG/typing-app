@@ -3,12 +3,13 @@ import { BackPageButton } from '../components/ui/BackPageButton'
 import { routesV3 } from '../routes'
 import { Link, useParams } from 'react-router-dom'
 import { AbcExercise } from '../components/exercises/AbcExercise'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import api from '../services/api'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
-import { Button } from 'style-components'
 import { IoArrowForward } from 'react-icons/io5'
 import { MecaExercise } from '../components/MecaExercise'
+import { Button } from '../components/ui/Button'
+import { FingerLoader } from '../components/loaders/FingerLoader'
 
 const setExercisesFromArray = ({ exers, courseId }) => {
   return exers.find(({ id }) => courseId === id).exercises
@@ -22,6 +23,8 @@ export const EnglishExercisePage = () => {
   const [isDone, setIsDone] = useState(false)
 
   const setExerciseDone = () => setIsDone(true)
+  const nextBtnRef = useRef(null)
+  const homeBtnRef = useRef(null)
 
   const searchForExercise = ({ exerciseId }) =>
     allExercises.find(({ id }) => id === exerciseId)
@@ -48,6 +51,15 @@ export const EnglishExercisePage = () => {
     getData()
   }, [])
 
+  const isLastItem = () => {
+    return allExercises.length - 1 === exerciseIndex
+  }
+
+  const goNext = () => {
+    if (isLastItem()) homeBtnRef.current.click()
+    else nextBtnRef.current.click()
+  }
+
   useEffect(() => {
     if (allExercises !== null) {
       const item = searchForExercise({ exerciseId: parseInt(exerciseId) })
@@ -68,32 +80,34 @@ export const EnglishExercisePage = () => {
     }
   }, [exerciseId])
 
-  const Exercise = ({ exerciseType }) => {
-    if (exerciseType === 'abcExercise') {
-      return <AbcExercise abcExercise={currentExercise} setIsDone={setExerciseDone} />
-    }
-    if (exerciseType === 'mecaExercise') {
-      return (
-        <MecaExercise mecaExercise={currentExercise} setIsDone={setExerciseDone} />
-      )
-    }
-  }
-
   return (
     <Layout>
       <BackPageButton backRoute={routesV3.ENGLISH_PAGE.route} />
-      {currentExercise
+      { currentExercise
         ? (
         <>
-          <Exercise exerciseType={currentExercise.type} />
+          {currentExercise.type === 'abcExercise' && (
+            <AbcExercise
+              abcExercise={currentExercise}
+              setIsDone={setExerciseDone}
+              goNext={goNext}
+            />
+          )}
+
+          {currentExercise.type === 'mecaExercise' && (
+            <MecaExercise
+            mecaExercise={currentExercise}
+            setIsDone={setExerciseDone}
+          />
+          )}
 
           {isDone
             ? (
             <>
               <FlexContainer jc_fs ai_c>
                 {exerciseIndex === allExercises.length - 1 && (
-                  <Link to={routesV3.ENGLISH_PAGE.route}>
-                    <Button Button primary={true} pd='1rem'>
+                  <Link ref={homeBtnRef} to={routesV3.ENGLISH_PAGE.route}>
+                    <Button primary={true} pd='1rem'>
                       Página principal
                     </Button>
                   </Link>
@@ -102,12 +116,12 @@ export const EnglishExercisePage = () => {
 
               <FlexContainer ai_fe jc_fe pd='1rem'>
                 {exerciseIndex !== allExercises.length - 1 && (
-                  <Link
+                  <Link ref={nextBtnRef}
                     to={`${routesV3.ENGLISH_PAGE.route}/${
                       routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE
                         .route
                     }/${courseId}/${allExercises[exerciseIndex + 1].id}`}>
-                    <Button Button primary={true} pd='1rem'>
+                    <Button primary={true} pd='1rem'>
                       Siguiente <IoArrowForward />{' '}
                     </Button>
                   </Link>
@@ -119,7 +133,9 @@ export const EnglishExercisePage = () => {
         </>
           )
         : (
-        <p>Buscando</p>
+        <FlexContainer jc_c ai_c pd="15% 0">
+          <FingerLoader/>
+        </FlexContainer>
           )}
     </Layout>
   )

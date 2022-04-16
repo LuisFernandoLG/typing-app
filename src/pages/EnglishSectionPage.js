@@ -7,6 +7,7 @@ import { routesV3 } from '../routes'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 
 import api from '../services/api'
+import { FingerLoader } from '../components/loaders/FingerLoader'
 
 export const EnglishSectionPage = () => {
   // eslint-disable-next-line no-unused-vars
@@ -30,7 +31,9 @@ export const EnglishSectionPage = () => {
       <Layout mg='1rem 0'>
         {allExercises.length === 0
           ? (
-          <p>Cargando</p>
+          <FlexContainer jc_c ai_c pd='15% 0'>
+            <FingerLoader />
+          </FlexContainer>
             )
           : (
               allExercises.map(({ id, categoryName, exercises }) => (
