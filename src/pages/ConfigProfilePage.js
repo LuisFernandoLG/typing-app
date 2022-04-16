@@ -7,17 +7,15 @@ import { ProfileImageInput } from '../components/inputs/ProfileImgInput'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { BackPageButton } from '../components/ui/BackPageButton'
 import { Button } from '../components/ui/Button'
+import { defaultImgUser } from '../constants/defaultImgUser'
 import { emailRegex, nickNameRegex } from '../constants/regexs'
 import { useSession } from '../hooks/useSession'
 import { Layout } from '../layouts/Layout'
 import api from '../services/api'
 
-const defaultImg =
-  'https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Clipart.png'
-
 export const ConfigProgilePage = () => {
   const { user, handleLogIn } = useSession()
-  const [photo, setPhoto] = useState(user?.imageProfile || defaultImg)
+  const [photo, setPhoto] = useState(user?.imageProfile || defaultImgUser)
   const {
     register,
     formState: { errors },
@@ -27,7 +25,7 @@ export const ConfigProgilePage = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    setPhoto(user.imageProfile || defaultImg)
+    setPhoto(user.imageProfile || defaultImgUser)
   }, [user])
 
   const hanldeOnImageChange = ({ name, value }) => {

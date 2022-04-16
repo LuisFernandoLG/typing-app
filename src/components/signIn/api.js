@@ -1,7 +1,7 @@
-// const PROTOCOL = 'http'
-// const DOMAIN = 'localhost:8000'
-const PROTOCOL = 'https'
-const DOMAIN = 'backendtypeandtpye.herokuapp.com'
+const PROTOCOL = 'http'
+const DOMAIN = 'localhost:8000'
+// const PROTOCOL = 'https'
+// const DOMAIN = 'backendtypeandtpye.herokuapp.com'
 const HOST = `${PROTOCOL}://${DOMAIN}`
 
 const exercises = `${HOST}/exercises`

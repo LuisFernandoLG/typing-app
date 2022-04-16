@@ -36,6 +36,7 @@ export const RankingPage = () => {
   useEffect(() => {
     if (data) {
       setRankingUsers(data.data)
+      console.log({ data: data.data })
     }
   }, [data])
 
@@ -50,19 +51,23 @@ export const RankingPage = () => {
       <Title>Ranking</Title>
       <UsersWrapper>
         {loading
-          ? skeletons.map((_, i) => <RankingUser key={`${i}-ru`}/>)
-          : rankingUsers.map(({ id, name, lastName, totalScore }, index) => (
-              <RankingUser
-                key={id}
-                position={index + 1}
-                name={name}
-                score={totalScore}
-              >
-                {index === 0 ? <Throphy1 /> : null}
-                {index === 1 ? <Throphy2 /> : null}
-                {index === 2 ? <Throphy3 /> : null}
-              </RankingUser>
-          ))}
+          ? skeletons.map((_, i) => (
+              <RankingUser key={`${i}-ru`} isLoading={loading} />
+          ))
+          : rankingUsers.map(
+            ({ id, name, lastName, totalScore, imageProfile }, index) => (
+                <RankingUser
+                  key={id}
+                  position={index + 1}
+                  name={name}
+                  score={totalScore}
+                  imageProfile={imageProfile}>
+                  {index === 0 ? <Throphy1 /> : null}
+                  {index === 1 ? <Throphy2 /> : null}
+                  {index === 2 ? <Throphy3 /> : null}
+                </RankingUser>
+            )
+          )}
       </UsersWrapper>
     </RankingContainer>
   )
