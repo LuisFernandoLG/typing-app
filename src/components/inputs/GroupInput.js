@@ -71,6 +71,9 @@ const GroupInputStyled = styled.div`
     height: 100%;
     width: 95%;
     color: ${({ theme: { disableColor } }) => disableColor};
+    caret-color: ${({ theme: { fontColor } }) => fontColor};
+    /* accent-color: ${({ theme: { fontColor } }) => fontColor}; */
+    /* caret-color: red; */
     font-weight: 600;
     background: inherit;
 

@@ -1,4 +1,25 @@
 export const themes = {
+  // lightTheme: {
+  //   name: 'light theme',
+  //   primaryColor: '#f06078',
+  //   secondaryColor: '#f06078',
+  //   tertiaryColor: '#ffa890',
+  //   accentColor: '#f0c0a8',
+  //   whiteColor: 'red',
+  //   primaryBoxShadow: '0 0.4375em 1.275em -0.625em #9AD0EC',
+
+  //   bgColor: '#fff',
+  //   disableColor: '#ff4860',
+  //   fontColor: '#374045',
+  //   primaryGradient: 'linear-gradient(to right, #9AD0EC, #064663)',
+
+  //   errorColor: '#F05454',
+  //   successColor: '#7FC8A9',
+  //   correctedColor: '#FFAA4C',
+
+  //   borderRadius: '10px'
+  // },
+
   lightTheme: {
     name: 'light theme',
     primaryColor: '#9AD0EC',
