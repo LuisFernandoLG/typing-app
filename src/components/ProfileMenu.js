@@ -19,7 +19,7 @@ export const ProfileMenu = () => {
 
   return (
     <div>
-      <Photo onClick={openMenu} src={user?.imageProfile || defaultImg} />
+      <Photo onClick={() => isMenuOpen ? closeMenu() : openMenu()} src={user?.imageProfile || defaultImg} />
       {isMenuOpen && <MenuList closeMenu={closeMenu} />}
     </div>
   )
