@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useKeyBoardActivity } from '../hooks/useKeyBoardActivity'
 import { Quote } from './exercise/Quote'
 import styled from 'styled-components'
@@ -9,7 +10,6 @@ import rightMiddleFinger from '../images/fingers/rightMiddleFinger.png'
 import rightRingFinger from '../images/fingers/rightRingFinger.png'
 import rightLittleFinger from '../images/fingers/rightLittleFinger.png'
 
-// import leftThumbFinger from '../images/fingers/leftThumbFinger.png'
 import leftIndexFinger from '../images/fingers/leftIndexFinger.png'
 import leftMiddleFinger from '../images/fingers/leftMiddleFinger.png'
 import leftRingFinger from '../images/fingers/leftRingFinger.png'
@@ -20,11 +20,23 @@ import { KeyBoard } from './exercise/KeyBoard'
 
 const textQuote = 'qweruiopasdklñzxcnm'
 
-export const MecaExercise = ({ mecaExercise }) => {
-  const { quote, indexQuote, isExerciseCompleted, keyWanted, keyPressed } =
+export const MecaExercise = ({ mecaExercise, setIsDone }) => {
+  const { quote, indexQuote, isExerciseCompleted, keyWanted, keyPressed, results } =
     useKeyBoardActivity({
       textQuote: textQuote || mecaExercise?.content
     })
+
+  const setIsDoneDefault = () => {
+    return quote
+  }
+
+  useEffect(() => {
+    if (results) {
+      if (setIsDone) {
+        setIsDone()
+      } else setIsDoneDefault()
+    }
+  }, [isExerciseCompleted, results])
 
   const rightHand = {
     none: rightFingers,
@@ -84,7 +96,7 @@ export const MecaExercise = ({ mecaExercise }) => {
     <>
       {isExerciseCompleted
         ? (
-        <p>Terminado bro</p>
+        <p></p>
           )
         : (
         <>

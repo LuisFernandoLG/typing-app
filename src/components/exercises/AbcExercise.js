@@ -16,7 +16,7 @@ import { EnterKey } from '../shortHandKeys/EnterKey'
 //   return EnglishExercisesMockup.find(({ id }) => courseId === id).exercises
 // }
 
-export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
+export const AbcExercise = ({ abcExercise, results, setIsDone, goNext }) => {
   const [itemSelected, setItemSelected] = useState(null)
   // eslint-disable-next-line no-unused-vars
   const [currentExercise, setCurrentExercise] = useState(abcExercise)
@@ -27,8 +27,10 @@ export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
   const option2 = useRef(null)
   const option3 = useRef(null)
 
-  // const nextBtnRef = useRef(null)
-  // const homeBtnRef = useRef(null)
+  useEffect(() => {
+    setCurrentExercise(abcExercise)
+    setItemSelected(null)
+  }, [abcExercise])
 
   // const searchForExercise = ({ exerciseId }) =>
   //   exercises.find(({ id }) => id === exerciseId)
@@ -56,27 +58,18 @@ export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
   //   }
   // }
 
+  useEffect(() => {
+    if (itemSelected) setIsDone()
+  }, [itemSelected])
+
   const selectAnswer = ({ itemSelected }) => {
-    setIsDone()
+    setItemSelected(itemSelected)
     if (itemSelected.isCorrect) playSuccesSound()
     else playFailSound()
-    setItemSelected(itemSelected)
   }
 
-  // const isLastItem = () => {
-  //   return exercises.length - 1 === exerciseIndex
-  // }
-
-  const isLastItem = false
-
   const handleKeyDown = () => {
-    if (isLastItem()) {
-      // homeBtnRef.current.click()
-      console.log('back pressed')
-    } else {
-      // nextBtnRef.current.click()
-      console.log('next pressed')
-    }
+    goNext()
   }
 
   const handleKeyDownOptions = (e) => {
