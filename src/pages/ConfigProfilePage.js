@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import GroupInput from '../components/inputs/GroupInput'
 import { ProfileImageInput } from '../components/inputs/ProfileImgInput'
@@ -9,28 +10,50 @@ import { Button } from '../components/ui/Button'
 import { emailRegex, nickNameRegex } from '../constants/regexs'
 import { useSession } from '../hooks/useSession'
 import { Layout } from '../layouts/Layout'
-// import { nickNameRegex } from '../constants/regexs'
+import api from '../services/api'
+
+const defaultImg =
+  'https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Clipart.png'
 
 export const ConfigProgilePage = () => {
-  const [photo, setPhoto] = useState(null)
+  const { user, handleLogIn } = useSession()
+  const [photo, setPhoto] = useState(user?.imageProfile || defaultImg)
   const {
     register,
     formState: { errors },
     setValue,
     handleSubmit
   } = useForm()
+  const [isLoading, setIsLoading] = useState(false)
 
-  const { user } = useSession()
+  useEffect(() => {
+    setPhoto(user.imageProfile || defaultImg)
+  }, [user])
 
   const hanldeOnImageChange = ({ name, value }) => {
-    console.log('change')
     setPhoto(value)
   }
 
-  const onSubmit = (data) => {
-    console.log({ data })
-    // const hanldeSubmitOwn = (data) =>
-    // handleLogIn({ email: watch('Correo'), password: watch('Contraseña') })
+  const formatForJson = ({ data }) => {
+    return {
+      userName: data.Usuario,
+      email: data.Correo,
+      password: data.Contraseña,
+      imageProfile: photo
+    }
+  }
+
+  const onSubmit = async (data) => {
+    setIsLoading(true)
+    const userDatFormated = formatForJson({ data })
+    await api().updateUser({ user: userDatFormated }).then((data) => {
+      toast.success('Actualizado')
+      handleLogIn({ email: userDatFormated.email, password: userDatFormated.password })
+    }).catch((error) => {
+      toast.error('Ups! Hubo un error')
+      console.log({ error })
+    })
+    setIsLoading(false)
   }
 
   useEffect(() => {
@@ -42,60 +65,61 @@ export const ConfigProgilePage = () => {
   return (
     <Layout>
       <FlexContainer jc_fs ai_fs>
-      <BackPageButton/>
+        <BackPageButton />
       </FlexContainer>
       <FlexContainer jc_c ai_c>
+        <FormStyled
+          as='form'
+          fd_c
+          jc_c
+          ai_c
+          gap='3rem'
+          onSubmit={handleSubmit(onSubmit)}>
+          <ProfileImageInput
+            value={photo}
+            name='imageProfile'
+            placeHolder='Ingresar foto'
+            handleChangeFiles={hanldeOnImageChange}
+          />
+          <GroupInput
+            name='Usuario'
+            type='text'
+            regex={nickNameRegex}
+            isRequired={true}
+            register={register}
+            errors={errors}
+            maxLength={20}
+          />
+          <GroupInput
+            name='Correo'
+            regex={emailRegex}
+            isRequired={true}
+            register={register}
+            errors={errors}
+            maxLength={50}
+            disabled={true}
+          />
 
-      <FormStyled
-        as='form'
-        fd_c
-        jc_c
-        ai_c
-        gap='3rem'
-        onSubmit={handleSubmit(onSubmit)}>
-        <ProfileImageInput
-          value={photo}
-          name='photo'
-          placeHolder='Ingresar foto'
-          handleChangeFiles={hanldeOnImageChange}
-        />
-         <GroupInput
-        name='Usuario'
-        type='text'
-        regex={nickNameRegex}
-        isRequired={true}
-        register={register}
-        errors={errors}
-        maxLength={20}
-      />
-        <GroupInput
-          name='Correo'
-          regex={emailRegex}
-          isRequired={true}
-          register={register}
-          errors={errors}
-          maxLength={50}
-        />
+          <GroupInput
+            name='Contraseña'
+            type='password'
+            isRequired={true}
+            register={register}
+            errors={errors}
+            maxLength={30}
+          />
 
-        <GroupInput
-          name='Contraseña'
-          type='password'
-          isRequired={true}
-          register={register}
-          errors={errors}
-          maxLength={30}
-        />
-
-        <Button
-          type='submit'
-          as='input'
-          value='Iniciar sesión'
-          primary={true}
-          pd='1rem'>
-          Guardar cambios
-        </Button>
-      </FormStyled>
-</FlexContainer>
+          <Button
+            type='submit'
+            as='input'
+            value='Iniciar sesión'
+            primary={true}
+            pd='1rem'
+            isLoading={isLoading}>
+            Guardar cambios
+          </Button>
+        </FormStyled>
+      </FlexContainer>
     </Layout>
   )
 }

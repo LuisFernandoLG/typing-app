@@ -1,6 +1,7 @@
-import DefaulImg from '../../images/photos/iram.jpeg'
+// import DefaulImg from '../../images/photos/iram.jpeg'
 import styled from 'styled-components'
 import { FlexContainer } from '../shareStyleComponents/FlexContainer'
+import { resizeFile } from '../../helpers/resizeFile'
 
 export const ProfileImageInput = ({
   name,
@@ -10,19 +11,18 @@ export const ProfileImageInput = ({
   handleChangeFiles
 }) => {
   const handleFileSelected = (e) => {
-    const reader = new FileReader()
-    reader.addEventListener('load', (_) => {
-      handleChangeFiles({ name, value: reader.result })
-    })
-
-    if (e.target.files[0]) reader.readAsDataURL(e.target.files[0])
+    if (e.target.files[0]) {
+      resizeFile({ file: e.target.files[0] }).then((imageResized) => {
+        handleChangeFiles({ name, value: imageResized })
+      })
+    }
   }
 
   return (
     <ProfileImageInputStyled errors={errors}>
       <label htmlFor="image-profile">
         <PhotoPreview>
-          <img src={value || DefaulImg} alt="user" />
+          <img src={value} alt="user" />
         </PhotoPreview>
         {/* <span>{placeHolder}</span> */}
       </label>

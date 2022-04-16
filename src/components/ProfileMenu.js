@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import IramPhoto from '../images/photos/iram.jpeg'
+import { useSession } from '../hooks/useSession'
+// import IramPhoto from '../images/photos/iram.jpeg'
 import { MenuList } from './MenuList'
 
+const defaultImg = 'https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-Clipart.png'
+
 export const ProfileMenu = () => {
+  const { user } = useSession()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const openMenu = () => {
     setIsMenuOpen(true)
@@ -15,7 +19,7 @@ export const ProfileMenu = () => {
 
   return (
     <div>
-      <Photo onClick={openMenu} src={IramPhoto} />
+      <Photo onClick={openMenu} src={user?.imageProfile || defaultImg} />
       {isMenuOpen && <MenuList closeMenu={closeMenu} />}
     </div>
   )

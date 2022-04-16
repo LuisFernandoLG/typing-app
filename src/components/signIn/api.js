@@ -1,5 +1,5 @@
-// const PROTOCOL = "http",
-//   DOMAIN = "localhost:8000",
+// const PROTOCOL = 'http'
+// const DOMAIN = 'localhost:8000'
 const PROTOCOL = 'https'
 const DOMAIN = 'backendtypeandtpye.herokuapp.com'
 const HOST = `${PROTOCOL}://${DOMAIN}`
