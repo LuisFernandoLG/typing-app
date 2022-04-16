@@ -36,10 +36,6 @@ export const EnglishExercisePage = () => {
   const searchForExercise = ({ exerciseId }) =>
     allExercises.find(({ id }) => id === exerciseId)
 
-  useEffect(() => {
-    console.log({ isDone })
-  }, [isDone])
-
   const searchForExerciseIndex = ({ exerciseId }) => {
     return allExercises.findIndex(({ id }) => id === exerciseId)
   }
