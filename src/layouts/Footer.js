@@ -19,10 +19,10 @@ const FooterWrapper = styled(FlexContainer)`
   /* margin-top: 10rem; */
   width: 100%;
   padding: 0.5rem;
-  background: ${({ theme: { secondaryColor } }) => secondaryColor};
+  background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
 `
 
 const ExternalLink = styled.a`
   font-size: 1.3rem;
-  color: ${({ theme: { bgColor } }) => bgColor};
+  color: ${({ theme: { fontColor } }) => fontColor};
 `
