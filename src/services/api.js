@@ -18,6 +18,7 @@ const HOST = `${PROTOCOL}://${DOMAIN}`
 // // const postExerciseEndpoint = `${HOST}/admin/exercise`
 const allEnglishExercisesEndPoint = `${HOST}/englishExercises`
 const updateUserEndPoint = `${HOST}/user`
+const recoverPassEndPoint = `${HOST}/recover/pass`
 
 // const basicOptions = {
 //   method: 'GET',
@@ -39,6 +40,14 @@ const getOptionsForPut = ({ body }) => ({
   }
 })
 
+const getOptionsForPost = ({ body }) => ({
+  method: 'POST',
+  body: JSON.stringify(body),
+  headers: {
+    'Content-type': 'application/json'
+  }
+})
+
 const api = () => {
   const getAllEnglishExercises = async ({ courseId, exerciseId }) => {
     try {
@@ -48,7 +57,6 @@ const api = () => {
       const json = res.ok ? res.json() : null
       return json
     } catch (error) {
-      console.log({ myMess: 'something went wrong', error })
       return { error }
     }
   }
@@ -62,8 +70,17 @@ const api = () => {
     })
   })
 
+  const recoverPass = ({ email }) => new Promise((resolve, reject) => {
+    const options = getOptionsForPost({ body: { email } })
+    fetch(recoverPassEndPoint, options).then((res) => {
+      resolve(res.json())
+    }).catch((error) => {
+      reject(error)
+    })
+  })
+
   // Functions hehe
-  return { getAllEnglishExercises, updateUser }
+  return { getAllEnglishExercises, updateUser, recoverPass }
 }
 
 export default api

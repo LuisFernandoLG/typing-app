@@ -10,11 +10,13 @@ import { useState } from 'react'
 import { useClipPath } from '../hooks/useClipPath'
 import { toast } from 'react-toastify'
 import { BackPageButton } from '../components/ui/BackPageButton'
+import api from '../services/api'
 
 export const RecoverPasswordPage = () => {
   // eslint-disable-next-line no-unused-vars
   const [recoPassword, setRecoPassword] = useState(null)
   const { copyToClipPath } = useClipPath()
+  const [isLoading, setIsLoading] = useState(false)
 
   const copyPassword = () => {
     toast.success('Contraseña copiada')
@@ -28,7 +30,22 @@ export const RecoverPasswordPage = () => {
   } = useForm()
 
   const handleOnSubmit = (data) => {
-    setRecoPassword('probandoAndo!')
+    setIsLoading(true)
+    const email = data.Correo
+    api()
+      .recoverPass({ email })
+      .then((data) => {
+        const existUser = data.data.exist
+
+        if (existUser) setRecoPassword(data.data.password)
+        else toast.error('El correo no existe')
+      })
+      .catch((error) => {
+        console.log({ error })
+        toast.error('Hubo un error')
+      }).finally(() => {
+        setIsLoading(false)
+      })
   }
   return (
     <Layout>
@@ -52,7 +69,7 @@ export const RecoverPasswordPage = () => {
           />
           <Button
             primary={true}
-            isLoading={false}
+            isLoading={isLoading}
             type='submit'
             as='input'
             value='Buscar'
