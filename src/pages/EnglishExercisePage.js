@@ -6,21 +6,28 @@ import { AbcExercise } from '../components/exercises/AbcExercise'
 import { useEffect, useState, useRef } from 'react'
 import api from '../services/api'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
-import { IoArrowForward } from 'react-icons/io5'
+// import { IoArrowForward } from 'react-icons/io5'
 import { MecaExercise } from '../components/MecaExercise'
 import { Button } from '../components/ui/Button'
 import { FingerLoader } from '../components/loaders/FingerLoader'
+// import { FloatContainer } from '../components/FloatContainer'
+import { ShorHandKey } from '../components/ShortHandKey'
+// import { EnterKey } from '../components/shortHandKeys/EnterKey'
+import { AiOutlineEnter } from 'react-icons/ai'
+import styled from 'styled-components'
 
 const setExercisesFromArray = ({ exers, courseId }) => {
   return exers.find(({ id }) => courseId === id).exercises
 }
+
+const initialIsDone = false
 
 export const EnglishExercisePage = () => {
   const [allExercises, setAllExercises] = useState(null)
   const { courseId, exerciseId } = useParams()
   const [currentExercise, setCurrentExercise] = useState(null)
   const [exerciseIndex, setExerciseIndex] = useState(null)
-  const [isDone, setIsDone] = useState(false)
+  const [isDone, setIsDone] = useState(initialIsDone)
 
   const setExerciseDone = () => setIsDone(true)
   const nextBtnRef = useRef(null)
@@ -28,6 +35,10 @@ export const EnglishExercisePage = () => {
 
   const searchForExercise = ({ exerciseId }) =>
     allExercises.find(({ id }) => id === exerciseId)
+
+  useEffect(() => {
+    console.log({ isDone })
+  }, [isDone])
 
   const searchForExerciseIndex = ({ exerciseId }) => {
     return allExercises.findIndex(({ id }) => id === exerciseId)
@@ -83,48 +94,61 @@ export const EnglishExercisePage = () => {
   return (
     <Layout>
       <BackPageButton backRoute={routesV3.ENGLISH_PAGE.route} />
-      { currentExercise
+      {currentExercise
         ? (
         <>
-          {currentExercise.type === 'abcExercise' && (
-            <AbcExercise
-              abcExercise={currentExercise}
-              setIsDone={setExerciseDone}
-              goNext={goNext}
-            />
-          )}
+          <FlexContainer jc_c ai_c>
+            {currentExercise.type === 'abcExercise' && (
+              <AbcExercise
+                abcExercise={currentExercise}
+                setIsDone={setExerciseDone}
+                goNext={goNext}
+              />
+            )}
 
-          {currentExercise.type === 'mecaExercise' && (
-            <MecaExercise
-            mecaExercise={currentExercise}
-            setIsDone={setExerciseDone}
-          />
-          )}
+            {currentExercise.type === 'mecaExercise' && (
+              <MecaExercise
+                mecaExercise={currentExercise}
+                setIsDone={setExerciseDone}
+              />
+            )}
+          </FlexContainer>
 
           {isDone
             ? (
             <>
-              <FlexContainer jc_fs ai_c>
+              <FlexContainer jc_fe ai_c>
                 {exerciseIndex === allExercises.length - 1 && (
-                  <Link ref={homeBtnRef} to={routesV3.ENGLISH_PAGE.route}>
-                    <Button primary={true} pd='1rem'>
-                      Página principal
-                    </Button>
-                  </Link>
+                  <ShorHandKey handleKeyDown={goNext} code='Enter'>
+                    <Link ref={homeBtnRef} to={routesV3.ENGLISH_PAGE.route}>
+                      <Button primary={true} pd='1rem'>
+                        Página principal{' '}
+                        <EnterKeyShorCut>
+                          <AiOutlineEnter />
+                        </EnterKeyShorCut>
+                      </Button>
+                    </Link>
+                  </ShorHandKey>
                 )}
               </FlexContainer>
 
               <FlexContainer ai_fe jc_fe pd='1rem'>
                 {exerciseIndex !== allExercises.length - 1 && (
-                  <Link ref={nextBtnRef}
-                    to={`${routesV3.ENGLISH_PAGE.route}/${
-                      routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE
-                        .route
-                    }/${courseId}/${allExercises[exerciseIndex + 1].id}`}>
-                    <Button primary={true} pd='1rem'>
-                      Siguiente <IoArrowForward />{' '}
-                    </Button>
-                  </Link>
+                  <ShorHandKey handleKeyDown={goNext} code='Enter'>
+                    <Link
+                      ref={nextBtnRef}
+                      to={`${routesV3.ENGLISH_PAGE.route}/${
+                        routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE
+                          .route
+                      }/${courseId}/${allExercises[exerciseIndex + 1].id}`}>
+                      <Button primary={true} pd='1rem'>
+                        Siguiente{' '}
+                        <EnterKeyShorCut>
+                          <AiOutlineEnter />
+                        </EnterKeyShorCut>
+                      </Button>
+                    </Link>
+                  </ShorHandKey>
                 )}
               </FlexContainer>
             </>
@@ -133,10 +157,21 @@ export const EnglishExercisePage = () => {
         </>
           )
         : (
-        <FlexContainer jc_c ai_c pd="15% 0">
-          <FingerLoader/>
+        <FlexContainer jc_c ai_c pd='15% 0'>
+          <FingerLoader />
         </FlexContainer>
           )}
     </Layout>
   )
 }
+
+const EnterKeyShorCut = styled.span`
+margin-left: 0.5rem;
+  padding:0 0.5rem;
+  font-size:1.5rem;
+  font-weight:900;
+  border-radius: 10px;
+  color: ${({ theme: { fontColor } }) => fontColor};
+  background: ${({ theme: { accentColor } }) => accentColor};
+  border: 2px solid ${({ theme: { fontColor } }) => fontColor};
+`

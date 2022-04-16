@@ -5,18 +5,9 @@ import { useShortSound } from '../../hooks/useShortSound'
 import { FlexContainer } from '../shareStyleComponents/FlexContainer'
 import styled from 'styled-components'
 import Skeleton from 'react-loading-skeleton'
-import { ShorHandKey } from '../ShortHandKey'
-import { FloatContainer } from '../FloatContainer'
-// import { routesV3 } from '../../routes'
-// import { Button } from '../ui/Button'
 import { Layout } from '../../layouts/Layout'
-import { EnterKey } from '../shortHandKeys/EnterKey'
 
-// const setExercisesFromArray = ({ courseId }) => {
-//   return EnglishExercisesMockup.find(({ id }) => courseId === id).exercises
-// }
-
-export const AbcExercise = ({ abcExercise, results, setIsDone, goNext }) => {
+export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
   const [itemSelected, setItemSelected] = useState(null)
   // eslint-disable-next-line no-unused-vars
   const [currentExercise, setCurrentExercise] = useState(abcExercise)
@@ -32,32 +23,6 @@ export const AbcExercise = ({ abcExercise, results, setIsDone, goNext }) => {
     setItemSelected(null)
   }, [abcExercise])
 
-  // const searchForExercise = ({ exerciseId }) =>
-  //   exercises.find(({ id }) => id === exerciseId)
-
-  // const searchForExerciseIndex = ({ exerciseId }) => {
-  //   return exercises.findIndex(({ id }) => id === exerciseId)
-  // }
-
-  // useEffect(
-  //   () =>
-  //     setExercises(setExercisesFromArray({ courseId: parseInt(courseId) })),
-  //   []
-  // )
-
-  // useEffect(() => {
-  //   if (exercises !== null) {
-  //     const item = searchForExercise({ exerciseId: parseInt(exerciseId) })
-  //     const index = searchForExerciseIndex({ exerciseId: parseInt(exerciseId) })
-  //     setCurrentExercise(item)
-  //     setExerciseIndex(index)
-  //   }
-  // }, [exercises])
-
-  // const goNext = () => {
-  //   }
-  // }
-
   useEffect(() => {
     if (itemSelected) setIsDone()
   }, [itemSelected])
@@ -66,10 +31,6 @@ export const AbcExercise = ({ abcExercise, results, setIsDone, goNext }) => {
     setItemSelected(itemSelected)
     if (itemSelected.isCorrect) playSuccesSound()
     else playFailSound()
-  }
-
-  const handleKeyDown = () => {
-    goNext()
   }
 
   const handleKeyDownOptions = (e) => {
@@ -121,16 +82,7 @@ export const AbcExercise = ({ abcExercise, results, setIsDone, goNext }) => {
 
       {itemSelected && (
         <>
-          <FloatContainer right='10%' top='35%'>
-            <FlexContainer fd_c ai_c jc_c>
-              <ShorHandKey
-                handleKeyDown={handleKeyDown}
-                code={'Enter'}
-                textLeyend='Presionar enter para continuar'>
-                <EnterKey />
-              </ShorHandKey>
-            </FlexContainer>
-          </FloatContainer>
+
         </>
         // </Link>
       )}
