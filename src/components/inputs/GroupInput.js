@@ -7,12 +7,14 @@ const GroupInput = ({
   isRequired,
   errors,
   register,
-  maxLength
+  maxLength,
+  disabled
 }) => {
   return (
     <GroupInputStyled error={errors[name]}>
       <input
         type={type}
+        disabled={disabled}
         placeholder={' '}
         id={name}
         {...register(name, {
@@ -88,6 +90,10 @@ const GroupInputStyled = styled.div`
     left: 0;
     background: red;
     z-index: 200;
+  }
+
+  input:disabled{
+    opacity: 0.5;
   }
 `
 
