@@ -57,7 +57,6 @@ const QuoteStyled = styled.div`
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   font-size: 1.5rem;
 
-  /* max-height: 213px; */
   overflow-y: hidden;
   margin: 2rem 0;
 

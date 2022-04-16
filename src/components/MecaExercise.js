@@ -17,8 +17,9 @@ import leftLittleFinger from '../images/fingers/leftLittleFinger.png'
 import leftFingers from '../images/fingers/leftFingers.png'
 import { FlexContainer } from './shareStyleComponents/FlexContainer'
 import { KeyBoard } from './exercise/KeyBoard'
+import { Layout } from '../layouts/Layout'
 
-const textQuote = 'qweruiopasdklñzxcnm'
+const textQuote = 'Hola, bievenido a type and type, esta es una aplicacion para aprender mecanogerafia shido'
 
 export const MecaExercise = ({ mecaExercise, setIsDone }) => {
   const { quote, indexQuote, isExerciseCompleted, keyWanted, keyPressed, results } =
@@ -31,7 +32,7 @@ export const MecaExercise = ({ mecaExercise, setIsDone }) => {
   }
 
   useEffect(() => {
-    if (results) {
+    if (results && isExerciseCompleted) {
       if (setIsDone) {
         setIsDone()
       } else setIsDoneDefault()
@@ -93,29 +94,40 @@ export const MecaExercise = ({ mecaExercise, setIsDone }) => {
   }
 
   return (
-    <>
-      {isExerciseCompleted
-        ? (
-        <p></p>
-          )
-        : (
-        <>
+    <Layout>
           <Quote quote={quote} indexQuote={indexQuote} />
+
+          <Container jc_c ai_c>
           <KeyBoard keyPressed={keyPressed} keyWanted={keyWanted} />
           <FlexContainer jc_c ai_c>
-            <Hand src={leftHand[keyWanted.content] || leftHand.none} />
-            <Hand src={rightHand[keyWanted.content] || rightHand.none} />
+            <Hand className='leftHand' src={leftHand[keyWanted.content] || leftHand.none} />
+            <Hand className='rightHand' src={rightHand[keyWanted.content] || rightHand.none} />
           </FlexContainer>
-        </>
-          )}
-    </>
+          </Container>
+
+    </Layout>
   )
 }
 
+const Container = styled(FlexContainer)`
+position: relative;
+width:min-content;
+/* background: red; */
+margin:0 auto;
+`
 const Hand = styled.img`
-  width: 400px;
-  height: 400px;
-  transform: translateY(-200px);
+  width: 25em;
+  height: 25em;
+  position:absolute;
+  top:-20%;
 
-  /* position: absolute; */
+  &&.leftHand{
+    left:-10%;
+    /* right:0; */
+  }
+  &&.rightHand{
+    right:-10%;
+  }
+
+
 `
