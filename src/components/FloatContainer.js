@@ -9,6 +9,11 @@ export const FloatContainer = ({ right, left, top, bottom, children }) => {
 }
 
 const StyledFloatContainer = styled.div`
+  background: ${({ theme: { primaryGradient } }) => primaryGradient};
+  box-shadow: ${({ theme: { primaryBoxShadow } }) => primaryBoxShadow};
+  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
+  padding:1.5rem;
+  
   position: absolute;
   ${({ top }) => (top ? `top:${top};` : null)}
   ${({ right }) => (right ? `right:${right};` : null)}
