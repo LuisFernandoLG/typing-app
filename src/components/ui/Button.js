@@ -15,8 +15,13 @@ export const Button = (
       fontSize={fontSize}
       pd={pd}
       {...props}>
-      <Content jc_c ai_c> {isLoading ? <Loader /> : children} </Content>
-      <BaseSizeHelper jc_c ai_c>{children}</BaseSizeHelper>
+      <Content jc_c ai_c>
+        {' '}
+        {isLoading ? <Loader /> : children}{' '}
+      </Content>
+      <BaseSizeHelper jc_c ai_c>
+        {children}
+      </BaseSizeHelper>
     </ButtonStyled>
   )
 }
@@ -24,11 +29,10 @@ export const Button = (
 const primaryStyles = css`
   color: ${({ theme: { fontColor } }) => fontColor};
   background: ${({ theme: { primaryColor } }) => primaryColor};
-  
+
   &:hover,
   &:focus {
-    /* box-shadow: 0 0.4375rem 1.575rem -1.125rem ${({ theme: { accentColor } }) => accentColor}; */
-    box-shadow: 0 0.4375rem 1.575rem -0.625rem ${({ theme: { secondaryColor } }) => secondaryColor};
+    box-shadow: ${({ theme: { primaryBoxShadow } }) => primaryBoxShadow};
   }
 `
 
@@ -55,8 +59,9 @@ const ButtonStyled = styled.button`
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   transition: box-shadow 300ms ease, color 300ms ease;
 
-  ${({ fontSize }) => fontSize ? `font-size: ${fontSize}` : 'font-size: 1.2rem'};
-  
+  ${({ fontSize }) =>
+    fontSize ? `font-size: ${fontSize}` : 'font-size: 1.2rem'};
+
   font-weight: 600;
   user-select: none;
   cursor: pointer;

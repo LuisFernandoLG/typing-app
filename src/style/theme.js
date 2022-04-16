@@ -6,6 +6,7 @@ export const themes = {
     tertiaryColor: '#F7F5F2',
     accentColor: '#fff',
     whiteColor: 'red',
+    primaryBoxShadow: '0 0.4375em 1.275em -0.625em #9AD0EC',
 
     bgColor: '#DFDFDE',
     disableColor: '#878fb8',
@@ -26,6 +27,7 @@ export const themes = {
     tertiaryColor: '#2d383c',
     accentColor: '#374045',
     whiteColor: '#fff',
+    primaryBoxShadow: '0 0.4375em 1.575em -0.625em #9AD0EC',
 
     bgColor: '#192428',
     disableColor: '#8D8DAA',
