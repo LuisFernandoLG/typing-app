@@ -53,6 +53,7 @@ export const useSignInForm = () => {
     handleSubmit,
     fecthLoading,
     errors,
-    register
+    register,
+    watch
   }
 }

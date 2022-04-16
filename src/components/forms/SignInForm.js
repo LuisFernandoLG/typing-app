@@ -4,6 +4,7 @@ import { useSignInForm } from '../../hooks/useSignInForm'
 import GroupInput from '../inputs/GroupInput'
 import { Button } from '../ui/Button'
 import { emailRegex, nickNameRegex } from '../../constants/regexs'
+import { toast } from 'react-toastify'
 
 export const SignInForm = () => {
   const {
@@ -12,8 +13,16 @@ export const SignInForm = () => {
     errors,
     handleSubmit,
     handleSubmitOwn,
-    fecthLoading
+    fecthLoading,
+    watch
   } = useSignInForm()
+
+  const handleWholeSubmit = (data) => {
+    const pass1 = watch('Contraseña')
+    const pass2 = watch('Confirmar contraseña')
+    if (pass1 === pass2) handleSubmitOwn(data)
+    else toast.error('Las contraseñas no son iguales')
+  }
 
   return (
     <SignInWrapper
@@ -22,7 +31,7 @@ export const SignInForm = () => {
       flex_dc
       flex_ai_c
       gap='3rem'
-      onSubmit={handleSubmit(handleSubmitOwn)}>
+      onSubmit={handleSubmit(handleWholeSubmit)}>
       <Title>Registro</Title>
 
       <GroupInput
