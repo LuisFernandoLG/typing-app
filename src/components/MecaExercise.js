@@ -23,7 +23,7 @@ const textQuote = 'qweruiopasdklñzxcnm'
 export const MecaExercise = ({ mecaExercise }) => {
   const { quote, indexQuote, isExerciseCompleted, keyWanted, keyPressed } =
     useKeyBoardActivity({
-      textQuote
+      textQuote: textQuote || mecaExercise?.content
     })
 
   const rightHand = {

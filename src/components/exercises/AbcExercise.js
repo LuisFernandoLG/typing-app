@@ -1,33 +1,25 @@
-import { Link } from 'react-router-dom'
-
+// import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
-
-import { IoArrowForward } from 'react-icons/io5'
 import { useShortSound } from '../../hooks/useShortSound'
-import { EnglishExercisesMockup } from '../../constants/englishExercisesTest'
+// import { EnglishExercisesMockup } from '../../constants/englishExercisesTest'
 import { FlexContainer } from '../shareStyleComponents/FlexContainer'
 import styled from 'styled-components'
 import Skeleton from 'react-loading-skeleton'
 import { ShorHandKey } from '../ShortHandKey'
 import { FloatContainer } from '../FloatContainer'
-import { routesV3 } from '../../routes'
-import { Button } from '../ui/Button'
+// import { routesV3 } from '../../routes'
+// import { Button } from '../ui/Button'
 import { Layout } from '../../layouts/Layout'
 import { EnterKey } from '../shortHandKeys/EnterKey'
 
-const setExercisesFromArray = ({ courseId }) => {
-  return EnglishExercisesMockup.find(({ id }) => courseId === id).exercises
-}
+// const setExercisesFromArray = ({ courseId }) => {
+//   return EnglishExercisesMockup.find(({ id }) => courseId === id).exercises
+// }
 
-export const AbcExercise = ({ courseId, exerciseId, results }) => {
-  // console.log({ courseId, exerciseId })
-  // Get all exericses
-  const [exercises, setExercises] = useState(null)
-
+export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
   const [itemSelected, setItemSelected] = useState(null)
-  const [currentExercise, setCurrentExercise] = useState()
-  const [exerciseIndex, setExerciseIndex] = useState(null)
-
+  // eslint-disable-next-line no-unused-vars
+  const [currentExercise, setCurrentExercise] = useState(abcExercise)
   const [playSuccesSound] = useShortSound({ soundPath: 'success.mp3' })
   const [playFailSound] = useShortSound({ soundPath: 'failure.mp3' })
 
@@ -35,61 +27,55 @@ export const AbcExercise = ({ courseId, exerciseId, results }) => {
   const option2 = useRef(null)
   const option3 = useRef(null)
 
-  const nextBtnRef = useRef(null)
-  const homeBtnRef = useRef(null)
+  // const nextBtnRef = useRef(null)
+  // const homeBtnRef = useRef(null)
 
-  const searchForExercise = ({ exerciseId }) =>
-    exercises.find(({ id }) => id === exerciseId)
+  // const searchForExercise = ({ exerciseId }) =>
+  //   exercises.find(({ id }) => id === exerciseId)
 
-  const searchForExerciseIndex = ({ exerciseId }) => {
-    return exercises.findIndex(({ id }) => id === exerciseId)
-  }
+  // const searchForExerciseIndex = ({ exerciseId }) => {
+  //   return exercises.findIndex(({ id }) => id === exerciseId)
+  // }
 
-  useEffect(
-    () =>
-      setExercises(setExercisesFromArray({ courseId: parseInt(courseId) })),
-    []
-  )
+  // useEffect(
+  //   () =>
+  //     setExercises(setExercisesFromArray({ courseId: parseInt(courseId) })),
+  //   []
+  // )
 
-  useEffect(() => {
-    if (exercises !== null) {
-      const item = searchForExercise({ exerciseId: parseInt(exerciseId) })
-      const index = searchForExerciseIndex({ exerciseId: parseInt(exerciseId) })
-      setCurrentExercise(item)
-      setExerciseIndex(index)
-    }
-  }, [exercises])
+  // useEffect(() => {
+  //   if (exercises !== null) {
+  //     const item = searchForExercise({ exerciseId: parseInt(exerciseId) })
+  //     const index = searchForExerciseIndex({ exerciseId: parseInt(exerciseId) })
+  //     setCurrentExercise(item)
+  //     setExerciseIndex(index)
+  //   }
+  // }, [exercises])
 
   // const goNext = () => {
   //   }
   // }
 
-  useEffect(() => {
-    setItemSelected(null)
-    if (exercises) {
-      const newIndex = exerciseIndex + 1
-      if (newIndex < exercises.length) {
-        setExerciseIndex(exerciseIndex + 1)
-        setCurrentExercise(exercises[exerciseIndex + 1])
-      }
-    }
-  }, [exerciseId])
-
   const selectAnswer = ({ itemSelected }) => {
+    setIsDone()
     if (itemSelected.isCorrect) playSuccesSound()
     else playFailSound()
     setItemSelected(itemSelected)
   }
 
-  const isLastItem = () => {
-    return exercises.length - 1 === exerciseIndex
-  }
+  // const isLastItem = () => {
+  //   return exercises.length - 1 === exerciseIndex
+  // }
+
+  const isLastItem = false
 
   const handleKeyDown = () => {
     if (isLastItem()) {
-      homeBtnRef.current.click()
+      // homeBtnRef.current.click()
+      console.log('back pressed')
     } else {
-      nextBtnRef.current.click()
+      // nextBtnRef.current.click()
+      console.log('next pressed')
     }
   }
 
@@ -152,30 +138,6 @@ export const AbcExercise = ({ courseId, exerciseId, results }) => {
               </ShorHandKey>
             </FlexContainer>
           </FloatContainer>
-
-          <FlexContainer jc_fs ai_c>
-            {exerciseIndex === exercises.length - 1 && (
-              <Link to={routesV3.ENGLISH_PAGE.route} ref={homeBtnRef}>
-                <Button Button primary={true} pd='1rem'>
-                  Página principal
-                </Button>
-              </Link>
-            )}
-          </FlexContainer>
-
-          <FlexContainer ai_fe jc_fe pd='1rem'>
-            {exerciseIndex !== exercises.length - 1 && (
-              <Link
-                to={`${routesV3.ENGLISH_PAGE.route}/${
-                  routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.route
-                }/${courseId}/${exercises[exerciseIndex + 1].id}`}
-                ref={nextBtnRef}>
-                <Button Button primary={true} pd='1rem'>
-                  Siguiente <IoArrowForward />{' '}
-                </Button>
-              </Link>
-            )}
-          </FlexContainer>
         </>
         // </Link>
       )}
