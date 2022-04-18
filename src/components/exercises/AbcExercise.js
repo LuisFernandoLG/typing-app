@@ -18,10 +18,10 @@ export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
   const option2 = useRef(null)
   const option3 = useRef(null)
 
-  useEffect(() => {
-    setCurrentExercise(abcExercise)
-    setItemSelected(null)
-  }, [abcExercise])
+  // useEffect(() => {
+  // setCurrentExercise(abcExercise)
+  // setItemSelected(null)
+  // }, [abcExercise])
 
   useEffect(() => {
     if (itemSelected) setIsDone()
@@ -40,6 +40,7 @@ export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
   }
 
   useEffect(() => {
+    // console.log({ abc: 'abcRendered' })
     window.addEventListener('keydown', handleKeyDownOptions)
 
     return () => window.removeEventListener('keydown', handleKeyDownOptions)
@@ -54,7 +55,7 @@ export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
   return (
     <>
       <Layout>
-        <Title>{currentExercise?.title || <Skeleton width={'20%'} />}</Title>
+        <Title>{currentExercise?.question || <Skeleton width={'20%'} />}</Title>
         <FlexContainer fd_c jc_c ai_c gap='1rem' mg='1rem'>
           {(currentExercise?.answers || [1, 2, 3]).map((item, index) => (
             <Answer

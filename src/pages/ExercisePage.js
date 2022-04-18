@@ -1,22 +1,12 @@
 import styled from 'styled-components'
 import { Exercise } from '../components/exercise/Exercise'
 import { Score } from '../components/exercise/Score'
-// import { Wrapper } from '../components/shareStyleComponents/Wrapper'
 import { TimerExercise } from '../components/exercise/TimerExercise'
 import Skeleton from 'react-loading-skeleton'
 import { ToolBar } from '../components/toolbar/ToolBar'
-// import { useToggle } from '../hooks/useToggle'
-// import { ToggleButton } from '../components/exercise/ToggleButton'
 import { useExercisePage } from '../hooks/useExercisePage'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
-// import {
-//   // FaVolumeUp,
-//   // FaVolumeMute,
-//   FaRegKeyboard,
-//   FaKeyboard
-// } from 'react-icons/fa'
 import { Layout } from '../layouts/Layout'
-// import { Layout } from '../layouts/Layout'
 
 export const ExercisePage = () => {
   const {

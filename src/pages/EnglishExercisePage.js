@@ -15,9 +15,15 @@ import { ShorHandKey } from '../components/ShortHandKey'
 // import { EnterKey } from '../components/shortHandKeys/EnterKey'
 import { AiOutlineEnter } from 'react-icons/ai'
 import styled from 'styled-components'
+import { Loader } from '../components/Loader'
 
-const setExercisesFromArray = ({ exers, courseId }) => {
-  return exers.find(({ id }) => courseId === id).exercises
+// const setExercisesFromArray = ({ exers, courseId }) => {
+//   return exers.find(({ id }) => courseId === id).exercises
+// }
+
+const exercisesTypes = {
+  MECA_EXERCISE: 1,
+  ABC_EXERCISE: 2
 }
 
 const initialIsDone = false
@@ -33,29 +39,20 @@ export const EnglishExercisePage = () => {
   const nextBtnRef = useRef(null)
   const homeBtnRef = useRef(null)
 
-  const searchForExercise = ({ exerciseId }) =>
-    allExercises.find(({ id }) => id === exerciseId)
+  const searchForExercise = ({ exerciseId }) => {
+    return allExercises.find(({ id }) => id === exerciseId)
+  }
 
   const searchForExerciseIndex = ({ exerciseId }) => {
     return allExercises.findIndex(({ id }) => id === exerciseId)
   }
 
   useEffect(() => {
-    const getData = async () => {
-      const x = await api().getAllEnglishExercises({
-        couseId: 1,
-        exerciseId: 2
-      })
-
-      const exercisesFromCourseId = setExercisesFromArray({
-        exers: x.data,
-        courseId: parseInt(courseId)
-      })
-
-      setAllExercises(exercisesFromCourseId)
-    }
-
-    getData()
+    api().getCourse({ courseId: 1 }).then((data) => {
+      setAllExercises(data.data)
+    }).catch((error) => {
+      console.log({ error })
+    })
   }, [])
 
   const isLastItem = () => {
@@ -87,27 +84,33 @@ export const EnglishExercisePage = () => {
     }
   }, [exerciseId])
 
+  const Exercise = ({ exerciseType, exercise }) => {
+    console.log({ exerciseType, exercise })
+    if (exerciseType === exercisesTypes.ABC_EXERCISE) {
+      return <AbcExercise
+        abcExercise={exercise}
+        setIsDone={setExerciseDone}
+        goNext={goNext}
+      />
+    }
+
+    if (exerciseType === exercisesTypes.MECA_EXERCISE) {
+      return <MecaExercise
+        mecaExercise={exercise}
+        setIsDone={setExerciseDone}
+      />
+    }
+  }
+
   return (
     <Layout>
       <BackPageButton backRoute={routesV3.ENGLISH_PAGE.route} />
       {currentExercise
         ? (
         <>
-          <FlexContainer jc_c ai_c>
-            {currentExercise.type === 'abcExercise' && (
-              <AbcExercise
-                abcExercise={currentExercise}
-                setIsDone={setExerciseDone}
-                goNext={goNext}
-              />
-            )}
-
-            {currentExercise.type === 'mecaExercise' && (
-              <MecaExercise
-                mecaExercise={currentExercise}
-                setIsDone={setExerciseDone}
-              />
-            )}
+          <FlexContainer jc_c ai_c>{
+            <Exercise exerciseType={currentExercise.exerciseType} exercise={currentExercise}/>
+          }
           </FlexContainer>
 
           {isDone
@@ -149,7 +152,7 @@ export const EnglishExercisePage = () => {
               </FlexContainer>
             </>
               )
-            : null}
+            : <Loader/>}
         </>
           )
         : (

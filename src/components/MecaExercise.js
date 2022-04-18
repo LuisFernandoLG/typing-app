@@ -22,14 +22,18 @@ import { Layout } from '../layouts/Layout'
 const textQuote = 'Hola, bievenido a type and type, esta es una aplicacion para aprender mecanogerafia shido'
 
 export const MecaExercise = ({ mecaExercise, setIsDone }) => {
-  const { quote, indexQuote, isExerciseCompleted, keyWanted, keyPressed, results } =
+  const { quote, indexQuote, isExerciseCompleted, keyWanted, keyPressed, results, updateQuote } =
     useKeyBoardActivity({
-      textQuote: textQuote || mecaExercise?.content
+      textQuote: mecaExercise?.textContent || textQuote
     })
 
   const setIsDoneDefault = () => {
     return quote
   }
+
+  useEffect(() => {
+    updateQuote({ newQuote: mecaExercise.textContent })
+  }, [mecaExercise])
 
   useEffect(() => {
     if (results && isExerciseCompleted) {

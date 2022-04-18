@@ -14,16 +14,12 @@ export const EnglishSectionPage = () => {
   const [allExercises, setAllExercises] = useState([])
 
   useEffect(() => {
-    const getData = async () => {
-      const x = await api().getAllEnglishExercises({
-        couseId: 1,
-        exerciseId: 2
-      })
-      // console.log(x.data)
-      setAllExercises(x.data)
-    }
-
-    getData()
+    api().getAllEnglishCourses().then((data) => {
+      console.log({ data })
+      setAllExercises(data.data)
+    }).catch((error) => {
+      console.log({ error })
+    })
   }, [])
 
   return (
@@ -36,16 +32,17 @@ export const EnglishSectionPage = () => {
           </FlexContainer>
             )
           : (
-              allExercises.map(({ id, categoryName, exercises }) => (
-            <Layout key={id} mg='2rem 0'>
+              allExercises.map(({ courseId, description, categoryName, exercises }) => (
+            <Layout key={courseId} mg='2rem 0'>
               <Title>{categoryName}</Title>
+              <p>{description}</p>
               <GridContainer>
-                {exercises.map((item) => (
+                {exercises.map((item, index) => (
                   <Link
                     key={item.id}
-                    to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.route}/${id}/${item.id}`}>
-                    <ExerciseBubble jc_c ai_c isDone={item.isDone}>
-                      {item.name}
+                    to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.route}/${courseId}/${item.id}`}>
+                    <ExerciseBubble jc_c ai_c isDone={false}>
+                      {item.title}
                     </ExerciseBubble>
                   </Link>
                 ))}

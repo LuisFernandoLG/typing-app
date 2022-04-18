@@ -36,7 +36,6 @@ export const RankingPage = () => {
   useEffect(() => {
     if (data) {
       setRankingUsers(data.data)
-      console.log({ data: data.data })
     }
   }, [data])
 

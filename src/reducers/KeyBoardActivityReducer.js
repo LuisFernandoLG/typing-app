@@ -121,6 +121,10 @@ export function KeyBoardActivityReducer (state, action) {
       }
     }
 
+    case TYPES.UPDATE_QUOTE: {
+      return keyBoardActivityInitialState({ textQuote: action.payload })
+    }
+
     default:
       return state
   }
