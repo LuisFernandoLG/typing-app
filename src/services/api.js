@@ -1,7 +1,7 @@
-// const PROTOCOL = 'http'
-// const DOMAIN = 'localhost:8000'
-const PROTOCOL = 'https'
-const DOMAIN = 'backendtypeandtpye.herokuapp.com'
+const PROTOCOL = 'http'
+const DOMAIN = 'localhost:8000'
+// const PROTOCOL = 'https'
+// const DOMAIN = 'backendtypeandtpye.herokuapp.com'
 const HOST = `${PROTOCOL}://${DOMAIN}`
 
 // // const exercisesEndpoint = `${HOST}/exercises`
@@ -19,6 +19,8 @@ const HOST = `${PROTOCOL}://${DOMAIN}`
 const allEnglishExercisesEndPoint = `${HOST}/englishExercises`
 const updateUserEndPoint = `${HOST}/user`
 const recoverPassEndPoint = `${HOST}/recover/pass`
+const getAllEnglishCoursesEndpoint = `${HOST}/courses`
+const getCourseEndpoint = `${HOST}/course`
 
 // const basicOptions = {
 //   method: 'GET',
@@ -79,8 +81,25 @@ const api = () => {
     })
   })
 
+  const getAllEnglishCourses = () => new Promise((resolve, reject) => {
+    fetch(getAllEnglishCoursesEndpoint).then((res) => {
+      resolve(res.json())
+    }).catch((error) => {
+      reject(error)
+    })
+  })
+
+  const getCourse = ({ courseId }) => new Promise((resolve, reject) => {
+    const endpointWithCourseId = `${getCourseEndpoint}/${courseId}`
+    fetch(endpointWithCourseId).then((res) => {
+      resolve(res.json())
+    }).catch((error) => {
+      reject(error)
+    })
+  })
+
   // Functions hehe
-  return { getAllEnglishExercises, updateUser, recoverPass }
+  return { getAllEnglishExercises, updateUser, recoverPass, getAllEnglishCourses, getCourse }
 }
 
 export default api
