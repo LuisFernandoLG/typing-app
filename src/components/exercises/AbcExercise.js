@@ -10,7 +10,7 @@ import { Layout } from '../../layouts/Layout'
 export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
   const [itemSelected, setItemSelected] = useState(null)
   // eslint-disable-next-line no-unused-vars
-  const [currentExercise, setCurrentExercise] = useState(abcExercise)
+  const [currentExercise, setCurrentExercise] = useState(null)
   const [playSuccesSound] = useShortSound({ soundPath: 'success.mp3' })
   const [playFailSound] = useShortSound({ soundPath: 'failure.mp3' })
 
@@ -18,14 +18,18 @@ export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
   const option2 = useRef(null)
   const option3 = useRef(null)
 
-  // useEffect(() => {
-  // setCurrentExercise(abcExercise)
-  // setItemSelected(null)
-  // }, [abcExercise])
+  useEffect(() => {
+    if (itemSelected) setIsDone(true)
+  }, [itemSelected])
 
   useEffect(() => {
-    if (itemSelected) setIsDone()
-  }, [itemSelected])
+    updateExercise()
+  }, [abcExercise])
+
+  const updateExercise = () => {
+    setCurrentExercise(abcExercise)
+    setItemSelected(null)
+  }
 
   const selectAnswer = ({ itemSelected }) => {
     setItemSelected(itemSelected)
@@ -40,7 +44,6 @@ export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
   }
 
   useEffect(() => {
-    // console.log({ abc: 'abcRendered' })
     window.addEventListener('keydown', handleKeyDownOptions)
 
     return () => window.removeEventListener('keydown', handleKeyDownOptions)

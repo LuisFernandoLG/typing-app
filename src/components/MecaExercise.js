@@ -20,6 +20,7 @@ import { KeyBoard } from './exercise/KeyBoard'
 import { Layout } from '../layouts/Layout'
 
 const textQuote = 'Hola, bievenido a type and type, esta es una aplicacion para aprender mecanogerafia shido'
+// const initialUpdateQuote = () => null
 
 export const MecaExercise = ({ mecaExercise, setIsDone }) => {
   const { quote, indexQuote, isExerciseCompleted, keyWanted, keyPressed, results, updateQuote } =
@@ -32,7 +33,9 @@ export const MecaExercise = ({ mecaExercise, setIsDone }) => {
   }
 
   useEffect(() => {
-    updateQuote({ newQuote: mecaExercise.textContent })
+    if (mecaExercise) {
+      if (mecaExercise?.textContent) updateQuote({ newQuote: mecaExercise.textContent })
+    }
   }, [mecaExercise])
 
   useEffect(() => {
@@ -99,8 +102,7 @@ export const MecaExercise = ({ mecaExercise, setIsDone }) => {
 
   return (
     <Layout>
-          <Quote quote={quote} indexQuote={indexQuote} />
-
+          <Quote quote={quote} indexQuote={indexQuote}/>
           <Container jc_c ai_c>
           <KeyBoard keyPressed={keyPressed} keyWanted={keyWanted} />
           <FlexContainer jc_c ai_c>

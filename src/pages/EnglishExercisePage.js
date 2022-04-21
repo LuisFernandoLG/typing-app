@@ -9,17 +9,14 @@ import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 // import { IoArrowForward } from 'react-icons/io5'
 import { MecaExercise } from '../components/MecaExercise'
 import { Button } from '../components/ui/Button'
-import { FingerLoader } from '../components/loaders/FingerLoader'
+// import { FingerLoader } from '../components/loaders/FingerLoader'
 // import { FloatContainer } from '../components/FloatContainer'
 import { ShorHandKey } from '../components/ShortHandKey'
 // import { EnterKey } from '../components/shortHandKeys/EnterKey'
 import { AiOutlineEnter } from 'react-icons/ai'
 import styled from 'styled-components'
 import { Loader } from '../components/Loader'
-
-// const setExercisesFromArray = ({ exers, courseId }) => {
-//   return exers.find(({ id }) => courseId === id).exercises
-// }
+import { toast } from 'react-toastify'
 
 const exercisesTypes = {
   MECA_EXERCISE: 1,
@@ -34,6 +31,7 @@ export const EnglishExercisePage = () => {
   const [currentExercise, setCurrentExercise] = useState(null)
   const [exerciseIndex, setExerciseIndex] = useState(null)
   const [isDone, setIsDone] = useState(initialIsDone)
+  const [isLoading, setIsLoading] = useState(true)
 
   const setExerciseDone = () => setIsDone(true)
   const nextBtnRef = useRef(null)
@@ -48,11 +46,17 @@ export const EnglishExercisePage = () => {
   }
 
   useEffect(() => {
-    api().getCourse({ courseId: 1 }).then((data) => {
-      setAllExercises(data.data)
-    }).catch((error) => {
-      console.log({ error })
-    })
+    setIsLoading(true)
+    api()
+      .getCourse({ courseId: 1 })
+      .then((data) => {
+        setAllExercises(data.data)
+      })
+      .catch(() => {
+        toast.error('Oops! Hubo un error.')
+      }).finally(() => {
+        setIsLoading(false)
+      })
   }, [])
 
   const isLastItem = () => {
@@ -65,13 +69,21 @@ export const EnglishExercisePage = () => {
   }
 
   useEffect(() => {
+    console.log({ currentExercise })
+  }, [currentExercise])
+
+  useEffect(() => {
     if (allExercises !== null) {
-      const item = searchForExercise({ exerciseId: parseInt(exerciseId) })
-      const index = searchForExerciseIndex({ exerciseId: parseInt(exerciseId) })
-      setCurrentExercise(item)
-      setExerciseIndex(index)
+      setExerciseFromURLParams()
     }
   }, [allExercises])
+
+  const setExerciseFromURLParams = () => {
+    const item = searchForExercise({ exerciseId: parseInt(exerciseId) })
+    const index = searchForExerciseIndex({ exerciseId: parseInt(exerciseId) })
+    setCurrentExercise(item)
+    setExerciseIndex(index)
+  }
 
   useEffect(() => {
     setIsDone(false)
@@ -84,37 +96,37 @@ export const EnglishExercisePage = () => {
     }
   }, [exerciseId])
 
-  const Exercise = ({ exerciseType, exercise }) => {
-    console.log({ exerciseType, exercise })
-    if (exerciseType === exercisesTypes.ABC_EXERCISE) {
-      return <AbcExercise
-        abcExercise={exercise}
-        setIsDone={setExerciseDone}
-        goNext={goNext}
-      />
-    }
-
-    if (exerciseType === exercisesTypes.MECA_EXERCISE) {
-      return <MecaExercise
-        mecaExercise={exercise}
-        setIsDone={setExerciseDone}
-      />
-    }
-  }
+  if (isLoading) return <Loader/>
 
   return (
     <Layout>
       <BackPageButton backRoute={routesV3.ENGLISH_PAGE.route} />
-      {currentExercise
-        ? (
-        <>
-          <FlexContainer jc_c ai_c>{
-            <Exercise exerciseType={currentExercise.exerciseType} exercise={currentExercise}/>
-          }
-          </FlexContainer>
+      <FlexContainer jc_c ai_c>
+        {currentExercise === null
+          ? (
+          <Loader />
+            )
+          : (
+          <>
+            {currentExercise.exerciseType === exercisesTypes.ABC_EXERCISE
+              ? (
+              <AbcExercise
+                abcExercise={currentExercise}
+                setIsDone={setIsDone}
+                goNext={goNext}
+              />
+                )
+              : (
+              <MecaExercise
+                mecaExercise={currentExercise}
+                setIsDone={setExerciseDone}
+              />
+                )}
+          </>
+            )}
+      </FlexContainer>
 
-          {isDone
-            ? (
+          {isDone && (
             <>
               <FlexContainer jc_fe ai_c>
                 {exerciseIndex === allExercises.length - 1 && (
@@ -150,25 +162,17 @@ export const EnglishExercisePage = () => {
                   </ShorHandKey>
                 )}
               </FlexContainer>
-            </>
-              )
-            : <Loader/>}
-        </>
-          )
-        : (
-        <FlexContainer jc_c ai_c pd='15% 0'>
-          <FingerLoader />
-        </FlexContainer>
-          )}
+            </>)
+          }
     </Layout>
   )
 }
 
 const EnterKeyShorCut = styled.span`
-margin-left: 0.5rem;
-  padding:0 0.5rem;
-  font-size:1.5rem;
-  font-weight:900;
+  margin-left: 0.5rem;
+  padding: 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 900;
   border-radius: 10px;
   color: ${({ theme: { fontColor } }) => fontColor};
   background: ${({ theme: { accentColor } }) => accentColor};
