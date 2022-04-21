@@ -20,10 +20,11 @@ import { AdminPage } from '../pages/AdminPage'
 import { ExercisePage } from '../pages/ExercisePage'
 import { ConfigProgilePage as ConfigProfilePage } from '../pages/ConfigProfilePage'
 import { EnglishExercisePage } from '../pages/EnglishExercisePage'
-import { MecaExercise } from './MecaExercise'
+// import { MecaExercise } from './MecaExercise'
 // import { EnglishPage } from '../pages/EnglishPage'
 import { EnglishSectionPage } from '../pages/EnglishSectionPage'
 import { PrivateRoute } from '../pages/PrivateRoute'
+import { MecaPage } from '../pages/MecaPage'
 
 const MecaTimePage = lazy(() => import('../pages/MecaTimePage'))
 const EnglishPage = lazy(() => import('../pages/EnglishPage'))
@@ -73,6 +74,7 @@ export const MyRouter = () => {
                     <MecaTimePage />
                   </PrivateRoute>
                 }>
+
                 <Route index element={<HomePagex />} />
                 <Route
                   path={`${routesV3.MECA_TIME_PAGE.subRoutes.EXERCISE_PAGE.routeWithParams}`}
@@ -100,7 +102,7 @@ export const MyRouter = () => {
                 path={routesV3.MECA_PAGE.route}
                 element={
                   <PrivateRoute>
-                    <MecaExercise />
+                    <MecaPage />
                   </PrivateRoute>
                 }
               />
@@ -123,32 +125,6 @@ export const MyRouter = () => {
                 path={routesV2.NOT_FOUND_PAGE.route}
                 element={<NotFoundPage />}
               />
-
-              {/* <Route path={routesV2.NOT_FOUND_PAGE} element={<NotFoundPage/>}/> */}
-              {/* {Object.values(routesV2).map(
-                ({ id, route, component: Page, isPrivate, routeProps }) =>
-                  isPrivate
-                    ? (
-                    <Route
-                      key={`page-${id}`}
-                      path={route}
-                      {...routeProps}
-                      element={
-                        <PrivatePage>
-                          <Page />
-                        </PrivatePage>
-                      }
-                    />
-                      )
-                    : (
-                    <Route
-                      key={`page-${id}`}
-                      path={route}
-                      element={<Page />}
-                      {...routeProps}
-                    />
-                      )
-              )} */}
             </Routes>
           </Layout>
         </ViewportHeighFixer>

@@ -25,7 +25,7 @@ export const EnglishSectionPage = () => {
         setAllExercises(data.data)
       })
       .catch(() => {
-        // 
+        //
       })
       .finally(() => {
         setIsLoading(false)
@@ -34,24 +34,29 @@ export const EnglishSectionPage = () => {
 
   return (
     <Layout mg='1rem 0'>
-      <BackPageButton/>
+      <BackPageButton backRoute={routesV3.MENU_PAGE.route} />
+
       {(allExercises || [1, 2, 3, 4]).map(
         ({ courseId, description, categoryName, exercises }) => (
           <Layout key={courseId} mg='2rem 0'>
             <Title>{isLoading ? <Skeleton /> : categoryName}</Title>
             <Description>{isLoading ? <Skeleton /> : description}</Description>
             <GridContainer>
-              {(exercises || [1, 2, 3, 4, 4, 5, 6]).map((item) => item.id
-                ? (
-                <Link
-                  key={item?.id}
-                  to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.route}/${courseId}/${item?.id}`}>
-                  <ExerciseBubble jc_c ai_c isDone={false}>
-                    {item?.title}
-                  </ExerciseBubble>
-                </Link>
-                  )
-                : <Skeleton circle width='6.25rem' height='6.25rem' />)}
+              {(exercises || [1, 2, 3, 4, 4, 5, 6]).map((item) =>
+                item.id
+                  ? (
+                  <Link
+                    key={item?.id}
+                    to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.route}/${courseId}/${item?.id}`}>
+                    <ExerciseBubble jc_c ai_c isDone={false}>
+                      {item?.title}
+                    </ExerciseBubble>
+                  </Link>
+                    )
+                  : (
+                  <Skeleton circle width='6.25rem' height='6.25rem' />
+                    )
+              )}
             </GridContainer>
           </Layout>
         )
@@ -63,14 +68,14 @@ export const EnglishSectionPage = () => {
 const Title = styled.h2`
   color: ${({ theme: { fontColor } }) => fontColor};
   font-size: 2rem;
-  width:6.25rem;
-  `
+  width: 6.25rem;
+`
 
 const Description = styled.p`
-color: ${({ theme: { fontColor } }) => fontColor};
-font-size: 1rem;
-margin:0.5rem 0 ;
-width:300px;
+  color: ${({ theme: { fontColor } }) => fontColor};
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  width: 300px;
 `
 
 const GridContainer = styled.div`
