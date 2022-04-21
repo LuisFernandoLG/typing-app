@@ -1,7 +1,7 @@
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
-import styled, { ThemeContext } from 'styled-components'
+// import { ThemeContext } from 'styled-components'
 
 import GroupInput from '../components/inputs/GroupInput'
 import { ProfileImageInput } from '../components/inputs/ProfileImgInput'
@@ -24,8 +24,8 @@ export const ConfigProgilePage = () => {
     handleSubmit
   } = useForm()
   const [isLoading, setIsLoading] = useState(false)
-  const theme = useContext(ThemeContext)
-  console.log({ theme })
+  // const theme = useContext(ThemeContext)
+  // console.log({ theme })
 
   useEffect(() => {
     setPhoto(user.imageProfile || defaultImgUser)
@@ -68,13 +68,15 @@ export const ConfigProgilePage = () => {
         <BackPageButton />
       </FlexContainer>
       <FlexContainer jc_c ai_c>
-        <FormStyled
+        <FlexContainer
           as='form'
           fd_c
           jc_c
           ai_c
+          w="400px"
           gap='3rem'
           onSubmit={handleSubmit(onSubmit)}>
+
           <ProfileImageInput
             value={photo}
             name='imageProfile'
@@ -118,40 +120,30 @@ export const ConfigProgilePage = () => {
             isLoading={isLoading}>
             Guardar cambios
           </Button>
-        </FormStyled>
+        </FlexContainer>
 
       </FlexContainer>
-        <Layout>
-      <FlexContainer jc_c ai_c gap="1rem" mg="2rem 0">
-      <ColorPalette bgColor={theme.accentColor}/>
-      <ColorPalette bgColor={theme.primaryColor}/>
-      <ColorPalette bgColor={theme.secondaryColor}/>
-      <ColorPalette bgColor={theme.bgColor}/>
-      <ColorPalette bgColor={theme.disableColor}/>
-      <ColorPalette bgColor={theme.fontColor}/>
-      </FlexContainer>
-        </Layout>
     </Layout>
   )
 }
 
-const ColorPalette = ({ bgColor }) => {
-  return <Circle bgColor={bgColor}>{bgColor}</Circle>
-}
+// const ColorPalette = ({ bgColor }) => {
+//   return <Circle bgColor={bgColor}>{bgColor}</Circle>
+// }
 
-const Circle = styled(FlexContainer)`
-  background:${({ bgColor }) => bgColor};
-  width:120px;
-  height: 120px;
-  padding:1rem;
-  outline:2px solid ${({ theme: { accentColor } }) => accentColor};
-  color:${({ theme: { fontColor } }) => fontColor};
-  border-radius: 10rem;
-  
-  display:Flex;
-  justify-content: center;align-items:center;
-  `
+// const Circle = styled(FlexContainer)`
+//   background:${({ bgColor }) => bgColor};
+//   width:120px;
+//   height: 120px;
+//   padding:1rem;
+//   outline:2px solid ${({ theme: { accentColor } }) => accentColor};
+//   color:${({ theme: { fontColor } }) => fontColor};
+//   border-radius: 10rem;
 
-const FormStyled = styled(FlexContainer)`
-  width: 400px;
-`
+//   display:Flex;
+//   justify-content: center;align-items:center;
+//   `
+
+// const FormStyled = styled(FlexContainer)`
+//   width: 400px;
+// `

@@ -2,6 +2,7 @@
 import styled from 'styled-components'
 import { FlexContainer } from '../shareStyleComponents/FlexContainer'
 import { resizeFile } from '../../helpers/resizeFile'
+import { Image } from '../ui/Image'
 
 export const ProfileImageInput = ({
   name,
@@ -21,9 +22,7 @@ export const ProfileImageInput = ({
   return (
     <ProfileImageInputStyled errors={errors}>
       <label htmlFor="image-profile">
-        <PhotoPreview>
-          <img src={value} alt="user" />
-        </PhotoPreview>
+        <Image src={value} alt="user" width="10rem" height="10rem"/>
         {/* <span>{placeHolder}</span> */}
       </label>
       <input
@@ -38,21 +37,21 @@ export const ProfileImageInput = ({
   )
 }
 
-const PhotoPreview = styled(FlexContainer)`
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: 10rem;
-  border: 0.3125rem solid ${({ theme: { accentColor } }) => accentColor};
-  
-  &:hover{
-      opacity: 0.7;
-  }
-  img {
-    width: 8rem;
-    height: 8rem;
-    object-fit: cover;
-  }
-  `
+// const PhotoPreview = styled(FlexContainer)`
+//   cursor: pointer;
+//   overflow: hidden;
+//   border-radius: 10rem;
+//   border: 0.3125rem solid ${({ theme: { accentColor } }) => accentColor};
+
+//   &:hover{
+//       opacity: 0.7;
+//   }
+//   img {
+//     width: 8rem;
+//     height: 8rem;
+//     object-fit: cover;
+//   }
+//   `
 
 const ProfileImageInputStyled = styled(FlexContainer)`
   label {

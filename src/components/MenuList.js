@@ -1,21 +1,29 @@
 import { useSession } from '../hooks/useSession'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { IoLogOut, IoSettingsSharp } from 'react-icons/io5'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import { FlexContainer } from './shareStyleComponents/FlexContainer'
 import { Button } from './ui/Button'
 
 import { Link } from 'react-router-dom'
 import { routesV3 } from '../routes'
+import { Image } from './ui/Image'
+import styled from 'styled-components'
+// import { FloatContainer } from './FloatContainer'
 
 export const MenuList = ({ closeMenu }) => {
-  const { handleLogOut } = useSession()
-
-  // const { goToConfigProfilePage } = useLinkRouter()
+  const { handleLogOut, user } = useSession()
 
   return (
-    <FloatMenu flex flex_dc jc_fs ai_fs gap='1rem' onClick={closeMenu}>
+
+      <FlexContainer flex flex_dc jc_fs ai_fs gap='1rem' onClick={closeMenu}>
+        <FlexContainer jc_c ai_c gap="0.5rem">
+          <Image src={user.imageProfile} width="50px" height="50px"/>
+          <Name>{user.name}</Name>
+        </FlexContainer>
+
       <Button secondary={true} onClick={handleLogOut} fontSize='1.2rem'>
+
         <FlexContainer gap='0.5rem' ai_c jc_fs>
           <IoLogOut /> Cerrar sesión
         </FlexContainer>
@@ -30,16 +38,13 @@ export const MenuList = ({ closeMenu }) => {
       </Link>
 
       <ThemeSwitcher size='5rem' />
-    </FloatMenu>
+      </FlexContainer>
+
   )
 }
 
-const FloatMenu = styled(FlexContainer)`
-  position: absolute;
-  right: 1rem;
-  background: ${({ theme: { accentColor } }) => accentColor};
-  padding: 1rem;
-  border-radius: 10px;
-
-  box-shadow: 0 0 10px -7px ${({ theme: { fontColor } }) => fontColor};
+const Name = styled.p`
+  font-size: 1rem;
+  font-weight: 600;
+  color:${({ theme: { fontColor } }) => fontColor};
 `

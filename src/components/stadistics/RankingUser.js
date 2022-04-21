@@ -3,13 +3,29 @@ import styled from 'styled-components'
 import { defaultImgUser } from '../../constants/defaultImgUser'
 import { FlexContainer } from '../shareStyleComponents/FlexContainer'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
+import { Image } from '../ui/Image'
 
-export const RankingUser = ({ position, name, score, imageProfile = defaultImgUser, children, isLoading }) => {
+export const RankingUser = ({
+  position,
+  name,
+  score,
+  imageProfile = defaultImgUser,
+  children,
+  isLoading
+}) => {
   return (
-    <RankingUserContainer flex gap="1rem">
-      <Sticker><StickerPosition>{position}</StickerPosition></Sticker>
-      <Position>{ isLoading ? <Skeleton circle height="100%" /> : <Image src={imageProfile || defaultImgUser} alt="no"/> }</Position>
-      <FlexContainer flex_dc flex_jc_c gap="0.5rem" overflow_h>
+    <RankingUserContainer flex gap='1rem'>
+      <Sticker>
+        <StickerPosition>{position}</StickerPosition>
+      </Sticker>
+      {isLoading
+        ? (
+        <Skeleton circle height='100%' />
+          )
+        : (
+        <Image src={imageProfile || defaultImgUser} alt='no' width="5.75rem" height="5.75rem"/>
+          )}
+      <FlexContainer flex_dc flex_jc_c gap='0.5rem' overflow_h>
         <Name>{name || <Skeleton width={'6rem'} />}</Name>
         <Score>
           {score
@@ -33,9 +49,8 @@ const RankingUserContainer = styled(Wrapper)`
   padding: 1rem;
   border-radius: 1rem;
   background: ${({ theme: { accentColor } }) => accentColor};
-  color:${({ theme: { fontColor } }) => fontColor};
-  
-  `
+  color: ${({ theme: { fontColor } }) => fontColor};
+`
 
 const Sticker = styled.div`
   position: absolute;
@@ -43,12 +58,12 @@ const Sticker = styled.div`
   left: -1rem;
 `
 
-const Position = styled.div`
-  font-size: 4rem;
-  font-weight: 700;
-  width:80px;
-  height:80px;
-`
+// const Position = styled.div`
+//   font-size: 4rem;
+//   font-weight: 700;
+//   width: 80px;
+//   height: 80px;
+// `
 const Name = styled.p`
   display: block;
   font-size: 1.5rem;
@@ -62,20 +77,19 @@ const Score = styled.span`
   }
 `
 
-const Image = styled.img`
-width: 100%;
-height:100%;
-object-fit: cover;
-border-radius: 10rem;
-image-rendering: smooth;
-
-`
+// const Image = styled.img`
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+//   border-radius: 10rem;
+//   image-rendering: smooth;
+// `
 
 const StickerPosition = styled.span`
-width: 60px;
-height: 60px;
-background:${({ theme: { tertiaryColor } }) => tertiaryColor};
-padding:1rem;
-border-radius:10rem;
-font-weight:600;
+  width: 60px;
+  height: 60px;
+  background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  padding: 1rem;
+  border-radius: 10rem;
+  font-weight: 600;
 `
