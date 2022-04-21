@@ -126,24 +126,3 @@ export const ConfigProgilePage = () => {
     </Layout>
   )
 }
-
-// const ColorPalette = ({ bgColor }) => {
-//   return <Circle bgColor={bgColor}>{bgColor}</Circle>
-// }
-
-// const Circle = styled(FlexContainer)`
-//   background:${({ bgColor }) => bgColor};
-//   width:120px;
-//   height: 120px;
-//   padding:1rem;
-//   outline:2px solid ${({ theme: { accentColor } }) => accentColor};
-//   color:${({ theme: { fontColor } }) => fontColor};
-//   border-radius: 10rem;
-
-//   display:Flex;
-//   justify-content: center;align-items:center;
-//   `
-
-// const FormStyled = styled(FlexContainer)`
-//   width: 400px;
-// `

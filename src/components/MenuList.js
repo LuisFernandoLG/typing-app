@@ -18,7 +18,7 @@ export const MenuList = ({ closeMenu }) => {
 
       <FlexContainer flex flex_dc jc_fs ai_fs gap='1rem' onClick={closeMenu}>
         <FlexContainer jc_c ai_c gap="0.5rem">
-          <Image src={user.imageProfile} width="50px" height="50px"/>
+          <Image src={user.imageProfile} width="50px" height="50px" coloredOutline/>
           <Name>{user.name}</Name>
         </FlexContainer>
 

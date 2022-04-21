@@ -22,7 +22,7 @@ export const ProfileImageInput = ({
   return (
     <ProfileImageInputStyled errors={errors}>
       <label htmlFor="image-profile">
-        <Image src={value} alt="user" width="10rem" height="10rem"/>
+        <Image src={value} alt="user" width="10rem" height="10rem" coloredOutline={true}/>
         {/* <span>{placeHolder}</span> */}
       </label>
       <input
