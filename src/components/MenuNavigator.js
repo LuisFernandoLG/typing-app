@@ -1,12 +1,7 @@
-import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { FlexContainer } from './shareStyleComponents/FlexContainer'
 
 export const MenuNavigator = () => {
-  const location = useLocation()
-
-  
-
   return (
     <div>
         <MenuContainer>

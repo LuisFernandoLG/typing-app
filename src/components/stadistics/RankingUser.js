@@ -5,7 +5,6 @@ import { FlexContainer } from '../shareStyleComponents/FlexContainer'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
 
 export const RankingUser = ({ position, name, score, imageProfile = defaultImgUser, children, isLoading }) => {
-  
   return (
     <RankingUserContainer flex gap="1rem">
       <Sticker><StickerPosition>{position}</StickerPosition></Sticker>

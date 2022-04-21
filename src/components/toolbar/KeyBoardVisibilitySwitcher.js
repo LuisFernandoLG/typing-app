@@ -1,4 +1,3 @@
-import { Button, Input } from 'style-components'
 import styled from 'styled-components'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
 

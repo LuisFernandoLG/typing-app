@@ -1,15 +1,6 @@
 import styled from 'styled-components'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
-import { SideBarLink } from './SideBarLink'
-import { routes } from '../../routes'
-import { useContext } from 'react'
-import AuthContext from '../../contexts/AuthContext'
-import { Logo } from '../NavBar/Logo'
-
 export const SideBar = ({ isOpen }) => {
-  const { user } = useContext(AuthContext)
-  const isAdmin = user.typeUser === 1
-
   return <SideBarContainer flex flex_dc isOpen={isOpen}></SideBarContainer>
 }
 

@@ -1,3 +1,3 @@
-export const useToggleButtons = ({}) => {
+export const useToggleButtons = () => {
   return <div></div>
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { generate } from 'shortid'
-import { Howl, Howler } from 'howler'
+import { Howl } from 'howler'
 const initialKeys = [
   {
     id: generate(),
@@ -310,12 +310,13 @@ const excludeKeysFromPressed = [
 ]
 
 export const useKeyBoard = (q) => {
+  // eslint-disable-next-line no-unused-vars
   const [keys, setKeys] = useState(initialKeys)
   const [keyPressed, setKeyPressed] = useState(null)
   const [wrongKeyPressed, setWrongKeyPressed] = useState(null)
   const [quote, setQuote] = useState(convertQuote(q))
   const [indexQuote, setIndexQuote] = useState(initialIndexQuote)
-  const [isUpperCase, setIsUpperCase] = useState(false)
+  // const [isUpperCase, setIsUpperCase] = useState(false)
   const [numErrors, setNumErrors] = useState(0)
   const [isCompleted, setIsCompleted] = useState(false)
   const [results, setResults] = useState(null)

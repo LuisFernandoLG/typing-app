@@ -1,5 +1,3 @@
-import styled from 'styled-components'
-
 export const ComboBoxCategory = ({
   currentCategory,
   categories,
@@ -7,8 +5,8 @@ export const ComboBoxCategory = ({
 }) => {
   return (
     <select>
-      {categories.map((item) => (
-        <option>{item}</option>
+      {categories.map((item, i) => (
+        <option key={`${i}-itemx`}>{item}</option>
       ))}
     </select>
   )

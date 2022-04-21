@@ -13,7 +13,6 @@ export const SearchBar = ({ setSearchQuery, search, searchByQuery }) => {
   }
 
   const handleClickOnSearchIcon = () => {
-    
     searchByQuery(search)
   }
 
