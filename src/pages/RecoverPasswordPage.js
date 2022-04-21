@@ -40,8 +40,7 @@ export const RecoverPasswordPage = () => {
         if (existUser) setRecoPassword(data.data.password)
         else toast.error('El correo no existe')
       })
-      .catch((error) => {
-        
+      .catch(() => {
         toast.error('Hubo un error')
       }).finally(() => {
         setIsLoading(false)
