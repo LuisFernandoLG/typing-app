@@ -48,7 +48,7 @@ export const EnglishExercisePage = () => {
   useEffect(() => {
     setIsLoading(true)
     api()
-      .getCourse({ courseId: 1 })
+      .getCourse({ courseId: courseId })
       .then((data) => {
         setAllExercises(data.data)
       })
@@ -69,10 +69,6 @@ export const EnglishExercisePage = () => {
   }
 
   useEffect(() => {
-    console.log({ currentExercise })
-  }, [currentExercise])
-
-  useEffect(() => {
     if (allExercises !== null) {
       setExerciseFromURLParams()
     }
@@ -81,6 +77,7 @@ export const EnglishExercisePage = () => {
   const setExerciseFromURLParams = () => {
     const item = searchForExercise({ exerciseId: parseInt(exerciseId) })
     const index = searchForExerciseIndex({ exerciseId: parseInt(exerciseId) })
+
     setCurrentExercise(item)
     setExerciseIndex(index)
   }
