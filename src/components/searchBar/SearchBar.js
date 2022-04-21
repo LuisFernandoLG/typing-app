@@ -13,7 +13,7 @@ export const SearchBar = ({ setSearchQuery, search, searchByQuery }) => {
   }
 
   const handleClickOnSearchIcon = () => {
-    console.log('BUSCANDO SEGUN')
+    
     searchByQuery(search)
   }
 

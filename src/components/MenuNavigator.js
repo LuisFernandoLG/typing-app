@@ -5,7 +5,7 @@ import { FlexContainer } from './shareStyleComponents/FlexContainer'
 export const MenuNavigator = () => {
   const location = useLocation()
 
-  console.log({ location })
+  
 
   return (
     <div>

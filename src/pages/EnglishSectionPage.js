@@ -25,7 +25,7 @@ export const EnglishSectionPage = () => {
         setAllExercises(data.data)
       })
       .catch(() => {
-        // console.log({ error })
+        // 
       })
       .finally(() => {
         setIsLoading(false)

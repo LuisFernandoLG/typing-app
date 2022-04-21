@@ -41,7 +41,7 @@ export const RecoverPasswordPage = () => {
         else toast.error('El correo no existe')
       })
       .catch((error) => {
-        console.log({ error })
+        
         toast.error('Hubo un error')
       }).finally(() => {
         setIsLoading(false)

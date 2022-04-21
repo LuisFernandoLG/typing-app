@@ -31,7 +31,7 @@ export const Quote = ({ quote, indexQuote }) => {
 
   const updateKey = ({ tempWords }) => {
     let subIndex = 0
-    console.log({ tempWords })
+    
     const copyWords = tempWords.map((item) => {
       return {
         id: item.id,

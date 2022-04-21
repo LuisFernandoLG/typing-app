@@ -49,7 +49,7 @@ export const ConfigProgilePage = () => {
       handleLogIn({ email: userDatFormated.email, password: userDatFormated.password })
     }).catch((error) => {
       toast.error('Ups! Hubo un error')
-      console.log({ error })
+      
     })
     setIsLoading(false)
   }
