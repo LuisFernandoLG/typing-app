@@ -2,25 +2,37 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { fixSpaceKeyErrorWithScroll } from '../../helpers/fixSpaceKeyErrorWithScroll'
 import { groupInwordsGroup } from '../../helpers/groupInWords'
+import { FlexContainer } from '../shareStyleComponents/FlexContainer'
 import { Key } from './keysComponents/Key'
 
 export const Quote = ({ quote, indexQuote }) => {
-  const [words, setWords] = useState(null)
+  const [words, setWords] = useState(groupInwordsGroup({ quote: quote }))
+
+  useEffect(() => {
+    fixSpaceKeyErrorWithScroll()
+    putWordsInGroups({ quote })
+  }, [])
+
+  const putWordsInGroups = ({ quote }) => {
+    const wordsGroup = groupInwordsGroup({ quote })
+    setWords(wordsGroup)
+  }
 
   useEffect(() => {
     const wordsGroup = groupInwordsGroup({ quote })
     fixSpaceKeyErrorWithScroll()
-    setWords(wordsGroup)
-  }, [])
+    setWords(updateKey({ tempWords: wordsGroup }))
+  }, [quote])
 
   useEffect(() => {
-    if (words !== null) updateKey()
-  }, [indexQuote])
+    const wordsGroup = groupInwordsGroup({ quote })
+    if (words !== null) updateKey({ tempWords: wordsGroup })
+  }, [indexQuote, quote])
 
-  const updateKey = () => {
+  const updateKey = ({ tempWords }) => {
     let subIndex = 0
-
-    const copyWords = words.map((item) => {
+    console.log({ tempWords })
+    const copyWords = tempWords.map((item) => {
       return {
         id: item.id,
         items: item.items.map((subItem) => {
@@ -39,7 +51,7 @@ export const Quote = ({ quote, indexQuote }) => {
     <QuoteStyled>
       {words &&
         words.map((word) => (
-          <Word key={word.id}>
+          <Word key={word.id} jc_c ai_c>
             {word.items.map(({ id, status, content }) => (
               <Key key={id} type={status}>
                 {content}
@@ -52,7 +64,7 @@ export const Quote = ({ quote, indexQuote }) => {
 }
 
 const QuoteStyled = styled.div`
-  padding: 1rem;
+  padding: 1rem; 
   background: ${({ theme: { accentColor } }) => accentColor};
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   font-size: 1.5rem;
@@ -62,9 +74,11 @@ const QuoteStyled = styled.div`
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items:center;
+  gap:0.0313rem;
 `
 
-const Word = styled.div`
-  margin: 0.5rem 0;
+const Word = styled(FlexContainer)`
+  margin: 0.2em 0;
 `
