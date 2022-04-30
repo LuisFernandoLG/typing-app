@@ -1,8 +1,8 @@
-const PROTOCOL = 'http'
-const DOMAIN = 'typeandtype.duckdns.org:8000'
-// const PROTOCOL = 'https'
-// const DOMAIN = 'backendtypeandtpye.herokuapp.com'
-const HOST = `${PROTOCOL}://${DOMAIN}`
+import { isPageHTTPS } from '../../helpers/isPageHTTPS'
+
+const vicServer = 'http://typeandtype.duckdns.org:8000'
+const herokuServer = 'https://backendtt.herokuapp.com'
+const HOST = isPageHTTPS() ? herokuServer : vicServer
 
 const exercises = `${HOST}/exercises`
 const logIn = `${HOST}/logIn`
