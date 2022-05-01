@@ -4,7 +4,7 @@ import { isPageHTTPS } from '../helpers/isPageHTTPS'
 const vicServer = 'http://typeandtype.duckdns.org:8000'
 const herokuServer = 'https://backendtt.herokuapp.com'
 const localhostServer = 'http://localhost:8000'
-const HOST = isEnvLocalhost
+const HOST = isEnvLocalhost()
   ? localhostServer
   : isPageHTTPS()
     ? herokuServer
