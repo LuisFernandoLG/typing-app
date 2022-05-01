@@ -1,8 +1,14 @@
+import { isEnvLocalhost } from '../../helpers/isEnvLocalhost'
 import { isPageHTTPS } from '../../helpers/isPageHTTPS'
 
 const vicServer = 'http://typeandtype.duckdns.org:8000'
 const herokuServer = 'https://backendtt.herokuapp.com'
-const HOST = isPageHTTPS() ? herokuServer : vicServer
+const localhostServer = 'http://localhost:8000'
+const HOST = isEnvLocalhost
+  ? localhostServer
+  : isPageHTTPS()
+    ? herokuServer
+    : vicServer
 
 const exercises = `${HOST}/exercises`
 const logIn = `${HOST}/logIn`

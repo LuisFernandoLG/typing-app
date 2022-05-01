@@ -1,8 +1,14 @@
+import { isEnvLocalhost } from '../helpers/isEnvLocalhost'
 import { isPageHTTPS } from '../helpers/isPageHTTPS'
 
 const vicServer = 'http://typeandtype.duckdns.org:8000'
 const herokuServer = 'https://backendtt.herokuapp.com'
-const HOST = isPageHTTPS() ? herokuServer : vicServer
+const localhostServer = 'http://localhost:8000'
+const HOST = isEnvLocalhost
+  ? localhostServer
+  : isPageHTTPS()
+    ? herokuServer
+    : vicServer
 
 // if (location.protocol === 'http:') {
 // }
@@ -65,43 +71,61 @@ const api = () => {
     }
   }
 
-  const updateUser = ({ user }) => new Promise((resolve, reject) => {
-    const options = getOptionsForPut({ body: user })
-    fetch(updateUserEndPoint, options).then((res) => {
-      resolve(res.json())
-    }).catch((error) => {
-      reject(error)
+  const updateUser = ({ user }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPut({ body: user })
+      fetch(updateUserEndPoint, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
-  })
 
-  const recoverPass = ({ email }) => new Promise((resolve, reject) => {
-    const options = getOptionsForPost({ body: { email } })
-    fetch(recoverPassEndPoint, options).then((res) => {
-      resolve(res.json())
-    }).catch((error) => {
-      reject(error)
+  const recoverPass = ({ email }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPost({ body: { email } })
+      fetch(recoverPassEndPoint, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
-  })
 
-  const getAllEnglishCourses = () => new Promise((resolve, reject) => {
-    fetch(getAllEnglishCoursesEndpoint).then((res) => {
-      resolve(res.json())
-    }).catch((error) => {
-      reject(error)
+  const getAllEnglishCourses = () =>
+    new Promise((resolve, reject) => {
+      fetch(getAllEnglishCoursesEndpoint)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
-  })
 
-  const getCourse = ({ courseId }) => new Promise((resolve, reject) => {
-    const endpointWithCourseId = `${getCourseEndpoint}/${courseId}`
-    fetch(endpointWithCourseId).then((res) => {
-      resolve(res.json())
-    }).catch((error) => {
-      reject(error)
+  const getCourse = ({ courseId }) =>
+    new Promise((resolve, reject) => {
+      const endpointWithCourseId = `${getCourseEndpoint}/${courseId}`
+      fetch(endpointWithCourseId)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
     })
-  })
 
   // Functions hehe
-  return { getAllEnglishExercises, updateUser, recoverPass, getAllEnglishCourses, getCourse }
+  return {
+    getAllEnglishExercises,
+    updateUser,
+    recoverPass,
+    getAllEnglishCourses,
+    getCourse
+  }
 }
 
 export default api
