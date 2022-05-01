@@ -27,7 +27,7 @@ const ExerciseItemContainer = styled(Link)`
   transition: background-image 300ms ease;
 
   &:hover {
-    background-image: ${({ theme: { secondaryGradient } }) => secondaryGradient};
+    /* background-image: ${({ theme: { secondaryGradient } }) => secondaryGradient}; */
   }
 
   ${({ id }) =>
