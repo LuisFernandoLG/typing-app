@@ -24,10 +24,10 @@ const ExerciseItemContainer = styled(Link)`
   padding: 2rem;
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   background: ${({ theme: { accentColor } }) => accentColor};
-  transition: background 300ms ease;
+  transition: background-image 300ms ease;
 
   &:hover {
-    background: ${({ theme: { primaryGradient } }) => primaryGradient};
+    background-image: ${({ theme: { secondaryGradient } }) => secondaryGradient};
   }
 
   ${({ id }) =>
@@ -44,7 +44,7 @@ const Title = styled.h3`
 `
 const Content = styled.p`
   margin: 0.5rem 0;
-  max-width: 90%;
+  max-width: 90%; 
   font-size: 1.2rem;
   color: ${({ theme: { fontColor } }) => fontColor};
   line-height: 1.5rem;

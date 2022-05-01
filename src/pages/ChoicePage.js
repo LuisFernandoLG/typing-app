@@ -12,6 +12,15 @@ export const ChoicePage = () => {
   const choices = [
     {
       id: generate(),
+      title: 'Aprende Mecanografía',
+      description:
+        'Aprende dónde colocar tus dedos al escribir mediante ejercicios básicos.',
+      img: English2,
+      toLink: routesV3.MECA_PAGE.route
+    },
+
+    {
+      id: generate(),
       title: 'Mejora tu velocidad',
       description:
         'Realiza los ejercicios que desees para practicar tu velocidad y sube tu nivel en el ranking.',
@@ -19,14 +28,6 @@ export const ChoicePage = () => {
       toLink: routesV3.MECA_TIME_PAGE.route
     },
 
-    {
-      id: generate(),
-      title: 'Aprende Mecanografía',
-      description:
-        'Aprende dónde colocar tus dedos al escribir mediante ejercicios básicos.',
-      img: English2,
-      toLink: routesV3.MECA_PAGE.route
-    },
     {
       id: generate(),
       title: 'Aprende inglés',
@@ -80,9 +81,11 @@ const LinkCard = styled(Link)`
   border-radius: 1rem;
   transition: transform 300ms ease;
   width: 100%;
-
+  
   &:hover {
     transform: scale(1.002) translateY(-5%);
+    background: ${({ theme: { secondaryGradient } }) => secondaryGradient};
+    
 
     .title {
       

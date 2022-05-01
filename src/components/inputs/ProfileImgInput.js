@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { FlexContainer } from '../shareStyleComponents/FlexContainer'
 import { resizeFile } from '../../helpers/resizeFile'
 import { Image } from '../ui/Image'
+import { IoCameraSharp } from 'react-icons/io5'
 
 export const ProfileImageInput = ({
   name,
@@ -21,18 +22,26 @@ export const ProfileImageInput = ({
 
   return (
     <ProfileImageInputStyled errors={errors}>
-      <label htmlFor="image-profile">
-        <Image src={value} alt="user" width="10rem" height="10rem" coloredOutline={true}/>
-        {/* <span>{placeHolder}</span> */}
+      <label htmlFor='image-profile'>
+        <Image
+          src={value}
+          alt='user'
+          width='10rem'
+          height='10rem'
+          coloredOutline={true}
+        />
+        <span className='upload-text'>
+          Cambiar foto <IoCameraSharp />{' '}
+        </span>
       </label>
       <input
-        type="file"
-        accept="image/png, image/jpeg"
+        type='file'
+        accept='image/png, image/jpeg'
         name={name}
-        id="image-profile"
+        id='image-profile'
         onChange={handleFileSelected}
       />
-      <p className="error">{errors}</p>
+      <p className='error'>{errors}</p>
     </ProfileImageInputStyled>
   )
 }
@@ -65,21 +74,40 @@ const ProfileImageInputStyled = styled(FlexContainer)`
     border-radius: 1rem;
     background: ${({ theme: { accentColor } }) => accentColor};
     border-radius: 5rem;
-    span {
-      font-size: 1.2rem;
+    position:relative;
+
+    outline: 3px solid ${({ theme: { primaryColor } }) => primaryColor};;
+
+    
+
+    &:hover{
+    
+      .upload-text{
+        display:flex;
+      }
+
+    }
+
+    .upload-text {
+      display:none;
+      position: absolute;
+      font-size: 1rem;
       text-align: center;
-      text-decoration: underline;
+      background: ${({ theme: { secondaryGradient } }) => secondaryGradient};
+      width:100%;
+      height:100%;
+      left:0;
+      top:0;
+      border-radius:16rem;
+      
+      justify-content: center;
+      align-items:center;
       font-weight: 600;
-      color: ${({ theme: { errorColor }, errors }) =>
-        errors ? errorColor : errorColor};
+      opacity: 0.9;
+      color: ${({ theme: { fontColor } }) => fontColor};
     }
   }
   input {
     display: none;
-  }
-  .error {
-    color: ${({ theme: { errorColor } }) => errorColor};
-    font-weight: 600;
-    text-align: center;
   }
 `

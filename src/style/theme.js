@@ -33,6 +33,7 @@ export const themes = {
     disableColor: '#878fb8',
     fontColor: '#484b5c',
     primaryGradient: 'linear-gradient(to right, #9AD0EC, #064663)',
+    secondaryGradient: 'linear-gradient(49deg, #fff 0%, #9AD0EC 100%)',
 
     errorColor: '#F05454',
     successColor: '#7FC8A9',
@@ -43,18 +44,19 @@ export const themes = {
 
   darkTheme: {
     name: 'dark theme',
-    primaryColor: '#9AD0EC',
+    primaryColor: '#d6f8ffad',
     secondaryColor: '#064663',
     tertiaryColor: '#2d383c',
     accentColor: '#374045',
     whiteColor: '#fff',
-    primaryBoxShadow: '0 0.4375em 1.575em -0.625em #9AD0EC',
+    primaryBoxShadow: '0 0.4375em 1.575em -0.625em #d6f8ffad',
 
     bgColor: '#192428',
     disableColor: '#8D8DAA',
     fontColor: '#eeeeee',
 
-    primaryGradient: 'linear-gradient(to right, #9AD0EC, #064663)',
+    primaryGradient: 'linear-gradient(to right, #d6f8ffad, #064663)',
+    secondaryGradient: 'linear-gradient(49deg, #484b5c 0%, #d6f8ffad 100%)',
 
     errorColor: '#F05454',
     successColor: '#7FC8A9',
