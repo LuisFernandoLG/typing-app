@@ -19,7 +19,7 @@ import { FlexContainer } from './shareStyleComponents/FlexContainer'
 import { KeyBoard } from './exercise/KeyBoard'
 import { Layout } from '../layouts/Layout'
 
-const textQuote = 'Hola, bievenido a type and type, esta es una aplicacion para aprender mecanogerafia shido'
+const textQuote = 'Hola, bievenido a type and type, esta es nuestra presentación.'
 // const initialUpdateQuote = () => null
 
 export const MecaExercise = ({ mecaExercise, setIsDone }) => {

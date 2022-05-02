@@ -84,7 +84,7 @@ const LinkCard = styled(Link)`
   
   &:hover {
     transform: scale(1.002) translateY(-5%);
-    background: ${({ theme: { secondaryGradient } }) => secondaryGradient};
+    /* background: ${({ theme: { secondaryGradient } }) => secondaryGradient}; */
     
 
     .title {

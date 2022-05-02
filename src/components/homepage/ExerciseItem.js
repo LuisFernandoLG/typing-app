@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
-// import { routesV2 } from '../../routes'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
 import Skeleton from 'react-loading-skeleton'
 import { routesV3 } from '../../routes'
@@ -27,7 +26,7 @@ const ExerciseItemContainer = styled(Link)`
   transition: background-image 300ms ease;
 
   &:hover {
-    /* background-image: ${({ theme: { secondaryGradient } }) => secondaryGradient}; */
+    background-image: ${({ theme: { secondaryGradient } }) => secondaryGradient};
   }
 
   ${({ id }) =>
@@ -50,9 +49,7 @@ const Content = styled.p`
   line-height: 1.5rem;
   text-align: left;
 
-  /* Limit lines */
   text-overflow: ellipsis;
-  /* Needed to make it work */
   overflow: hidden;
   white-space: nowrap;
 `
