@@ -34,7 +34,16 @@ export const ChoicePage = () => {
       description: 'Aprende vocabulario básico de diferentes temas.',
       img: English2,
       toLink: routesV3.ENGLISH_PAGE.route
+    },
+
+    {
+      id: generate(),
+      title: '¡Completa la carrera!',
+      description: 'Completa una carrera en la pista de type and type',
+      img: English2,
+      toLink: routesV3.RICE_PAGE.route
     }
+
   ]
 
   return (

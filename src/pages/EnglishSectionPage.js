@@ -10,7 +10,7 @@ import api from '../services/api'
 // import { FingerLoader } from '../components/loaders/FingerLoader'
 // import { getArrayBySize } from '../helpers/getArrayBySize'
 import Skeleton from 'react-loading-skeleton'
-import { BackPageButton } from '../components/ui/BackPageButton'
+// import { BackPageButton } from '../components/ui/BackPageButton'
 
 export const EnglishSectionPage = () => {
   // eslint-disable-next-line no-unused-vars
@@ -34,7 +34,7 @@ export const EnglishSectionPage = () => {
 
   return (
     <Layout mg='1rem 0'>
-      <BackPageButton backRoute={routesV3.MENU_PAGE.route} />
+      {/* <BackPageButton backRoute={routesV3.MENU_PAGE.route} /> */}
 
       {(allExercises || [1, 2, 3, 4]).map(
         ({ courseId, description, categoryName, exercises }) => (

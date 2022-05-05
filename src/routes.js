@@ -66,8 +66,17 @@ export const routesV3 = {
       ENGLISH_EXERCISE_PAGE: {
         route: 'item',
         routeWithParams: 'item/:courseId/:exerciseId'
+      },
+      ENGLISH_ADMIN_PAGE: {
+        route: 'admin'
+      },
+      ENGLISH_STATS_PAGE: {
+        route: 'stats'
       }
     }
+  },
+  RICE_PAGE: {
+    route: '/carrera'
   }
 }
 
