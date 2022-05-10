@@ -6,6 +6,8 @@ import { AdminExerciseItem } from '../components/admin/AdminExerciseItem'
 import { ExerciseForm } from '../components/admin/ExerciseForm'
 import { Loader } from '../components/Loader'
 import { Wrapper } from '../components/shareStyleComponents/Wrapper'
+import { FingerLoader } from '../components/loaders/FingerLoader'
+import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 
 export const AdminPage = () => {
   const {
@@ -50,9 +52,11 @@ export const AdminPage = () => {
 
       <Title>Ejercicios</Title>
 
-      {loading && <Loader />}
+<FlexContainer jc_c ai_c mg="2rem">
 
-      <ExercisesWrapper>
+      {loading
+        ? <FingerLoader />
+        : <ExercisesWrapper>
         {!loading &&
           exercieses.map((adminExercise) => (
             <AdminExerciseItem
@@ -64,7 +68,8 @@ export const AdminPage = () => {
               updateExercise={updateExercise}
             />
           ))}
-      </ExercisesWrapper>
+      </ExercisesWrapper>}
+            </FlexContainer>
     </AdminPageWrapper>
   )
 }
@@ -77,6 +82,7 @@ const NotAllowedPage = styled(Wrapper)`
 const Title = styled.h2`
   font-size: 3.5em;
   text-align: center;
+  color:${({ theme: { fontColor } }) => fontColor};
 `
 
 const AdminPageWrapper = styled(Wrapper)`
@@ -86,7 +92,7 @@ const AdminPageWrapper = styled(Wrapper)`
 
 const ExercisesWrapper = styled(Wrapper)`
   width: 100%;
-
+  margin:2rem 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;

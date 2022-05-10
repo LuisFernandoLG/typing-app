@@ -110,7 +110,7 @@ export const ExerciseForm = ({
         />
       </Wrapper>
 
-      <Wrapper flex>
+      <Wrapper flex gap="1rem">
         <select name='category' onChange={handleChangeForm}>
           <option key={'c1'} value=''>
             Categoría
@@ -154,6 +154,9 @@ export const ExerciseForm = ({
 
 const Title = styled.h2`
   font-size: 2rem;
+  text-align:center;
+  color:${({ theme: { fontColor } }) => fontColor};
+
 `
 
 const ExerFormStyled = styled(Wrapper)`
@@ -162,11 +165,17 @@ const ExerFormStyled = styled(Wrapper)`
   padding: 1rem;
   margin-bottom: 5rem;
   border-radius: 1rem;
+  padding: 1rem 2rem;
 
-  box-shadow: 0 0 20px ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  background:${({ theme: { accentColor } }) => accentColor};
+  color:${({ theme: { fontColor } }) => fontColor};
 
-  textarea {
-    padding: 0.5rem;
+
+  input, select, textarea{
+    padding:0.5rem;
+    border-radius:${({ theme: { borderRadius } }) => borderRadius};
+    border: 1px solid ${({ theme: { fontColor } }) => fontColor};
+
   }
 
   div:nth-child(2) {

@@ -119,13 +119,13 @@ export const AdminExerciseItem = ({
 }
 
 const AdminExerciseItemWrapper = styled(Wrapper)`
-/* width:100%; */
-  /* font-size: 12px; */
-  /* margin: 1em auto; */
-  padding: 1em;
+
+  padding: 1em 2em;
   border-radius: 1em;
 
-  box-shadow: 0 0 20px -10px ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  /* box-shadow: 0 0 20px -10px ${({ theme: { tertiaryColor } }) => tertiaryColor}; */
+  background:${({ theme: { accentColor } }) => accentColor};
+  color:${({ theme: { fontColor } }) => fontColor};
 
   div,
   select {
@@ -136,6 +136,13 @@ const AdminExerciseItemWrapper = styled(Wrapper)`
     font-size: 1.2em;
     margin: 0.3125rem 0;
     font-weight: 600;
+  }
+
+  input, select, textarea{
+    padding:0.5rem;
+    border-radius:${({ theme: { borderRadius } }) => borderRadius};
+    border: 1px solid ${({ theme: { fontColor } }) => fontColor};
+
   }
 
   button {
