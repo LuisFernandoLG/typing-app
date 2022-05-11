@@ -6,7 +6,7 @@ export const keyBoardActivityInitialState = ({ textQuote }) => ({
   textQuote: textQuote,
   quote: textQuote.split('').map((character, i) => ({
     id: generate(),
-    content: character.toLowerCase(),
+    content: character,
     status: i === 0 ? keyTypes.WANTED_KEY : keyTypes.UNDTRIED_KEY,
     attempts: 0
   })),

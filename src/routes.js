@@ -67,8 +67,17 @@ export const routesV3 = {
         route: 'item',
         routeWithParams: 'item/:courseId/:exerciseId'
       },
+
       ENGLISH_ADMIN_PAGE: {
-        route: 'admin'
+        route: 'admin',
+        subRoutes: {
+
+          // {/* TODO routes are mixed, it can be better */}
+          ENGLISH_EXERCISE_ADMIN_PAGE: {
+            route: '/english/course',
+            routeWithParams: 'course/:courseId'
+          }
+        }
       },
       ENGLISH_STATS_PAGE: {
         route: 'stats'

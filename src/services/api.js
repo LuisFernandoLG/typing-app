@@ -29,6 +29,7 @@ const updateUserEndPoint = `${HOST}/user`
 const recoverPassEndPoint = `${HOST}/recover/pass`
 const getAllEnglishCoursesEndpoint = `${HOST}/courses`
 const getCourseEndpoint = `${HOST}/course`
+const getCoursesTemplateEndpoint = `${HOST}/coursesTemplate`
 
 // const basicOptions = {
 //   method: 'GET',
@@ -118,13 +119,26 @@ const api = () => {
         })
     })
 
+  const getCourseTemplates = () =>
+    new Promise((resolve, reject) => {
+      // const endpointWithCourseId = `${getCourseEndpoint}/${courseId}`
+      fetch(getCoursesTemplateEndpoint)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
   // Functions hehe
   return {
     getAllEnglishExercises,
     updateUser,
     recoverPass,
     getAllEnglishCourses,
-    getCourse
+    getCourse,
+    getCourseTemplates
   }
 }
 

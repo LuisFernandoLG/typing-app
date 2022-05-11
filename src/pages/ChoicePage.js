@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { generate } from 'shortid'
 import styled, { keyframes } from 'styled-components'
+// import { DogAnimation } from '../components/DogAnimation'
 
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { Image } from '../components/ui/Image'
@@ -42,6 +43,22 @@ export const ChoicePage = () => {
       description: 'Completa una carrera en la pista de type and type',
       img: English2,
       toLink: routesV3.RICE_PAGE.route
+    },
+
+    {
+      id: generate(),
+      title: 'Frase del día',
+      description: 'Conoce la frase de hoy',
+      img: English2,
+      toLink: routesV3.RICE_PAGE.route
+    },
+
+    {
+      id: generate(),
+      title: 'Datos curiosos!',
+      description: 'Sabías que los perros manejan?',
+      img: English2,
+      toLink: routesV3.RICE_PAGE.route
     }
 
   ]
@@ -59,6 +76,7 @@ export const ChoicePage = () => {
           </LinkCard>
         ))}
         </GridContainer>
+        {/* <DogAnimation/> */}
     </Layout>
   )
 }

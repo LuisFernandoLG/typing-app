@@ -28,6 +28,7 @@ import { MecaPage } from '../pages/MecaPage'
 import { EnglishAdminPage } from '../pages/EnglishAdminPage'
 import { EnglishStadisticsPage } from '../pages/EnglishStadistics'
 import { RicePage } from '../pages/RicePage'
+import { EnglishAdminExercisesPage } from '../pages/EnglishAdminExercisesPage'
 
 const MecaTimePage = lazy(() => import('../pages/MecaTimePage'))
 const EnglishPage = lazy(() => import('../pages/EnglishPage'))
@@ -123,6 +124,7 @@ export const MyRouter = () => {
                   path={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.routeWithParams}`}
                   element={<EnglishExercisePage />}
                 />
+                <Route path={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.subRoutes.ENGLISH_EXERCISE_ADMIN_PAGE.routeWithParams} element={<EnglishAdminExercisesPage/>}/>
                 <Route path={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.route} element={<EnglishAdminPage/>}/>
                 <Route path={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_STATS_PAGE.route} element={<EnglishStadisticsPage/>}/>
               </Route>

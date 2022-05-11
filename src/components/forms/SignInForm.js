@@ -62,8 +62,6 @@ export const SignInForm = () => {
         maxLength={15}
       />
 
-      {/* TODO this part doesn't work yet */}
-
       <GroupInput
         name='Confirmar contraseña'
         type='password'
