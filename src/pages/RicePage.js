@@ -20,7 +20,7 @@ export const RicePage = () => {
     setInterval(() => {
       const randomNumber = randomIntFromInterval(1, 5)
       if (botProgress < 100) setBotProgress((botProgress) => botProgress + randomNumber)
-    }, 1000)
+    }, 600)
   }, [])
 
   useEffect(() => {

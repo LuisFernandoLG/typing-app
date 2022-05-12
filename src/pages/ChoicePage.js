@@ -51,16 +51,7 @@ export const ChoicePage = () => {
       description: 'Conoce la frase de hoy',
       img: English2,
       toLink: routesV3.RICE_PAGE.route
-    },
-
-    {
-      id: generate(),
-      title: 'Datos curiosos!',
-      description: 'Sabías que los perros manejan?',
-      img: English2,
-      toLink: routesV3.RICE_PAGE.route
     }
-
   ]
 
   return (

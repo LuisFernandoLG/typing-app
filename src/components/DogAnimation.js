@@ -1476,7 +1476,7 @@ const StyledDog = styled.svg`
   #weel2,
   #garabato2,
   #garabato1 {
-    transition: transform 300ms ease;
+    transition: transform 300ms ease-in-out;
     transform: translate(${({ percentagePosition }) => percentagePosition}%);
   }
 `
