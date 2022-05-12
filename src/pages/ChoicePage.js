@@ -6,6 +6,10 @@ import styled, { keyframes } from 'styled-components'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { Image } from '../components/ui/Image'
 import English2 from '../images/ilustrations/girl.svg'
+import LearnMecaSvg from '../images/ilustrations/learn.svg'
+import SpeedMecaSvg from '../images/ilustrations/speed.svg'
+import CompetitionSvg from '../images/ilustrations/competition.svg'
+
 import { Layout } from '../layouts/Layout'
 import { routesV3 } from '../routes'
 
@@ -16,7 +20,7 @@ export const ChoicePage = () => {
       title: 'Aprende Mecanografía',
       description:
         'Aprende dónde colocar tus dedos al escribir mediante ejercicios básicos.',
-      img: English2,
+      img: LearnMecaSvg,
       toLink: routesV3.MECA_PAGE.route
     },
 
@@ -25,7 +29,7 @@ export const ChoicePage = () => {
       title: 'Mejora tu velocidad',
       description:
         'Realiza los ejercicios que desees para practicar tu velocidad y sube tu nivel en el ranking.',
-      img: English2,
+      img: SpeedMecaSvg,
       toLink: routesV3.MECA_TIME_PAGE.route
     },
 
@@ -41,15 +45,7 @@ export const ChoicePage = () => {
       id: generate(),
       title: '¡Completa la carrera!',
       description: 'Completa una carrera en la pista de type and type',
-      img: English2,
-      toLink: routesV3.RICE_PAGE.route
-    },
-
-    {
-      id: generate(),
-      title: 'Frase del día',
-      description: 'Conoce la frase de hoy',
-      img: English2,
+      img: CompetitionSvg,
       toLink: routesV3.RICE_PAGE.route
     }
   ]
