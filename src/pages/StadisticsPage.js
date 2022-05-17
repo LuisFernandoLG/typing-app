@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 import { ProgressGraph } from '../components/stadistics/ProgressGraph'
 import styled from 'styled-components'
 import { getArrayBySize } from '../helpers/getArrayBySize'
-import { IoCheckmarkCircle } from 'react-icons/io5'
+import { IoCheckmarkCircle, IoStopwatchOutline } from 'react-icons/io5'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 
 const skeletons = getArrayBySize({ size: 6 })
@@ -47,20 +47,28 @@ export const StadisticsPage = () => {
         {loading
           ? skeletons.map((_, i) => <ProgressGraph key={`${i}-pbs`} />)
           : data &&
-            exercisesScore.map((scores, i) => (
-              <ScoreCard
-                className={scores.reverse()[0].status === statuses.COMPLETED ? 'finished' : null}
-                key={`${i}-pbx`}>
-                {scores.reverse()[0].status === statuses.COMPLETED && (
-                  <IoCheckmarkCircle className='checkmark' />
-                )}
-                <FlexContainer fd_c key={'$dw-pb'}>
-                  <h5 className='title'>{scores.reverse()[0].title}</h5>
-                  <p>Mejor tiempo: {scores.reverse()[0].lastTimeTaken}s</p>
-                  <p>Puntos obtenidos: {scores.reverse()[0].totalScore}</p>
-                </FlexContainer>
-              </ScoreCard>
-            ))}
+            exercisesScore.map((scores, i) => {
+              const lastItem = scores.length - 1
+              return (
+                <ScoreCard
+                  className={
+                    scores[lastItem].status === statuses.COMPLETED
+                      ? 'finished'
+                      : null
+                  }
+                  key={`${i}-pbx`}>
+                  {scores[lastItem].status === statuses.COMPLETED
+                    ? <IoCheckmarkCircle className='checkmark'/>
+                    : <IoStopwatchOutline className='watchmark'/>
+                  }
+                  <FlexContainer fd_c key={'$dw-pb'}>
+                    <h5 className='title'>{scores[lastItem].title}</h5>
+                    <p>Mejor tiempo: {scores[lastItem].lastTimeTaken}s</p>
+                    <p>Puntos obtenidos: {scores[lastItem].totalScore}</p>
+                  </FlexContainer>
+                </ScoreCard>
+              )
+            })}
       </GridContainer>
     </PageWrapper>
   )
@@ -97,17 +105,24 @@ const ScoreCard = styled.div`
 
   position: relative;
 
-  .checkmark {
-    /* color:Red; */
+  .checkmark, .watchmark{
     position: absolute;
     top: -1rem;
     right: -1rem;
     font-size: 3rem;
 
-    color: ${({ theme: { successColor } }) => successColor};
-    background: ${({ theme: { accentColor } }) => accentColor};
     padding: 0.2rem;
     border-radius: 8rem;
+  }
+
+  .checkmark {
+    color: ${({ theme: { successColor } }) => successColor};
+    background: ${({ theme: { accentColor } }) => accentColor};
+  }
+  
+  .watchmark{
+    color: ${({ theme: { fontColor } }) => fontColor};
+    background: ${({ theme: { accentColor } }) => accentColor};    
   }
 `
 
