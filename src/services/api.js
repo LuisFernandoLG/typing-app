@@ -30,6 +30,10 @@ const recoverPassEndPoint = `${HOST}/recover/pass`
 const getAllEnglishCoursesEndpoint = `${HOST}/courses`
 const getCourseEndpoint = `${HOST}/course`
 const getCoursesTemplateEndpoint = `${HOST}/coursesTemplate`
+const updateMecaExerciseEndpoint = `${HOST}/course/mecaExercise`
+const updateAbcExerciseEndpoint = `${HOST}/course/abcExercise`
+const addAbcExerciseEndpoint = `${HOST}/course/abcExercise`
+const addMecaExerciseEndpoint = `${HOST}/course/mecaExercise`
 
 // const basicOptions = {
 //   method: 'GET',
@@ -131,6 +135,59 @@ const api = () => {
         })
     })
 
+  const updateMecaExercise = ({ mecaExercise }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPut({ body: { ...mecaExercise } })
+      // console.log({ options })
+      fetch(updateMecaExerciseEndpoint, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
+  const updateAbcExercise = ({ abcExercise }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPut({ body: { ...abcExercise } })
+      // console.log
+      console.log({ options })
+      fetch(updateAbcExerciseEndpoint, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
+  const addAbcExercise = ({ abcExercise, courseId }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPost({ body: { ...abcExercise } })
+      console.log({ options })
+      fetch(`${addAbcExerciseEndpoint}/${courseId}`, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
+  const addMecaExercise = ({ mecaExercise, courseId }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPost({ body: { ...mecaExercise } })
+      console.log({ options })
+      fetch(`${addMecaExerciseEndpoint}/${courseId}`, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
   // Functions hehe
   return {
     getAllEnglishExercises,
@@ -138,7 +195,11 @@ const api = () => {
     recoverPass,
     getAllEnglishCourses,
     getCourse,
-    getCourseTemplates
+    getCourseTemplates,
+    updateMecaExercise,
+    updateAbcExercise,
+    addAbcExercise,
+    addMecaExercise
   }
 }
 

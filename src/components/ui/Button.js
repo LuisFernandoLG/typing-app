@@ -3,7 +3,7 @@ import { Loader } from '../Loader'
 import { FlexContainer } from '../shareStyleComponents/FlexContainer'
 
 export const Button = (
-  { children, isLoading, onClick, primary, secondary, pd, fontSize },
+  { children, isLoading, onClick, primary, secondary, pd, fontSize, success },
   props
 ) => {
   return (
@@ -12,6 +12,7 @@ export const Button = (
       disabled={isLoading}
       primary={primary}
       secondary={secondary}
+      success={success}
       fontSize={fontSize}
       pd={pd}
       {...props}>
@@ -29,11 +30,16 @@ export const Button = (
 const primaryStyles = css`
   color: ${({ theme: { fontColor } }) => fontColor};
   background: ${({ theme: { primaryColor } }) => primaryColor};
-
+  
   &:hover,
   &:focus {
     box-shadow: ${({ theme: { primaryBoxShadow } }) => primaryBoxShadow};
   }
+`
+
+const successStyles = css`
+${() => primaryStyles}
+background: ${({ theme: { successColor } }) => successColor};
 `
 
 const secondaryStyles = css`
@@ -70,6 +76,8 @@ const ButtonStyled = styled.button`
 
   ${({ primary }) => (primary ? primaryStyles : null)} 
   ${({ secondary }) => (secondary ? secondaryStyles : null)}
+  ${({ success }) => (success ? successStyles : null)}
+
 `
 
 const BaseSizeHelper = styled(FlexContainer)`

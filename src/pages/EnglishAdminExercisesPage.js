@@ -5,13 +5,11 @@ import { FingerLoader } from '../components/loaders/FingerLoader'
 import { Layout } from '../layouts/Layout'
 import api from '../services/api'
 import styled from 'styled-components'
-// import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
-// import { useSignInForm } from '../hooks/useSignInForm'
-// import GroupInput from '../components/inputs/GroupInput'
-// import { useForm } from 'react-hook-form'
 import { EnglishAbcAdminForm } from '../components/EnglishAbcAdminForm'
-// import GroupInput from '../components/inputs/GroupInput'
-// import styled from "styled-components"
+import { MecaExerciseForm } from '../components/MecaExerciseForm'
+import { AddMecaExerciseForm } from '../components/AddMecaExerciseForm'
+import { AddAbcExerciseForm } from '../components/AddAbcExerciseForm'
+// import { AddAbcExerciseForm } from '../components/addAbcExerciseForm'
 
 export const EnglishAdminExercisesPage = () => {
   // eslint-disable-next-line no-unused-vars
@@ -42,37 +40,49 @@ export const EnglishAdminExercisesPage = () => {
         <FingerLoader />
           )
         : (
-            exercises.map((item) => (
-          <Card key={item.id}>
-            {item.exerciseType === 2
-              ? (
-              <EnglishAbcAdminForm item={item} />
-                )
-              : (
-              <MecaExerciseItem>
-                <h3>Titulo</h3>
-                <p>{item.title}</p>
-
-                <h4>Contenido</h4>
-                <p>{item.textContent}</p>
-              </MecaExerciseItem>
-                )}
-          </Card>
-            ))
+        <>
+          <GridContainer>
+            <Card>
+              <AddMecaExerciseForm courseId = {courseId}/>
+            </Card>
+            <Card>
+              {' '}
+              <AddAbcExerciseForm courseId = {courseId}/>
+            </Card>
+            {exercises.map((item) => (
+              <Card key={item.id}>
+                {item.exerciseType === 2
+                  ? (
+                  <EnglishAbcAdminForm item={item} />
+                    )
+                  : (
+                  <MecaExerciseForm mecaExercise={item} />
+                    )}
+              </Card>
+            ))}
+          </GridContainer>
+        </>
           )}
     </Layout>
   )
 }
 
 const Card = styled.div`
-  padding: 1rem;
+  padding: 3rem 2rem;
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
   transition: background-image 300ms ease;
 
   margin: 1rem 0;
+  /* height:max-content; */
 `
 
-const MecaExerciseItem = styled.div`
-  /* background:blue; */
+// const MecaExerciseItem = styled.div`
+//   /* background:blue; */
+// `
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
 `

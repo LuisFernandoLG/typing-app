@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
@@ -7,11 +7,10 @@ import GroupInput from './inputs/GroupInput'
 import { FlexContainer } from './shareStyleComponents/FlexContainer'
 import { Button } from './ui/Button'
 
-export const EnglishAbcAdminForm = ({ item }) => {
+export const AddAbcExerciseForm = ({ courseId }) => {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors }
   } = useForm()
   const [isLoading, setIsLoading] = useState(false)
@@ -20,9 +19,9 @@ export const EnglishAbcAdminForm = ({ item }) => {
     setIsLoading(true)
 
     const formFormated = format_data({ form })
-    api().updateAbcExercise({ abcExercise: formFormated }).then((data) => {
+    api().addAbcExercise({ abcExercise: formFormated, courseId }).then((data) => {
       console.log(data)
-      toast.success('¡Actualizado!')
+      toast.success('¡Añadido!')
     }).catch((error) => {
       console.log(error)
     }).finally(() => {
@@ -32,7 +31,7 @@ export const EnglishAbcAdminForm = ({ item }) => {
 
   const format_data = ({ form }) => {
     return {
-      idQuestion: item.id,
+      idQuestion: 999,
       title: form.Titulo,
       question: form.Pregunta,
       correctAnswer: form['Respuesta 1'],
@@ -42,17 +41,9 @@ export const EnglishAbcAdminForm = ({ item }) => {
     }
   }
 
-  useEffect(() => {
-    setValue('Titulo', item.title)
-    setValue('Pregunta', item.question)
-    setValue('Respuesta 1', item.answers[0].content)
-    setValue('Respuesta 2', item.answers[1].content)
-    setValue('Respuesta 3', item.answers[2].content)
-  }, [])
-
-  console.log({ item })
-
   return (
+    <>
+    <Title>Opción múltiple</Title>
     <Form as='form' onSubmit={handleSubmit(handleWholeSubmit)} fd_c gap='3rem'>
       <GroupInput
         name='Titulo'
@@ -73,7 +64,7 @@ export const EnglishAbcAdminForm = ({ item }) => {
         maxLength={60}
       />
 
-      <Answer className={item.answers[0].isCorrect ? 'yes' : 'no'}>
+      <Answer className={'yes'}>
         <GroupInput
           name='Respuesta 1'
           type='text'
@@ -85,7 +76,7 @@ export const EnglishAbcAdminForm = ({ item }) => {
         />
       </Answer>
 
-      <Answer className={item.answers[1].isCorrect ? 'yes' : 'no'}>
+      <Answer className={'no'}>
         <GroupInput
           name='Respuesta 2'
           type='text'
@@ -97,7 +88,7 @@ export const EnglishAbcAdminForm = ({ item }) => {
         />
       </Answer>
 
-      <Answer className={item.answers[2].isCorrect ? 'yes' : 'no'}>
+      <Answer className={'no'}>
         <GroupInput
           name='Respuesta 3'
           type='text'
@@ -114,25 +105,28 @@ export const EnglishAbcAdminForm = ({ item }) => {
         <input
           {...register('status', { required: false })}
           type='checkbox'
-          defaultChecked={item.idStatus === 1}
+          defaultChecked={true}
         />
       </div>
 
       <Button
-        primary={true}
+        success={true}
         isLoading={isLoading}
         type='submit'
         as='input'
         value='Buscar'
         pd='1rem 2rem'>
-        Guardar
+        Añadir
       </Button>
     </Form>
+  </>
   )
 }
 
 const Form = styled(FlexContainer)`
   accent-color: ${({ theme: { primaryColor } }) => primaryColor};
+  padding:2rem 1rem;
+
   .checkbox-label{
     color: ${({ theme: { fontColor } }) => fontColor};
     font-weight: 600;
@@ -142,6 +136,7 @@ const Form = styled(FlexContainer)`
   input[type='checkbox'] {
     padding: 10px;
   }
+
 `
 
 const Answer = styled.div`
@@ -174,4 +169,9 @@ const Answer = styled.div`
     background: ${({ theme: { errorColor } }) => errorColor};
     color: ${({ theme: { fontColor } }) => fontColor};
   }
+  `
+
+const Title = styled.h3`
+color: ${({ theme: { fontColor } }) => fontColor};
+text-align: center;
 `
