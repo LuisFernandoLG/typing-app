@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 import { ProgressGraph } from '../components/stadistics/ProgressGraph'
 import styled from 'styled-components'
 import { getArrayBySize } from '../helpers/getArrayBySize'
-import { IoCheckmarkCircle, IoStopwatchOutline } from 'react-icons/io5'
+import { IoCheckmarkCircle, IoTime } from 'react-icons/io5'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 
 const skeletons = getArrayBySize({ size: 6 })
@@ -59,7 +59,7 @@ export const StadisticsPage = () => {
                   key={`${i}-pbx`}>
                   {scores[lastItem].status === statuses.COMPLETED
                     ? <IoCheckmarkCircle className='checkmark'/>
-                    : <IoStopwatchOutline className='watchmark'/>
+                    : <IoTime className='watchmark'/>
                   }
                   <FlexContainer fd_c key={'$dw-pb'}>
                     <h5 className='title'>{scores[lastItem].title}</h5>
@@ -98,6 +98,7 @@ const ScoreCard = styled.div`
   color: ${({ theme: { fontColor } }) => fontColor};
 
   /* flex-wrap: ; */
+  background: ${({ theme: { correctedColor } }) => correctedColor};
 
   &&.finished {
     background: ${({ theme: { successColor } }) => successColor};
@@ -121,7 +122,7 @@ const ScoreCard = styled.div`
   }
   
   .watchmark{
-    color: ${({ theme: { fontColor } }) => fontColor};
+    color: ${({ theme: { correctedColor } }) => correctedColor};
     background: ${({ theme: { accentColor } }) => accentColor};    
   }
 `

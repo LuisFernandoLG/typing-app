@@ -32,8 +32,10 @@ const getCourseEndpoint = `${HOST}/course`
 const getCoursesTemplateEndpoint = `${HOST}/coursesTemplate`
 const updateMecaExerciseEndpoint = `${HOST}/course/mecaExercise`
 const updateAbcExerciseEndpoint = `${HOST}/course/abcExercise`
+const updateCourseEndpoint = `${HOST}/course`
 const addAbcExerciseEndpoint = `${HOST}/course/abcExercise`
 const addMecaExerciseEndpoint = `${HOST}/course/mecaExercise`
+const addCourseEndpoint = `${HOST}/course`
 
 // const basicOptions = {
 //   method: 'GET',
@@ -161,6 +163,19 @@ const api = () => {
           reject(error)
         })
     })
+  const updateCourse = ({ course }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPut({ body: { ...course } })
+      // console.log
+      console.log({ options })
+      fetch(updateCourseEndpoint, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
 
   const addAbcExercise = ({ abcExercise, courseId }) =>
     new Promise((resolve, reject) => {
@@ -188,6 +203,19 @@ const api = () => {
         })
     })
 
+  const addCourse = ({ course }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPost({ body: { ...course } })
+      console.log({ options })
+      fetch(`${addCourseEndpoint}/`, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
   // Functions hehe
   return {
     getAllEnglishExercises,
@@ -198,8 +226,10 @@ const api = () => {
     getCourseTemplates,
     updateMecaExercise,
     updateAbcExercise,
+    updateCourse,
     addAbcExercise,
-    addMecaExercise
+    addMecaExercise,
+    addCourse
   }
 }
 

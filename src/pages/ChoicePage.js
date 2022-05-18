@@ -98,8 +98,6 @@ const LinkCard = styled(Link)`
   
   &:hover {
     transform: scale(1.002) translateY(-5%);
-    /* background: ${({ theme: { secondaryGradient } }) => secondaryGradient}; */
-    
 
     .title {
       
@@ -125,7 +123,10 @@ const LinkCard = styled(Link)`
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
-  gap: 2rem;
+  grid-template-columns: repeat(2, minmax(250px, 320px));
+  gap: 2.5rem;
   justify-content: center;
+  /* align-item:center; */
+
+
 `

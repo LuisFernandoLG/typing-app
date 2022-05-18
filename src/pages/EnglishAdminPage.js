@@ -3,17 +3,22 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import styled from 'styled-components'
+import { AddCourseForm } from '../AddCourseForm'
 import { FingerLoader } from '../components/loaders/FingerLoader'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
+import { EditCourseForm } from '../EditCourseForm'
 import { Layout } from '../layouts/Layout'
 import { routesV3 } from '../routes'
 import api from '../services/api'
+import { IoArrowForwardOutline } from 'react-icons/io5'
+import { FloatContainer } from '../components/FloatContainer'
+import { Loader } from '../components/Loader'
 
 export const EnglishAdminPage = () => {
   const [courses, setCourses] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
+  const getData = () => {
     setIsLoading(true)
     api()
       .getCourseTemplates()
@@ -27,37 +32,63 @@ export const EnglishAdminPage = () => {
       .finally(() => {
         setIsLoading(false)
       })
-  }, [])
+  }
+
+  useEffect(getData, [])
 
   return (
-    <Layout>
-      <FlexContainer fd_c gap="1rem">
-
-      {courses
-        ? (
-            courses.map(({ courseId, title, description }) => (
-            <CourseCard key={courseId} to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.subRoutes.ENGLISH_EXERCISE_ADMIN_PAGE.route}/${courseId}`}>
-            <h3>{title}</h3>
-            <p>{description}</p>
-          </CourseCard>
-            ))
-          )
-        : (
+    <Layout pd='1rem 5rem'>
+      <FlexContainer fd_c gap='1rem'>
+        <AddCourseForm updateView = {getData}/>
+        <GridContainer>
+          {courses
+            ? (
+                courses.map((course) => (
+              <div key={course.courseId}>
+                <EditCourseForm course={course} />
+                <FlexContainer jc_c ai_c>
+                  <ExercisesLink
+                    to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.subRoutes.ENGLISH_EXERCISE_ADMIN_PAGE.route}/${course.courseId}`}>
+                    <FlexContainer jc_c ai_c>
+                      Ejercicios <IoArrowForwardOutline />
+                    </FlexContainer>
+                  </ExercisesLink>
+                </FlexContainer>
+              </div>
+                ))
+              )
+            : (
+            <FlexContainer aj_c jc_c pd='2rem'>
               <FingerLoader />
-          )}
-              </FlexContainer>
+            </FlexContainer>
+              )}
+        </GridContainer>
+      </FlexContainer>
+      <FloatContainer right="2rem" bottom="2rem" zIndex={200}>
+         {isLoading && <Loader medium={true}/>}
+      </FloatContainer>
     </Layout>
   )
 }
 
-const CourseCard = styled(Link)`
-  padding: 2rem;
+const ExercisesLink = styled(Link)`
+  background: ${({ theme: { disableColor } }) => disableColor};
+  margin: 0 auto;
+  font-weight: 600;
+  padding: 1rem;
+  color: ${({ theme: { bgColor } }) => bgColor};
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
-  background: ${({ theme: { accentColor } }) => accentColor};
-  cursor:pointer;
-  transition: background-image 300ms ease;
 
-  &:hover {
-    background-image: ${({ theme: { secondaryGradient } }) => secondaryGradient};
-  }
+  transform: translateY(-2rem);
+`
+
+const GridContainer = styled.div`
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+
+  align-items: center;
+  justify-content: center;
+  /* background:red */
 `

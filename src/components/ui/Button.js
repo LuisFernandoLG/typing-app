@@ -53,6 +53,7 @@ const secondaryStyles = css`
 `
 
 const ButtonStyled = styled.button`
+width: max-content;
   user-select: none;
   position: relative;
   ${({ pd }) =>

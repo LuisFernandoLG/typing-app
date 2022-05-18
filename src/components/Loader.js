@@ -1,8 +1,8 @@
 import styled, { keyframes } from 'styled-components'
 
-export const Loader = () => {
+export const Loader = ({ medium }) => {
   return (
-    <LoaderStyled>
+    <LoaderStyled medium={medium}>
       <span className="loader"></span>
     </LoaderStyled>
   )
@@ -12,9 +12,12 @@ const rotate = keyframes`
   0% {
     transform: rotate(0); }
   100% {
-    transform: rotate(360deg);`
+    transform: rotate(360deg);
+    
+    }`
 
 const LoaderStyled = styled.div`
+  font-size: ${({ medium }) => medium ? '30px' : null};
   height: 0.9em;
   width: 0.9em;
   color: inherit;

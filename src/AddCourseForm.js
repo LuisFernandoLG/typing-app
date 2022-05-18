@@ -1,14 +1,14 @@
-import styled from 'styled-components'
 import { useState } from 'react'
+import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
-// import { Button } from 'style-components'
-import api from '../services/api'
-import GroupInput from './inputs/GroupInput'
-import { FlexContainer } from './shareStyleComponents/FlexContainer'
-import { Button } from './ui/Button'
 
-export const AddMecaExerciseForm = ({ courseId, updateView }) => {
+import GroupInput from './components/inputs/GroupInput'
+import { FlexContainer } from './components/shareStyleComponents/FlexContainer'
+import { Button } from './components/ui/Button'
+import api from './services/api'
+
+export const AddCourseForm = ({ updateView }) => {
   const {
     register,
     handleSubmit,
@@ -23,9 +23,8 @@ export const AddMecaExerciseForm = ({ courseId, updateView }) => {
     console.log({ form })
     const formFormated = format_data(form)
     api()
-      .addMecaExercise({ mecaExercise: formFormated, courseId })
+      .addCourse({ course: formFormated })
       .then((data) => {
-        // console.log(data)
         toast.success('¡Registrado!')
         updateView()
         reset()
@@ -40,21 +39,22 @@ export const AddMecaExerciseForm = ({ courseId, updateView }) => {
 
   const format_data = (form) => {
     return {
-      mecaId: 9999,
-      title: form.Titulo,
-      textContent: form.Contenido,
+      id: 9999,
+      name: form.Titulo,
+      description: form.Descripción,
+      courseType: 2,
       status: form.status ? 1 : 2
     }
   }
 
   return (
-    <>
-      <Title>Mecanografía</Title>
-      <MecaExerciseFormStyled
+    <Card>
+      <Title>Curso</Title>
+      <Form
         as='form'
         onSubmit={handleSubmit(handleWholeSubmit)}
         fd_c
-        gap='3.2rem'>
+        gap='3rem'>
         {/* <h3>Titulo</h3> */}
         <GroupInput
           name='Titulo'
@@ -66,12 +66,12 @@ export const AddMecaExerciseForm = ({ courseId, updateView }) => {
         />
 
         <GroupInput
-          name='Contenido'
+          name='Descripción'
           type='text'
           isRequired={true}
           register={register}
           errors={errors}
-          maxLength={30}
+          maxLength={50}
         />
 
         <div>
@@ -88,19 +88,27 @@ export const AddMecaExerciseForm = ({ courseId, updateView }) => {
             isLoading={isLoading}
             type='submit'
             as='input'
-            value='Buscar'
+            value='Añadir'
             pd='1rem 2rem'>
             Añadir
           </Button>
         </FlexContainer>
-      </MecaExerciseFormStyled>
-    </>
+      </Form>
+    </Card>
   )
 }
 
-const MecaExerciseFormStyled = styled(FlexContainer)`
+const Card = styled.div`
+  padding: 3rem 2rem;
+  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
+  background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  transition: background-image 300ms ease;
+
+  margin: 1rem 0;
+`
+
+const Form = styled(FlexContainer)`
   padding: 2rem 1rem;
-  /* height:200px; */
   accent-color: ${({ theme: { primaryColor } }) => primaryColor};
 
   .checkbox-label {

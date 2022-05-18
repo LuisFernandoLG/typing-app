@@ -10,7 +10,7 @@ export const FloatContainer = ({ right, left, top, bottom, children, zIndex }) =
 
 const StyledFloatContainer = styled.div`
   
-  position: absolute;
+  position: fixed;
   ${({ top }) => (top ? `top:${top};` : null)}
   ${({ right }) => (right ? `right:${right};` : null)}
   ${({ bottom }) => (bottom ? `bottom:${bottom};` : null)}

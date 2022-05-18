@@ -23,14 +23,18 @@ export const MecaExerciseForm = ({ mecaExercise }) => {
     setIsLoading(true)
     console.log({ form })
     const formFormated = format_data(form)
-    api().updateMecaExercise({ mecaExercise: formFormated }).then((data) => {
-      console.log(data)
-      toast.success('¡Actualizado!')
-    }).catch((error) => {
-      console.log(error)
-    }).finally(() => {
-      setIsLoading(false)
-    })
+    api()
+      .updateMecaExercise({ mecaExercise: formFormated })
+      .then((data) => {
+        console.log(data)
+        toast.success('¡Actualizado!')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
 
   const format_data = (form) => {
@@ -72,28 +76,32 @@ export const MecaExerciseForm = ({ mecaExercise }) => {
         maxLength={30}
       />
 
-<div>
-      <label className='checkbox-label'>Activo</label>
-      <input {...register('status', { required: false })} type="checkbox" defaultChecked={mecaExercise.status === 1}/>
-</div>
-
-      <Button
-        primary={true}
-        isLoading={isLoading}
-        type='submit'
-        as='input'
-        value='Buscar'
-        pd='1rem 2rem'>
-        Guardar
-      </Button>
+      <div>
+        <label className='checkbox-label'>Activo</label>
+        <input
+          {...register('status', { required: false })}
+          type='checkbox'
+          defaultChecked={mecaExercise.status === 1}
+        />
+      </div>
+      <FlexContainer jc_c ai_c>
+        <Button
+          primary={true}
+          isLoading={isLoading}
+          type='submit'
+          as='input'
+          value='Buscar'
+          pd='1rem 2rem'>
+          Guardar
+        </Button>
+      </FlexContainer>
     </MecaExerciseFormStyled>
-
   )
 }
 
 const MecaExerciseFormStyled = styled(FlexContainer)`
   accent-color: ${({ theme: { primaryColor } }) => primaryColor};
-  .checkbox-label{
+  .checkbox-label {
     color: ${({ theme: { fontColor } }) => fontColor};
     font-weight: 600;
     padding: 0 0.5rem 0 0;

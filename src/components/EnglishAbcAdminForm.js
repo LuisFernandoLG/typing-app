@@ -20,14 +20,18 @@ export const EnglishAbcAdminForm = ({ item }) => {
     setIsLoading(true)
 
     const formFormated = format_data({ form })
-    api().updateAbcExercise({ abcExercise: formFormated }).then((data) => {
-      console.log(data)
-      toast.success('¡Actualizado!')
-    }).catch((error) => {
-      console.log(error)
-    }).finally(() => {
-      setIsLoading(false)
-    })
+    api()
+      .updateAbcExercise({ abcExercise: formFormated })
+      .then((data) => {
+        console.log(data)
+        toast.success('¡Actualizado!')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
   }
 
   const format_data = ({ form }) => {
@@ -117,23 +121,24 @@ export const EnglishAbcAdminForm = ({ item }) => {
           defaultChecked={item.idStatus === 1}
         />
       </div>
-
-      <Button
-        primary={true}
-        isLoading={isLoading}
-        type='submit'
-        as='input'
-        value='Buscar'
-        pd='1rem 2rem'>
-        Guardar
-      </Button>
+      <FlexContainer jc_c ai_c>
+        <Button
+          primary={true}
+          isLoading={isLoading}
+          type='submit'
+          as='input'
+          value='Buscar'
+          pd='1rem 2rem'>
+          Guardar
+        </Button>
+      </FlexContainer>
     </Form>
   )
 }
 
 const Form = styled(FlexContainer)`
   accent-color: ${({ theme: { primaryColor } }) => primaryColor};
-  .checkbox-label{
+  .checkbox-label {
     color: ${({ theme: { fontColor } }) => fontColor};
     font-weight: 600;
     padding: 0 0.5rem 0 0;
@@ -148,8 +153,6 @@ const Answer = styled.div`
   padding: 1rem;
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   position: relative;
-
-
 
   &.yes::before,
   &.no::before {
