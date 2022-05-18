@@ -62,7 +62,7 @@ export const AddMecaExerciseForm = ({ courseId, updateView }) => {
           isRequired={true}
           register={register}
           errors={errors}
-          maxLength={30}
+          maxLength={70}
         />
 
         <GroupInput
@@ -71,7 +71,7 @@ export const AddMecaExerciseForm = ({ courseId, updateView }) => {
           isRequired={true}
           register={register}
           errors={errors}
-          maxLength={30}
+          maxLength={70}
         />
 
         <div>

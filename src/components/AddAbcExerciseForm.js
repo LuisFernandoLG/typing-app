@@ -62,7 +62,7 @@ export const AddAbcExerciseForm = ({ courseId, updateView }) => {
           isRequired={true}
           register={register}
           errors={errors}
-          maxLength={60}
+          maxLength={70}
         />
 
         <GroupInput
@@ -72,7 +72,7 @@ export const AddAbcExerciseForm = ({ courseId, updateView }) => {
           isRequired={true}
           register={register}
           errors={errors}
-          maxLength={60}
+          maxLength={70}
         />
 
         <Answer className={'yes'}>

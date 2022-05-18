@@ -62,7 +62,7 @@ export const AddCourseForm = ({ updateView }) => {
           isRequired={true}
           register={register}
           errors={errors}
-          maxLength={30}
+          maxLength={60}
         />
 
         <GroupInput
@@ -71,7 +71,7 @@ export const AddCourseForm = ({ updateView }) => {
           isRequired={true}
           register={register}
           errors={errors}
-          maxLength={50}
+          maxLength={70}
         />
 
         <div>
