@@ -113,7 +113,7 @@ export const AdminExerciseItem = ({
         ))}
       </select>
 
-      <Submit type="submit" value="Guadar" />
+      <Submit type="submit" value="Guardar" />
     </AdminExerciseItemWrapper>
   )
 }

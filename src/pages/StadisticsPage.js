@@ -42,7 +42,6 @@ export const StadisticsPage = () => {
   return (
     <PageWrapper>
       <Title>Estadísticas</Title>
-      {/* <Subtitle>Mejores puntajes</Subtitle> */}
       <GridContainer>
         {loading
           ? skeletons.map((_, i) => <ProgressGraph key={`${i}-pbs`} />)
