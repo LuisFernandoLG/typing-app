@@ -36,7 +36,12 @@ export const EnglishExercisePage = () => {
     setIsDone(true)
 
     if (isCorrect) {
-      api().markExerciseFromEnglishCourseCompleted({ courseId, exerciseId, userId: user.id })
+      api()
+        .markExerciseFromEnglishCourseCompleted({
+          courseId,
+          exerciseId,
+          userId: user.id
+        })
         .then((res) => {
           console.log(res)
         })
@@ -62,7 +67,8 @@ export const EnglishExercisePage = () => {
       })
       .catch(() => {
         toast.error('Oops! Hubo un error.')
-      }).finally(() => {
+      })
+      .finally(() => {
         setIsLoading(false)
       })
   }, [])
@@ -101,7 +107,7 @@ export const EnglishExercisePage = () => {
     }
   }, [exerciseId])
 
-  if (isLoading) return <Loader/>
+  if (isLoading) return <Loader />
 
   return (
     <Layout>
@@ -131,44 +137,43 @@ export const EnglishExercisePage = () => {
             )}
       </FlexContainer>
 
-          {isDone && (
-            <>
-              <FlexContainer jc_fe ai_c>
-                {exerciseIndex === allExercises.length - 1 && (
-                  <ShorHandKey handleKeyDown={goNext} code='Enter'>
-                    <Link ref={homeBtnRef} to={routesV3.ENGLISH_PAGE.route}>
-                      <Button primary={true} pd='1rem'>
-                        Página principal{' '}
-                        <EnterKeyShorCut>
-                          <AiOutlineEnter />
-                        </EnterKeyShorCut>
-                      </Button>
-                    </Link>
-                  </ShorHandKey>
-                )}
-              </FlexContainer>
+      {isDone && (
+        <>
+          <FlexContainer jc_fe ai_c>
+            {exerciseIndex === allExercises.length - 1 && (
+              <ShorHandKey handleKeyDown={goNext} code='Enter'>
+                <Link ref={homeBtnRef} to={routesV3.ENGLISH_PAGE.route}>
+                  <Button primary={true} pd='1rem'>
+                    Página principal{' '}
+                    <EnterKeyShorCut>
+                      <AiOutlineEnter />
+                    </EnterKeyShorCut>
+                  </Button>
+                </Link>
+              </ShorHandKey>
+            )}
+          </FlexContainer>
 
-              <FlexContainer ai_fe jc_fe pd='1rem'>
-                {exerciseIndex !== allExercises.length - 1 && (
-                  <ShorHandKey handleKeyDown={goNext} code='Enter'>
-                    <Link
-                      ref={nextBtnRef}
-                      to={`${routesV3.ENGLISH_PAGE.route}/${
-                        routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE
-                          .route
-                      }/${courseId}/${allExercises[exerciseIndex + 1].id}`}>
-                      <Button primary={true} pd='1rem'>
-                        Siguiente{' '}
-                        <EnterKeyShorCut>
-                          <AiOutlineEnter />
-                        </EnterKeyShorCut>
-                      </Button>
-                    </Link>
-                  </ShorHandKey>
-                )}
-              </FlexContainer>
-            </>)
-          }
+          <FlexContainer ai_fe jc_fe pd='1rem'>
+            {exerciseIndex !== allExercises.length - 1 && (
+              <ShorHandKey handleKeyDown={goNext} code='Enter'>
+                <Link
+                  ref={nextBtnRef}
+                  to={`${
+                    routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.route
+                  }/${courseId}/${allExercises[exerciseIndex + 1].id}`}>
+                  <Button primary={true} pd='1rem'>
+                    Siguiente{' '}
+                    <EnterKeyShorCut>
+                      <AiOutlineEnter />
+                    </EnterKeyShorCut>
+                  </Button>
+                </Link>
+              </ShorHandKey>
+            )}
+          </FlexContainer>
+        </>
+      )}
     </Layout>
   )
 }

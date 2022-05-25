@@ -1,17 +1,13 @@
 import { useState, useEffect } from 'react'
 import { Layout } from '../layouts/Layout'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { routesV3 } from '../routes'
-// import { EnglishExercisesMockup } from '../constants/englishExercisesTest'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 
 import api from '../services/api'
-// import { FingerLoader } from '../components/loaders/FingerLoader'
-// import { getArrayBySize } from '../helpers/getArrayBySize'
 import Skeleton from 'react-loading-skeleton'
 import { useSession } from '../hooks/useSession'
-// import { BackPageButton } from '../components/ui/BackPageButton'
 
 export const EnglishSectionPage = () => {
   // eslint-disable-next-line no-unused-vars
@@ -19,12 +15,19 @@ export const EnglishSectionPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const { user } = useSession()
 
+  const { dificultad } = useParams()
+
+  const filterCourseByDifficulty = ({ courses }) =>
+    courses.filter(({ difficulty }) => difficulty === dificultad)
+
   useEffect(() => {
     setIsLoading(true)
     api()
       .getAllEnglishCourses({ userId: user.id })
       .then((data) => {
-        setAllExercises(data.data)
+        const filteredDataByDifficulty = filterCourseByDifficulty({ courses: data.data })
+        setAllExercises(filteredDataByDifficulty)
+        // setAllExercises(data.data)
         console.log({ data: data.data })
       })
       .catch(() => {
@@ -36,9 +39,8 @@ export const EnglishSectionPage = () => {
   }, [])
 
   return (
-    <Layout mg='1rem 0'>
-      {/* <BackPageButton backRoute={routesV3.MENU_PAGE.route} /> */}
-
+    <Layout mg='0 1rem'>
+<MegaTitle>{dificultad}</MegaTitle>
       {(allExercises || [1, 2, 3, 4]).map(
         ({ courseId, description, categoryName, exercises }) => (
           <Layout key={courseId} mg='2rem 0'>
@@ -68,7 +70,7 @@ export const EnglishSectionPage = () => {
   )
 }
 
-const Title = styled.h2`
+const Title = styled.h3`
   color: ${({ theme: { fontColor } }) => fontColor};
   font-size: 2rem;
   width: 6.25rem;
@@ -101,7 +103,7 @@ const ExerciseBubble = styled(FlexContainer)`
   text-align: center;
   transition: transform 300ms ease;
 
-  padding:1rem;
+  padding: 1rem;
 
   ${({ theme: { successColor, fontColor, accentColor }, isDone }) =>
     isDone
@@ -117,4 +119,10 @@ const ExerciseBubble = styled(FlexContainer)`
   &:hover {
     transform: scale(1.05);
   }
+`
+
+const MegaTitle = styled.h2`
+  color: ${({ theme: { fontColor } }) => fontColor};
+  font-size: 3rem;
+  width: 6.25rem;
 `

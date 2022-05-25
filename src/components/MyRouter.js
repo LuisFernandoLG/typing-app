@@ -22,13 +22,15 @@ import { ConfigProgilePage as ConfigProfilePage } from '../pages/ConfigProfilePa
 import { EnglishExercisePage } from '../pages/EnglishExercisePage'
 // import { MecaExercise } from './MecaExercise'
 // import { EnglishPage } from '../pages/EnglishPage'
-import { EnglishSectionPage } from '../pages/EnglishSectionPage'
+// import { EnglishSectionPage } from '../pages/EnglishSectionPage'
 import { PrivateRoute } from '../pages/PrivateRoute'
 import { MecaPage } from '../pages/MecaPage'
 import { EnglishAdminPage } from '../pages/EnglishAdminPage'
 import { EnglishStadisticsPage } from '../pages/EnglishStadistics'
 import { RicePage } from '../pages/RicePage'
 import { EnglishAdminExercisesPage } from '../pages/EnglishAdminExercisesPage'
+import { EnglishDifficultiesPage } from '../pages/EnglishDifficultiesPage'
+import { EnglishSectionPage } from '../pages/EnglishSectionPage'
 
 const MecaTimePage = lazy(() => import('../pages/MecaTimePage'))
 const EnglishPage = lazy(() => import('../pages/EnglishPage'))
@@ -119,11 +121,13 @@ export const MyRouter = () => {
                   </PrivateRoute>
                 }>
 
-                <Route index element={<EnglishSectionPage />} />
+                <Route index element={<EnglishDifficultiesPage />} />
                 <Route
                   path={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.routeWithParams}`}
                   element={<EnglishExercisePage />}
                 />
+                <Route path={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_DIFFICULTY.routeWithParams} element={<EnglishSectionPage/>}/>
+
                 <Route path={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.subRoutes.ENGLISH_EXERCISE_ADMIN_PAGE.routeWithParams} element={<EnglishAdminExercisesPage/>}/>
                 <Route path={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.route} element={<EnglishAdminPage/>}/>
                 <Route path={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_STATS_PAGE.route} element={<EnglishStadisticsPage/>}/>

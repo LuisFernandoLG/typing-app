@@ -64,8 +64,16 @@ export const routesV3 = {
     route: '/english',
     subRoutes: {
       ENGLISH_EXERCISE_PAGE: {
-        route: 'item',
+        route: '/english/item',
         routeWithParams: 'item/:courseId/:exerciseId'
+      },
+
+      ENGLISH_LEVELS: {
+        route: 'dificultades'
+      },
+      ENGLISH_DIFFICULTY: {
+        route: '/english/dificultad',
+        routeWithParams: 'dificultad/:dificultad'
       },
 
       ENGLISH_ADMIN_PAGE: {

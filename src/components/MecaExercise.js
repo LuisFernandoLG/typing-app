@@ -19,13 +19,22 @@ import { FlexContainer } from './shareStyleComponents/FlexContainer'
 import { KeyBoard } from './exercise/KeyBoard'
 import { Layout } from '../layouts/Layout'
 
-const textQuote = 'Hola, bievenido a type and type, esta es nuestra presentación.'
+const textQuote =
+  'Hola, bievenido a type and type, esta es nuestra presentación.'
 
 export const MecaExercise = ({ mecaExercise, setIsDone }) => {
-  const { quote, indexQuote, isExerciseCompleted, calculateResults, keyWanted, keyPressed, results, updateQuote } =
-    useKeyBoardActivity({
-      textQuote: mecaExercise?.textContent || textQuote
-    })
+  const {
+    quote,
+    indexQuote,
+    isExerciseCompleted,
+    calculateResults,
+    keyWanted,
+    keyPressed,
+    results,
+    updateQuote
+  } = useKeyBoardActivity({
+    textQuote: mecaExercise?.textContent || textQuote
+  })
 
   const setIsDoneDefault = () => {
     return quote
@@ -33,7 +42,7 @@ export const MecaExercise = ({ mecaExercise, setIsDone }) => {
 
   useEffect(() => {
     if (mecaExercise) {
-      if (mecaExercise?.textContent) updateQuote({ newQuote: mecaExercise.textContent })
+      if (mecaExercise?.textContent) { updateQuote({ newQuote: mecaExercise.textContent }) }
     }
   }, [mecaExercise])
 
@@ -47,11 +56,9 @@ export const MecaExercise = ({ mecaExercise, setIsDone }) => {
 
   useEffect(() => {
     if (setIsDone) {
-      if (results?.failed === 0) {
-        setIsDone({ isCorrect: true })
-      } else {
-        setIsDone({ isCorrect: false })
-      }
+      console.log({ results })
+      if (results.length === 0) return 0
+      setIsDone({ isCorrect: results?.failed === 0 })
     }
   }, [results])
 
@@ -111,38 +118,41 @@ export const MecaExercise = ({ mecaExercise, setIsDone }) => {
 
   return (
     <Layout>
-          <Quote quote={quote} indexQuote={indexQuote}/>
-          <Container jc_c ai_c>
-          <KeyBoard keyPressed={keyPressed} keyWanted={keyWanted} />
-          <FlexContainer jc_c ai_c>
-            <Hand className='leftHand' src={leftHand[keyWanted.content] || leftHand.none} />
-            <Hand className='rightHand' src={rightHand[keyWanted.content] || rightHand.none} />
-          </FlexContainer>
-          </Container>
-
+      <Quote quote={quote} indexQuote={indexQuote} />
+      <Container jc_c ai_c>
+        <KeyBoard keyPressed={keyPressed} keyWanted={keyWanted} />
+        <FlexContainer jc_c ai_c>
+          <Hand
+            className='leftHand'
+            src={leftHand[keyWanted.content] || leftHand.none}
+          />
+          <Hand
+            className='rightHand'
+            src={rightHand[keyWanted.content] || rightHand.none}
+          />
+        </FlexContainer>
+      </Container>
     </Layout>
   )
 }
 
 const Container = styled(FlexContainer)`
-position: relative;
-width:min-content;
-/* background: red; */
-margin:0 auto;
+  position: relative;
+  width: min-content;
+  /* background: red; */
+  margin: 0 auto;
 `
 const Hand = styled.img`
   width: 25em;
   height: 25em;
-  position:absolute;
-  top:-20%;
+  position: absolute;
+  top: -20%;
 
-  &&.leftHand{
-    left:-10%;
+  &&.leftHand {
+    left: -10%;
     /* right:0; */
   }
-  &&.rightHand{
-    right:-10%;
+  &&.rightHand {
+    right: -10%;
   }
-
-
 `
