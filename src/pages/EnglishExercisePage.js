@@ -13,6 +13,7 @@ import { AiOutlineEnter } from 'react-icons/ai'
 import styled from 'styled-components'
 import { Loader } from '../components/Loader'
 import { toast } from 'react-toastify'
+import { useSession } from '../hooks/useSession'
 
 const exercisesTypes = {
   MECA_EXERCISE: 1,
@@ -29,7 +30,18 @@ export const EnglishExercisePage = () => {
   const [isDone, setIsDone] = useState(initialIsDone)
   const [isLoading, setIsLoading] = useState(true)
 
-  const setExerciseDone = () => setIsDone(true)
+  const { user } = useSession()
+
+  const setExerciseDone = ({ isCorrect }) => {
+    setIsDone(true)
+
+    if (isCorrect) {
+      api().markExerciseFromEnglishCourseCompleted({ courseId, exerciseId, userId: user.id })
+        .then((res) => {
+          console.log(res)
+        })
+    }
+  }
   const nextBtnRef = useRef(null)
   const homeBtnRef = useRef(null)
 
@@ -105,7 +117,7 @@ export const EnglishExercisePage = () => {
               ? (
               <AbcExercise
                 abcExercise={currentExercise}
-                setIsDone={setIsDone}
+                setIsDone={setExerciseDone}
                 goNext={goNext}
               />
                 )

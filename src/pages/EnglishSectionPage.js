@@ -10,19 +10,22 @@ import api from '../services/api'
 // import { FingerLoader } from '../components/loaders/FingerLoader'
 // import { getArrayBySize } from '../helpers/getArrayBySize'
 import Skeleton from 'react-loading-skeleton'
+import { useSession } from '../hooks/useSession'
 // import { BackPageButton } from '../components/ui/BackPageButton'
 
 export const EnglishSectionPage = () => {
   // eslint-disable-next-line no-unused-vars
   const [allExercises, setAllExercises] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const { user } = useSession()
 
   useEffect(() => {
     setIsLoading(true)
     api()
-      .getAllEnglishCourses()
+      .getAllEnglishCourses({ userId: user.id })
       .then((data) => {
         setAllExercises(data.data)
+        console.log({ data: data.data })
       })
       .catch(() => {
         //
@@ -48,7 +51,7 @@ export const EnglishSectionPage = () => {
                   <Link
                     key={item?.id}
                     to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.route}/${courseId}/${item?.id}`}>
-                    <ExerciseBubble jc_c ai_c isDone={false}>
+                    <ExerciseBubble jc_c ai_c isDone={item?.isDone}>
                       {item?.title}
                     </ExerciseBubble>
                   </Link>
@@ -97,6 +100,8 @@ const ExerciseBubble = styled(FlexContainer)`
   font-weight: 600;
   text-align: center;
   transition: transform 300ms ease;
+
+  padding:1rem;
 
   ${({ theme: { successColor, fontColor, accentColor }, isDone }) =>
     isDone

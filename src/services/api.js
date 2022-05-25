@@ -27,7 +27,7 @@ const HOST = isEnvLocalhost()
 const allEnglishExercisesEndPoint = `${HOST}/englishExercises`
 const updateUserEndPoint = `${HOST}/user`
 const recoverPassEndPoint = `${HOST}/recover/pass`
-const getAllEnglishCoursesEndpoint = `${HOST}/courses`
+const getAllEnglishCoursesEndpoint = `${HOST}/courses/user`
 const getCourseEndpoint = `${HOST}/course`
 const getCoursesTemplateEndpoint = `${HOST}/coursesTemplate`
 const updateMecaExerciseEndpoint = `${HOST}/course/mecaExercise`
@@ -36,6 +36,7 @@ const updateCourseEndpoint = `${HOST}/course`
 const addAbcExerciseEndpoint = `${HOST}/course/abcExercise`
 const addMecaExerciseEndpoint = `${HOST}/course/mecaExercise`
 const addCourseEndpoint = `${HOST}/course`
+const markExerciseCompleted = `${HOST}/course/exercise/markascompleted`
 
 // const basicOptions = {
 //   method: 'GET',
@@ -102,9 +103,12 @@ const api = () => {
         })
     })
 
-  const getAllEnglishCourses = () =>
+  const getAllEnglishCourses = ({ userId }) =>
     new Promise((resolve, reject) => {
-      fetch(getAllEnglishCoursesEndpoint)
+      // console.log({ userId })
+      const defualtUserId = userId || 0
+      // console.log({ defualtUserId })
+      fetch(`${getAllEnglishCoursesEndpoint}/${defualtUserId}`)
         .then((res) => {
           resolve(res.json())
         })
@@ -216,6 +220,18 @@ const api = () => {
         })
     })
 
+  const markExerciseFromEnglishCourseCompleted = ({ courseId, exerciseId, userId }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPost({ body: { courseId, exerciseId, userId } })
+      fetch(`${markExerciseCompleted}`, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
   // Functions hehe
   return {
     getAllEnglishExercises,
@@ -229,7 +245,8 @@ const api = () => {
     updateCourse,
     addAbcExercise,
     addMecaExercise,
-    addCourse
+    addCourse,
+    markExerciseFromEnglishCourseCompleted
   }
 }
 

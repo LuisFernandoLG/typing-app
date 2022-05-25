@@ -1,7 +1,5 @@
-// import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { useShortSound } from '../../hooks/useShortSound'
-// import { EnglishExercisesMockup } from '../../constants/englishExercisesTest'
 import { FlexContainer } from '../shareStyleComponents/FlexContainer'
 import styled from 'styled-components'
 import Skeleton from 'react-loading-skeleton'
@@ -19,7 +17,10 @@ export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
   const option3 = useRef(null)
 
   useEffect(() => {
-    if (itemSelected) setIsDone(true)
+    if (itemSelected) {
+      setIsDone({ isCorrect: itemSelected.isCorrect })
+      // it
+    }
   }, [itemSelected])
 
   useEffect(() => {

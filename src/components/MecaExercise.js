@@ -20,10 +20,9 @@ import { KeyBoard } from './exercise/KeyBoard'
 import { Layout } from '../layouts/Layout'
 
 const textQuote = 'Hola, bievenido a type and type, esta es nuestra presentación.'
-// const initialUpdateQuote = () => null
 
 export const MecaExercise = ({ mecaExercise, setIsDone }) => {
-  const { quote, indexQuote, isExerciseCompleted, keyWanted, keyPressed, results, updateQuote } =
+  const { quote, indexQuote, isExerciseCompleted, calculateResults, keyWanted, keyPressed, results, updateQuote } =
     useKeyBoardActivity({
       textQuote: mecaExercise?.textContent || textQuote
     })
@@ -39,12 +38,20 @@ export const MecaExercise = ({ mecaExercise, setIsDone }) => {
   }, [mecaExercise])
 
   useEffect(() => {
-    if (results && isExerciseCompleted) {
+    if (isExerciseCompleted) {
       if (setIsDone) {
-        setIsDone()
+        calculateResults()
       } else setIsDoneDefault()
     }
-  }, [isExerciseCompleted, results])
+  }, [isExerciseCompleted])
+
+  useEffect(() => {
+    if (results?.failed === 0) {
+      setIsDone({ isCorrect: true })
+    } else {
+      setIsDone({ isCorrect: false })
+    }
+  }, [results])
 
   const rightHand = {
     none: rightFingers,
