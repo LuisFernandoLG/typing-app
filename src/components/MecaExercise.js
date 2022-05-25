@@ -46,10 +46,12 @@ export const MecaExercise = ({ mecaExercise, setIsDone }) => {
   }, [isExerciseCompleted])
 
   useEffect(() => {
-    if (results?.failed === 0) {
-      setIsDone({ isCorrect: true })
-    } else {
-      setIsDone({ isCorrect: false })
+    if (setIsDone) {
+      if (results?.failed === 0) {
+        setIsDone({ isCorrect: true })
+      } else {
+        setIsDone({ isCorrect: false })
+      }
     }
   }, [results])
 
