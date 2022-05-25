@@ -39,6 +39,8 @@ export const Score = ({ results, currentExercise, timeTaken }) => {
     maxPoints: currentExercise.points
   })
 
+  // console.log({ currentExercise })
+
   useEffect(() => {
     const options = getPutScoreOptions({
       pointsScored,
@@ -52,7 +54,7 @@ export const Score = ({ results, currentExercise, timeTaken }) => {
   return (
     <ScoreContainer flex flex_jc_c flex_dc flex_ai_c gap='1rem'>
       <BubbleScore percentage={percentageScored} />
-      <Points>{pointsScored} Puntos</Points>
+      <Points>{pointsScored} / { currentExercise.points }  Puntos</Points>
       <Button primary={true} onClick={goHomePage} pd="1rem 2rem">
         Volver al inicio
       </Button>
