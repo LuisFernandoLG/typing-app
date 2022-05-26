@@ -31,6 +31,8 @@ import { RicePage } from '../pages/RicePage'
 import { EnglishAdminExercisesPage } from '../pages/EnglishAdminExercisesPage'
 import { EnglishDifficultiesPage } from '../pages/EnglishDifficultiesPage'
 import { EnglishSectionPage } from '../pages/EnglishSectionPage'
+import { LearMecaHomePage } from '../pages/LearnMecaHomePage'
+import { MecaExercisePage } from '../pages/MecaExerciePage'
 
 const MecaTimePage = lazy(() => import('../pages/MecaTimePage'))
 const EnglishPage = lazy(() => import('../pages/EnglishPage'))
@@ -80,7 +82,6 @@ export const MyRouter = () => {
                     <MecaTimePage />
                   </PrivateRoute>
                 }>
-
                 <Route index element={<HomePagex />} />
                 <Route
                   path={`${routesV3.MECA_TIME_PAGE.subRoutes.EXERCISE_PAGE.routeWithParams}`}
@@ -110,8 +111,10 @@ export const MyRouter = () => {
                   <PrivateRoute>
                     <MecaPage />
                   </PrivateRoute>
-                }
-              />
+                }>
+                <Route index element={<LearMecaHomePage />} />
+                <Route path={routesV3.MECA_PAGE.subpages.EXERCISE.routeWithParams} element={< MecaExercisePage/>} />
+              </Route>
 
               <Route
                 path={routesV3.ENGLISH_PAGE.route}
@@ -120,17 +123,38 @@ export const MyRouter = () => {
                     <EnglishPage />
                   </PrivateRoute>
                 }>
-
                 <Route index element={<EnglishDifficultiesPage />} />
                 <Route
                   path={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.routeWithParams}`}
                   element={<EnglishExercisePage />}
                 />
-                <Route path={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_DIFFICULTY.routeWithParams} element={<EnglishSectionPage/>}/>
+                <Route
+                  path={
+                    routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_DIFFICULTY
+                      .routeWithParams
+                  }
+                  element={<EnglishSectionPage />}
+                />
 
-                <Route path={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.subRoutes.ENGLISH_EXERCISE_ADMIN_PAGE.routeWithParams} element={<EnglishAdminExercisesPage/>}/>
-                <Route path={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.route} element={<EnglishAdminPage/>}/>
-                <Route path={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_STATS_PAGE.route} element={<EnglishStadisticsPage/>}/>
+                <Route
+                  path={
+                    routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.subRoutes
+                      .ENGLISH_EXERCISE_ADMIN_PAGE.routeWithParams
+                  }
+                  element={<EnglishAdminExercisesPage />}
+                />
+                <Route
+                  path={
+                    routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.route
+                  }
+                  element={<EnglishAdminPage />}
+                />
+                <Route
+                  path={
+                    routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_STATS_PAGE.route
+                  }
+                  element={<EnglishStadisticsPage />}
+                />
               </Route>
 
               <Route
@@ -139,9 +163,7 @@ export const MyRouter = () => {
                   <PrivateRoute>
                     <RicePage />
                   </PrivateRoute>
-                }>
-
-                </Route>
+                }></Route>
 
               <Route
                 path={routesV2.NOT_FOUND_PAGE.route}

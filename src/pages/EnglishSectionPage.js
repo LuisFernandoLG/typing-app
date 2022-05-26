@@ -8,6 +8,7 @@ import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import api from '../services/api'
 import Skeleton from 'react-loading-skeleton'
 import { useSession } from '../hooks/useSession'
+import { toast } from 'react-toastify'
 
 export const EnglishSectionPage = () => {
   // eslint-disable-next-line no-unused-vars
@@ -31,7 +32,7 @@ export const EnglishSectionPage = () => {
         console.log({ data: data.data })
       })
       .catch(() => {
-        //
+        toast.error('Oops! Hubo un error.')
       })
       .finally(() => {
         setIsLoading(false)

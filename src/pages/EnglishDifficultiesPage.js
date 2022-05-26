@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import nivel1 from '../images/ilustrations/Fitness_Outline.svg'
-import nivel2 from '../images/ilustrations/Fitness2_Outline.svg'
-import nivel3 from '../images/ilustrations/Fitness3_Outline.svg'
+import nivel2 from '../images/ilustrations/Fitness3_Outline.svg'
+import nivel3 from '../images/ilustrations/Fitness2_Outline.svg'
 
 import shortid from 'shortid'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
@@ -31,7 +31,8 @@ const difficulties = [
 export const EnglishDifficultiesPage = () => {
   return (
     <Layout width="100%">
-      <FlexContainer gap='1rem' wrap={true} jc_c ai_c>
+      <MegaTitle>Aprende Ingles con Type and type</MegaTitle>
+      <FlexContainer gap='1rem' pd="2rem 0" wrap={true} jc_c ai_c>
         {difficulties.map(({ id, name, img }, i) => (
             <Link key={id} to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_DIFFICULTY.route}/${name}`}>
           <Card pd='2rem 0rem' fd_c jc_c ai_c>
@@ -66,4 +67,11 @@ const Card = styled(FlexContainer)`
     font-weight:600;
     font-size: 2rem;
   }
+`
+
+const MegaTitle = styled.h2`
+  color: ${({ theme: { fontColor } }) => fontColor};
+  font-size: 2rem;
+  text-align: center;
+  /* display:inline-block; */
 `

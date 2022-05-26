@@ -8,6 +8,8 @@ import { endpoints } from '../components/signIn/api'
 import { NoResultsMessage } from '../components/homepage/NoResultsMessage'
 import { getArrayBySize } from '../helpers/getArrayBySize'
 import { Layout } from '../layouts/Layout'
+import { Link } from 'react-router-dom'
+import { routesV3 } from '../routes'
 
 const initialExercises = null
 
@@ -89,14 +91,17 @@ export const HomePagex = () => {
           <QuotesContainer>
             {exercises.map(
               ({ id, title, textContent, category, difficulty }) => (
-                <ExerciseItem
+                <Link
                   key={id}
-                  id={id}
-                  title={title}
-                  content={textContent}
-                  category={category}
-                  difficulty={difficulty}
-                />
+                  to={`${routesV3.MECA_TIME_PAGE.subRoutes.EXERCISE_PAGE.route}/${id}`}>
+                  <ExerciseItem
+                    id={id}
+                    title={title}
+                    content={textContent}
+                    category={category}
+                    difficulty={difficulty}
+                  />
+                </Link>
               )
             )}
           </QuotesContainer>

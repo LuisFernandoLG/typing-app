@@ -12,7 +12,7 @@ const HOST = isEnvLocalhost()
 
 // if (location.protocol === 'http:') {
 // }
-// // const exercisesEndpoint = `${HOST}/exercises`
+// const exercisesEndpoint = `${HOST}/exercises`
 // const loginEndpoint = `${HOST}/logIn`
 // // const exerciseEndpoint = `${HOST}/exercise`
 // // const rankingEndpoint = `${HOST}/ranking`
@@ -37,6 +37,9 @@ const addAbcExerciseEndpoint = `${HOST}/course/abcExercise`
 const addMecaExerciseEndpoint = `${HOST}/course/mecaExercise`
 const addCourseEndpoint = `${HOST}/course`
 const markExerciseCompleted = `${HOST}/course/exercise/markascompleted`
+const getMecaExerciseEndpoint = `${HOST}/exercise`
+const getMecaExercisesAsMarked = `${HOST}/meca/exercises`
+const markMecaExercisesAsMarkedEndpoint = `${HOST}/meca/exercise/mark`
 
 // const basicOptions = {
 //   method: 'GET',
@@ -232,6 +235,43 @@ const api = () => {
         })
     })
 
+  const getMecaExercises = ({ userId }) =>
+    new Promise((resolve, reject) => {
+      // const options = getOp({ body: { courseId, exerciseId, userId } })
+      fetch(`${getMecaExercisesAsMarked}/${userId}`)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
+  const getMecaExercise = ({ idQuote }) =>
+    new Promise((resolve, reject) => {
+      // const options = getOp({ body: { courseId, exerciseId, userId } })
+      fetch(`${getMecaExerciseEndpoint}/${idQuote}`)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
+  const markMecExerciseAsCompleted = ({ mecaId, userId }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPost({ body: { mecaId, userId } })
+      console.log({ options })
+      fetch(`${markMecaExercisesAsMarkedEndpoint}`, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
   // Functions hehe
   return {
     getAllEnglishExercises,
@@ -246,7 +286,10 @@ const api = () => {
     addAbcExercise,
     addMecaExercise,
     addCourse,
-    markExerciseFromEnglishCourseCompleted
+    markExerciseFromEnglishCourseCompleted,
+    getMecaExercises,
+    getMecaExercise,
+    markMecExerciseAsCompleted
   }
 }
 

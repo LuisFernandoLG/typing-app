@@ -1,14 +1,10 @@
-import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
 import Skeleton from 'react-loading-skeleton'
-import { routesV3 } from '../../routes'
 
-export const ExerciseItem = ({ id, title, content, category, difficulty }) => {
+export const ExerciseItem = ({ id, title, content, category, difficulty, isCompleted }) => {
   return (
-    <ExerciseItemContainer
-      to={`${routesV3.MECA_TIME_PAGE.subRoutes.EXERCISE_PAGE.route}/${id}`}
-      id={id}>
+    <ExerciseItemContainer id={id} isCompleted={isCompleted}>
       <Title>{title || <Skeleton width={'20%'} />}</Title>
       <Content>{content || <Skeleton count={1} />}</Content>
       <Wrapper flex flex_jc_fe gap='1rem'>
@@ -19,15 +15,31 @@ export const ExerciseItem = ({ id, title, content, category, difficulty }) => {
   )
 }
 
-const ExerciseItemContainer = styled(Link)`
+const ExerciseItemContainer = styled.div`
   padding: 2rem;
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   background: ${({ theme: { accentColor } }) => accentColor};
   transition: background-image 300ms ease;
 
+  .isCompleted
+
   &:hover {
-    background-image: ${({ theme: { secondaryGradient } }) => secondaryGradient};
+    background-image: ${({ theme: { secondaryGradient } }) =>
+      secondaryGradient};
   }
+
+  ${({ theme: { successColor, fontColor, accentColor }, isCompleted }) =>
+    isCompleted
+      ? `
+      background:${successColor};
+      color:${fontColor};`
+      : `
+      background:${accentColor};
+      color:${fontColor};
+      border: 3px dashed ${fontColor};
+      opacity:0.6;
+  `}
+
 
   ${({ id }) =>
     id === undefined
@@ -43,7 +55,7 @@ const Title = styled.h3`
 `
 const Content = styled.p`
   margin: 0.5rem 0;
-  max-width: 90%; 
+  max-width: 90%;
   font-size: 1.2rem;
   color: ${({ theme: { fontColor } }) => fontColor};
   line-height: 1.5rem;

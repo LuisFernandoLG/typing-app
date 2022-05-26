@@ -38,8 +38,14 @@ export const routesV3 = {
 
   MECA_PAGE: {
     route: '/meca',
-    subpages: {}
+    subpages: {
+      EXERCISE: {
+        route: 'item',
+        routeWithParams: 'item/:idQuote'
+      }
+    }
   },
+
   MECA_TIME_PAGE: {
     route: '/mecatime',
     subRoutes: {
