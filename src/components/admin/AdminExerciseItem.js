@@ -36,7 +36,7 @@ export const AdminExerciseItem = ({
     <AdminExerciseItemWrapper
       as="form"
       flex
-      wrap
+      wrap="true"
       flex_dc
       onSubmit={handleSubmit}
     >

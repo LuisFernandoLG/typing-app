@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import styled from 'styled-components'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
-import { BackPageButton } from '../components/ui/BackPageButton'
+// import { BackPageButton } from '../components/ui/BackPageButton'
 import { useSession } from '../hooks/useSession'
 import { Layout } from '../layouts/Layout'
 import { routesV3 } from '../routes'
@@ -11,7 +11,7 @@ const EnglishPage = () => {
 
   return (
     <Layout porRe={true}>
-      <BackPageButton text='Atrás' />
+
       <FlexContainer>
         <FlexContainer fd_c pd='1rem' gap='1rem'>
           <StyledLink
@@ -28,11 +28,6 @@ const EnglishPage = () => {
             </StyledLink>
           )}
 
-          {/* <StyledLink
-            to={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_STATS_PAGE.route}
-            className={({ isActive }) => (isActive ? 'activated' : null)}>
-            Stats
-          </StyledLink> */}
         </FlexContainer>
         <Layout width='100%'>
           <Outlet />

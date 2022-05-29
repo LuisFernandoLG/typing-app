@@ -9,6 +9,7 @@ import api from '../services/api'
 import Skeleton from 'react-loading-skeleton'
 import { useSession } from '../hooks/useSession'
 import { toast } from 'react-toastify'
+import { BackPageButton } from '../components/ui/BackPageButton'
 
 export const EnglishSectionPage = () => {
   // eslint-disable-next-line no-unused-vars
@@ -41,6 +42,7 @@ export const EnglishSectionPage = () => {
 
   return (
     <Layout mg='0 1rem'>
+      <BackPageButton text='Atrás'/>
 <MegaTitle>{dificultad}</MegaTitle>
       {(allExercises || [1, 2, 3, 4]).map(
         ({ courseId, description, categoryName, exercises }) => (

@@ -1,16 +1,18 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { useShortSound } from '../../hooks/useShortSound'
 import { FlexContainer } from '../shareStyleComponents/FlexContainer'
 import styled from 'styled-components'
 import Skeleton from 'react-loading-skeleton'
 import { Layout } from '../../layouts/Layout'
+import { shuffleArray } from '../../helpers/shuffleArray'
 
 export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
   const [itemSelected, setItemSelected] = useState(null)
-  // eslint-disable-next-line no-unused-vars
   const [currentExercise, setCurrentExercise] = useState(null)
   const [playSuccesSound] = useShortSound({ soundPath: 'success.mp3' })
   const [playFailSound] = useShortSound({ soundPath: 'failure.mp3' })
+
+  const answers = useMemo(() => shuffleArray({ array: abcExercise?.answers }))
 
   const option1 = useRef(null)
   const option2 = useRef(null)
@@ -55,18 +57,27 @@ export const AbcExercise = ({ abcExercise, results, setIsDone }) => {
     if (index === 1) return option2
     if (index === 2) return option3
   }
+  function compare (a, b) {
+    if (a.content < b.content) {
+      return -1
+    }
+    if (a.content > b.content) {
+      return 1
+    }
+    return 0
+  }
 
   return (
     <>
       <Layout>
         <Title>{currentExercise?.question || <Skeleton width={'20%'} />}</Title>
         <FlexContainer fd_c jc_c ai_c gap='1rem' mg='1rem'>
-          {(currentExercise?.answers || [1, 2, 3]).map((item, index) => (
+          {(answers.sort(compare) || [1, 2, 3]).map((item, index) => (
             <Answer
               ref={getRef({ index })}
               tabIndex={index + 1}
               type='button'
-              key={item?.id}
+              key={`${item?.id}-answer`}
               disabled={!!itemSelected}
               className={
                 itemSelected
