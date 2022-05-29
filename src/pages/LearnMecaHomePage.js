@@ -11,6 +11,7 @@ import { GridContainer } from '../components/GridContainer'
 import { ExerciseItem } from '../components/homepage/ExerciseItem'
 import { Link } from 'react-router-dom'
 import { routesV3 } from '../routes'
+import { BackPageButton } from '../components/ui/BackPageButton'
 
 export const LearMecaHomePage = () => {
   const [exercisesByDifficulty, setExercisesByDifficulty] = useState([])
@@ -41,6 +42,7 @@ export const LearMecaHomePage = () => {
 
   return (
     <Layout>
+       <BackPageButton backRoute={routesV3.MENU_PAGE.route} />
       {exercisesByDifficulty.length === 0
         ? (
         <FlexContainer jc_c ai_c>

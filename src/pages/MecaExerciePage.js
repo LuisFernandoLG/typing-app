@@ -5,7 +5,10 @@ import { toast } from 'react-toastify'
 import { FingerLoader } from '../components/loaders/FingerLoader'
 import { MecaExercise } from '../components/MecaExercise'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
+import { BackPageButton } from '../components/ui/BackPageButton'
 import { useSession } from '../hooks/useSession'
+import { Layout } from '../layouts/Layout'
+import { routesV3 } from '../routes'
 import api from '../services/api'
 
 export const MecaExercisePage = () => {
@@ -37,7 +40,8 @@ export const MecaExercisePage = () => {
   }
 
   return (
-    <>
+    <Layout>
+       <BackPageButton backRoute={routesV3.MECA_PAGE.route} />
       {exercise
         ? (
         <MecaExercise mecaExercise={exercise} setIsDone={setIsDone} />
@@ -47,6 +51,6 @@ export const MecaExercisePage = () => {
           <FingerLoader />
         </FlexContainer>
           )}
-    </>
+    </Layout>
   )
 }

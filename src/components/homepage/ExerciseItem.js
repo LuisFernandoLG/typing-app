@@ -37,7 +37,7 @@ const ExerciseItemContainer = styled.div`
       background:${accentColor};
       color:${fontColor};
       border: 3px dashed ${fontColor};
-      opacity:0.6;
+      opacity:0.8;
   `}
 
 
