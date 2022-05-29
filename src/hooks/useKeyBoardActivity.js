@@ -60,6 +60,8 @@ export const useKeyBoardActivity = ({ textQuote }) => {
 
   const updateQuote = ({ newQuote }) => dispatch({ type: TYPES.UPDATE_QUOTE, payload: newQuote })
 
+  const retrace = () => dispatch({ type: TYPES.REMOVE_KEY_PRESSED })
+
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
@@ -75,6 +77,7 @@ export const useKeyBoardActivity = ({ textQuote }) => {
     results: state.results,
     calculateResults,
     updateQuote,
+    retrace,
     reset
   }
 }
