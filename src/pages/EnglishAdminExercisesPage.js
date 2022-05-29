@@ -41,13 +41,11 @@ export const EnglishAdminExercisesPage = ({ courseName }) => {
   useEffect(getData, [])
   return (
     <Layout pd='1rem 5rem'>
-      {/* <Title>{courseName}</Title> */}
       <GridContainer>
         <Card>
           <AddMecaExerciseForm courseId={courseId} updateView={getData} />
         </Card>
         <Card>
-          {' '}
           <AddAbcExerciseForm courseId={courseId} updateView={getData} />
         </Card>
       </GridContainer>
@@ -97,8 +95,3 @@ const GridContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 2rem;
 `
-
-// const Title = styled.h3`
-//   color: ${({ theme: { fontColor } }) => fontColor};
-//   text-align: center;
-// `

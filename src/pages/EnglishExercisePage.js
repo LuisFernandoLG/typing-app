@@ -1,5 +1,4 @@
 import { Layout } from '../layouts/Layout'
-import { BackPageButton } from '../components/ui/BackPageButton'
 import { routesV3 } from '../routes'
 import { Link, useParams } from 'react-router-dom'
 import { AbcExercise } from '../components/exercises/AbcExercise'
@@ -14,6 +13,7 @@ import styled from 'styled-components'
 import { Loader } from '../components/Loader'
 import { toast } from 'react-toastify'
 import { useSession } from '../hooks/useSession'
+import { FingerLoader } from '../components/loaders/FingerLoader'
 
 const exercisesTypes = {
   MECA_EXERCISE: 1,
@@ -107,11 +107,10 @@ export const EnglishExercisePage = () => {
     }
   }, [exerciseId])
 
-  if (isLoading) return <Loader />
+  if (isLoading) return <FlexContainer jc_c ai_c><FingerLoader/></FlexContainer>
 
   return (
     <Layout>
-      <BackPageButton backRoute={routesV3.ENGLISH_PAGE.route} />
       <FlexContainer jc_c ai_c>
         {currentExercise === null
           ? (

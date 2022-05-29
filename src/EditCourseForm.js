@@ -6,6 +6,8 @@ import api from './services/api'
 import GroupInput from './components/inputs/GroupInput'
 import { Button } from './components/ui/Button'
 import { FlexContainer } from './components/shareStyleComponents/FlexContainer'
+import { difficulties } from './constants/difficulties'
+import { SelectInput } from './components/inputs/SelectInputStyle'
 
 export const EditCourseForm = ({ course }) => {
   const {
@@ -22,16 +24,16 @@ export const EditCourseForm = ({ course }) => {
   useEffect(() => {
     setValue('Titulo', course.title)
     setValue('Descripción', course.description)
-    // setValue('status', mecaExercise.textContent)
   }, [])
 
   const handleWholeSubmit = (form) => {
     setIsLoading(true)
     const formFormated = format_data(form)
+    console.log({ formFormated })
     api()
       .updateCourse({ course: formFormated })
       .then((data) => {
-        toast.success('¡Registrado!')
+        toast.success('¡Actualizado!')
       })
       .catch((error) => {
         console.log(error)
@@ -47,7 +49,8 @@ export const EditCourseForm = ({ course }) => {
       name: form.Titulo,
       description: form.Descripción,
       courseType: 2,
-      status: form.status ? 1 : 2
+      status: form.status ? 1 : 2,
+      difficultyId: form.Dificultad
     }
   }
 
@@ -82,9 +85,21 @@ export const EditCourseForm = ({ course }) => {
           <input
             {...register('status', { required: false })}
             type='checkbox'
-            defaultChecked={true}
+            defaultChecked={course.statusId === 1}
           />
         </div>
+
+        <SelectInput {...register('Dificultad')}>
+          {difficulties.map(({ id, name, difficultyId }) => (
+            <option
+              key={`${id}_s`}
+              value={difficultyId}
+              selected={parseInt(course.difficultyId) === difficultyId}>
+              {name}
+            </option>
+          ))}
+        </SelectInput>
+
         <FlexContainer jc_c ai_c>
           <Button
             success={true}

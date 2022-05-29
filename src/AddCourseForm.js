@@ -7,6 +7,8 @@ import GroupInput from './components/inputs/GroupInput'
 import { FlexContainer } from './components/shareStyleComponents/FlexContainer'
 import { Button } from './components/ui/Button'
 import api from './services/api'
+import { SelectInput } from './components/inputs/SelectInputStyle'
+import { difficulties } from './constants/difficulties'
 
 export const AddCourseForm = ({ updateView }) => {
   const {
@@ -43,7 +45,8 @@ export const AddCourseForm = ({ updateView }) => {
       name: form.Titulo,
       description: form.Descripción,
       courseType: 2,
-      status: form.status ? 1 : 2
+      status: form.status ? 1 : 2,
+      difficultyId: form.Dificultad
     }
   }
 
@@ -82,6 +85,15 @@ export const AddCourseForm = ({ updateView }) => {
             defaultChecked={true}
           />
         </div>
+
+        <SelectInput {...register('Dificultad', { required: false }) }>
+      {difficulties.map(({ id, name, difficultyId }) => (
+          <option key={`${id}_s`} value={difficultyId}>
+            {name}
+          </option>
+      ))}
+      </SelectInput>
+
         <FlexContainer jc_c ai_c>
           <Button
             success={true}

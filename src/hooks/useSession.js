@@ -12,9 +12,7 @@ export const useSession = () => {
     goIndexPage()
   }
 
-  const isAdmin = () => {
-    return user.typeUser === 1
-  }
+  const isAdmin = () => user.typeUser === 1
 
   const handleLogIn = ({ email, password }) => {
     setLogIn(email, password)
