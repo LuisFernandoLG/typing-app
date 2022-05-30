@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { Logo } from '../components/NavBar/Logo'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
@@ -15,9 +16,20 @@ export const Header = () => {
   const indexPath = isAuth
     ? routesV2.LOGGED_APP.subPages.CHOICE_PAGE.route
     : routesV2.INDEX_PAGE.route
+  const headerRef = useRef(null)
+
+  useEffect(() => {
+    window.addEventListener('scroll', (e) => {
+      const headerHeigh = headerRef.current.clientHeight
+      const scrollPosition = document.documentElement.scrollTop
+      // console.log({ x: headerRef.current })
+      if (scrollPosition > headerHeigh) headerRef.current.classList.add('hidden')
+      else headerRef.current.classList.remove('hidden')
+    })
+  }, [])
 
   return (
-    <HeaderStyled as='header' jc_sb ai_c gap='0.5rem'>
+    <HeaderStyled as='header' jc_sb ai_c gap='0.5rem' ref={headerRef}>
       <Link to={indexPath}>
         <Logo />
       </Link>
@@ -37,7 +49,7 @@ export const Header = () => {
               <Button secondary={true} onClick={goSignUpPage} pd='1rem 2rem'>
                 Registro
               </Button>
-              <ThemeSwitcher/>
+              <ThemeSwitcher />
             </>
               )}
         </FlexContainer>
@@ -47,6 +59,8 @@ export const Header = () => {
 }
 
 const HeaderStyled = styled(FlexContainer)`
+
+
   padding: 0.5rem 1.5rem;
   position: sticky;
   top: 0;
@@ -58,8 +72,14 @@ const HeaderStyled = styled(FlexContainer)`
   /* border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem; */
 
-  transition: background 300ms ease;
+  /* transition: background 300ms ease; */
   z-index: 900;
+  transition: transform 300ms ease;
 
-  /* margin-bottom: 3rem; */
+  
+  &&&.hidden {
+    transform: translateY(-100%);
+  }
+
+  
 `
