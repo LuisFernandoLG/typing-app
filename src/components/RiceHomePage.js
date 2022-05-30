@@ -20,9 +20,10 @@ export const RiceHomePage = () => {
 
   useEffect(() => {
     api().getRicesAsMarked({ userId: user.id }).then((data) => {
-      const groupedByDifficulty = groupArrayOfObjects({ list: data.data, key: 'difficulty' })
+      const onlyActivatedRices = data.data.filter(({ status }) => status === 1)
+      const groupedByDifficulty = groupArrayOfObjects({ list: onlyActivatedRices, key: 'difficulty' })
+      // console.log({ exercisesArray })
       const exercisesArray = Object.entries(groupedByDifficulty)
-      console.log({ exercisesArray })
       setExercises(exercisesArray)
     }).catch(() => {
       toast.error('Oops! algo salió mal')

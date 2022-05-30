@@ -106,8 +106,7 @@ export const EditRiceForm = ({ riceExercise }) => {
               <option
                 key={`${id}_s`}
                 value={difficultyId}
-                defaultValue={parseInt(riceExercise.difficultyId) === difficultyId}>
-                {' '}
+                selected={parseInt(riceExercise.difficultyId) === difficultyId}>
                 {name}
               </option>
             ))}
@@ -128,7 +127,7 @@ export const EditRiceForm = ({ riceExercise }) => {
               as='input'
               value='Añadir'
               pd='1rem 2rem'>
-              Añadir
+              Actualizar
             </Button>
           </FlexContainer>
         </FlexContainer>
