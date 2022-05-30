@@ -100,6 +100,7 @@ export const HomePagex = () => {
                     content={textContent}
                     category={category}
                     difficulty={difficulty}
+                    isNormal={true}
                   />
                 </Link>
               )

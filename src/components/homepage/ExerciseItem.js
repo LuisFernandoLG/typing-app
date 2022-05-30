@@ -2,9 +2,21 @@ import styled, { css } from 'styled-components'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
 import Skeleton from 'react-loading-skeleton'
 
-export const ExerciseItem = ({ id, title, content, category, difficulty, isCompleted, sticker }) => {
+export const ExerciseItem = ({
+  id,
+  title,
+  content,
+  category,
+  difficulty,
+  isCompleted,
+  sticker,
+  isNormal
+}) => {
   return (
-    <ExerciseItemContainer id={id} isCompleted={isCompleted}>
+    <ExerciseItemContainer
+      id={id}
+      isCompleted={isCompleted}
+      isNormal={isNormal}>
       <Title>{title || <Skeleton width={'20%'} />}</Title>
       <Content>{content || <Skeleton count={1} />}</Content>
       <Wrapper flex flex_jc_fe gap='1rem'>
@@ -21,8 +33,6 @@ const ExerciseItemContainer = styled.div`
   background: ${({ theme: { accentColor } }) => accentColor};
   transition: background-image 300ms ease;
 
-  .isCompleted
-
   &:hover {
     background-image: ${({ theme: { secondaryGradient } }) =>
       secondaryGradient};
@@ -38,7 +48,16 @@ const ExerciseItemContainer = styled.div`
       color:${fontColor};
       border: 3px dashed ${fontColor};
       opacity:0.8;
-  `}
+      `}
+
+${({ theme: { fontColor, accentColor }, isNormal }) =>
+    isNormal &&
+    `
+    background:${accentColor};
+    color:${fontColor};
+    border: 0 solid transparent;
+    opacity:1;
+    `}
 
 
   ${({ id }) =>
