@@ -127,9 +127,10 @@ const AdminExerciseItemWrapper = styled(Wrapper)`
   background:${({ theme: { accentColor } }) => accentColor};
   color:${({ theme: { fontColor } }) => fontColor};
 
-  div,
-  select {
-    margin: 0.8em 0;
+  div, select{
+      color: ${({ theme: { fontColor } }) => fontColor};
+      text-align: center;
+
   }
 
   label {

@@ -17,8 +17,6 @@ export const EditCourseForm = ({ course }) => {
     formState: { errors }
   } = useForm()
 
-  console.log({ course })
-
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {

@@ -43,6 +43,8 @@ const markMecaExercisesAsMarkedEndpoint = `${HOST}/meca/exercise/mark`
 const getRicesAsMarkedeEndpoint = `${HOST}/rice/exercises/user`
 const getRiceEndpoint = `${HOST}/rice/exercise`
 const markRiceAsDoneEndpoint = `${HOST}/rice/exercise/mark`
+const addRiceEndpoint = `${HOST}/rice/exercise`
+const updateRiceEndpoint = `${HOST}/rice/exercise`
 
 // const basicOptions = {
 //   method: 'GET',
@@ -301,6 +303,31 @@ const api = () => {
         })
     })
 
+  const addRice = ({ riceExercise }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPost({ body: { ...riceExercise } })
+      fetch(`${addRiceEndpoint}`, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
+  const updateRice = ({ riceExercise }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPut({ body: { ...riceExercise } })
+      console.log({ options })
+      fetch(updateRiceEndpoint, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
   // Functions hehe
   return {
     getAllEnglishExercises,
@@ -321,7 +348,9 @@ const api = () => {
     markMecExerciseAsCompleted,
     getRicesAsMarked,
     getRice,
-    markRiceAsDone
+    markRiceAsDone,
+    addRice,
+    updateRice
   }
 }
 

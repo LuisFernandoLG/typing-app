@@ -104,7 +104,12 @@ export const routesV3 = {
       RICE_EXERCISE_PAGE: {
         route: 'item',
         routeWithParams: 'item/:riceId'
+      },
+
+      ADMIN_PAGE: {
+        route: 'admin'
       }
+
     }
   }
 }
