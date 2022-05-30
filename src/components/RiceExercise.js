@@ -75,8 +75,8 @@ export const RiceExercise = ({ exercise, setIsDone }) => {
 
   // eslint-disable-next-line multiline-ternary
   return isUserWinner === null ? (
-      <>
-        <FloatContainer top='10%' left='0' right='0'>
+      <Container>
+        <FloatContainer top='15%' left='10%' right='10%'>
           <Quote quote={quote} />
         </FloatContainer>
 
@@ -93,7 +93,7 @@ export const RiceExercise = ({ exercise, setIsDone }) => {
         </FloatContainer>
 
         <CarAnimation percentagePosition={progress} />
-      </>
+      </Container>
   ) : (
       <FlexContainer jc_c ai_c>
         <WinnerCard
@@ -130,6 +130,10 @@ export const RiceExercise = ({ exercise, setIsDone }) => {
       </FlexContainer>
   )
 }
+
+const Container = styled.div`
+/* position:absolute; */
+`
 
 const WinnerCard = styled(FlexContainer)`
     border-radius: ${({ theme: { borderRadius } }) => borderRadius};
