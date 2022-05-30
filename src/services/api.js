@@ -40,6 +40,9 @@ const markExerciseCompleted = `${HOST}/course/exercise/markascompleted`
 const getMecaExerciseEndpoint = `${HOST}/exercise`
 const getMecaExercisesAsMarked = `${HOST}/meca/exercises`
 const markMecaExercisesAsMarkedEndpoint = `${HOST}/meca/exercise/mark`
+const getRicesAsMarkedeEndpoint = `${HOST}/rice/exercises/user`
+const getRiceEndpoint = `${HOST}/rice/exercise`
+const markRiceAsDoneEndpoint = `${HOST}/rice/exercise/mark`
 
 // const basicOptions = {
 //   method: 'GET',
@@ -108,9 +111,7 @@ const api = () => {
 
   const getAllEnglishCourses = ({ userId }) =>
     new Promise((resolve, reject) => {
-      // console.log({ userId })
       const defualtUserId = userId || 0
-      // console.log({ defualtUserId })
       fetch(`${getAllEnglishCoursesEndpoint}/${defualtUserId}`)
         .then((res) => {
           resolve(res.json())
@@ -134,7 +135,6 @@ const api = () => {
 
   const getCourseTemplates = () =>
     new Promise((resolve, reject) => {
-      // const endpointWithCourseId = `${getCourseEndpoint}/${courseId}`
       fetch(getCoursesTemplateEndpoint)
         .then((res) => {
           resolve(res.json())
@@ -147,7 +147,6 @@ const api = () => {
   const updateMecaExercise = ({ mecaExercise }) =>
     new Promise((resolve, reject) => {
       const options = getOptionsForPut({ body: { ...mecaExercise } })
-      // console.log({ options })
       fetch(updateMecaExerciseEndpoint, options)
         .then((res) => {
           resolve(res.json())
@@ -160,7 +159,6 @@ const api = () => {
   const updateAbcExercise = ({ abcExercise }) =>
     new Promise((resolve, reject) => {
       const options = getOptionsForPut({ body: { ...abcExercise } })
-      // console.log
       console.log({ options })
       fetch(updateAbcExerciseEndpoint, options)
         .then((res) => {
@@ -173,7 +171,6 @@ const api = () => {
   const updateCourse = ({ course }) =>
     new Promise((resolve, reject) => {
       const options = getOptionsForPut({ body: { ...course } })
-      // console.log
       console.log({ options })
       fetch(updateCourseEndpoint, options)
         .then((res) => {
@@ -187,7 +184,6 @@ const api = () => {
   const addAbcExercise = ({ abcExercise, courseId }) =>
     new Promise((resolve, reject) => {
       const options = getOptionsForPost({ body: { ...abcExercise } })
-      console.log({ options })
       fetch(`${addAbcExerciseEndpoint}/${courseId}`, options)
         .then((res) => {
           resolve(res.json())
@@ -200,7 +196,6 @@ const api = () => {
   const addMecaExercise = ({ mecaExercise, courseId }) =>
     new Promise((resolve, reject) => {
       const options = getOptionsForPost({ body: { ...mecaExercise } })
-      console.log({ options })
       fetch(`${addMecaExerciseEndpoint}/${courseId}`, options)
         .then((res) => {
           resolve(res.json())
@@ -213,7 +208,6 @@ const api = () => {
   const addCourse = ({ course }) =>
     new Promise((resolve, reject) => {
       const options = getOptionsForPost({ body: { ...course } })
-      console.log({ options })
       fetch(`${addCourseEndpoint}/`, options)
         .then((res) => {
           resolve(res.json())
@@ -272,6 +266,41 @@ const api = () => {
         })
     })
 
+  const getRicesAsMarked = ({ userId }) =>
+    new Promise((resolve, reject) => {
+      const defualtUserId = userId || 0
+      fetch(`${getRicesAsMarkedeEndpoint}/${defualtUserId}`)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
+  const getRice = ({ riceId }) =>
+    new Promise((resolve, reject) => {
+      fetch(`${getRiceEndpoint}/${riceId}`)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
+  const markRiceAsDone = ({ riceId, userId }) =>
+    new Promise((resolve, reject) => {
+      const options = getOptionsForPost({ body: { riceId, userId } })
+      fetch(`${markRiceAsDoneEndpoint}`, options)
+        .then((res) => {
+          resolve(res.json())
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+
   // Functions hehe
   return {
     getAllEnglishExercises,
@@ -289,7 +318,10 @@ const api = () => {
     markExerciseFromEnglishCourseCompleted,
     getMecaExercises,
     getMecaExercise,
-    markMecExerciseAsCompleted
+    markMecExerciseAsCompleted,
+    getRicesAsMarked,
+    getRice,
+    markRiceAsDone
   }
 }
 

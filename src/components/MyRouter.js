@@ -33,6 +33,8 @@ import { EnglishDifficultiesPage } from '../pages/EnglishDifficultiesPage'
 import { EnglishSectionPage } from '../pages/EnglishSectionPage'
 import { LearMecaHomePage } from '../pages/LearnMecaHomePage'
 import { MecaExercisePage } from '../pages/MecaExerciePage'
+import { RiceHomePage } from './RiceHomePage'
+import { RiceExercisePage } from '../pages/RiceExercisePage'
 
 const MecaTimePage = lazy(() => import('../pages/MecaTimePage'))
 const EnglishPage = lazy(() => import('../pages/EnglishPage'))
@@ -163,7 +165,14 @@ export const MyRouter = () => {
                   <PrivateRoute>
                     <RicePage />
                   </PrivateRoute>
-                }></Route>
+                }>
+                <Route index element={<RiceHomePage />} />
+                <Route
+                  path={`${routesV3.RICE_PAGE.subRoutes.RICE_EXERCISE_PAGE.routeWithParams}`}
+                  element={<RiceExercisePage />}
+                />
+
+              </Route>
 
               <Route
                 path={routesV2.NOT_FOUND_PAGE.route}

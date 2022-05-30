@@ -12,17 +12,12 @@ import { ExerciseItem } from '../components/homepage/ExerciseItem'
 import { Link } from 'react-router-dom'
 import { routesV3 } from '../routes'
 import { BackPageButton } from '../components/ui/BackPageButton'
+import { groupArrayOfObjects } from '../helpers/groupArrayOfObjects'
 
 export const LearMecaHomePage = () => {
   const [exercisesByDifficulty, setExercisesByDifficulty] = useState([])
   const { user } = useSession()
 
-  function groupArrayOfObjects ({ list, key }) {
-    return list.reduce(function (rv, x) {
-      ;(rv[x[key]] = rv[x[key]] || []).push(x)
-      return rv
-    }, {})
-  }
   useEffect(() => {
     api()
       .getMecaExercises({ userId: user.id })
@@ -32,7 +27,6 @@ export const LearMecaHomePage = () => {
           key: 'difficulty'
         })
         const arrayConverted = Object.entries(dataGroupedByDifficulty)
-        console.log({ arrayConverted })
         setExercisesByDifficulty(arrayConverted)
       })
       .catch(() => {

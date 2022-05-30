@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { Wrapper } from '../shareStyleComponents/Wrapper'
 import Skeleton from 'react-loading-skeleton'
 
-export const ExerciseItem = ({ id, title, content, category, difficulty, isCompleted }) => {
+export const ExerciseItem = ({ id, title, content, category, difficulty, isCompleted, sticker }) => {
   return (
     <ExerciseItemContainer id={id} isCompleted={isCompleted}>
       <Title>{title || <Skeleton width={'20%'} />}</Title>

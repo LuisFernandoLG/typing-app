@@ -99,7 +99,13 @@ export const routesV3 = {
     }
   },
   RICE_PAGE: {
-    route: '/carrera'
+    route: '/carrera',
+    subRoutes: {
+      RICE_EXERCISE_PAGE: {
+        route: 'item',
+        routeWithParams: 'item/:riceId'
+      }
+    }
   }
 }
 

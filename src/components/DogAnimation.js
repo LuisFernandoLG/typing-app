@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const DogAnimation = ({ percentagePosition, color, opacity }) => {
+  console.log({ color })
   return (
     <StyledDog
       percentagePosition={-(30 + -1 * percentagePosition)}
