@@ -22,7 +22,7 @@ export const RiceHomePage = () => {
     api().getRicesAsMarked({ userId: user.id }).then((data) => {
       const onlyActivatedRices = data.data.filter(({ status }) => status === 1)
       const groupedByDifficulty = groupArrayOfObjects({ list: onlyActivatedRices, key: 'difficulty' })
-      // console.log({ exercisesArray })
+      // console.log({ exerciesArray })
       const exercisesArray = Object.entries(groupedByDifficulty)
       setExercises(exercisesArray)
     }).catch(() => {
