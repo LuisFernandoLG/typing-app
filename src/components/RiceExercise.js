@@ -22,7 +22,7 @@ const speeds = {
 }
 
 export const RiceExercise = ({ exercise, setIsDone }) => {
-  const { quote, sizeQuote, indexQuote, keyPressed, retrace } =
+  const { quote, sizeQuote, indexQuote, keyPressed, retrace, isExerciseCompleted } =
       useKeyBoardActivity({
         textQuote: exercise.description
       })
@@ -53,7 +53,7 @@ export const RiceExercise = ({ exercise, setIsDone }) => {
       clearInterval(intervalBotID)
       if (setIsDone) setIsDone({ isUserWinner: true })
     }
-  }, [progress])
+  }, [isExerciseCompleted])
 
   useEffect(() => {
     if (isUserWinner) return 0
@@ -63,8 +63,6 @@ export const RiceExercise = ({ exercise, setIsDone }) => {
       if (setIsDone) setIsDone({ isUserWinner: false })
     }
   }, [botProgress])
-
-  //   console.log({})
 
   useEffect(() => {
     if (!keyPressed) return 0
