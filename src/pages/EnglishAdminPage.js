@@ -39,21 +39,23 @@ export const EnglishAdminPage = () => {
   return (
     <Layout pd='1rem 5rem'>
       <FlexContainer fd_c gap='1rem'>
-        <AddCourseForm updateView = {getData}/>
+        <AddCourseForm updateView={getData} />
         <GridContainer>
           {courses
             ? (
                 courses.map((course) => (
               <div key={course.courseId}>
-                <EditCourseForm course={course} />
-                <FlexContainer jc_c ai_c>
-                  <ExercisesLink
-                    to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.subRoutes.ENGLISH_EXERCISE_ADMIN_PAGE.route}/${course.courseId}`}>
-                    <FlexContainer jc_c ai_c>
-                      Ejercicios <IoArrowForwardOutline />
-                    </FlexContainer>
-                  </ExercisesLink>
-                </FlexContainer>
+                <Card fd_c gap="1rem">
+                  <EditCourseForm course={course} />
+                  <FlexContainer jc_c ai_c>
+                    <ExercisesLink
+                      to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.subRoutes.ENGLISH_EXERCISE_ADMIN_PAGE.route}/${course.courseId}`}>
+                      <FlexContainer jc_c ai_c>
+                        Ejercicios <IoArrowForwardOutline />
+                      </FlexContainer>
+                    </ExercisesLink>
+                  </FlexContainer>
+                </Card>
               </div>
                 ))
               )
@@ -64,12 +66,21 @@ export const EnglishAdminPage = () => {
               )}
         </GridContainer>
       </FlexContainer>
-      <FloatContainer right="2rem" bottom="2rem" zIndex={200}>
-         {isLoading && <Loader medium={true}/>}
+      <FloatContainer right='2rem' bottom='2rem' zIndex={200}>
+        {isLoading && <Loader medium={true} />}
       </FloatContainer>
     </Layout>
   )
 }
+
+const Card = styled(FlexContainer)`
+  padding: 3rem 2rem;
+  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
+  background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
+  transition: background-image 300ms ease;
+
+  /* margin: 1rem 0; */
+`
 
 const ExercisesLink = styled(Link)`
   background: ${({ theme: { disableColor } }) => disableColor};
@@ -78,8 +89,6 @@ const ExercisesLink = styled(Link)`
   padding: 1rem;
   color: ${({ theme: { bgColor } }) => bgColor};
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
-
-  transform: translateY(-2rem);
 `
 
 const GridContainer = styled.div`

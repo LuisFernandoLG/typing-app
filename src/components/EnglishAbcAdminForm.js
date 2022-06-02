@@ -129,7 +129,7 @@ export const EnglishAbcAdminForm = ({ item }) => {
           as='input'
           value='Buscar'
           pd='1rem 2rem'>
-          Guardar
+          Actualizar
         </Button>
       </FlexContainer>
     </Form>

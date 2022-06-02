@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import nivel1 from '../images/ilustrations/Fitness_Outline.svg'
 import nivel2 from '../images/ilustrations/Fitness3_Outline.svg'
 import nivel3 from '../images/ilustrations/Fitness2_Outline.svg'
-
 import shortid from 'shortid'
 import { FlexContainer } from '../components/shareStyleComponents/FlexContainer'
 import { Layout } from '../layouts/Layout'
@@ -33,7 +32,7 @@ export const EnglishDifficultiesPage = () => {
   return (
     <Layout width="100%">
     <BackPageButton text='Atrás' backRoute={routesV3.MENU_PAGE.route} />
-      <MegaTitle>Aprende Ingles con Type and type</MegaTitle>
+      <MegaTitle>Aprende Inglés con Type and type</MegaTitle>
       <FlexContainer gap='1rem' pd="2rem 0" wrap="true" jc_c ai_c>
         {difficulties.map(({ id, name, img }, i) => (
             <Link key={id} to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_DIFFICULTY.route}/${name}`}>

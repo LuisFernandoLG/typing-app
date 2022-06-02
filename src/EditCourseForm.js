@@ -53,7 +53,6 @@ export const EditCourseForm = ({ course }) => {
   }
 
   return (
-    <Card>
       <Form
         as='form'
         onSubmit={handleSubmit(handleWholeSubmit)}
@@ -106,22 +105,12 @@ export const EditCourseForm = ({ course }) => {
             as='input'
             value='Añadir'
             pd='1rem 2rem'>
-            Guardar
+            Actualizar
           </Button>
         </FlexContainer>
       </Form>
-    </Card>
   )
 }
-
-const Card = styled.div`
-  padding: 3rem 2rem;
-  border-radius: ${({ theme: { borderRadius } }) => borderRadius};
-  background: ${({ theme: { tertiaryColor } }) => tertiaryColor};
-  transition: background-image 300ms ease;
-
-  /* margin: 1rem 0; */
-`
 
 const Form = styled(FlexContainer)`
   padding: 2rem 1rem 0 1rem;

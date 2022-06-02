@@ -20,6 +20,12 @@ const EnglishPage = () => {
             Home
           </StyledLink>
 
+          <StyledLink
+            to={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_STATS_PAGE.route}
+            className={({ isActive }) => (isActive ? 'activated' : null)}>
+            Stats
+          </StyledLink>
+
           {isAdmin() && (
             <StyledLink
               to={routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_ADMIN_PAGE.route}
