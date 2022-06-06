@@ -40,7 +40,7 @@ export const EnglishExercisePage = () => {
   const getBackRoute = () => {
     let currentRoute = '/fff'
     console.log({ dificultad })
-    if (dificultad === 'Basico') { currentRoute = `${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_DIFFICULTY.route}/Basico` }
+    if (dificultad === 'Básico') { currentRoute = `${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_DIFFICULTY.route}/Básico` }
     if (dificultad === 'Intermedio') { currentRoute = `${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_DIFFICULTY.route}/Intermedio` }
     if (dificultad === 'Avanzado') { currentRoute = `${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_DIFFICULTY.route}/Avanzado` }
     return currentRoute
@@ -166,7 +166,7 @@ export const EnglishExercisePage = () => {
               <FlexContainer jc_fe ai_c>
                 {exerciseIndex === allExercises.length - 1 && (
                   <ShorHandKey handleKeyDown={goNext} code='Enter'>
-                    <Link ref={homeBtnRef} to={routesV3.ENGLISH_PAGE.route}>
+                    <Link ref={homeBtnRef} to={getBackRoute()}>
                       <Button primary={true} pd='1rem'>
                         Página principal{' '}
                         <EnterKeyShorCut>
@@ -186,7 +186,7 @@ export const EnglishExercisePage = () => {
                       to={`${
                         routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE
                           .route
-                      }/${courseId}/${allExercises[exerciseIndex + 1].id}`}>
+                      }/${dificultad}/${courseId}/${allExercises[exerciseIndex + 1].id}`}>
                       <Button primary={true} pd='1rem'>
                         Siguiente{' '}
                         <EnterKeyShorCut>

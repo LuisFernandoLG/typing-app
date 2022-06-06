@@ -3,7 +3,7 @@ import { generate } from 'shortid'
 export const difficulties = [
   {
     id: generate(),
-    name: 'Basico',
+    name: 'Básico',
     difficultyId: 1
   },
 

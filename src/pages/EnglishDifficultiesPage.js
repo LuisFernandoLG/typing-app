@@ -12,7 +12,7 @@ import { BackPageButton } from '../components/ui/BackPageButton'
 const difficulties = [
   {
     id: shortid(),
-    name: 'Basico',
+    name: 'Básico',
     img: nivel1
   },
 
