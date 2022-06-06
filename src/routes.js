@@ -29,6 +29,11 @@ export const routesV3 = {
   RECOVER_PASS_PAGE: {
     route: '/recuperar'
   },
+
+  STATS_PAGE: {
+    route: '/stats'
+  },
+
   MENU_PAGE: {
     route: '/menu'
   },

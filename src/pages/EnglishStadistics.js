@@ -53,8 +53,8 @@ export const EnglishStadisticsPage = () => {
           key: 'difficulty'
         })
         const arrayConverted = Object.entries(dataGroupedByDifficulty)
-        console.log({ ya: arrayConverted })
         setAllExercises(arrayConverted)
+        console.log({ arrayConverted })
       })
       .catch((e) => {
         console.log({ e })

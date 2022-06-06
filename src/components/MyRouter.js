@@ -36,6 +36,7 @@ import { MecaExercisePage } from '../pages/MecaExerciePage'
 import { RiceHomePage } from './RiceHomePage'
 import { RiceExercisePage } from '../pages/RiceExercisePage'
 import { AdminRicePage } from '../pages/AdminRicePage'
+import { GeneralStatisticsPage } from '../pages/GeneralStatisticsPage'
 
 const MecaTimePage = lazy(() => import('../pages/MecaTimePage'))
 const EnglishPage = lazy(() => import('../pages/EnglishPage'))
@@ -66,6 +67,14 @@ export const MyRouter = () => {
                 element={
                   <PrivateRoute>
                     <ChoicePage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path={routesV3.STATS_PAGE.route}
+                element={
+                  <PrivateRoute>
+                    <GeneralStatisticsPage />
                   </PrivateRoute>
                 }
               />

@@ -1,6 +1,6 @@
 import { useSession } from '../hooks/useSession'
 import { ThemeSwitcher } from './ThemeSwitcher'
-import { IoLogOut, IoSettingsSharp } from 'react-icons/io5'
+import { IoLogOut, IoSettingsSharp, IoStatsChart } from 'react-icons/io5'
 // import styled from 'styled-components'
 import { FlexContainer } from './shareStyleComponents/FlexContainer'
 import { Button } from './ui/Button'
@@ -27,11 +27,13 @@ export const MenuList = ({ closeMenu }) => {
           <Name>{user.name}</Name>
         </FlexContainer>
 
-        <Button secondary={true} onClick={handleLogOut} fontSize='1.2rem'>
-          <FlexContainer gap='0.5rem' ai_c jc_fs>
-            <IoLogOut /> Cerrar sesión
-          </FlexContainer>
-        </Button>
+        <Link to={routesV3.STATS_PAGE.route}>
+          <Button secondary={true} fontSize='1.2rem'>
+            <FlexContainer gap='0.5rem' jc_fs>
+              <IoStatsChart /> Estadísticas
+            </FlexContainer>
+          </Button>
+        </Link>
 
         <Link to={routesV3.CONFIG_PAGE.route}>
           <Button secondary={true} fontSize='1.2rem'>
@@ -40,6 +42,12 @@ export const MenuList = ({ closeMenu }) => {
             </FlexContainer>
           </Button>
         </Link>
+
+        <Button secondary={true} onClick={handleLogOut} fontSize='1.2rem'>
+          <FlexContainer gap='0.5rem' ai_c jc_fs>
+            <IoLogOut /> Cerrar sesión
+          </FlexContainer>
+        </Button>
 
         <ThemeSwitcher size='5rem' />
       </FlexContainer>

@@ -5,6 +5,7 @@ export const FlexContainer = styled.div`
   flex-direction: ${({ flex_dc }) => (flex_dc ? 'column' : 'row')};
   flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : 'nowrap')};
   gap: ${({ gap }) => gap};
+  max-width: ${({ mxWidth }) => mxWidth};
 
   ${({ flex_jc_c }) => flex_jc_c && 'justify-content : center'};
   ${({ flex_jc_fs }) => flex_jc_fs && 'justify-content : flex-start'};
@@ -42,6 +43,7 @@ export const FlexContainer = styled.div`
   ${({ ai_c }) => ai_c && 'align-items : center;'};
   ${({ ai_fs }) => ai_fs && 'align-items : flex-start;'};
   ${({ ai_fe }) => ai_fe && 'align-items : flex-end'};
+  ${({ ai_st }) => ai_st && 'align-items : streth'};
 
   align-content: ${({ ac_c }) => ac_c && 'alignContent : center'};
 `
