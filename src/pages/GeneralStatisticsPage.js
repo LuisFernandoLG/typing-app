@@ -1,3 +1,4 @@
+/* eslint-disable multiline-ternary */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react'
@@ -11,6 +12,9 @@ import api from '../services/api'
 import { useSession } from '../hooks/useSession'
 import { groupArrayOfObjects } from '../helpers/groupArrayOfObjects'
 import { toast } from 'react-toastify'
+import { FingerLoader } from '../components/loaders/FingerLoader'
+import { BackPageButton } from '../components/ui/BackPageButton'
+import { routesV3 } from '../routes'
 
 const data = {
   mecaTime: {
@@ -368,10 +372,6 @@ const stats = [
 const getPercentage = (num, total) => Math.trunc((num / total) * 100)
 
 export const GeneralStatisticsPage = () => {
-  const [mecaTimeStats, setMecaTimeStats] = useState(data.mecaTime)
-  const [mecaStats, setMecaStats] = useState([])
-  const [riceStats, setRiceStats] = useState(data.rice)
-  const [englishStats, seTenglishStats] = useState([])
   const [dat, setDat] = useState(null)
 
   const { user } = useSession()
@@ -625,7 +625,11 @@ export const GeneralStatisticsPage = () => {
 
   return (
     <Layout width='100%'>
-      {dat && (
+      <BackPageButton backRoute={routesV3.MENU_PAGE.route}/>
+      <FlexContainer jc_c ai_c>
+      <Title>Estadísticas generales</Title>
+      </FlexContainer>
+      {dat ? (
         dat.map(({ category, data }) => (
           <StatsBlock as='li' gap='2rem' mg='2rem'>
             <FlexContainer fd_c jc_c ai_st>
@@ -639,7 +643,7 @@ export const GeneralStatisticsPage = () => {
             </FlexContainer>
             <FlexContainer fd_c gap='2rem'>
               {Object.entries(data.courses).map((course) => (
-                <FlexContainer fd_c gap='1rem'>
+                <FlexContainer fd_c gap='0.5rem'>
                   <h2>{course[0]}</h2>
                   <LevelCard gap='1rem'>
                     {course[1].map(({ title, isDone, progress }) => (
@@ -647,6 +651,7 @@ export const GeneralStatisticsPage = () => {
                         fd_c
                         jc_c
                         ai_c
+                        gap="0.5rem"
                         isDone={isDone}
                         minWidth='150px'
                         height='140px'>
@@ -664,6 +669,10 @@ export const GeneralStatisticsPage = () => {
             </FlexContainer>
           </StatsBlock>
         ))
+      ) : (
+        <FlexContainer jc_c ai_c pd='3rem 2rem'>
+          <FingerLoader />
+        </FlexContainer>
       )}
     </Layout>
   )
@@ -708,7 +717,18 @@ const CrystalCard = styled(FlexContainer)`
 const StatsBlock = styled(FlexContainer)`
   border-radius: ${({ theme: { borderRadius } }) => borderRadius};
   /* &&&:nth-child(odd) { */
-  background: ${({ theme: { accentColor } }) => accentColor};
   padding: 2rem;
+  background: ${({ theme: { accentColor } }) => accentColor};
   /* } */
+  
+  h1,h2,h3,h4,h5{
+    color: ${({ theme: { fontColor } }) => fontColor};
+
+  }
+`
+
+const Title = styled.h3`
+  color: ${({ theme: { fontColor } }) => fontColor};
+  font-size: 2rem;
+  text-align: center;
 `

@@ -58,7 +58,7 @@ export const MecaExercise = ({ mecaExercise, setIsDone }) => {
     if (setIsDone) {
       console.log({ results })
       if (results.length === 0) return 0
-      setIsDone({ isCorrect: results?.failed === 0 })
+      setIsDone({ isCorrect: results?.failed === 0, results })
     }
   }, [results])
 
