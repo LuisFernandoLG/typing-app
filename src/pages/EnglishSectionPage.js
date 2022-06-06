@@ -10,12 +10,15 @@ import Skeleton from 'react-loading-skeleton'
 import { useSession } from '../hooks/useSession'
 import { toast } from 'react-toastify'
 import { BackPageButton } from '../components/ui/BackPageButton'
+import { difficulties } from '../constants/difficulties'
 
 export const EnglishSectionPage = () => {
   // eslint-disable-next-line no-unused-vars
   const [allExercises, setAllExercises] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const { user } = useSession()
+  // eslint-disable-next-line no-unused-vars
+  const [diffText, setDiffText] = useState('')
 
   const { dificultad } = useParams()
 
@@ -27,10 +30,14 @@ export const EnglishSectionPage = () => {
     api()
       .getAllEnglishCourses({ userId: user.id })
       .then((data) => {
-        const filteredDataByDifficulty = filterCourseByDifficulty({ courses: data.data })
+        const filteredDataByDifficulty = filterCourseByDifficulty({
+          courses: data.data
+        })
         setAllExercises(filteredDataByDifficulty)
         // setAllExercises(data.data)
         console.log({ data: data.data })
+        const dif = difficulties.find(({ name }) => name === dificultad)
+        setDiffText(dif.name)
       })
       .catch(() => {
         toast.error('Oops! Hubo un error.')
@@ -42,8 +49,8 @@ export const EnglishSectionPage = () => {
 
   return (
     <Layout mg='0 1rem'>
-      <BackPageButton text='Atrás'/>
-<MegaTitle>{dificultad}</MegaTitle>
+      <BackPageButton text='Atrás' backRoute={routesV3.ENGLISH_PAGE.route}/>
+      <MegaTitle>{dificultad}</MegaTitle>
       {(allExercises || [1, 2, 3, 4]).map(
         ({ courseId, description, categoryName, exercises }) => (
           <Layout key={courseId} mg='2rem 0'>
@@ -55,7 +62,7 @@ export const EnglishSectionPage = () => {
                   ? (
                   <Link
                     key={item?.id}
-                    to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.route}/${courseId}/${item?.id}`}>
+                    to={`${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_EXERCISE_PAGE.route}/${diffText}/${courseId}/${item?.id}`}>
                     <ExerciseBubble jc_c ai_c isDone={item?.isDone}>
                       {item?.title}
                     </ExerciseBubble>

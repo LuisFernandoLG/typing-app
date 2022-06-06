@@ -32,8 +32,23 @@ export const EnglishExercisePage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const nextBtnRef = useRef(null)
   const homeBtnRef = useRef(null)
+  const [backRoute, setBackRoute] = useState('/')
 
   const { user } = useSession()
+  const { dificultad } = useParams()
+
+  const getBackRoute = () => {
+    let currentRoute = '/fff'
+    console.log({ dificultad })
+    if (dificultad === 'Basico') { currentRoute = `${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_DIFFICULTY.route}/Basico` }
+    if (dificultad === 'Intermedio') { currentRoute = `${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_DIFFICULTY.route}/Intermedio` }
+    if (dificultad === 'Avanzado') { currentRoute = `${routesV3.ENGLISH_PAGE.subRoutes.ENGLISH_DIFFICULTY.route}/Avanzado` }
+    return currentRoute
+  }
+
+  useEffect(() => {
+    console.log({ backRoute })
+  }, [backRoute])
 
   const setExerciseDone = ({ isCorrect }) => {
     setIsDone(true)
@@ -61,10 +76,12 @@ export const EnglishExercisePage = () => {
 
   useEffect(() => {
     setIsLoading(true)
+    setBackRoute(getBackRoute())
     api()
       .getCourse({ courseId: courseId })
       .then((data) => {
         setAllExercises(data.data)
+        console.log({ x: data.data })
       })
       .catch(() => {
         toast.error('Oops! Hubo un error.')
@@ -110,7 +127,7 @@ export const EnglishExercisePage = () => {
 
   return (
     <Layout>
-      <BackPageButton text='Volver' />
+      <BackPageButton text='Volver' backRoute={getBackRoute()} />
       {isLoading
         ? (
         <FlexContainer jc_c ai_c>

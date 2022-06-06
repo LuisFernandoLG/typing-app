@@ -30,6 +30,5 @@ export const RiceExercisePage = () => {
 
   return <Layout>
       { currentExercise ? <RiceExercise exercise={currentExercise} setIsDone={setIsDone}/> : <FlexContainer jc_c ai_c><FingerLoader/> </FlexContainer> }
-
   </Layout>
 }
