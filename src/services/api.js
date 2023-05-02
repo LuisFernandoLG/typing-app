@@ -1,5 +1,4 @@
-const localhostServer = 'http://localhost:8000'
-const HOST = herokuServer
+const HOST = "https://backendtypandtyp.onrender.com"
 
 // if (location.protocol === 'http:') {
 // }
