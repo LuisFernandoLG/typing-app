@@ -1,6 +1,4 @@
 const HOST = 'https://backendtypandtyp.onrender.com'
-
-
 const exercises = `${HOST}/exercises`
 const logIn = `${HOST}/logIn`
 const exercise = `${HOST}/exercise`
