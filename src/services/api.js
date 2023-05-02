@@ -2,13 +2,9 @@ import { isEnvLocalhost } from '../helpers/isEnvLocalhost'
 import { isPageHTTPS } from '../helpers/isPageHTTPS'
 
 const vicServer = 'http://typeandtype.duckdns.org:8000'
-const herokuServer = 'https://backendtt.herokuapp.com'
+const herokuServer = 'https://backendtypandtyp.onrender.com'
 const localhostServer = 'http://localhost:8000'
-const HOST = isEnvLocalhost()
-  ? localhostServer
-  : isPageHTTPS()
-    ? herokuServer
-    : vicServer
+const HOST = herokuServer
 
 // if (location.protocol === 'http:') {
 // }
