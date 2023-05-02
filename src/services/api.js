@@ -1,4 +1,4 @@
-const HOST = "https://backendtypandtyp.onrender.com"
+const HOST = 'https://backendtypandtyp.onrender.com'
 
 // if (location.protocol === 'http:') {
 // }
